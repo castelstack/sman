@@ -1,16 +1,15 @@
 import React from "react";
 import { HeadText } from "../../constant/styles";
-import Network from "../../images/network.png";
+import Network from "../../images/networkk.svg";
 import Button from "../../components/button/button";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  margin: 36px 99px;
+  margin: 76px 99px;
 `;
 const Content = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr min-content;
   align-items: center;
   justify-content: space-between;
 `;
@@ -54,37 +53,33 @@ const ImageBox = styled.div`
 display: flex;
 justify-content: end;`;
 const Image = styled.img`
-margin-left: auto;`;
+margin-left: auto;
+color: black;`
+
 const Buttons = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, min-content);
-  grid-gap: 28px;
+  grid-template-columns: min-content;
   justify-content: center;
 `;
 
 
 
-const Box = () => {
+const GistBox = () => {
   return (
     <Container>
       <Content>
         <Info>
-          <HeadText> Stingy Men Association</HeadText>
+          <HeadText>Stingy Men Gather Here To Gist
+Their Experience With Women.</HeadText>
           <InfoText>
-            <TextHead>Let Me See What I Can Do</TextHead>
+            
             <Text>
-              Read Gist Of Orther SMAN Member, Tell Your own Gist And Generate
-              SMAN ID Card
+            You fit join, you fit just read, laugh & share!
             </Text>
           </InfoText>
           <Buttons>
-          <Link to='/be-stingy' >
-              <Button value='Generate ID' big />
-            </Link>
             
-            <Link to='/gist' >
-            <Button value='Read Gist' choco big/>
-            </Link>
+            <Button value='Read Gist' big/>
           </Buttons>
         </Info>
         <ImageBox>
@@ -95,4 +90,4 @@ const Box = () => {
   );
 };
 
-export default Box;
+export default GistBox;

@@ -55,10 +55,12 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
-                  <HeaderLogo />
+          <Link to="/">
+          <HeaderLogo />
+          </Link>
                   <HeaderLinks>
-                      <HeaderLink>Rules & Guidelines</HeaderLink>
-                      <HeaderLink>Stingy gists</HeaderLink>
+                      <HeaderLink to=''>Rules & Guidelines</HeaderLink>
+                      <HeaderLink to=''>Stingy gists</HeaderLink>
                       <Button to='/generate-card' value='Generate Card'/>
                   </HeaderLinks>
         </Toolbar>

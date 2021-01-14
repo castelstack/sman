@@ -64,18 +64,18 @@ const Footer = () => {
     <Container>
       <Head>
         <LogoImg src={Logo} alt='SMAN logo' />
-        <LinkTo>
+        <LinkTo to=''>
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
       <Routes>
-        <LinkTo>
+        <LinkTo to=''>
           <Links>Generate ID</Links>
         </LinkTo>
         <LinkTo>
           <Links>Tell Your Stingy Gist</Links>
         </LinkTo>
-        <LinkTo>
+        <LinkTo to=''>
           <Links>Read Stingy Men Gists</Links>
         </LinkTo>
       </Routes>

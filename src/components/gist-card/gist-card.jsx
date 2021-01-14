@@ -20,31 +20,36 @@ export default function GistCard() {
         id: 1,
         title: "Urgent 2k",
         gist:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neqused imperdiet nibh lectus feugiat nunc sem.",
+        "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neqused imperdiet nibh lectus feugiat nunc sem.",
+        name: 'Wence'
       },
       {
         id: 2,
         title: "Transport",
         gist:
           "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
+          name: 'Wence'
       },
       {
         id: 3,
         title: "Gift",
         gist:
           "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
+          name: 'Wence'
       },
       {
         id: 4,
         title: "Date",
         gist:
           "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
+          name: 'Wence'
       },
       {
         id: 5,
         title: "Accomodation",
         gist:
           "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
+          name: 'Wence'
           },
           {
             id: 6,
@@ -62,7 +67,7 @@ export default function GistCard() {
             .filter((idx, item) => item < 3)
             .map(item => (
                     <div key={item.id}>
-                        <Card title={item.title} gist={item.gist}/>
+                <Card title={item.title} gist={item.gist} name={item.name}/>
                     </div>
                 ))
        }
