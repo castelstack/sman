@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HeadText, MedText } from '../../constant/styles';
+import {  MedText } from '../../constant/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '../../components/button/button'
 
