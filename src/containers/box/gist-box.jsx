@@ -25,17 +25,7 @@ const InfoText = styled.ul`
   list-style: none;
 `;
 
-const TextHead = styled.li`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 149.9%;
-  /* or 42px */
 
-  text-transform: capitalize;
-
-  color: #4d4b4b;
-`;
 
 const Text = styled.li`
   font-style: normal;

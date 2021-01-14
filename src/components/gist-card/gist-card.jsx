@@ -15,7 +15,7 @@ const Container= styled.div`
 export default function GistCard() {
 
   
-  const [card, setCard] = useState( {card: [
+  const [card, setCard] = useState(  {card: [
       {
         id: 1,
         title: "Urgent 2k",
@@ -59,7 +59,7 @@ export default function GistCard() {
           },
     ],})
   
-
+setCard()
     return (
       <Container>
             {
