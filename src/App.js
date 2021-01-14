@@ -15,7 +15,7 @@ function App(props) {
       <Router>
         <Header /> 
         <Switch>
-          <Route path='/' exact component={Homepage} />
+          <Route path='/'  component={Homepage} />
           <Route path='/gist'  component={Gist} />
           <Route path='/be-stingy'  component={JoinUs} />
         </Switch>
