@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeadText, MedText } from '../../constant/styles';
-import Cir from '../../images/cir.png';
+import Cir from '../../images/bg.svg';
 import Button from '../../components/button/button'
 import styled from 'styled-components';
 

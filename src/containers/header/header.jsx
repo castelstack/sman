@@ -70,7 +70,7 @@ export default function ButtonAppBar() {
                   <HeaderLinks>
                       <HeaderLink to='/rules-and-regulation' activeStyle={active}>Rules & Regulation</HeaderLink>
                       <HeaderLink to='/gist' activeStyle={active}>Stingy gists</HeaderLink>
-                      <Button to='/generate-card' value='Generate Card'/>
+                      <Button to='/rules-and-regulation' value='Generate Card'/>
                   </HeaderLinks>
         </Toolbar>
       </AppBar>
