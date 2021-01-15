@@ -23,6 +23,10 @@ margin-right: -3px;
 color: white;
 `;
 
+export const Verified = styled.img`
+
+`;
+
 export const ContiuneButton = styled(Button)`
 justify-self: flex-end;`
 export const Container = styled.div`
@@ -32,6 +36,7 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: min-content 1fr;
   align-items: center;
+  
 `;
 
 export const Form = styled.div`
@@ -40,6 +45,9 @@ export const Form = styled.div`
   display: grid;
   grid-template-rows: repeat(2, min-content);
   grid-gap: 30px;
+ 
+justify-items: center;
+
 `;
 
 export const Text = styled(MedText)`

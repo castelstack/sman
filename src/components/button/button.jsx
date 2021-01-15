@@ -5,7 +5,7 @@ const CustomButton = styled.button`
 width: ${props => (props.big ? '235px' : '139px')};
 height: ${props => (props.big ? '58px' : '38px')};
 
-
+cursor: pointer;
 border: none;
 background: ${props => (props.choco ? '#843035' : '#FCEA4A')};
 border-radius: 10rem;

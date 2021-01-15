@@ -9,7 +9,9 @@ import {
   Box,
   Icon,
   InputFied,
-  ContiuneButton
+  ContiuneButton,
+  Position,
+  Password
 } from "./join.style";
 
 const Join = () => {
@@ -28,15 +30,15 @@ const Join = () => {
           }}> 
             <Box >
               <Icon />
-              <InputFied type='text' name='search' placeholder='Name' />
+              <InputFied type='text' name='name' placeholder='Name' />
             </Box>
             <Box >
-              <Icon />
-              <InputFied type='text' name='search' placeholder='Position' />
+              <Position />
+              <InputFied type='text' name='email' placeholder='Position' />
             </Box>
             <Box >
-              <Icon />
-              <InputFied type='text' name='search' placeholder='Password' />
+              <Password />
+              <InputFied type='text' name='password' placeholder='Password' />
             </Box>
                   </form>
                   <ContiuneButton value='Continue' big/>

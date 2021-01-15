@@ -24,6 +24,7 @@ const Icon = styled.img``;
 const RuleInfo = styled.div`
 display: grid;
 grid-template-rows: repeat(3, max-content);
+grid-gap: 20px;
 justify-items: center;`;
 const RuleNumber = styled(HeadText)`
 font-size: 18px;
