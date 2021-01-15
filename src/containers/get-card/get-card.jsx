@@ -19,7 +19,7 @@ margin: 30px;
 
 const CardContainer = styled.div`
 display: grid;
-grid-template-columns: repeat(4, min-content) ;
+grid-template-columns: repeat(3, min-content) ;
 align-items: center;
 padding-bottom: 100px;`;
 const CardTemplate = styled.img` `;
