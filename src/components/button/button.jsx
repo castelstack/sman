@@ -17,6 +17,24 @@ line-height: 33px;
 outline: none;
 color: ${props => (props.choco ? '#fff' : '#4D4B4B')};
 
+@media only screen and (max-width: 1200px) {
+    width: 200px;
+height: 40px;
+font-size: 18px;
+  }
+
+@media only screen and (max-width: 800px) {
+    width: 150px;
+height: 42px;
+font-size:12px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 120px;
+height: 32px;
+font-size:13px;
+  }
+
 &:hover {
     
     box-shadow: 5px 8px 9px -10px rgba(0,0,0,0.4);

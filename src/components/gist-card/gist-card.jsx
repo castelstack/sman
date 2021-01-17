@@ -11,6 +11,23 @@ const Container= styled.div`
   grid-gap: 70px;
   justify-content: space-around;
   margin-top: 40px;
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, min-content);
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-gap: 20px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: repeat(1, min-content);
+  }
+
+  @media only screen and (max-width: 750px) {
+    grid-template-columns: repeat(1, min-content);
+    width: 10rem;
+  }
 `;
 export default function GistCard() {
 

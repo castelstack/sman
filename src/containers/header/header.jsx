@@ -32,6 +32,10 @@ color: #4D4B4B;
 transition: all .5s ease-out; 
 
 
+@media only screen and (max-width: 1050px) {
+  display: none;
+}
+
  
 `;
 
@@ -40,9 +44,54 @@ display: grid;
 grid-template-columns: repeat(3, max-content);
 grid-gap: 138px;
 align-items: center;
-margin-left: auto;
 
+@media only screen and (max-width: 1050px) {
+  grid-template-columns: 1fr;
+}
+@media only screen and (max-width: 620px) {
+ 
+  grid-template-columns: 1fr;
+  justify-items: flex-end;
+}
 
+@media only screen and (max-width: 400px) {
+  grid-gap: 60px;
+  display: none;
+}
+`;
+
+const Appbarr = styled(AppBar)`
+padding: 0 99px;
+
+@media only screen and (max-width: 800px) {
+  padding: 0 60px;
+}
+@media only screen and (max-width: 620px) {
+  padding: 0 40px;
+}
+
+@media only screen and (max-width: 400px) {
+  padding: 0 62px;
+}
+`;
+
+const Toolbarr = styled(Toolbar)`
+
+display: grid;
+grid-template-columns: repeat(2, max-content);
+
+justify-content: space-between;
+
+@media only screen and (max-width: 800px) {
+  padding: 0 60px;
+}
+@media only screen and (max-width: 620px) {
+  grid-gap: 40px;
+}
+
+@media only screen and (max-width: 400px) {
+  grid-gap: 20px;
+}
 `;
 
 const useStyles = makeStyles((theme) => ({
@@ -62,8 +111,8 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+      <Appbarr position="static" className={classes.appBar}>
+        <Toolbarr>
           <Link to="/">
           <HeaderLogo />
           </Link>
@@ -72,8 +121,8 @@ export default function ButtonAppBar() {
                       <HeaderLink to='/gist' activeStyle={active}>Stingy gists</HeaderLink>
                       <Button to='/rules-and-regulation' value='Generate Card'/>
                   </HeaderLinks>
-        </Toolbar>
-      </AppBar>
+        </Toolbarr>
+      </Appbarr>
     </div>
   );
 }

@@ -6,6 +6,22 @@ import styled from "styled-components";
 const Container = styled.div`
   padding: 65px;
   background: #fffdee;
+
+
+@media only screen and (max-width: 800px) {
+  padding: 65px 50px;
+
+}
+
+@media only screen and (max-width: 600px) {
+  padding: 65px 40px;
+
+}
+
+@media only screen and (max-width: 400px) {
+  padding: 65px 20px;
+
+}
 `;
 
 const CounterBox = styled.div`
@@ -15,6 +31,26 @@ grid-gap: 5px;
 justify-content: space-between;
 padding: 18px 150px;
 background: #fff;
+
+@media only screen and (max-width: 1200px) {
+ 
+  padding: 18px 80px;
+}
+
+@media only screen and (max-width: 800px) {
+  padding: 18px 50px;
+
+}
+
+@media only screen and (max-width: 600px) {
+  padding: 18px 20px;
+
+}
+
+@media only screen and (max-width: 400px) {
+  padding: 18px 10px;
+
+}
 `;
 const Counters = styled.div`
   display: grid;
@@ -28,6 +64,20 @@ const Count = styled.h1`
   line-height: 74px;
 
   color: #18191f;
+  @media only screen and (max-width: 1200px) {
+    font-size: 35px;
+
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 30px;
+
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 25px;
+
+  }
 `;
 
 const CountInfo = styled.div`
@@ -39,6 +89,21 @@ const CountInfo = styled.div`
 const Icon = styled.img``;
 const Text = styled(SmText)`
 line-height: 9px;
+@media only screen and (max-width: 1200px) {
+  font-size: 15px;
+
+}
+
+
+@media only screen and (max-width: 800px) {
+  font-size: 13px;
+
+}
+
+@media only screen and (max-width: 600px) {
+  font-size: 10px;
+
+}
 `;
 const Counter = () => {
   return (

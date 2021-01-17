@@ -4,9 +4,9 @@ import { SmText } from "../../constant/styles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Divider } from "@material-ui/core";
-import Fb from '../../images/fb.svg';
-import Twitter from '../../images/twitter.svg';
-import Youtube from '../../images/youtube.svg';
+import Fb from "../../images/fb.svg";
+import Twitter from "../../images/twitter.svg";
+import Youtube from "../../images/youtube.svg";
 import { makeStyles } from "@material-ui/core/styles";
 
 const Container = styled.div`
@@ -15,6 +15,10 @@ const Container = styled.div`
   grid-template-rows: repeat(4, max-content);
   grid-gap: 20px;
   padding: 54px;
+  @media only screen and (max-width: 650px) {
+    padding: 54px  20px;
+    
+  }
 `;
 const Head = styled.div`
   display: flex;
@@ -26,11 +30,17 @@ const Legal = styled.div`
   grid-template-columns: repeat(2, max-content);
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 650px) {
+    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 const Socials = styled.div`
-display: grid;
-grid-template-columns: repeat(3, min-content);
-grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+  grid-gap: 20px;
   align-items: center;
 `;
 const Routes = styled.div`
@@ -39,9 +49,18 @@ const Routes = styled.div`
   grid-gap: 20px;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (max-width: 650px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 const Links = styled(SmText)`
-color: #fff;`;
+  color: #fff;
+  @media only screen and (max-width: 650px) {
+    font-size: 12px;
+  }
+`;
 const LinkTo = styled(Link)`
   color: #fff;
 `;
@@ -64,29 +83,35 @@ const Footer = () => {
     <Container>
       <Head>
         <LogoImg src={Logo} alt='SMAN logo' />
-        <LinkTo to=''>
+        <LinkTo to='/nothing'>
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
       <Routes>
-        <LinkTo to=''>
+        <LinkTo to='/nothing'>
           <Links>Generate ID</Links>
         </LinkTo>
         <LinkTo>
           <Links>Tell Your Stingy Gist</Links>
         </LinkTo>
-        <LinkTo to=''>
+        <LinkTo to='/nothing'>
           <Links>Read Stingy Men Gists</Links>
         </LinkTo>
       </Routes>
       <Divider variant='middle' style={classes.divder} />
       <Legal>
-              <Links>© 2021 Stingy men association. All rights reserved</Links>
-              <Socials>
-                  <SocialLink><SocialIcon src={Fb}/></SocialLink>
-                  <SocialLink><SocialIcon src={Twitter}/></SocialLink>
-                  <SocialLink><SocialIcon src={Youtube}/></SocialLink>
-              </Socials>
+        <Links>© 2021 Stingy men association. All rights reserved</Links>
+        <Socials>
+          <SocialLink>
+            <SocialIcon src={Fb} />
+          </SocialLink>
+          <SocialLink>
+            <SocialIcon src={Twitter} />
+          </SocialLink>
+          <SocialLink>
+            <SocialIcon src={Youtube} />
+          </SocialLink>
+        </Socials>
       </Legal>
     </Container>
   );

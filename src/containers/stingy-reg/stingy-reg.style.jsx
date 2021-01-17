@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {  MedText } from '../../constant/styles';
+import {  HeadText } from '../../constant/styles';
 
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';import Button from '../../components/button/button'
@@ -24,18 +24,36 @@ color: white;
 `;
 
 export const Verified = styled.img`
-
+@media only screen and (max-width: 900px) {
+  width: 10rem;
+}
 `;
 
 export const ContiuneButton = styled(Button)`
 justify-self: flex-end;`
 export const Container = styled.div`
   margin: 0 99px;
+
+  @media only screen and (max-width: 900px) {
+    margin: 0 60px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    margin: 0 40px;
+  }
+  @media only screen and (max-width: 620px) {
+    margin: 0 20px;
+  }
 `;
 export const Content = styled.div`
   display: grid;
   grid-template-columns: min-content 1fr;
   align-items: center;
+
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    
+  }
   
 `;
 
@@ -48,9 +66,25 @@ export const Form = styled.div`
  
 justify-items: center;
 
+@media only screen and (max-width: 1200px) {
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  padding: 0  20px;
+}
+
+@media only screen and (max-width: 800px) {
+  padding: 20px;
+}
+@media only screen and (max-width: 620px) {
+  padding: 10px;
+  justify-items: center;
+  border-radius: 5px;
+}
 `;
 
-export const Text = styled(MedText)`
+export const Text = styled(HeadText)`
   color: white;
   font-size: 36px;
   

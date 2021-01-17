@@ -31,6 +31,20 @@ const Category = styled(MedText)`
 `;
 const Gist = styled(SmText)`
   font-size: 14px;
+  @media only screen and (max-width: 1200px) {
+    font-size: 20px;
+    line-height: 35px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  @media only screen and (max-width: 750px) {
+    font-size: 16px;
+    line-height: 25px;
+  }
 `;
 const Name = styled(SmText)`
   font-size: 14px;

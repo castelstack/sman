@@ -9,7 +9,13 @@ grid-template-rows: repeat(3, min-content);
 grid-gap: 30px;
 padding: 99px  ;
 background: #FFF8F8;
-justify-items: center;`
+justify-items: center;
+
+@media only screen and (max-width: 750px) {
+    grid-gap: 20px;
+    padding: 99px  50px ;
+    justify-content: center;
+  }`
 const FeatureGist = () => {
     return (
         <Container>

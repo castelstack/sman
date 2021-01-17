@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {  MedText } from '../../constant/styles';
+import {  HeadText } from '../../constant/styles';
 
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';import Button from '../../components/button/button'
@@ -25,13 +25,48 @@ color: white;
 
 export const ContiuneButton = styled(Button)`
 justify-self: flex-end;`
+
+export const Img = styled.img`
+
+@media only screen and (max-width: 1200px) {
+  width: 20rem;
+}
+
+@media only screen and (max-width: 900px) {
+ width: 20rem;
+}
+
+@media only screen and (max-width: 800px) {
+  display: none;
+}
+`
 export const Container = styled.div`
-  margin: 0 99px;
+  margin: 15px 99px;
+
+
+  @media only screen and (max-width: 1200px) {
+    margin: 20px 70px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    margin: 20px 60px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    margin: 20px 40px;
+  }
+  @media only screen and (max-width: 620px) {
+    margin: 20px 20px;
+  }
 `;
 export const Content = styled.div`
   display: grid;
   grid-template-columns: min-content 1fr;
   align-items: center;
+
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Form = styled.div`
@@ -40,11 +75,31 @@ export const Form = styled.div`
   display: grid;
   grid-template-rows: repeat(2, min-content);
   grid-gap: 30px;
+
+  @media only screen and (max-width: 1200px) {
+    padding: 0 20px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    padding: 0  20px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    padding: 20px;
+  }
+  @media only screen and (max-width: 620px) {
+    padding: 10px;
+    justify-items: center;
+    border-radius: 5px;
+  }
 `;
 
-export const Text = styled(MedText)`
+export const Text = styled(HeadText)`
   color: white;
-  font-size: 36px;
+  
+  @media only screen and (max-width: 500px) {
+    text-align: center;
+  }
   
 `;
 

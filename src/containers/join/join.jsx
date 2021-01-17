@@ -8,6 +8,7 @@ import {
   Form,
   Box,
   Icon,
+  Img,
   InputFied,
   ContiuneButton,
   Position,
@@ -18,7 +19,7 @@ const Join = () => {
   return (
     <Container>
       <Content>
-        <img src={Image} alt='join us' />
+        <Img src={Image} alt='join us' />
         <Form>
           <Text>
             Before you generate your ID we need to be sure you’re with us.

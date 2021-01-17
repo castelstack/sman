@@ -15,6 +15,20 @@ justify-items: center;
 background: url(${Bg});
 padding: 64px 165px;
 margin: 30px;
+
+@media only screen and (max-width: 1200px) {
+    padding: 64px 5px;
+margin: 30px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-gap: 30px;
+  }
+
+  @media only screen and (max-width: 400px) {
+    grid-gap: 10px;
+    padding: 64px 0px;
+  }
 `;
 
 const CardContainer = styled.div`
@@ -22,14 +36,60 @@ display: grid;
 grid-template-columns: repeat(3, min-content);
 justify-items: center;
 align-items: center;
-padding-bottom: 100px;`;
-const CardTemplate = styled.img` `;
-const ArrowImg = styled.img` 
-width: 15rem;`;
-const CardDone = styled.img` 
+padding-bottom: 100px;
+
+@media only screen and (max-width: 800px) {
+   display: flex;
+   flex-direction: column;
+   justify-items: center;
+  }
 `;
+const CardTemplate = styled.img`
+
+@media only screen and (max-width: 1200px) {
+  width: 20rem;
+}
+
+@media only screen and (max-width: 400px) {
+  width: 10rem;
+}`;
+const ArrowImg = styled.img` 
+width: 15rem;
+@media only screen and (max-width: 1200px) {
+    width: 7rem;
+  }
+  
+  @media only screen and (max-width: 750px) {
+    transform: translateX(270deg);
+   }`;
+const CardDone = styled.img` 
+@media only screen and (max-width: 1200px) {
+    width: 20rem;
+  }
+  
+  @media only screen and (max-width: 400px) {
+    width: 10rem;
+  }
+  `;
+
 const SubHeading = styled(SmText)`
-color: red;`
+color: red;
+
+@media only screen and (max-width: 900px) {
+    font-size: 18px;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+  
+  @media only screen and (max-width: 400px) {
+    font-size: 14px;
+    text-align: center;
+    line-height: 15px;
+  }`;
+
+  
 const GetCard = () => {
     return (
         <Container>
