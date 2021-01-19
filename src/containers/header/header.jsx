@@ -6,6 +6,12 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Drawer from "../../components/drawer/drawer";
 
+const Container = styled.div`
+@media only screen and (max-width: 500px) {
+  position: fixed;
+  top: 0;
+}`;
+
 const active = {
   borderBottom: "2px solid #843035",
 };
@@ -86,7 +92,7 @@ const Toolbarr = styled.div`
 
 export default function ButtonAppBar() {
   return (
-    <div>
+    <Container>
       <Appbarr>
         <Toolbarr>
           <Link to='/'>
@@ -106,6 +112,6 @@ export default function ButtonAppBar() {
           <Drawer />
         </Toolbarr>
       </Appbarr>
-    </div>
+    </Container>
   );
 }

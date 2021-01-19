@@ -28,7 +28,8 @@ const Link = styled(NavLink)`
   color: #18191f;
   text-align: center;
   text-decoration: none;
-  border-bottom: solid 2px grey;
+  
+ 
   &:Hover{
     color:  activeStyle={active}#843035;
   }

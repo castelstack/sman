@@ -40,9 +40,12 @@ align-items: center;
 padding-bottom: 100px;
 
 @media only screen and (max-width: 800px) {
-  grid-template-rows: repeat(3, min-content);
-   
-   justify-items: center;
+
+  margin-top: 30px;
+  display: grid;
+grid-template-columns: 1fr;
+grid-gap: 3rem;
+   justify-content: space-around;
   }
 `;
 const CardTemplate = styled.img`
