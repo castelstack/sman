@@ -51,6 +51,14 @@ export const Content = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 1000px) {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  @media only screen and (max-width: 00px) {
     grid-template-columns: 1fr;
     
   }
@@ -70,6 +78,9 @@ justify-items: center;
   padding: 0 20px;
 }
 
+@media only screen and (max-width: 1000px) {
+  margin: 40px 0;
+}
 @media only screen and (max-width: 900px) {
   padding: 0  20px;
 }

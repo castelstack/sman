@@ -28,6 +28,7 @@ margin: 30px;
   @media only screen and (max-width: 400px) {
     grid-gap: 10px;
     padding: 64px 0px;
+    text-align: center;
   }
 `;
 
@@ -39,8 +40,8 @@ align-items: center;
 padding-bottom: 100px;
 
 @media only screen and (max-width: 800px) {
-   display: flex;
-   flex-direction: column;
+  grid-template-rows: repeat(3, min-content);
+   
    justify-items: center;
   }
 `;
@@ -60,7 +61,7 @@ width: 15rem;
   }
   
   @media only screen and (max-width: 750px) {
-    transform: translateX(270deg);
+    transform: rotate(270deg);
    }`;
 const CardDone = styled.img` 
 @media only screen and (max-width: 1200px) {

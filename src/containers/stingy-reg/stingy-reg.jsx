@@ -6,22 +6,28 @@ import {
   Content,
   Form,
   Box,
-  
   Icon,
   InputFied,
   ContiuneButton,
   Position,
   Password,
-  Verified
+  Verified,
 } from "./stingy-reg.style";
-import Upload from "../../components/upload/upload"
-
+import Upload from "../../components/upload/upload";
 
 const Join = () => {
   return (
     <Container>
       <Content>
-        <div style={{width: '439px',display: 'center',  justifyContent: 'center'}}><Upload /></div>
+        <div
+          style={{
+            
+            
+            
+          }}
+        >
+          <Upload />
+        </div>
         <Form>
           <Verified src={Image} alt='Now a stingy man' />
 
@@ -38,11 +44,7 @@ const Join = () => {
             </Box>
             <Box>
               <Position />
-              <InputFied
-                type='text'
-                name='position'
-                placeholder='Position'
-              />
+              <InputFied type='text' name='position' placeholder='Position' />
             </Box>
             <Box>
               <Password />

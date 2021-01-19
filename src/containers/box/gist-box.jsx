@@ -3,6 +3,7 @@ import { HeadText } from "../../constant/styles";
 import Network from "../../images/networkk.svg";
 import Button from "../../components/button/button";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   margin: 76px 99px;
@@ -132,8 +133,9 @@ Their Experience With Women.</HeadText>
             </Text>
           </InfoText>
           <Buttons>
-            
-            <Button value='Read Gist' big/>
+            <Link to='/write-gist'>
+            <Button value='Post Gist' big/>
+            </Link>
           </Buttons>
         </Info>
         <ImageBox>

@@ -33,8 +33,9 @@ const Legal = styled.div`
 
   @media only screen and (max-width: 650px) {
     grid-template-columns: 1fr;
-    grid-template-columns: 1fr;
+    
     justify-items: center;
+    grid-gap:20px;
   }
 `;
 const Socials = styled.div`

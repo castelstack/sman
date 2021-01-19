@@ -9,7 +9,9 @@ import Gist from '../src/pages/gist/gist';
 import JoinUs from '../src/pages/join-us/join-us';
 import CreateId from "../src/pages/create-id/create-id";
 import Rules from "../src/pages/rules/rules";
-import WriteRules from "./containers/write/write-rules"
+import WriteRules from "./containers/write/write-rules";
+import WriteGist from "./containers/write/write-gist";
+import ProfilePage from '../src/containers/profile/profile';
 function App(props) {
   
   return (
@@ -24,7 +26,8 @@ function App(props) {
           <Route path='/rules-and-regulation' component={Rules} />
           
         <Route path='/write-rules' exact component={WriteRules} />
-      
+          <Route path='/write-gist' exact component={WriteGist} />
+          <Route path='/profile' exact component={ProfilePage} />
         </Switch>
         <Footer />
       </Router>
