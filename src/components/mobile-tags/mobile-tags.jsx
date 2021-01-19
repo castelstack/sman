@@ -29,27 +29,10 @@ const Container = styled.div`
 
 const Navi = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, min-content);
+  grid-template-columns: repeat(2, min-content);
   grid-gap: 10px;
-  margin: 0 99px;
+  margin: 0 0px;
 
-
-  @media only screen and (max-width: 900px) {
-    margin: 0 60px;
-  }
-
-  @media only screen and (max-width: 800px) {
-    margin: 0 40px;
-  }
-  @media only screen and (max-width: 620px) {
-    margin: 0 20px;
-  }
-
-  @media only screen and (max-width: 400px) {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  }
   
 `;
 

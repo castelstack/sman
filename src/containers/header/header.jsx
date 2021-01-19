@@ -7,10 +7,7 @@ import { NavLink } from "react-router-dom";
 import Drawer from "../../components/drawer/drawer";
 
 const Container = styled.div`
-@media only screen and (max-width: 500px) {
-  position: fixed;
-  top: 0;
-}`;
+`;
 
 const active = {
   borderBottom: "2px solid #843035",
