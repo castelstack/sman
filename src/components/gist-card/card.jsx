@@ -9,15 +9,18 @@ const Container = styled.div`
   justify-items: center;
   width: 330px;
   grid-gap: 20px;
+  
 `;
 
 const Content = styled.div`
-  background: rgb(226, 225, 225);
+  background:  #FCEA4A;
   display: grid;
   grid-template-rows: repeat(2, min-content);
   justify-items: center;
   grid-gap: 20px;
   padding: 40px;
+  border-radius: 5px;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 60% 90%, 50% 100%, 40% 90%, 0 90%);
 `;
 
 const Profile = styled.div`
@@ -33,7 +36,7 @@ const Gist = styled(SmText)`
   font-size: 14px;
   @media only screen and (max-width: 1200px) {
     font-size: 20px;
-    line-height: 35px;
+    line-height: 20px;
   }
 
   @media only screen and (max-width: 800px) {
@@ -48,6 +51,7 @@ const Gist = styled(SmText)`
 `;
 const Name = styled(SmText)`
   font-size: 14px;
+  color: #fff;
 `;
 const Card = ({ title, gist, name }) => {
   return (

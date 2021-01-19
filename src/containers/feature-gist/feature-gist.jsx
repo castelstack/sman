@@ -8,7 +8,7 @@ display:grid;
 grid-template-rows: repeat(3, min-content);
 grid-gap: 30px;
 padding: 99px  ;
-background: #FFF8F8;
+background: #843035;
 justify-items: center;
 
 @media only screen and (max-width: 750px) {
@@ -16,14 +16,21 @@ justify-items: center;
     padding: 99px  50px ;
     justify-content: center;
   }`
+
+  const Heading = styled(HeadText)`
+  color: #fff;
+`;
+const SubHead = styled(SmText)`
+color: #fff;`
 const FeatureGist = () => {
     return (
         <Container>
-            <HeadText>Stingy Men Gists</HeadText>
-<SmText>Stingy Men don dey drop gists! you fit read and pass or join them   </SmText>
+            <Heading>Stingy Men Gists</Heading>
+<SubHead>Stingy Men don dey drop gists! you fit read and pass or join them   </SubHead>
             <div>
                 <GistCard />            
-</div>
+            </div>
+            
         </Container>
     );
 };

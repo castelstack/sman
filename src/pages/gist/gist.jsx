@@ -4,6 +4,7 @@ import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import { SmText } from "../../constant/styles";
 import Urgent2k from "../../containers/2k/2k";
 import Transport from "../../containers/transport/transport";
+import MobileTags from "../../components/mobile-tags/mobile-tags";
 import styled from "styled-components";
 
 const Container = styled.div``;
@@ -25,52 +26,36 @@ const Navi = styled.div`
     margin: 0 20px;
   }
 
-  @media only screen and (max-width: 400px) {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+  @media only screen and (max-width: 500px) {
+    display: none;
   }
   
 `;
 
 const Nav = styled(SmText)`
-  font-size: 16px;
+  font-size: 13px;
+  line-height: 20px;
   color: #843035;
+  padding: 5px 7px;
 
-  @media only screen and (max-width: 400px) {
-    font-size: 12px;
-  }
 `;
 const active = {
-  color: "white",
-  background: "#843035",
-};
+ 
+  boxShadow: 'rgba(50, 50, 93, 0.2) 0px 10px 60px -12px inset, rgba(0, 0, 0, 0.1) 0px 18px 36px -18px inset',
+ };
 const Gists = styled.div``;
 const NavLinks = styled(NavLink)`
-  width: 130px;
-  height: 43px;
+  
   text-decoration: none;
 
   border: 1px solid #843035;
   box-sizing: border-box;
-  border-radius: 65px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  @media only screen and (max-width: 900px) {
-    width: 120px;
-    height: 40px;
-  }
 
-  @media only screen and (max-width: 800px) {
-    width: 110px;
-    height: 38px;
-  }
-  @media only screen and (max-width: 620px) {
-    width: 90px;
-    height: 38px;
-  }
 `;
 
 const Gist = (props) => {
@@ -99,6 +84,7 @@ const Gist = (props) => {
           <Nav>Urgent 2k</Nav>
         </NavLinks>
       </Navi>
+      <MobileTags />
       <Gists>
         <Switch>
           <Route path={`${path}/urgent2k`} component={Urgent2k} />
