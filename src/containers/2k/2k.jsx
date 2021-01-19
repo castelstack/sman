@@ -1,6 +1,7 @@
 import React from "react";
 import GistsPost from "../../components/gist-card/gists-post";
 import { PostBox } from "../../constant/styles";
+import Network from "../../images/done.png";
 
 const Urgent2k = () => {
   const data = {
@@ -9,7 +10,8 @@ const Urgent2k = () => {
         id: 1,
         tag: "Urgent 2k",
         gistspost:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          image: `${Network}`
       },
       {
         id: 2,
@@ -49,7 +51,7 @@ const Urgent2k = () => {
       <PostBox>
         {data.rules.map((item) => (
           <div key={item.id}>
-            <GistsPost tag={item.tag} gistspost={item.gistspost} />
+            <GistsPost tag={item.tag} gistspost={item.gistspost} image={item.image}/>
           </div>
         ))}
       </PostBox>

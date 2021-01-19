@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeadText, MedText } from '../../constant/styles';
 import Cir from '../../images/bg.svg';
-import Button from '../../components/button/button'
+import Button from '../../components/button/button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 

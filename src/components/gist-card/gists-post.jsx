@@ -7,11 +7,14 @@ const Container = styled.div`
 border: 1px solid #E5E5E5;
 padding: 20px;
 border-radius: 5px;
-
+display: flex;
+flex-direction: column;
 @media only screen and (max-width: 400px) {
   padding: 10px;
 }`;
-
+const GistImg = styled.img`
+object-fit: cover;
+max-width: 18rem;`;
 const GistBox = styled(SmText)`
 font-size: 18px;
 line-height: 30px;
@@ -57,11 +60,12 @@ color: #4D4B4B;
 }
 `;
 
-const GistsPost = ({ tag, gistspost }) => {
+const GistsPost = ({ tag, gistspost, image }) => {
   return (
     <Container>
       <GistTag>{tag}</GistTag>
       <GistBox>{gistspost}</GistBox>
+      <GistImg src={image} alt='photo' />
     </Container>
   );
 };

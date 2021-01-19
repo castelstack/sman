@@ -3,10 +3,12 @@ import { HeadText } from "../../constant/styles";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { TextField } from "@material-ui/core";
+import Upload from "../../components/upload/upload";
 
 const Container = styled.div`
   margin: 20px 110px;
-
+  display: grid;
+  grid-template-columns: 1fr;
   @media only screen and (max-width: 800px) {
     margin: 20px 80px;
   }
@@ -21,20 +23,12 @@ const Container = styled.div`
 `;
 
 const WriteIn = styled.div`
-  margin-bottom: 200px;
-
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 100px;
-  }
-
-  @media only screen and (max-width: 400px) {
-    margin-bottom: 80px;
-  }
+  margin-bottom: 10px;
 `;
 
 const HeadBox = styled.div`
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   padding: 50px 0;
 
@@ -53,7 +47,7 @@ const Heading = styled(HeadText)`
 
   color: #c4c4c4;
 
-   @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1000px) {
     font-size: 30px;
   }
 
@@ -69,13 +63,17 @@ const Heading = styled(HeadText)`
     font-size: 15px;
   }
 `;
+const Post = styled(Button)`
+  margin: 30px 0;
+  align-self: flex-end;
+`;
+
 // create new rules
 const WriteGist = () => {
   return (
     <Container>
       <HeadBox>
         <Heading>Write Your Stingy Gist</Heading>
-        <Button value='Post' />
       </HeadBox>
       <WriteIn>
         <TextField
@@ -88,6 +86,11 @@ const WriteGist = () => {
           variant='outlined'
         />
       </WriteIn>
+      <Upload border />
+      <div>
+
+      <Post value='Post' />
+      </div>
     </Container>
   );
 };

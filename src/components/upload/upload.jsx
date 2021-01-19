@@ -17,13 +17,13 @@ outline: none;
 `;
 
 const Frame = styled.div`
-  border: dotted 2px gray;
+  border: ${(props) => (props.border ? "dotted 2px gray" : "none")};
   height: 13rem;
   width: 15rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-align-items: center;
+  align-items: center;
 `;
 export default function Upload() {
   const [images, setImages] = React.useState([]);
@@ -64,11 +64,13 @@ export default function Upload() {
             </Uploadbutton>
 
             {imageList.map((image, index) => (
-              <div key={index} className='image-item'>
-                <img src={image["data_url"]} alt='' width='238' height='129' />
-                <div className='image-item__btn-wrapper'>
-                  {/* <button onClick={() => onImageUpdate(index)}>Update</button> */}
-                </div>
+              <div
+                key={index}
+                className='image-item'
+                style={{ display: "flex" }}
+              >
+                <img src={image["data_url"]} alt='' width='180' height='170' />
+
                 <i onClick={() => onImageRemove(index)}>
                   <ClearOutlinedIcon />
                 </i>

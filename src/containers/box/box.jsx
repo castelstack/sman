@@ -1,6 +1,6 @@
 import React from "react";
 import { HeadText } from "../../constant/styles";
-import Network from "../../images/network.png";
+import Network from "../../images/networkB.svg";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";

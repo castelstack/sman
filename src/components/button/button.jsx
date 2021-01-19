@@ -6,8 +6,9 @@ width: ${props => (props.big ? '235px' : '139px')};
 height: ${props => (props.big ? '58px' : '38px')};
 
 cursor: pointer;
-border: none;
-background: ${props => (props.choco ? '#843035' : '#FCEA4A')};
+border: ${props => (props.choco ? 'solid 1px #843035' : 'none')}; 
+background: ${props => (props.choco ? 'none' : '#FCEA4A')};
+
 border-radius: 10rem;
 font-family: Nunito Sans;
 font-style: normal;
@@ -15,7 +16,7 @@ font-weight: normal;
 font-size: ${props => (props.big ? '20px' : '15px')};
 line-height: 33px;
 outline: none;
-color: ${props => (props.choco ? '#fff' : '#4D4B4B')};
+color: ${props => (props.choco ? '#843035' : '#4D4B4B')};
 
 @media only screen and (max-width: 1200px) {
     width: 200px;
