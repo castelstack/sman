@@ -6,8 +6,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Drawer from "../../components/drawer/drawer";
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 const active = {
   borderBottom: "2px solid #843035",
@@ -15,7 +14,6 @@ const active = {
 
 const HeaderLogo = styled(Logo)`
   margin-right: auto;
-
 `;
 
 const HeaderLink = styled(NavLink)`
@@ -30,8 +28,14 @@ const HeaderLink = styled(NavLink)`
   color: #4d4b4b;
   transition: all 0.5s ease-out;
 
-  @media only screen and (max-width: 1050px) {
-    display: none;
+  @media only screen and (max-width: 900px) {
+    font-size: 15px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 14px;
+  }
+  @media only screen and (max-width: 650px) {
+    font-size: 13px;
   }
 `;
 
@@ -40,18 +44,20 @@ const HeaderLinks = styled.div`
   grid-template-columns: repeat(3, max-content);
   grid-gap: 138px;
   align-items: center;
-
-  @media only screen and (max-width: 1050px) {
-    grid-template-columns: 1fr;
+  @media only screen and (max-width: 1200px) {
+    grid-gap: 70px;
   }
-  @media only screen and (max-width: 620px) {
-    grid-template-columns: 1fr;
-    justify-items: flex-end;
-    display: none;
+   @media only screen and (max-width: 900px) {
+    grid-gap: 50px;
+  }
+  @media only screen and (max-width: 800px) {
+    grid-gap: 30px;
   }
 
-  @media only screen and (max-width: 400px) {
-    grid-gap: 60px;
+   @media only screen and (max-width: 800px) {
+    grid-gap: 20px;
+  }
+  @media only screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -77,8 +83,7 @@ const Toolbarr = styled.div`
 
   justify-content: space-between;
 
-  @media only screen and (max-width: 800px) {
-  }
+
   @media only screen and (max-width: 600px) {
     grid-gap: 40px;
     grid-template-columns: repeat(2, max-content);
@@ -103,7 +108,7 @@ export default function ButtonAppBar() {
               Stingy gists
             </HeaderLink>
             <HeaderLink to='/create'>
-            <Button to='/rules-and-regulation' value='Generate Card' />
+              <Button  value='Generate Card' />
             </HeaderLink>
           </HeaderLinks>
           <Drawer />

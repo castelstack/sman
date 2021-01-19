@@ -36,14 +36,13 @@ const Link = styled(NavLink)`
 `;
 
 const active = {
-    color: "#843035",
-    
-  };
+  color: "#843035",
+};
 
 const LogoBox = styled(NavLink)`
   margin: 30px;
   text-align: center;
-  `
+`;
 const List = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,13 +89,21 @@ export default function Drawer() {
           <Logo />
         </LogoBox>
         <Divider light />
-        <Link to='/gist' activeStyle={active}>Stingy gist</Link>
+        <Link to='/gist' activeStyle={active}>
+          Stingy gist
+        </Link>
         <Divider />
-        <Link to='/create' activeStyle={active}>Generate ID</Link>
+        <Link to='/create' activeStyle={active}>
+          Generate ID
+        </Link>
         <Divider />
-        <Link to='/rules-and-regulation' activeStyle={active}>Stingy rules</Link>
+        <Link to='/rules-and-regulation' activeStyle={active}>
+          Stingy rules
+        </Link>
         <Divider />
-        <Link to='/profile' activeStyle={active}>Profile</Link>
+        <Link to='/profile' activeStyle={active}>
+          Profile
+        </Link>
       </List>
     </div>
   );
