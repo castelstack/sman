@@ -5,6 +5,7 @@ import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+
 const Container = styled.div`
   margin: 76px 99px;
 
@@ -111,11 +112,7 @@ color: black;
   width: 15rem;
 }`
 
-const Buttons = styled.div`
-  display: grid;
-  grid-template-columns: min-content;
-  justify-content: center;
-`;
+
 
 
 
@@ -132,11 +129,11 @@ Their Experience With Women.</HeadText>
             You fit join, you fit just read, laugh & share!
             </Text>
           </InfoText>
-          <Buttons>
+          
             <Link to='/write-gist'>
             <Button value='Post Gist' big/>
             </Link>
-          </Buttons>
+          
         </Info>
         <ImageBox>
           <Image src={Network} alt='Stingy Network' />

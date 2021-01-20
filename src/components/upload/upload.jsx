@@ -47,19 +47,12 @@ export default function Upload() {
         {({
           imageList,
           onImageUpload,
-
           onImageUpdate,
           onImageRemove,
-          isDragging,
-          dragProps,
         }) => (
           // write your building UI
           <Frame className='upload__image-wrapper'>
-            <Uploadbutton
-              style={isDragging ? { color: "red" } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
+            <Uploadbutton onClick={onImageUpload}>
               <CloudUploadOutlinedIcon /> Upload Picture
             </Uploadbutton>
 

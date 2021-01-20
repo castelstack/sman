@@ -88,8 +88,9 @@ color: #18191F;
 
   export const PostBox= styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 30px;
+
   justify-content: space-between;
   margin: 80px 99px;
 

@@ -9,18 +9,25 @@ const Container = styled.div`
   justify-items: center;
   width: 330px;
   grid-gap: 20px;
-  
 `;
 
 const Content = styled.div`
-  background:  #FCEA4A;
+  background: #fcea4a;
   display: grid;
   grid-template-rows: repeat(2, min-content);
   justify-items: center;
   grid-gap: 20px;
   padding: 40px;
   border-radius: 5px;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 60% 90%, 50% 100%, 40% 90%, 0 90%);
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 90%,
+    60% 90%,
+    50% 100%,
+    40% 90%,
+    0 90%
+  );
 `;
 
 const Profile = styled.div`
@@ -53,11 +60,13 @@ const Name = styled(SmText)`
   font-size: 14px;
   color: #fff;
 `;
+
 const Card = ({ title, gist, name }) => {
   return (
     <Container>
       <Content>
         <Category>{title}</Category>
+
         <Gist>{gist}</Gist>
       </Content>
       <Profile>

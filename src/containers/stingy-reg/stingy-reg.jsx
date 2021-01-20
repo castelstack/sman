@@ -12,6 +12,7 @@ import {
   Position,
   Password,
   Verified,
+  UploadBox
 } from "./stingy-reg.style";
 import Upload from "../../components/upload/upload";
 
@@ -19,15 +20,9 @@ const Join = () => {
   return (
     <Container>
       <Content>
-        <div
-          style={{
-            
-            
-            
-          }}
-        >
+        <UploadBox>
           <Upload />
-        </div>
+        </UploadBox>
         <Form>
           <Verified src={Image} alt='Now a stingy man' />
 

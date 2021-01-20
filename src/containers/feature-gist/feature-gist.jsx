@@ -13,7 +13,8 @@ const Container = styled.div`
   padding: 99px;
   background: #843035;
   justify-items: center;
-    background-image: url(${bg});
+  background-image: url(${bg});
+  background-repeat: no-repeat;
   @media only screen and (max-width: 750px) {
     grid-gap: 20px;
     padding: 99px 50px;
@@ -29,18 +30,21 @@ const SubHead = styled(SmText)`
 `;
 
 const Buttons = styled.div`
-display: grid;
-grid-template-columns: repeat(2, min-content);
-justify-content: center;
-grid-gap: 30px;`;
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  justify-content: center;
+  grid-gap: 30px;
+`;
 
 const DropGistButton = styled(Button)`
-color: white;`
+  color: white;
+`;
 
 const ReadGistButton = styled(Button)`
-color: yellow;
-border: solid 1px yellow;
-background: none;`
+  color: yellow;
+  border: solid 1px yellow;
+  background: none;
+`;
 const FeatureGist = () => {
   return (
     <Container>
