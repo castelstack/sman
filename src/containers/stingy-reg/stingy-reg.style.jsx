@@ -36,6 +36,11 @@ export const UploadBox = styled.div`
 export const ContiuneButton = styled(Button)`
   justify-self: flex-end;
 `;
+
+export const Size = styled.div`
+  width: 22.5rem;
+  border-radius: 5px;
+`
 export const Container = styled.div`
   margin: 0 99px;
 
@@ -54,6 +59,7 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  
 
   @media only screen and (max-width: 1000px) {
     display: flex;
@@ -72,7 +78,7 @@ export const Form = styled.div`
   display: grid;
   grid-template-rows: repeat(2, min-content);
   grid-gap: 30px;
-
+  padding: 15px;
   justify-items: center;
 
   @media only screen and (max-width: 1200px) {
@@ -132,16 +138,17 @@ export const InputFied = styled.input`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   &:focus {
+   
   }
 `;
 export const Uploadbutton = styled.button`
 width= min-content;
-color: white;
-background: blue;
+color:#fff;
+background:  #3f51b5;
 border: none;
 display: flex;
 align-items: center;
-padding: 3px;
+padding: 5px;
 border-radius: 5px;
 outline: none;
 `;

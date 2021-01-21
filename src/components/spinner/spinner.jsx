@@ -4,21 +4,21 @@ import Spin from '../../images/logo.svg';
 import styled from 'styled-components';
 
 const Container = styled.div` 
-height: 100vh;
+
 display: flex;
 flex-direction: column;
 align-items: center;
-
+justify-content: center;
  `;
 const SpinnerContainer = styled.div` 
 display: flex;
 justify-content: center;
 align-content: center;
-padding: 100px;
+padding: 50px;
  `;
 
-const Heading = styled(HeadText)` color: #6D6D6D; `;
-const SubHeading = styled(SmText)`color: #6D6D6D;  `;
+const Heading = styled(HeadText)` color: #fff; `;
+const SubHeading = styled(SmText)`color: #fff;  `;
 
 const ImageSpinner = styled.img`
 

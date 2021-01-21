@@ -12,10 +12,26 @@ import Rules from "../src/pages/rules/rules";
 import WriteRules from "./containers/write/write-rules";
 import WriteGist from "./containers/write/write-gist";
 import ProfilePage from '../src/containers/profile/profile';
+import { transitions, types, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic';
+
+// optional configuration
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.MIDDLE,
+  timeout: 9000,
+  offset: '30px',
+  type: types.SUCCESS,
+  // you can also just use 'scale'
+  transition: transitions.FADE
+}
 function App(props) {
   
   return (
     <div className='App'>
+       <AlertProvider template={AlertTemplate} {...options}>
+    
+ 
       <Router>
         <Header /> 
         <Switch>
@@ -31,6 +47,7 @@ function App(props) {
         </Switch>
         <Footer />
       </Router>
+       </AlertProvider>
     </div>
   );
 }

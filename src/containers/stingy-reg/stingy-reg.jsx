@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
-import Image from "../../images/Visual.png";
+ import React, { useState, useRef } from "react";
+// import Image from "../../images/Visual.png";
 import StingyCard from "./stingy-card";
 import { exportComponentAsPNG } from "react-component-export-image";
-
+import { useAlert } from 'react-alert'
 import ImageUploading from "react-images-uploading";
 //import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
-import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
+import Spinner from '../../components/spinner/spinner'
+
 
 import {
   Container,
@@ -17,12 +18,19 @@ import {
   ContiuneButton,
   Position,
   Password,
-  Verified,
+  
   UploadBox,
   Uploadbutton,
   Frame,
+  Size,
 } from "./stingy-reg.style";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+
+
+
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+
+
+
 
 const Join = () => {
   const [data, setData] = useState({
@@ -33,11 +41,13 @@ const Join = () => {
   });
   const [images, setImages] = React.useState([]);
   const maxNumber = 1;
-
+  const [change, setChange] = useState(false)
+  const alert = useAlert()
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList);
     setImages(imageList);
+    setChange(true)
   };
 
   const handleSubmit = (event) => {
@@ -54,26 +64,33 @@ const Join = () => {
     });
   };
 
-   const Print = React.forwardRef((props, ref) => (
-    <span ref={ref} style={{ width: 640, height: 472 }}>
+  const Print = React.forwardRef((props, ref) => (
+    <Size ref={ref}>
       {images.map((image, index) => (
         <StingyCard
           key={index}
           names={data.names}
           position={data.position}
-          location={data.location}
+          branch={data.branch}
           image={image["data_url"]}
         />
       ))}
-    </span>
+    </Size>
   ));
-  console.log(images);
- 
+  console.log(Print);
+
   const componentRef = useRef();
- const { path, url } = useRouteMatch()
+
+  const handleClick = (event) => {
+    event.preventDefault();
+  exportComponentAsPNG(componentRef);
+  alert.show('Card Generated');
+}
+
+
   return (
     <Container>
-      <Print ref={componentRef} style={{display: 'none'}}/>
+    
       <Content>
         <UploadBox>
           <ImageUploading
@@ -82,21 +99,21 @@ const Join = () => {
             onChange={onChange}
             maxNumber={maxNumber}
             dataURLKey='data_url'
+           
           >
             {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
               // write your building UI
               <Frame className='upload__image-wrapper'>
-               
-                  <Uploadbutton onClick={onImageUpload}>
-                    <CloudUploadOutlinedIcon /> Upload Picture
-                  </Uploadbutton>
-               
-
+                <Uploadbutton onClick={onImageUpload}>
+                <PhotoCamera /> Upload Picture
+                </Uploadbutton>
+            
                 {imageList.map((image, index) => (
                   <div
                     key={index}
                     className='image-item'
                     style={{ display: "flex" }}
+                     
                   >
                     <img
                       src={image["data_url"]}
@@ -116,8 +133,10 @@ const Join = () => {
         </UploadBox>
 
         <Form>
-          <Verified src={Image} alt='Now a stingy man' />
-
+         
+          {
+            change ?   <Print ref={componentRef} style={{ display: "none" }} /> :  <Spinner />
+                }
           <form
             onSubmit={handleSubmit}
             style={{
@@ -150,7 +169,7 @@ const Join = () => {
               <Password />
               <InputFied
                 type='text'
-                name='location'
+                name='branch'
                 onChange={handleChange}
                 value={data.location.target}
                 placeholder='Stingy branch'
@@ -160,18 +179,16 @@ const Join = () => {
           <ContiuneButton
             value='Generate Card'
             big
-            onClick={() => exportComponentAsPNG(componentRef)}
+            onClick={handleClick}
+           
           />
-          <Link to={`${url}/download`}>download</Link>
+          
         </Form>
-        
       </Content>
-      <Switch>
-
-      <Route path={`${path}/download`} component={Print}></Route>
-      </Switch>
     </Container>
   );
 };
 
 export default Join;
+
+
