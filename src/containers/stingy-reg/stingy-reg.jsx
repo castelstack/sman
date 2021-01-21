@@ -41,7 +41,7 @@ const Join = () => {
 
   
   const Print = React.forwardRef((props, ref) => (
-    <span ref={ref} style={{maxWidth: '15rem'}}>
+    <span ref={ref} style={{maxWidth: '24.5rem'}}>
 
       
       <StingyCard
