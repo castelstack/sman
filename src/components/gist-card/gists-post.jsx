@@ -23,7 +23,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
-  cursor: pointer;
+  n 8                
   
   @media only screen and (max-width: 400px) {
     padding: 10px;
