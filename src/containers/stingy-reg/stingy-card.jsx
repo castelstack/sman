@@ -1,5 +1,5 @@
 import React from "react";
-import Dp from "../../images/join.png";
+
 import Logo from "../../images/logo.svg";
 import sim from "../../images/sim.jpg";
 import bg from "../../images/bg.svg";
