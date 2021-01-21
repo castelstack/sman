@@ -1,7 +1,11 @@
-import React, { useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import Image from "../../images/Visual.png";
 import StingyCard from "./stingy-card";
-import {  exportComponentAsPNG } from 'react-component-export-image';
+import { exportComponentAsPNG } from "react-component-export-image";
+
+import ImageUploading from "react-images-uploading";
+//import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
+import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
 
 import {
   Container,
@@ -15,8 +19,10 @@ import {
   Password,
   Verified,
   UploadBox,
+  Uploadbutton,
+  Frame,
 } from "./stingy-reg.style";
-import Upload from "../../components/upload/upload";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 
 const Join = () => {
   const [data, setData] = useState({
@@ -25,6 +31,15 @@ const Join = () => {
     location: "",
     sman_id: "",
   });
+  const [images, setImages] = React.useState([]);
+  const maxNumber = 1;
+
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList);
+    setImages(imageList);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -39,29 +54,67 @@ const Join = () => {
     });
   };
 
-  
-  const Print = React.forwardRef((props, ref) => (
-    <span ref={ref} style={{maxWidth: '24.5rem'}}>
-
-      
-      <StingyCard
-      names={data.names}
-      position={data.position}
-      location={data.location}
-    />
+   const Print = React.forwardRef((props, ref) => (
+    <span ref={ref} style={{ maxWidth: "24.5rem" }}>
+      {images.map((image, index) => (
+        <StingyCard
+          key={index}
+          names={data.names}
+          position={data.position}
+          location={data.location}
+          image={image["data_url"]}
+        />
+      ))}
     </span>
   ));
-  
- 
-  const componentRef = useRef();
+  console.log(images);
 
+  const componentRef = useRef();
+ const { path, url } = useRouteMatch()
   return (
     <Container>
-      <Print ref={componentRef} />
+      <Print ref={componentRef} style={{display: 'none'}}/>
       <Content>
         <UploadBox>
-          <Upload />
+          <ImageUploading
+            multiple
+            value={images}
+            onChange={onChange}
+            maxNumber={maxNumber}
+            dataURLKey='data_url'
+          >
+            {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
+              // write your building UI
+              <Frame className='upload__image-wrapper'>
+               
+                  <Uploadbutton onClick={onImageUpload}>
+                    <CloudUploadOutlinedIcon /> Upload Picture
+                  </Uploadbutton>
+               
+
+                {imageList.map((image, index) => (
+                  <div
+                    key={index}
+                    className='image-item'
+                    style={{ display: "flex" }}
+                  >
+                    <img
+                      src={image["data_url"]}
+                      alt=''
+                      width='180'
+                      height='170'
+                    />
+
+                    {/* <i onClick={() => onImageRemove(image["data_url"])}>
+                  <ClearOutlinedIcon />
+                </i> */}
+                  </div>
+                ))}
+              </Frame>
+            )}
+          </ImageUploading>
         </UploadBox>
+
         <Form>
           <Verified src={Image} alt='Now a stingy man' />
 
@@ -107,12 +160,15 @@ const Join = () => {
           <ContiuneButton
             value='Generate Card'
             big
-            onClick={() => exportComponentAsPNG(componentRef) }
+            onClick={() => exportComponentAsPNG(componentRef)}
           />
-          
+          <Link to={`${url}/download`}>download</Link>
         </Form>
       </Content>
-      
+      <Switch>
+
+      <Route path={`${path}/download`} component={Print}></Route>
+      </Switch>
     </Container>
   );
 };

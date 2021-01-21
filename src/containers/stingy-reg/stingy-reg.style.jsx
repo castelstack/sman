@@ -134,3 +134,24 @@ export const InputFied = styled.input`
   &:focus {
   }
 `;
+export const Uploadbutton = styled.button`
+width= min-content;
+color: white;
+background: blue;
+border: none;
+display: flex;
+align-items: center;
+padding: 3px;
+border-radius: 5px;
+outline: none;
+`;
+
+export const Frame = styled.div`
+  border: ${(props) => (props.border ? "dotted 2px gray" : "none")};
+  height: 13rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;

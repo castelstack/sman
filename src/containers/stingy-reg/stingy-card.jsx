@@ -70,7 +70,7 @@ const SmallText = styled.h5`
 color: black;
 font-size: 14px;`;
 
-const StingyCard = ({names, position, location, sman_id}) => {
+const StingyCard = ({names, position, location, sman_id, image}) => {
  
   return (
     <Container>
@@ -97,7 +97,7 @@ const StingyCard = ({names, position, location, sman_id}) => {
         </SimPro>
         <Barcode src={barcode} alt='barcode' />
       </BarPro>
-      <ProImg src={Dp} alt='image' />
+      <ProImg src={image} alt='add image' />
     </Container>
   );
 };
