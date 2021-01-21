@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logo from "../../images/logo.svg";
-import sim from "../../images/sim.jpg";
+import sim from "../../images/sim.png";
 import bg from "../../images/bg.svg";
 import barcode from "../../images/barcode.jpg";
 import styled from "styled-components";
@@ -10,7 +10,8 @@ const Container = styled.div`
 display: grid;
 grid-template-columns: max-content min-content;
 grid-gap: 5px;
-width: 24.5rem;
+width: 640;
+height: 472;
 background-image: url(${bg});
 background-repeat: no-repeat;
 border: solid 1px grey;
@@ -19,9 +20,9 @@ border-radius: 5px;
 `;
 const LogoHead = styled.div`
 display: grid;
-grid-template-columns: min-content 1fr;
+grid-template-columns: min-content max-content;
 align-items: center;
-grid-gap: 2rem;
+grid-gap: 15px;
 grid-column: 1/-1;
 `;
 const Profile = styled.div`
@@ -39,27 +40,27 @@ grid-template-rows: repeat(2, min-content);
 justify-items: center`;
 const LogoImg = styled.img``;
 const Sim = styled.img`
-width: 6rem;
-height: 5rem;`;
+width: 3rem;
+height: 3rem;`;
 const Barcode = styled.img`
-width: 13rem;
+width: 10rem;
 height: 3rem;`;
 const ProImg = styled.img`
-width: 10rem;
-height: 10rem;
-margin-left: 9px;`;
+width: 8rem;
+height: 8rem;
+margin-left: 3px;`;
 const Head = styled.h1`
 color: #843035;
-font-size: 19px;
+font-size: 17px;
 font-weight: bold;
-letter-spacing: 2px;
+
 font-family: 'Acme', sans-serif;
 font-style: normal;
 font-weight: bold;
 `;
 const IdForm = styled.h1`
 color: #843035;
-font-size: 18px;
+font-size: 13px;
 font-weight: bold;
 
 font-family: 'Acme', sans-serif;
@@ -68,7 +69,7 @@ font-weight: bold;
 `;
 const SmallText = styled.h5`
 color: black;
-font-size: 14px;`;
+font-size: 12px;`;
 
 const StingyCard = ({names, position, location, sman_id, image}) => {
  

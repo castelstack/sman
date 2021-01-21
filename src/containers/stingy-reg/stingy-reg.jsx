@@ -55,7 +55,7 @@ const Join = () => {
   };
 
    const Print = React.forwardRef((props, ref) => (
-    <span ref={ref} style={{ maxWidth: "24.5rem" }}>
+    <span ref={ref} style={{ width: 640, height: 472 }}>
       {images.map((image, index) => (
         <StingyCard
           key={index}
@@ -68,7 +68,7 @@ const Join = () => {
     </span>
   ));
   console.log(images);
-
+ 
   const componentRef = useRef();
  const { path, url } = useRouteMatch()
   return (
@@ -164,6 +164,7 @@ const Join = () => {
           />
           <Link to={`${url}/download`}>download</Link>
         </Form>
+        
       </Content>
       <Switch>
 
