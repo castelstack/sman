@@ -37,7 +37,7 @@ const Buttons = styled.div`
 `;
 
 const DropGistButton = styled(Button)`
-  color: white;
+  color: #18191F;
 `;
 
 const ReadGistButton = styled(Button)`

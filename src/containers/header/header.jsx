@@ -41,13 +41,37 @@ const HeaderLink = styled(NavLink)`
   }
 `;
 
+const ButtonLink = styled(NavLink)`
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  text-decoration: none;
+  color: #4d4b4b;
+  transition: all 0.5s ease-out;
+
+  @media only screen and (max-width: 1000px) {
+   display: none;
+  }
+ 
+`;
+
 const HeaderLinks = styled.div`
   display: grid;
   grid-template-columns: repeat(4, max-content);
   grid-gap: 138px;
   align-items: center;
   @media only screen and (max-width: 1200px) {
-    grid-gap: 70px;
+    grid-gap: 60px;
+    
+  }
+
+  @media only screen and (max-width: 1000px) {
+    grid-gap: 60px;
+    grid-template-columns: repeat(3, max-content);
   }
   @media only screen and (max-width: 900px) {
     grid-gap: 50px;
@@ -108,9 +132,9 @@ export default function ButtonAppBar() {
             <HeaderLink to='/gist' activeStyle={active}>
               Stingy gists
             </HeaderLink>
-            <HeaderLink to='/create'>
+            <ButtonLink to='/create'>
               <Button value='Generate Card' />
-            </HeaderLink>
+            </ButtonLink>
 
             <HeaderLink to='/profile'>
               <Avatar alt='profile pic' src={join} />

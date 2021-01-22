@@ -11,7 +11,7 @@ import {
 } from "react-share";
 import Favorite from "@material-ui/icons/Favorite";
 import styled from "styled-components";
-import "./style.css";
+import "./giststyle.css";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
 

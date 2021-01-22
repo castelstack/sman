@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeadText, MedText } from '../../constant/styles';
-import Cir from '../../images/bg.svg';
+import rule from '../../images/rulee.svg';
 import Button from '../../components/button/button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -45,7 +45,10 @@ grid-gap: 80px;
 
 
 
-const Icon = styled.img``;
+const Icon = styled.img`
+height: 4rem;
+width: 4rem;
+color: blue;`;
 const RuleInfo = styled.div`
 display: grid;
 grid-template-rows: repeat(3, max-content);
@@ -64,23 +67,23 @@ const FeatureRules = () => {
             <HeadText>Stingy Men Rules</HeadText>
             <RulesBox>
                 <RuleInfo>
-                    <Icon src={Cir}/>
+                    <Icon src={rule}/>
                     <RuleNumber>No 01.</RuleNumber>
                     <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
                 </RuleInfo>
            
                 <RuleInfo>
-                    <Icon src={Cir}/>
+                    <Icon src={rule}/>
                     <RuleNumber>No 01.</RuleNumber>
                     <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
                 </RuleInfo>
                 <RuleInfo>
-                    <Icon src={Cir}/>
+                    <Icon src={rule}/>
                     <RuleNumber>No 01.</RuleNumber>
                     <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
                 </RuleInfo>
                 <RuleInfo>
-                    <Icon src={Cir}/>
+                    <Icon src={rule}/>
                     <RuleNumber>No 01.</RuleNumber>
                     <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
                 </RuleInfo>

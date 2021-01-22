@@ -2,6 +2,8 @@ import React from "react";
 import { MedText, SmText } from "../../constant/styles";
 import styled from "styled-components";
 import { Avatar } from "@material-ui/core";
+import ShowMoreText from "react-show-more-text";
+import "./giststyle.css";
 
 const Container = styled.div`
   display: grid;
@@ -17,7 +19,7 @@ const Content = styled.div`
   grid-template-rows: repeat(2, min-content);
   justify-items: center;
   grid-gap: 20px;
-  padding: 40px;
+  padding: 20px 20px 50px 20px;
   border-radius: 5px;
   clip-path: polygon(
     0% 0%,
@@ -40,34 +42,49 @@ const Category = styled(MedText)`
   font-size: 24px;
 `;
 const Gist = styled(SmText)`
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 25px;
+  padding: 10px 0;
   @media only screen and (max-width: 1200px) {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 20px;
   }
 
   @media only screen and (max-width: 800px) {
-    font-size: 18px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   @media only screen and (max-width: 750px) {
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
 const Name = styled(SmText)`
   font-size: 14px;
   color: #fff;
 `;
-
+const executeOnClick = (isExpanded) => {
+  console.log(isExpanded);
+};
 const Card = ({ title, gist, name }) => {
   return (
     <Container>
       <Content>
         <Category>{title}</Category>
-
-        <Gist>{gist}</Gist>
+        <ShowMoreText
+          /* Default options */
+          lines={3}
+          more='>>>'
+          less='<<<'
+          className='content'
+          anchorClass='my-anchor-css-class'
+          onClick={executeOnClick}
+          expanded={false}
+        >
+          <Gist>{gist}</Gist>
+        </ShowMoreText>
+        
       </Content>
       <Profile>
         <Avatar>H</Avatar>
