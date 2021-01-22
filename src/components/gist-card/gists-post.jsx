@@ -15,7 +15,6 @@ import "./style.css";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
 
-
 const Container = styled.div`
   border: 1px solid #e5e5e5;
   padding: 20px;
@@ -23,8 +22,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
-  n 8                
-  
+
   @media only screen and (max-width: 400px) {
     padding: 10px;
   }
@@ -100,13 +98,12 @@ color: #4D4B4B;
 }
 `;
 const Content = styled.div`
-
- display: grid;
-  grid-template-columns: 1fr  min-content;
+  display: grid;
+  grid-template-columns: 1fr min-content;
   grid-gap: 40px;
 
   @media only screen and (max-width: 900px) {
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
   }
 `;
 const Icon = styled.div``;
@@ -136,57 +133,55 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
     <Container>
       <GistTag>{tag}</GistTag>
       <Content>
-
-      <ShowMoreText
-        /* Default options */
-        lines={3}
-        more='>>>'
-        less='<<<'
-        className='content-css'
-        anchorClass='my-anchor-css-class'
-        onClick={executeOnClick}
-        expanded={false}
-      >
-        <GistBox>{gistspost}</GistBox>
-      </ShowMoreText>
-      <div>{image ? <GistImg src={image} alt='photo' /> : ""}</div>
-     
+        <ShowMoreText
+          /* Default options */
+          lines={3}
+          more='>>>'
+          less='<<<'
+          className='content-css'
+          anchorClass='my-anchor-css-class'
+          onClick={executeOnClick}
+          expanded={false}
+        >
+          <GistBox>{gistspost}</GistBox>
+        </ShowMoreText>
+        <div>{image ? <GistImg src={image} alt='photo' /> : ""}</div>
       </Content>
-        <LikeShare>
-          <Author>By {name}</Author>
-          <FormControlLabel
-            control={
-              <Checkbox
-                icon={<FavoriteBorder />}
-                checkedIcon={<Favorite />}
-                name='like'
-                onClick={handleChange}
-              />
-            }
-            label=''
-          />
-          <div className='btn_wrap'>
-            <span className='share'>Share</span>
-            <div className='socials'>
-              <Icon className='icon'>
-                <FacebookShareButton quote={tag} url='goal.com'>
-                  <FacebookIcon size={32} round={true} />
-                </FacebookShareButton>
-              </Icon>
-              <Icon className='icon'>
-                <WhatsappShareButton>
-                  <WhatsappIcon size={32} round={true} />
-                </WhatsappShareButton>
-              </Icon>
-              <Icon className='icon'>
-                <TwitterShareButton>
-                  <TwitterIcon size={32} round={true} />
-                </TwitterShareButton>
-              </Icon>
-            </div>
+      <LikeShare>
+        <Author>By {name}</Author>
+        
+        <FormControlLabel
+          control={
+            <Checkbox
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              name='like'
+              onClick={handleChange}
+            />
+          }
+          label='12'
+        />
+        <div className='btn_wrap'>
+          <span className='share'>Share</span>
+          <div className='socials'>
+            <Icon className='icon'>
+              <FacebookShareButton quote={tag} url='goal.com'>
+                <FacebookIcon size={32} round={true} />
+              </FacebookShareButton>
+            </Icon>
+            <Icon className='icon'>
+              <WhatsappShareButton>
+                <WhatsappIcon size={32} round={true} />
+              </WhatsappShareButton>
+            </Icon>
+            <Icon className='icon'>
+              <TwitterShareButton>
+                <TwitterIcon size={32} round={true} />
+              </TwitterShareButton>
+            </Icon>
           </div>
-        </LikeShare>
-    
+        </div>
+      </LikeShare>
     </Container>
   );
 };

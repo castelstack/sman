@@ -53,7 +53,8 @@ const NavLinks = styled(NavLink)`
   width: 130px;
   height: 43px;
   text-decoration: none;
-
+  font-size: 16px;
+  color: #843035;
   border: 1px solid #843035;
   box-sizing: border-box;
   border-radius: 65px;
@@ -73,6 +74,10 @@ const NavLinks = styled(NavLink)`
   @media only screen and (max-width: 620px) {
     width: 90px;
     height: 38px;
+  }
+
+  @media only screen and (max-width: 400px) {
+    font-size: 12px;
   }
 `;
 
@@ -100,22 +105,22 @@ export default function MobileTags() {
         <DialogContent>
         <Navi>
         <NavLinks to={`${url}/urgent2k`} activeStyle={active}>
-          <Nav>Urgent 2k</Nav>
+         Urgent 2k
         </NavLinks>
         <NavLinks to={`${url}/transport`} activeStyle={active}>
-          <Nav>Transport</Nav>
+        Transport
         </NavLinks>
         <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
+          Urgent 2k
         </NavLinks>
         <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
+          Urgent 2k
         </NavLinks>
         <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
+          Urgent 2k
         </NavLinks>
         <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
+          Urgent 2k
         </NavLinks>
       </Navi>
         </DialogContent>

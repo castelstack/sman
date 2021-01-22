@@ -1,19 +1,16 @@
 import React from "react";
 import Gistbox from "../../containers/box/gist-box";
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
-import { SmText } from "../../constant/styles";
 import Urgent2k from "../../containers/2k/2k";
 import Transport from "../../containers/transport/transport";
 import MobileTags from "../../components/mobile-tags/mobile-tags";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
 
 const Container = styled.div``;
 
 const Navi = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin: 0 99px;
-
 
   @media only screen and (max-width: 900px) {
     margin: 0 60px;
@@ -29,33 +26,24 @@ const Navi = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
-  
 `;
 
-const Nav = styled(SmText)`
-  font-size: 13px;
-  line-height: 20px;
-  color: #843035;
-  padding: 5px 7px;
-
-`;
 const active = {
- 
-  boxShadow: 'rgba(50, 50, 93, 0.2) 0px 10px 60px -12px inset, rgba(0, 0, 0, 0.1) 0px 18px 36px -18px inset',
- };
+  color: "#843035",
+};
 const Gists = styled.div``;
 const NavLinks = styled(NavLink)`
-  
+  font-size: 16px;
+  line-height: 20px;
+  color: #18191f;
+  padding: 5px 7px;
   text-decoration: none;
 
-  border: 1px solid #843035;
   box-sizing: border-box;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 `;
 
 const Gist = (props) => {
@@ -65,25 +53,20 @@ const Gist = (props) => {
     <Container>
       <Gistbox />
       <Navi>
-        <NavLinks to={`${url}/urgent2k`} activeStyle={active}>
-          <Nav>Urgent 2k</Nav>
-        </NavLinks>
-        <NavLinks to={`${url}/transport`} activeStyle={active}>
-          <Nav>Transport</Nav>
-        </NavLinks>
-        <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
-        </NavLinks>
-        <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
-        </NavLinks>
-        <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
-        </NavLinks>
-        <NavLinks to='2k'>
-          <Nav>Urgent 2k</Nav>
-        </NavLinks>
+        <Breadcrumbs aria-label='breadcrumb'>
+          <NavLinks to={`${url}/urgent2k`} activeStyle={active}>
+            Urgent 2k
+          </NavLinks>
+          <NavLinks to={`${url}/transport`} activeStyle={active}>
+            Transport
+          </NavLinks>
+          <NavLinks to='2k'>Urgent 2k</NavLinks>
+          <NavLinks to='2k'>Urgent 2k</NavLinks>
+          <NavLinks to='2k'>Urgent 2k</NavLinks>
+          <NavLinks to='2k'>Urgent 2k</NavLinks>
+        </Breadcrumbs>
       </Navi>
+
       <MobileTags />
       <Gists>
         <Switch>

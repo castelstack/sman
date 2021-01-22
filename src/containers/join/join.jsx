@@ -31,15 +31,15 @@ const Join = () => {
           }}> 
             <Box >
               <Icon />
-              <InputFied type='text' name='name' placeholder='Name' />
+              <InputFied type='text' name='name' placeholder='Name' required />
             </Box>
             <Box >
               <Position />
-              <InputFied type='text' name='email' placeholder='Position' />
+              <InputFied type='email' name='email' placeholder='Email' required />
             </Box>
             <Box >
               <Password />
-              <InputFied type='text' name='password' placeholder='Password' />
+              <InputFied type='password' name='password' placeholder='Password' required />
             </Box>
                   </form>
                   <ContiuneButton value='Continue' big/>
