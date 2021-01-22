@@ -17,13 +17,17 @@ align-content: center;
 padding: 50px;
  `;
 
-const Heading = styled(HeadText)` color: #fff; `;
-const SubHeading = styled(SmText)`color: #fff;  `;
+const Heading = styled(HeadText)` color: #fff; 
+font-size: 35px;
+`;
+const SubHeading = styled(SmText)`color: #fff; 
+font-size: 13px;
+font-weight: 400; `;
 
 const ImageSpinner = styled.img`
 
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 160px;
   
     animation-name: spin;
     animation-duration: 5000ms;
@@ -47,7 +51,7 @@ const Spinner = () => {
     return (
         <Container>
             <Heading>Generating Your Unique ID</Heading>
-            <SubHeading>Wait for a few seconds, your ID would be ready right away!</SubHeading>
+            <SubHeading>Upload your details for preview</SubHeading>
             <SpinnerContainer>
                 <ImageSpinner src={Spin}/>
             </SpinnerContainer>
