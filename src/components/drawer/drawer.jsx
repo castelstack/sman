@@ -5,49 +5,13 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 //import List from "@material-ui/core/List";
 import MenuIcon from "@material-ui/icons/Menu";
-import { NavLink } from "react-router-dom";
+
 
 import Logo from "../../components/logo/logo";
-import styled from "styled-components";
+
 import { Divider } from "@material-ui/core";
+import {Container, Link, active, LogoBox, List} from './drawer-style'
 
-const Container = styled.div`
-  display: none;
-
-  @media only screen and (max-width: 600px) {
-    display: block;
-  }
-`;
-
-const Link = styled(NavLink)`
-  font-family: "Nunito Sans", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 42px;
-  color: #18191f;
-  text-align: center;
-  text-decoration: none;
-  
- 
-  &:Hover{
-    color:  activeStyle={active}#843035;
-  }
-`;
-
-const active = {
-  color: "#843035",
-};
-
-const LogoBox = styled(NavLink)`
-  margin: 30px;
-  text-align: center;
-`;
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-`;
 const useStyles = makeStyles({
   list: {
     width: 200,
