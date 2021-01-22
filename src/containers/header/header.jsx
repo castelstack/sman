@@ -5,6 +5,8 @@ import Button from "../../components/button/button";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Drawer from "../../components/drawer/drawer";
+import { Avatar } from "@material-ui/core";
+import join from "../../images/join.png";
 
 const Container = styled.div``;
 
@@ -41,20 +43,20 @@ const HeaderLink = styled(NavLink)`
 
 const HeaderLinks = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(4, max-content);
   grid-gap: 138px;
   align-items: center;
   @media only screen and (max-width: 1200px) {
     grid-gap: 70px;
   }
-   @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 900px) {
     grid-gap: 50px;
   }
   @media only screen and (max-width: 800px) {
     grid-gap: 30px;
   }
 
-   @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 800px) {
     grid-gap: 20px;
   }
   @media only screen and (max-width: 600px) {
@@ -83,7 +85,6 @@ const Toolbarr = styled.div`
 
   justify-content: space-between;
 
-
   @media only screen and (max-width: 600px) {
     grid-gap: 40px;
     grid-template-columns: repeat(2, max-content);
@@ -108,7 +109,11 @@ export default function ButtonAppBar() {
               Stingy gists
             </HeaderLink>
             <HeaderLink to='/create'>
-              <Button  value='Generate Card' />
+              <Button value='Generate Card' />
+            </HeaderLink>
+
+            <HeaderLink to='/profile'>
+              <Avatar alt='profile pic' src={join} />
             </HeaderLink>
           </HeaderLinks>
           <Drawer />
