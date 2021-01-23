@@ -86,8 +86,18 @@ const ImageBox = styled.div`
 `;
 const Image = styled.img`
   margin-left: auto;
-  color: black;
-
+  
+  animation: rotateFloat 120s infinite;
+  animation-timing-function: linear;
+  
+  @keyframes rotateFloat {
+    from {
+      transform:  translateY(0);
+    }
+    to {
+      transform:  translateY(1.5px);
+    }
+  }
   @media only screen and (max-width: 900px) {
     width: 20rem;
   }

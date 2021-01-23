@@ -1,6 +1,6 @@
 import React from "react";
 import { HeadText } from "../../constant/styles";
-import Network from "../../images/networkk.svg";
+import Network from "../../images/networkB.svg";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -97,7 +97,17 @@ justify-content: end;`;
 const Image = styled.img`
 margin-left: auto;
 color: black;
-
+animation: rotateFloat 120s infinite;
+    animation-timing-function: linear;
+    
+    @keyframes rotateFloat {
+      from {
+        transform:  rotate(0deg);
+      }
+      to {
+        transform:  rotate(360deg);
+      }
+    }
 @media only screen and (max-width: 900px) {
   width: 20rem;
 }

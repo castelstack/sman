@@ -14,6 +14,10 @@ import styled from "styled-components";
 import "./giststyle.css";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -23,37 +27,44 @@ const Container = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 20px;
 
- 
- 
-   
-    
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  
-  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
   &:hover {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     animation-name: example;
     animation-duration: 0.25s;
     border-left: 8px solid #843035;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
-  
-  
-    @keyframes example {
-        0%   {border-left: 2px solid #ffffff;}
-        25%  {border-left: 3px solid #ffe6e6;}
-        50%  {border-left: 4px solid #843035;}
-        100% {border-left: 5px solid #843035;}
+
+  @keyframes example {
+    0% {
+      border-left: 2px solid #ffffff;
     }
+    25% {
+      border-left: 3px solid #ffe6e6;
+    }
+    50% {
+      border-left: 4px solid #843035;
+    }
+    100% {
+      border-left: 5px solid #843035;
+    }
+  }
   @media only screen and (max-width: 400px) {
     padding: 10px;
   }
-  `;
+`;
+const ImageContainer = styled.div``;
 const GistImg = styled.img`
   object-fit: cover;
   max-width: 18rem;
+`;
+
+const ModalImg = styled.img`
+  
 `;
 const GistBox = styled(SmText)`
   font-size: 18px;
@@ -141,18 +152,44 @@ const LikeShare = styled.div`
     grid-template-columns: 1fr min-content;
   }
 `;
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+   
+  },
+}));
+
 const executeOnClick = (isExpanded) => {
   console.log(isExpanded);
 };
 const GistsPost = ({ tag, gistspost, image, name }) => {
+  //state for like
   const [like, setLike] = React.useState({
     like: true,
   });
 
+  //checkbox for like
   const handleChange = (event) => {
     setLike({ ...like, [event.target.name]: event.target.checked });
   };
 
+  //state and handle for modal
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const  url  = 'sman-beta.vercel.app/gist';
   return (
     <Container>
       <GistTag>{tag}</GistTag>
@@ -169,11 +206,33 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
         >
           <GistBox>{gistspost}</GistBox>
         </ShowMoreText>
-        <div>{image ? <GistImg src={image} alt='photo' /> : ""}</div>
+        <div style={{ cursor: "pointer" }} onClick={handleOpen}>
+          <ImageContainer>
+            {image ? <GistImg src={image} alt='photo' /> : ""}
+          </ImageContainer>
+        </div>
+        <Modal
+          aria-labelledby='transition-modal-title'
+          aria-describedby='transition-modal-description'
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <ModalImg src={image} alt='photo' />
+            </div>
+          </Fade>
+        </Modal>
       </Content>
       <LikeShare>
         <Author>By {name}</Author>
-        
+
         <FormControlLabel
           control={
             <Checkbox
@@ -195,11 +254,16 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
             </Icon>
             <Icon className='icon'>
               <WhatsappShareButton>
+              title="Read all stingy gists" 
+                url={url}
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
             <Icon className='icon'>
-              <TwitterShareButton>
+              <TwitterShareButton
+               title={gistspost}
+               url={url}
+               via='sman'>
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>

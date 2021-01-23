@@ -1,8 +1,8 @@
 import React from "react";
 import ImageUploading from "react-images-uploading";
 import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
-import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
 import styled from "styled-components";
+import { PhotoCamera } from "@material-ui/icons";
 
 const Uploadbutton = styled.button`
 width= min-content;
@@ -44,16 +44,11 @@ export default function Upload() {
         maxNumber={maxNumber}
         dataURLKey='data_url'
       >
-        {({
-          imageList,
-          onImageUpload,
-          onImageUpdate,
-          onImageRemove,
-        }) => (
+        {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
           // write your building UI
           <Frame className='upload__image-wrapper'>
             <Uploadbutton onClick={onImageUpload}>
-              <CloudUploadOutlinedIcon /> Upload Picture
+              <PhotoCamera /> Upload Picture
             </Uploadbutton>
 
             {imageList.map((image, index) => (

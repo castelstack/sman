@@ -1,7 +1,18 @@
 import React from "react";
 import { SmText, HeadText } from "../../constant/styles";
-
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+  TwitterIcon,
+} from "react-share";
+import { Checkbox, FormControlLabel } from "@material-ui/core";
+import { FavoriteBorder } from "@material-ui/icons";
+import Favorite from "@material-ui/icons/Favorite";
 import styled from "styled-components";
+
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -92,11 +103,98 @@ const Number = styled(HeadText)`
   }
 `;
 
-const Rule = ({ number, rule }) => {
+const LikeShare = styled.div`
+  display: grid;
+  grid-template-columns: 1fr repeat(2, min-content);
+  grid-gap: 5px;
+  align-items: center;
+
+  @media only screen and (max-width: 550px) {
+    grid-template-columns: 1fr min-content;
+  }
+`;
+const Author = styled(SmText)`
+  font-size: 16px;
+  line-height: 30px;
+  font-style: italic;
+  color: #828282;
+
+  @media only screen and (max-width: 800px) {
+    font-size: 16px;
+    line-height: 30px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  @media only screen and (max-width: 400px) {
+    font-size: 14px;
+    line-height: 25px;
+  }
+`;
+const Icon = styled.div``;
+
+const Rule = ({ number, rule, name, id }) => {
+ //state for like
+ const [like, setLike] = React.useState({
+  like: true,
+});
+
+  //url for fb , twitter and whatsapp
+  const  url  = 'sman-beta.vercel.app/rules-and-regulation';
+  //checkbox for like
+  const handleChange = (event) => {
+    setLike({ ...like, [event.target.name]: event.target.checked });
+  };
   return (
     <Container>
       <Number>NO {number}</Number>
       <RuleBox>{rule}</RuleBox>
+      <LikeShare>
+        <Author>SMAN ID {id}</Author>
+
+        <FormControlLabel
+          control={
+            <Checkbox
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              name='like'
+              onClick={handleChange}
+            />
+          }
+          label='12'
+        />
+        <div className='btn_wrap'>
+          <span className='share'>Share</span>
+          <div className='socials'>
+            <Icon className='icon'>
+              <FacebookShareButton quote='Comply with stingy rule!' url={url}>
+                <FacebookIcon size={32} round={true} />
+              </FacebookShareButton>
+            </Icon>
+            <Icon className='icon'>
+              <WhatsappShareButton
+                title="Read all stingy rules" 
+                url={url}
+              >
+                <WhatsappIcon size={32} round={true} />
+              </WhatsappShareButton>
+            </Icon>
+            <Icon className='icon'>
+              <TwitterShareButton
+                title={rule}
+                url={url}
+                via='sman-hq'
+               
+              >
+                <TwitterIcon size={32} round={true} />
+              </TwitterShareButton>
+            </Icon>
+          </div>
+        </div>
+      </LikeShare>
     </Container>
   );
 };

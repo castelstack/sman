@@ -108,9 +108,28 @@ const Text = styled.li`
 const ImageBox = styled.div`
   display: flex;
   justify-content: end;
+
+ 
+    
 `;
 const Image = styled.img`
   margin-left: auto;
+
+  
+    
+    
+  
+    animation: rotateFloat 120s infinite;
+    animation-timing-function: linear;
+    
+    @keyframes rotateFloat {
+      from {
+        transform:  rotate(0deg);
+      }
+      to {
+        transform:  rotate(360deg);
+      }
+    }
   @media only screen and (max-width: 1200px) {
     width: 25rem;
   }
@@ -129,7 +148,13 @@ const Buttons = styled.div`
   grid-gap: 28px;
   justify-content: center;
 `;
-
+const ButtonFill = styled(Button)`
+transition: 0.25s;
+&:hover,
+&:focus {
+  color: white;
+  box-shadow: inset 0 -3.25em 0 0 #843035;
+}`
 const Box = () => {
   return (
     <Container>
@@ -149,7 +174,7 @@ const Box = () => {
             </Link>
 
             <Link to='/gist'>
-              <Button value='Read Gist' choco big />
+              <ButtonFill value='Read Gist' choco big />
             </Link>
           </Buttons>
         </Info>

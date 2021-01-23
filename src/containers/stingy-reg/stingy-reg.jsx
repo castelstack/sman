@@ -105,7 +105,7 @@ const Join = () => {
               // write your building UI
               <Frame className='upload__image-wrapper'>
                 <Uploadbutton onClick={onImageUpload}>
-                <PhotoCamera /> Upload Picture
+                <PhotoCamera /> Add Photo
                 </Uploadbutton>
             
                 {imageList.map((image, index) => (
