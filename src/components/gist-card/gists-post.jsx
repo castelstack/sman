@@ -89,25 +89,12 @@ const GistBox = styled(SmText)`
 `;
 
 const Author = styled(SmText)`
-  font-size: 16px;
+  font-size: 12px;
   line-height: 30px;
   font-style: italic;
   color: #828282;
 
-  @media only screen and (max-width: 800px) {
-    font-size: 16px;
-    line-height: 30px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    font-size: 14px;
-    line-height: 28px;
-  }
-
-  @media only screen and (max-width: 400px) {
-    font-size: 14px;
-    line-height: 25px;
-  }
+  
 `;
 
 const GistTag = styled(HeadText)`

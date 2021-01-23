@@ -15,6 +15,9 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
+display: grid;
+grid-template-columns: 1fr;
+grid-gap: 20px;
   border: 1px solid #e5e5e5;
   padding: 20px;
   border-radius: 5px;
@@ -46,8 +49,8 @@ const Container = styled.div`
 `;
 
 const RuleBox = styled(SmText)`
-  font-size: 18px;
-  line-height: 37px;
+  font-size: 16px;
+  line-height: 30px;
 
   color: #727373;
 
@@ -69,12 +72,12 @@ const RuleBox = styled(SmText)`
 
 const Number = styled(HeadText)`
   width: 84px;
-  height: 48px;
+  height: 35px;
 
   background: #843035;
   border-radius: 7px;
 
-  font-size: 28px;
+  font-size: 18px;
   line-height: 25px;
 
   color: #ffffff;
@@ -84,12 +87,12 @@ const Number = styled(HeadText)`
   align-items: center;
 
   @media only screen and (max-width: 800px) {
-    font-size: 25px;
+    font-size: 17px;
     line-height: 22px;
   }
 
   @media only screen and (max-width: 600px) {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     width: 64px;
     height: 45px;
@@ -114,25 +117,12 @@ const LikeShare = styled.div`
   }
 `;
 const Author = styled(SmText)`
-  font-size: 16px;
+  font-size: 12px;
   line-height: 30px;
   font-style: italic;
   color: #828282;
 
-  @media only screen and (max-width: 800px) {
-    font-size: 16px;
-    line-height: 30px;
-  }
 
-  @media only screen and (max-width: 600px) {
-    font-size: 14px;
-    line-height: 28px;
-  }
-
-  @media only screen and (max-width: 400px) {
-    font-size: 14px;
-    line-height: 25px;
-  }
 `;
 const Icon = styled.div``;
 

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const AllRules = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 30px;
   justify-content: space-between;
   margin: 160px 99px;
