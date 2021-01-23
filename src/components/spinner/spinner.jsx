@@ -19,6 +19,20 @@ padding: 50px;
 
 const Heading = styled(HeadText)` color: #fff; 
 font-size: 35px;
+
+@media only screen and (max-width: 1200px) {
+    font-size: 25px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 22px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 620px) {
+    
 `;
 const SubHeading = styled(SmText)`color: #fff; 
 font-size: 13px;

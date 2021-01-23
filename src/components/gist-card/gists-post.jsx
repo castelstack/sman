@@ -234,8 +234,8 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
               </FacebookShareButton>
             </Icon>
             <Icon className='icon'>
-              <WhatsappShareButton>
-                title="Read all stingy gists" url={url}
+              <WhatsappShareButton
+                title="Read all stingy gists" url={url}>
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>

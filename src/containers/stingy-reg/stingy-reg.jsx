@@ -45,7 +45,7 @@ const Join = () => {
   const alert = useAlert()
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    console.log(imageList);
+    
     setImages(imageList);
     setChange(true)
   };
@@ -64,6 +64,8 @@ const Join = () => {
     });
   };
 
+
+  //preview card
   const Print = React.forwardRef((props, ref) => (
     <Size ref={ref}>
       {images.map((image, index) => (
@@ -77,7 +79,7 @@ const Join = () => {
       ))}
     </Size>
   ));
-  console.log(Print);
+  
 
   const componentRef = useRef();
 
