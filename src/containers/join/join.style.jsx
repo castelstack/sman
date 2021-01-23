@@ -4,19 +4,24 @@ import {  HeadText } from '../../constant/styles';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';import Button from '../../components/button/button'
 import HttpsOutlinedIcon from '@material-ui/icons/HttpsOutlined';
-
+import PersonPinIcon from '@material-ui/icons/PersonPin';
 
 export const Icon = styled(PersonOutlineOutlinedIcon)`
 transform: translateX(2rem);
 margin-right: -3px;
 color: white;
 `;
-export const Position = styled(EmailOutlinedIcon)`
+export const Email = styled(EmailOutlinedIcon)`
 transform: translateX(2rem);
 margin-right: -3px;
 color: white;
 `;
 
+export const Position = styled(PersonPinIcon)`
+transform: translateX(2rem);
+margin-right: -3px;
+color: white;
+`;
 export const Password = styled(HttpsOutlinedIcon)`
 transform: translateX(2rem);
 margin-right: -3px;
@@ -68,7 +73,7 @@ export const Content = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-
+export const ForgotPass = styled.a``;
 export const Form = styled.div`
   background: #843035;
   padding: 90px;
@@ -90,13 +95,23 @@ export const Form = styled.div`
   @media only screen and (max-width: 620px) {
     padding: 10px;
     justify-items: center;
-    border-radius: 5px;
+    
   }
 `;
 
 export const Text = styled(HeadText)`
   color: white;
   
+  @media only screen and (max-width: 500px) {
+    text-align: center;
+  }
+  
+`;
+
+export const BeStingy = styled(HeadText)`
+  color: white;
+  text-align: center;
+  padding: 30px 0;
   @media only screen and (max-width: 500px) {
     text-align: center;
   }

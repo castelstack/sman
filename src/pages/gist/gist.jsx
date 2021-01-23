@@ -44,6 +44,7 @@ const NavLinks = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition:  all
 `;
 
 const Gist = (props) => {

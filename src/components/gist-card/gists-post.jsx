@@ -63,9 +63,7 @@ const GistImg = styled.img`
   max-width: 18rem;
 `;
 
-const ModalImg = styled.img`
-  
-`;
+const ModalImg = styled.img``;
 const GistBox = styled(SmText)`
   font-size: 18px;
   line-height: 30px;
@@ -93,8 +91,6 @@ const Author = styled(SmText)`
   line-height: 30px;
   font-style: italic;
   color: #828282;
-
-  
 `;
 
 const GistTag = styled(HeadText)`
@@ -145,9 +141,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  paper: {
-   
-  },
+  paper: {},
 }));
 
 const executeOnClick = (isExpanded) => {
@@ -176,7 +170,7 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
     setOpen(false);
   };
 
-  const  url  = 'sman-beta.vercel.app/gist';
+  const url = "sman-beta.vercel.app/gist";
   return (
     <Container>
       <GistTag>{tag}</GistTag>
@@ -241,16 +235,12 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
             </Icon>
             <Icon className='icon'>
               <WhatsappShareButton>
-              title="Read all stingy gists" 
-                url={url}
+                title="Read all stingy gists" url={url}
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
             <Icon className='icon'>
-              <TwitterShareButton
-               title={gistspost}
-               url={url}
-               via='sman'>
+              <TwitterShareButton title={gistspost} url={url} via='sman'>
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>
