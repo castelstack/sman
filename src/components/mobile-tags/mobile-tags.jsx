@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CategoryIcon from '@material-ui/icons/Category';
-import { SmText } from "../../constant/styles";
+
 import { NavLink, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 
