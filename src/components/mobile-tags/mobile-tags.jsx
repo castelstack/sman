@@ -36,14 +36,6 @@ const Navi = styled.div`
   
 `;
 
-const Nav = styled(SmText)`
-  font-size: 16px;
-  color: #843035;
-
-  @media only screen and (max-width: 400px) {
-    font-size: 12px;
-  }
-`;
 const active = {
   color: "white",
   background: "#843035",
