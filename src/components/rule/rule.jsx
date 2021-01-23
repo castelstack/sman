@@ -153,7 +153,7 @@ const Rule = ({ number, rule, name, id }) => {
       <Number>NO {number}</Number>
       <RuleBox>{rule}</RuleBox>
       <LikeShare>
-        <Author>SMAN ID {id}</Author>
+        <Author>SMAN ID: {id}</Author>
 
         <FormControlLabel
           control={
