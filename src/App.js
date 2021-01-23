@@ -12,6 +12,7 @@ import Rules from "../src/pages/rules/rules";
 import WriteRules from "./containers/write/write-rules";
 import WriteGist from "./containers/write/write-gist";
 import ProfilePage from "../src/containers/profile/profile";
+import ResetPassword from "../src/components/reset-password/reset-password";
 import {
   transitions,
   types,
@@ -45,6 +46,7 @@ function App(props) {
             <Route path='/write-rules' exact component={WriteRules} />
             <Route path='/write-gist' exact component={WriteGist} />
             <Route path='/profile' exact component={ProfilePage} />
+            <Route path='/password-reset' exact component={ResetPassword} />
           </Switch>
           <Footer />
         </Router>

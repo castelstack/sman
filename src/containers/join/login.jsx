@@ -1,17 +1,23 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 import {
   Form,
   Box,
   Icon,
   InputFied,
   ContiuneButton,
- 
   Password,
   ForgotPass,
 } from "./join.style";
 
 const Login = () => {
+  const alert = useAlert();
+  const handleClick = () => {
+    console.log("sent passwor reset");
+    alert.show("Recovery email sent");
+  };
+
   return (
     <div className='login-Login-wrapper'>
       <Form>
@@ -37,7 +43,9 @@ const Login = () => {
             />
           </Box>
         </form>
-        <ForgotPass></ForgotPass>
+        <Link to='/password-reset'>
+          <ForgotPass onClick={handleClick}>Forgot password?</ForgotPass>
+        </Link>
         <ContiuneButton value='Login' big />
       </Form>
     </div>
