@@ -1,16 +1,18 @@
 import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import TextField from "@material-ui/core/TextField";
-import Button from "../button/button";
-import reset from "../../images/reset.svg";
+import { useAlert } from "react-alert";
+import EmailIcon from "@material-ui/icons/Email";
 import styled from "styled-components";
+import Button from "../../components/button/button";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   background: #843035;
   padding: 150px 80px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 20px;
+  grid-gap: 30px;
   justify-items: center;
 `;
 
@@ -44,25 +46,31 @@ const Text = styled(MedText)`
     font-size: 12px;
   }
 `;
-const Image = styled.img`
-  width: 4rem;
-`;
+const ForgotPass = styled(Button)``;
 
-const ResetPassword = () => {
+const InputEmail = () => {
+  const alert = useAlert();
+  const handleClick = () => {
+    console.log("sent passwor reset");
+    alert.show("Recovery email sent");
+  };
   return (
     <Container>
-      <Image src={reset} alt='email_sent' />
-      <HdText>Email sent!</HdText>
-      <Text>
-        Check your mail box for recovery mail containing code. please input the
-        code in the text box to recover your mail.
-      </Text>
-      <TextField id="filled-basic" label='Code' variant="filled" />
-      <Button value='Reset password' />
+      <EmailIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
+      <HdText>Recovery email</HdText>
+      <Text>Input your email for recovery code.</Text>
+      <TextField
+        id='standard-basic'
+        label='Email'
+        type='email'
+        variant='filled'
+      />
 
-  
+      <Link to='/password-reset' style={{ color: "#843035" }}>
+        <ForgotPass onClick={handleClick} value='Confirm code' />
+      </Link>
     </Container>
   );
 };
 
-export default ResetPassword;
+export default InputEmail;

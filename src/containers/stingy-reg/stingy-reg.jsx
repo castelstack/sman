@@ -163,8 +163,9 @@ const Join = () => {
                 type='text'
                 name='position'
                 onChange={handleChange}
-                value={data.position.target}
+                value='Member'
                 placeholder='Position'
+                disabled
               />
             </Box>
             <Box>

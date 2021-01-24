@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { HeadText } from "../../constant/styles";
 
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
-import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import Button from "../../components/button/button";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
+import PersonPinIcon from "@material-ui/icons/PersonPin";
 
 export const Icon = styled(PersonOutlineOutlinedIcon)`
   transform: translateX(2rem);
   margin-right: -3px;
   color: white;
 `;
-export const Position = styled(EmailOutlinedIcon)`
+export const Position = styled(PersonPinIcon)`
   transform: translateX(2rem);
   margin-right: -3px;
   color: white;

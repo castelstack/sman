@@ -34,7 +34,9 @@ const Register = () => {
             <InputFied
               type='email'
               name='email'
+              value="Member"
               placeholder='Position'
+              disabled
               required
             />
           </Box>

@@ -13,6 +13,8 @@ import WriteRules from "./containers/write/write-rules";
 import WriteGist from "./containers/write/write-gist";
 import ProfilePage from "../src/containers/profile/profile";
 import ResetPassword from "../src/components/reset-password/reset-password";
+import InputEmail from '../src/containers/input-email/input-email'
+import Error from '../src/pages/error/error';
 import {
   transitions,
   types,
@@ -47,6 +49,8 @@ function App(props) {
             <Route path='/write-gist' exact component={WriteGist} />
             <Route path='/profile' exact component={ProfilePage} />
             <Route path='/password-reset' exact component={ResetPassword} />
+            <Route path='/input-email' exact component={InputEmail} />
+            <Route path='*' exact component={Error} />
           </Switch>
           <Footer />
         </Router>
