@@ -3,7 +3,8 @@ import Image from "../../images/join.png";
 
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import Login from "./login";
-import Register from "./register";
+//import Register from "./register";
+import SignupForm from "./reg";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import { Container, Content, BeStingy, Img } from "./join.style";
 import styled from "styled-components";
@@ -67,9 +68,9 @@ const Join = () => {
 
         <div>
           <Switch>
-            <Route path={`${path}/register`} component={Register} />
+            <Route path={`${path}/register`} component={SignupForm} />
             <Route path={`${path}/login`} component={Login} />
-            <Route path={path} component={Register} />
+            <Route path={path} component={SignupForm} />
           </Switch>
         </div>
         </div>

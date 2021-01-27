@@ -1,11 +1,20 @@
 import styled from "styled-components";
 import { HeadText } from "../../constant/styles";
-
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import Button from "../../components/button/button";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PersonIcon from '@material-ui/icons/Person';
+import bg from "../../images/bg.svg";
+
+export const Person = styled(PersonIcon)`
+  transform: translateX(2rem);
+  margin-right: -3px;
+  color: white;
+`;
 
 export const Icon = styled(PersonOutlineOutlinedIcon)`
   transform: translateX(2rem);
@@ -13,6 +22,18 @@ export const Icon = styled(PersonOutlineOutlinedIcon)`
   color: white;
 `;
 export const Email = styled(EmailOutlinedIcon)`
+  transform: translateX(2rem);
+  margin-right: -3px;
+  color: white;
+`;
+
+export const VerifiedUser = styled(VerifiedUserIcon)`
+  height: 4rem;
+  width: 8rem;
+  color: #FCEA4A;
+`;
+
+export const LocationOn = styled(LocationOnIcon)`
   transform: translateX(2rem);
   margin-right: -3px;
   color: white;
@@ -30,7 +51,7 @@ export const Password = styled(HttpsOutlinedIcon)`
 `;
 
 export const ContiuneButton = styled(Button)`
-  justify-self: flex-end;
+  margin-left: 1.5rem;
 `;
 
 export const Img = styled.img`
@@ -80,12 +101,15 @@ export const ForgotPass = styled.button`
   padding: 10px;
   background: #843035;
 `;
-export const Form = styled.div`
+export const FormContainer = styled.div`
   background: #843035;
-  padding: 90px;
+  padding:10px 10px 80px 10px;
   display: grid;
   grid-template-rows: repeat(2, min-content);
   grid-gap: 10px;
+  background-image: url(${bg});
+background-repeat: no-repeat;
+background-position: 95% 95%;
 
   @media only screen and (max-width: 1200px) {
     padding: 0 20px;
@@ -104,6 +128,11 @@ export const Form = styled.div`
     justify-items: center;
   }
 `;
+export const Form = styled.form`
+display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+`;
 
 export const Text = styled(HeadText)`
   color: white;
@@ -114,6 +143,7 @@ export const Text = styled(HeadText)`
 `;
 
 export const BeStingy = styled(HeadText)`
+font-family: 'Acme', sans-serif;
   color: white;
   text-align: center;
   padding: 30px 0;
@@ -124,13 +154,14 @@ export const BeStingy = styled(HeadText)`
 
 export const Box = styled.div`
   display: flex;
+  
   align-items: center;
   margin-right: 0.7rem;
   justify-self: ${(props) => (props.end ? "flex-end" : "none")};
   color: white;
 `;
 
-export const InputFied = styled.input`
+export const InputField = styled.input`
   background: #843035;
   padding: 15px 45px;
 

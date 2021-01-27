@@ -169,7 +169,7 @@ const Box = () => {
             </Text>
           </InfoText>
           <Buttons>
-            <Link to='/be-stingy'>
+            <Link to='/create'>
               <Button value='Generate ID' big />
             </Link>
 

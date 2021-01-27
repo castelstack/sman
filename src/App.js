@@ -42,7 +42,7 @@ function App(props) {
           <Switch>
             <Route path='/' exact component={Homepage} />
             <Route path='/gist' component={Gist} />
-            <Route path='/be-stingy' component={JoinUs} />
+            <Route path='/join' component={JoinUs} />
             <Route path='/create' component={CreateId} />
             <Route path='/rules-and-regulation' component={Rules} />
             <Route path='/write-rules' exact component={WriteRules} />

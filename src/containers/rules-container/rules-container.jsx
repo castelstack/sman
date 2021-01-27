@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState,  useEffect } from "react";
 import RulesBox from "../box/rules-box";
 import Rule from "../../components/rule/rule";
+import axios from "axios";
 import styled from "styled-components";
 
 const AllRules = styled.div`
@@ -31,52 +32,25 @@ const AllRules = styled.div`
 `;
 
 const RulesContainer = () => {
-  const data = {
-    rules: [
-      {
-        id: 1,
-        title: "Urgent 2k",
-        rule:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ",
-      },
-      {
-        id: 2,
-        title: "Transport",
-        rule:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-      },
-      {
-        id: 3,
-        title: "Gift",
-        rule:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-      },
-      {
-        id: 4,
-        title: "Urgent 2k",
-        rule:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ",
-      },
-      {
-        id: 5,
-        title: "Transport",
-        rule:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-      },
-      {
-        id: 6,
-        title: "Gift",
-        rule:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-      },
-    ],
-  };
+  const [rules, setRules] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://smanhq.herokuapp.com/api/v1/rules?'
+      );
+ 
+      setRules(result.data.rule);
+      console.log(result.data)
+    };
+ 
+    fetchData();
+  }, []);
 
   return (
     <div>
       <RulesBox />
       <AllRules>
-        {data.rules.map((item) => (
+        {rules.map((item) => (
           <div key={item.id}>
             <Rule number={item.id} rule={item.rule} />
           </div>

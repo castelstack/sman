@@ -68,6 +68,10 @@ export default function Drawer() {
         <Link to='/profile' activeStyle={active}>
           Profile
         </Link>
+        <Divider />
+        <Link to='/join' activeStyle={active}>
+          Login/Signup
+        </Link>
       </List>
     </div>
   );
