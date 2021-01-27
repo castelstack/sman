@@ -26,7 +26,7 @@ const Login = ({ history }) => {
       
       console.log("form data", formik.values);
       axios
-        .post(`${URL}api/v1/users/login`, formik.values)
+        .post(`${URL}api/v1/users/login`, formik.values, {withCredentials: true})
         .then((res, req) => {
           console.log(res.data);
           console.log(req)
