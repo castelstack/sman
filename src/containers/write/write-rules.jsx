@@ -101,11 +101,9 @@ const WriteRules = ({ history }) => {
           id='outlined-multiline-static'
           label='Write your rules'
           name='title'
-          multiline
-          rows={20}
-          fullWidth
+         
           placeholder='Your Stingy Rule'
-          variant='outlined'
+         
           onChange={formik.handleChange}
             value={formik.values.email}
           />

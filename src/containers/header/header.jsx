@@ -38,15 +38,15 @@ export default function ButtonAppBar() {
     })()
 
     
-    axios
-        .get(`${URL}api/v1/users/me`)
-        .then((res) => {
-          console.log(res.data);
-          res.data.active === "true"
-            ? setUserActive(true)
-            : setUserActive(false);
-        })
-        console.log(userActive)
+    // axios
+    //     .get(`${URL}api/v1/users/me`)
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       res.data.active === "true"
+    //         ? setUserActive(true)
+    //         : setUserActive(false);
+    //     })
+    //     console.log(userActive)
   });
 
   return (
