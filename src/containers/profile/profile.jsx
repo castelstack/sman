@@ -37,7 +37,7 @@ console.log(user)
       })
       console.log(user)
     })()
-  },[ setUser]);
+  });
 
   const handleClick = (values) => {
       axios.post(`${URL}api/v1/users/logout`)
