@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HeadText } from "../../constant/styles";
 import Network from "../../images/networkB.svg";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 const Container = styled.div`
   margin: 36px 99px;
@@ -156,6 +158,25 @@ transition: 0.25s;
   box-shadow: inset 0 -3.25em 0 0 #843035;
 }`
 const Box = () => {
+
+  const [userActive, setUserActive] = useState(false);
+
+
+  const URL = "https://smanhq.herokuapp.com/";
+   // api call with axios in useEffect hook
+   useEffect(() => {
+    (async () => {
+       await  axios
+      .get(`${URL}api/v1/users/me`, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        res.data.user.active
+          ? setUserActive(true)
+          : setUserActive(false);
+      })
+      console.log(userActive)
+    })()
+  });
   return (
     <Container>
       <Content>
@@ -169,9 +190,15 @@ const Box = () => {
             </Text>
           </InfoText>
           <Buttons>
-            <Link to='/create'>
-              <Button value='Generate ID' big />
-            </Link>
+           {
+             userActive ?
+             <Link to='/create'>
+             <Button value='Generate ID' big />
+           </Link> : 
+            <Link to='/join'>
+            <Button value='Generate ID' big />
+          </Link>
+           }
 
             <Link to='/gist'>
               <ButtonFill value='Read Gist' choco big />

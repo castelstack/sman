@@ -1,11 +1,13 @@
 import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
-import TextField from "@material-ui/core/TextField";
+import { useFormik } from "formik";
 import { useAlert } from "react-alert";
 import EmailIcon from "@material-ui/icons/Email";
 import styled from "styled-components";
 import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 
 const Container = styled.div`
   background: #843035;
@@ -46,12 +48,78 @@ const Text = styled(MedText)`
     font-size: 12px;
   }
 `;
+export const Box = styled.div`
+  display: flex;
+
+  align-items: center;
+  margin-right: 0.7rem;
+  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
+  color: white;
+`;
+
+export const InputField = styled.input`
+  background: #843035;
+  padding: 15px 45px;
+
+  font-size: 16px;
+  line-height: 24px;
+
+  /* for box */
+  width: 100%;
+  height: 20px;
+  outline: 0;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  border: solid 2px white;
+
+  &::placeholder {
+    color: white;
+  }
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  &:focus {
+  }
+`;
+
+export const Email = styled(EmailOutlinedIcon)`
+  transform: translateX(2rem);
+  margin-right: -3px;
+  color: white;
+`;
 const ForgotPass = styled(Button)``;
 
-const InputEmail = () => {
+const InputEmail = ({history}) => {
+  const URL = "https://smanhq.herokuapp.com/";
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      
+    },
+    onSubmit: (values) => {
+      console.log("form data", formik.values);
+      axios
+        .post(`${URL}api/v1/users/sendResetPasswordToken`, formik.values, {
+          withCredentials: true,
+        })
+        .then((res, req) => {
+          console.log(res.data);
+          
+          res.data.status === "SUCCESS"
+          ? history.push("/password-reset")
+          : alert("you're not log in");
+        })
+        .catch((err) => {
+          // err msg
+          alert(err);
+          alert(err.response.data.message);
+        });
+    },
+  });
   const alert = useAlert();
   const handleClick = () => {
-    console.log("sent passwor reset");
+   
     alert.show("Recovery email sent");
   };
   return (
@@ -59,12 +127,17 @@ const InputEmail = () => {
       <EmailIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
       <HdText>Recovery email</HdText>
       <Text>Input your email for recovery code.</Text>
-      <TextField
-        id='standard-basic'
-        label='Email'
-        type='email'
-        variant='filled'
-      />
+      <Box>
+        <Email />
+        <InputField
+          id='email'
+          name='email'
+          type='email'
+          placeholder='Email'
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
+      </Box>
 
       <Link to='/password-reset' style={{ color: "#843035" }}>
         <ForgotPass onClick={handleClick} value='Confirm code' />

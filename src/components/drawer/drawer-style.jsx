@@ -7,6 +7,16 @@ export const Container = styled.div`
     display: block;
   }
 `;
+export const LogOut = styled.button`
+
+
+border: none;
+font-size: 14px;
+background: red;
+color: #fff;
+padding: .9rem;
+
+`
 
 export const Link = styled(NavLink)`
   font-family: "Nunito Sans", sans-serif;

@@ -8,6 +8,7 @@ import {
   InputField,
   Form,
   ContiuneButton,
+  ForgotPass
 } from "./join.style";
 import axios from "axios";
 
@@ -68,6 +69,7 @@ const Login = ({ history }) => {
             value={formik.values.password}
           />
         </Box>
+        <ForgotPass to='/input-email' >Forgot your password?</ForgotPass>
         <ContiuneButton type='submit' value='Login' big />
       </Form>
     </FormContainer>

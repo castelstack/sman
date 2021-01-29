@@ -29,6 +29,12 @@ const Content = styled.div`
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: space-between;
+  grid-gap: 30px;
+
+  @media only screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 const Info = styled.div`
   display: grid;
@@ -37,6 +43,7 @@ const Info = styled.div`
 
    
   @media only screen and (max-width: 500px) {
+    justify-items: center;
     grid-gap: 20px;
   }
   @media only screen and (max-width: 400px) {
@@ -91,12 +98,11 @@ const Image = styled.img`
   animation-timing-function: linear;
   
   @keyframes rotateFloat {
-    from {
-      transform:  translateY(0);
-    }
-    to {
-      transform:  translateY(1.5px);
-    }
+    
+    0% { transform:  translateX(0); }
+  30% { transform:  translateX(-2px); }
+  68%, 72% { transform:  translateX(2px); }
+  100% { transform:  translateX(0);}
   }
   @media only screen and (max-width: 900px) {
     width: 20rem;
@@ -127,7 +133,7 @@ const RulesBox = () => {
             <Text>You can add yours if you think we skipped something</Text>
           </InfoText>
           <Link to='/write-rules'>
-            <Button value='Write Yours' big />
+            <Button value='Write Rule' big />
           </Link>
         </Info>
         <ImageBox>

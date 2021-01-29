@@ -32,8 +32,8 @@ const CustomButton = styled.button`
 
   @media only screen and (max-width: 600px) {
     width: 120px;
-    height: 32px;
-    font-size: 13px;
+    height: 40px;
+    font-size: 13.5px;
   }
 
   &:hover {

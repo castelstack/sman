@@ -32,14 +32,14 @@ grid-gap: 20px;
   border-bottom-left-radius: 10px;
   animation-name: example;
   animation-duration: 0.25s;
-  border-left: 8px solid #843035;
+  border-left: 2px solid #843035;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 
   @keyframes example {
       0%   {border-left: 2px solid #ffffff;}
-      25%  {border-left: 3px solid #ffe6e6;}
+      25%  {border-left: 2px solid #ffe6e6;}
       50%  {border-left: 4px solid #843035;}
       100% {border-left: 5px solid #843035;}
   }
@@ -71,12 +71,12 @@ const RuleBox = styled(SmText)`
 `;
 
 const Number = styled(HeadText)`
-  width: 84px;
-  height: 35px;
+  width: max-content;
+  
 
   background: #843035;
   border-radius: 7px;
-
+padding: .5rem;
   font-size: 18px;
   line-height: 25px;
 
@@ -94,15 +94,15 @@ const Number = styled(HeadText)`
   @media only screen and (max-width: 600px) {
     font-size: 16px;
     line-height: 20px;
-    width: 64px;
-    height: 45px;
+   
+   
   }
 
   @media only screen and (max-width: 400px) {
     font-size: 16px;
     line-height: 18px;
-    width: 54px;
-    height: 40px;
+  
+    
   }
 `;
 
@@ -126,21 +126,21 @@ const Author = styled(SmText)`
 `;
 const Icon = styled.div``;
 
-const Rule = ({ number, rule, name, id }) => {
+const Rule = ({ number, rule, name, id, count}) => {
  //state for like
  const [like, setLike] = React.useState({
   like: true,
 });
 
   //url for fb , twitter and whatsapp
-  const  url  = 'sman-beta.vercel.app/rules-and-regulation';
+  const  url  = 'https://smanhq.herokuapp.com/api/v1/rules?';
   //checkbox for like
   const handleChange = (event) => {
     setLike({ ...like, [event.target.name]: event.target.checked });
   };
   return (
     <Container>
-      <Number>NO {number}</Number>
+      <Number>Stingy Rule!</Number>
       <RuleBox>{rule}</RuleBox>
       <LikeShare>
         <Author>SMAN ID: {id}</Author>
@@ -154,7 +154,7 @@ const Rule = ({ number, rule, name, id }) => {
               onClick={handleChange}
             />
           }
-          label='12'
+          label={count}
         />
         <div className='btn_wrap'>
           <span className='share'>Share</span>

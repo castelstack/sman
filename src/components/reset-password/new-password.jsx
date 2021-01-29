@@ -1,12 +1,18 @@
 import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
-import TextField from "@material-ui/core/TextField";
 import Button from "../button/button";
-
+import axios from "axios";
+import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
+import { useFormik } from "formik";
 import LockIcon from "@material-ui/icons/Lock";
 import { useAlert } from "react-alert";
 import styled from "styled-components";
 
+export const Password = styled(HttpsOutlinedIcon)`
+  transform: translateX(2rem);
+  margin-right: -3px;
+  color: white;
+`;
 const Container = styled.div`
   background: #843035;
   padding: 150px 20px;
@@ -51,7 +57,67 @@ const Text = styled(MedText)`
   }
 `;
 
-const NewPassword = () => {
+export const Box = styled.div`
+  display: flex;
+
+  align-items: center;
+  margin-right: 0.7rem;
+  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
+  color: white;
+`;
+
+export const InputField = styled.input`
+  background: #843035;
+  padding: 15px 45px;
+
+  font-size: 16px;
+  line-height: 24px;
+
+  /* for box */
+  width: 100%;
+  height: 20px;
+  outline: 0;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  border: solid 2px white;
+
+  &::placeholder {
+    color: white;
+  }
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  &:focus {
+  }
+`;
+
+const NewPassword = ({history}) => {
+
+   
+  const URL = "https://smanhq.herokuapp.com/";
+  const formik = useFormik({
+    initialValues: {
+      password: "",
+      passwordConfirm: ""
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      console.log("form data", formik.values);
+      axios
+        .post(`${URL}api/v1/users/resetpassword/`, formik.values)
+        .then((res) => {
+          console.log(res.data);
+          res.data.status === "SUCCESS"
+            ? history.push("/join")
+            : alert("New password failed!");
+        })
+        .catch((err) => {
+          // what now?
+          alert(err.response.data.message);
+        });
+    },
+  });
   const alert = useAlert();
   const handleClick = () => {
     alert.show("Password set");
@@ -61,22 +127,28 @@ const NewPassword = () => {
       <LockIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
       <HdText>New Password</HdText>
       <Text>re-set your password with a strong password</Text>
-      <TextField
-        id='standard-basic'
-        label='New password'
-        type='password'
-        placeholder='New password'
-        variant='filled'
-        required
-      />
-      <TextField
-        id='standard-basic'
-        label='Confirm password'
-        type='password'
-        placeholder='Confirm password'
-        variant='filled'
-        required
-      />
+      <Box>
+          <Password />
+          <InputField
+            id='password'
+            name='password'
+            type='password'
+            placeholder='Password'
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+        </Box>
+        <Box>
+          <Password />
+          <InputField
+            id='passwordConfirm'
+            name='passwordConfirm'
+            type='password'
+            placeholder='Confirm password'
+            onChange={formik.handleChange}
+            value={formik.values.passwordConfirm}
+          />
+        </Box>
       <Button value='Confirm' onClick={handleClick} />
     </Container>
   );

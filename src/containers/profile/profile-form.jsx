@@ -20,7 +20,7 @@ display: flex;
 align-items: center;
 padding: 3px;
 border-radius: 5px;
-ou  tline: none;
+outline: none;
 `;
 
 const Frame = styled.div`

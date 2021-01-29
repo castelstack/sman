@@ -1,10 +1,10 @@
-import React from 'react';
-import { HeadText, MedText } from '../../constant/styles';
-import rule from '../../images/rulee.svg';
+import React, { useState,  useEffect } from 'react';
+import { HeadText } from '../../constant/styles';
+import axios from "axios";
 import Button from '../../components/button/button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import RuleBox from './rule-box'
 const Container = styled.div`
 display:grid;
 grid-template-rows: repeat(3, min-content);
@@ -23,12 +23,12 @@ justify-items: center;
 `;
 const RulesBox = styled.div`
 display: grid;
-grid-template-columns: repeat(4, max-content);
+grid-template-columns: repeat(3, min-content);
 justify-content: space-between;
 grid-gap: 80px;
 
 @media only screen and (max-width: 1200px) {
-    grid-gap: 100px;
+    grid-gap: 80px;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -43,50 +43,32 @@ grid-gap: 80px;
   }
 `;
 
-
-
-const Icon = styled.img`
-height: 4rem;
-width: 4rem;
-color: blue;`;
-const RuleInfo = styled.div`
-display: grid;
-grid-template-rows: repeat(3, max-content);
-grid-gap: 20px;
-justify-items: center;`;
-const RuleNumber = styled(HeadText)`
-font-size: 18px;
-line-height: 25px;`;
-const Rule = styled(MedText)`
-font-size: 16px;
-width: 180px;
-text-align: center;`;
 const FeatureRules = () => {
+  const [rules, setRules] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(
+        'https://smanhq.herokuapp.com/api/v1/rules?'
+      ).then((res) => {
+        console.log(res.session)
+        setRules(res.data.rule);
+      })
+
+ 
+      console.log(result)
+    };
+ 
+    fetchData();
+  }, []);
     return (
         <Container>
             <HeadText>Stingy Men Rules</HeadText>
             <RulesBox>
-                <RuleInfo>
-                    <Icon src={rule}/>
-                    <RuleNumber>No 01.</RuleNumber>
-                    <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
-                </RuleInfo>
-           
-                <RuleInfo>
-                    <Icon src={rule}/>
-                    <RuleNumber>No 01.</RuleNumber>
-                    <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
-                </RuleInfo>
-                <RuleInfo>
-                    <Icon src={rule}/>
-                    <RuleNumber>No 01.</RuleNumber>
-                    <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
-                </RuleInfo>
-                <RuleInfo>
-                    <Icon src={rule}/>
-                    <RuleNumber>No 01.</RuleNumber>
-                    <Rule>Thou Shalt Not Send Money To Any Girl</Rule>
-                </RuleInfo>
+            {rules.map((item) => (
+          <RulesBox key={item.id}>
+            <RuleBox number={item.id} rule={item.title} id={item.id} count={item.likesCount}/>
+          </RulesBox>
+        ))}
             </RulesBox>
             <Link to='/rules-and-regulation'>
             <Button value='Read All Rules' big/>

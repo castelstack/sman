@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../images/logo.svg";
 import {
   Container,
@@ -17,6 +17,7 @@ import Fb from "../../images/fb.svg";
 import Twitter from "../../images/twitter.svg";
 import Youtube from "../../images/youtube.svg";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   divider: {
@@ -24,6 +25,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Footer = () => {
+  const [userActive, setUserActive] = useState(false);
+
+
+  const URL = "https://smanhq.herokuapp.com/";
+   // api call with axios in useEffect hook
+   useEffect(() => {
+    (async () => {
+       await  axios
+      .get(`${URL}api/v1/users/me`, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        res.data.user.active
+          ? setUserActive(true)
+          : setUserActive(false);
+      })
+      console.log(userActive)
+    })()
+  });
+
+
+  
   const classes = useStyles();
   return (
     <Container>
@@ -33,17 +55,32 @@ const Footer = () => {
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
-      <Routes>
-        <LinkTo to='/create'>
-          <Links>Generate ID</Links>
-        </LinkTo>
-        <LinkTo to='write-gist'>
-          <Links>Tell Your Stingy Gist</Links>
-        </LinkTo>
-        <LinkTo to='/gist'>
-          <Links>Read Stingy Men Gists</Links>
-        </LinkTo>
-      </Routes>
+      {
+          userActive ? 
+          <Routes>
+            <LinkTo to='/create'>
+            <Links>Generate ID</Links>
+          </LinkTo>
+          <LinkTo to='write-gist'>
+            <Links>Tell Your Stingy Gist</Links>
+          </LinkTo>
+           <LinkTo to='/gist'>
+           <Links>Read Stingy Men Gists</Links>
+         </LinkTo>
+       </Routes> :
+         <Routes>
+            <LinkTo to='/join'>
+            <Links>Generate ID</Links>
+          </LinkTo>
+          <LinkTo to='/join'>
+            <Links>Tell Your Stingy Gist</Links>
+          </LinkTo>
+           <LinkTo to='/gist'>
+           <Links>Read Stingy Men Gists</Links>
+         </LinkTo>
+       </Routes>
+        }
+       
       <Divider variant='middle' style={classes.divder} />
       <Legal>
         <Links>© 2021 Stingy men association. All rights reserved</Links>
