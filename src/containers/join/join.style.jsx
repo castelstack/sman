@@ -9,6 +9,7 @@ import PersonPinIcon from "@material-ui/icons/PersonPin";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PersonIcon from '@material-ui/icons/Person';
 import bg from "../../images/bg.svg";
+import { Link } from "react-router-dom";
 
 export const Person = styled(PersonIcon)`
   transform: translateX(2rem);
@@ -94,12 +95,13 @@ export const Content = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-export const ForgotPass = styled.button`
+export const ForgotPass = styled(Link)`
   font-size: 13px;
   color: #fcea4a;
   border: none;
   padding: 10px;
   background: #843035;
+  justify-self: flex-start;
 `;
 export const FormContainer = styled.div`
   background: #843035;

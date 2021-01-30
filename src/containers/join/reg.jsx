@@ -8,7 +8,6 @@ import {
   Icon,
   ContiuneButton,
   Email,
-  
   LocationOn,
   Form,
   Person,
@@ -20,7 +19,7 @@ const SignupForm = (props) => {
   // could come from props, but since we don't want to prefill this form,
   // we just use an empty string. If you don't do this, React will yell
   // at you.
-  console.log(props);
+  
   const URL = "https://smanhq.herokuapp.com/";
   const formik = useFormik({
     initialValues: {

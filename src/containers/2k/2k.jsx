@@ -1,68 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GistsPost from "../../components/gist-card/gists-post";
 import { PostBox } from "../../constant/styles";
-import Network from "../../images/done.png";
+
+import axios from "axios";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const Urgent2k = () => {
-  const data = {
-    rules: [
-      {
-        id: 1,
-        tag: "Urgent 2k",
-        gistspost:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdietlorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdietlorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdietsed do lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: `${Network}`,
-        name: 'joshua peter'
-      },
-      {
-        id: 2,
-        tag: "Transport",
-        gistspost:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-      },
-      {
-        id: 3,
-        tag: "Gift",
-        gistspost:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-        image: `${Network}`,
-        name: 'joshua peter'
-      },
-      {
-        id: 4,
-        tag: "Urgent 2k",
-        gistspost:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ",
-          name: 'joshua peter'
-      },
-      {
-        id: 5,
-        tag: "Transport",
-        gistspost:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-          name: 'joshua peter'
-      },
-      {
-        id: 6,
-        tag: "Gift",
-        gistspost:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-          name: 'joshua peter'
-      },
-    ],
-  };
+  const [loading, setLoading] = useState(true);
+  const [gists, setGists] = useState([]);
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      axios.get("https://smanhq.herokuapp.com/api/v1/gists").then((res) => {
+        console.log(res.data);
+      setGists(res.data.gist);
+        setLoading(false);
+      });
+    }, 7000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div>
       <PostBox>
-        {data.rules.map((item) => (
+        
+         {gists.map((item) => (
           <div key={item.id}>
-            <GistsPost
-              tag={item.tag}
-              gistspost={item.gistspost}
-              image={item.image}
-              name={item.name}
-            />
+            {loading ? (
+              <div>
+                <Skeleton animation='wave' height={20} width='10%' />
+                <Skeleton animation='pulse' width={1210} height={218} />
+                <Skeleton animation='wave' height={10} width='30%' />
+              </div>
+            ) : (
+              <div key={item.id}>
+              <GistsPost
+                tag={item.title}
+                gistspost={item.description}
+                image={item.image}
+                name={item.createdBy}
+              />
+            </div>
+            )}
           </div>
         ))}
       </PostBox>

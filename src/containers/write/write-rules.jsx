@@ -5,6 +5,8 @@ import styled from "styled-components";
 //import { TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useAlert } from "react-alert";
+
 
 const Container = styled.div`
   margin: 20px 110px;
@@ -40,13 +42,16 @@ const HeadBox = styled.div`
   align-items: center;
   padding: 50px 0;
 
-  @media only screen and (max-width: 600px) {
-    padding: 25px 0;
+  @media only screen and (max-width: 1000px) {
+    font-size: 30px;
+    padding: 30px 0;
   }
 
-  @media only screen and (max-width: 400px) {
-    padding: 16px 0;
+  @media only screen and (max-width: 800px) {
+    font-size: 20px;
+    padding: 10px 0;
   }
+
 `;
 
 const Heading = styled(HeadText)`
@@ -60,27 +65,34 @@ const Heading = styled(HeadText)`
   }
 
   @media only screen and (max-width: 400px) {
-    font-size: 25px;
+    font-size: 20px;
   }
+`;
+const TextA = styled.textarea`
+  resize: none;
+  outline: none;
+  width: 95%;
+  height: 120px;
+  border: 3px solid #cccccc;
+  padding: 5px;
 `;
 // create new rules
 const WriteRules = ({ history }) => {
-  
+  const alert = useAlert();
   const URL = "https://smanhq.herokuapp.com/";
   const formik = useFormik({
     initialValues: {
       title: "",
-      
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
       console.log("form data", formik.values);
       axios
-        .post(`${URL}api/v1/rules`, formik.values)
-        .then((res) => {
+        .post(`${URL}api/v1/rules`, formik.values, { withCredentials: true })
+        .then((res, req) => {
           console.log(res.data);
-          res.data.status === "SUCCESS"
-            ? history.push("/")
+          res.data.message === "SUCCESS"
+            ? history.push("/rules-and-regulation")
             : alert("did not post");
         })
         .catch((err) => {
@@ -89,28 +101,27 @@ const WriteRules = ({ history }) => {
         });
     },
   });
+
+  const handleClick = () => {
+   
+    alert.show("Posted");
+  };
   return (
     <Container>
       <HeadBox>
         <Heading>Write Your Rule</Heading>
-        
       </HeadBox>
       <WriteIn>
         <form onSubmit={formik.handleSubmit}>
-        <input
-          id='outlined-multiline-static'
-          label='Write your rules'
-          name='title'
-          multiline
-          rows={20}
-          fullWidth
-          placeholder='Your Stingy Rule'
-          variant='outlined'
-          onChange={formik.handleChange}
-            value={formik.values.email}
+          <TextA
+            label='Write your rules'
+            name='title'
+            placeholder='Your Stingy Rule'
+            onChange={formik.handleChange}
+            value={formik.values.title}
           />
-          <Button value='Post' type='submit'/>
-          </form>
+          <Button value='Post' type='submit' onCkick={handleClick}/>
+        </form>
       </WriteIn>
     </Container>
   );

@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-postion: cover;
 
   display: grid;
-  grid-template-rows: 1fr repeat(3, min-content);
+  grid-template-rows: 1fr repeat(4, min-content);
   grid-gap: 70px;
   margin: 56px 99px;
   padding: 50px 0;
@@ -55,7 +55,8 @@ export const PositionBranch = styled.div`
   }
 `;
 
-export const Name = styled(HeadText)``;
+export const Name = styled(HeadText)`
+text-transform; capitalize;`;
 export const Image = styled.img`
   border-radius: 10rem;
   height: 10rem;
@@ -80,6 +81,7 @@ export const Image = styled.img`
 export const Position = styled(SmText)`
   font-size: 30px;
   display: grid;
+  text-transform: capitalize;
   grid-template-columns: repeat(2, max-content);
   grid-gap: 10px;
   align-items: center;
@@ -95,8 +97,10 @@ export const Position = styled(SmText)`
     font-size: 14px;
   }
 `;
+export const Cap = styled(SmText)`text-transform: capitalize;`
 
 export const Branch = styled(SmText)`
+text-transform: capitalize;
 font-weight: 400;
   font-size: 30px;
   display: grid;
@@ -136,6 +140,25 @@ export const Oath = styled(SmText)`
     padding: 0 20px;
   }
 `;
+
+export const LogOut = styled.button`
+justify-self: flex-end;
+margin: 0 100px;
+border: none;
+font-size: 14px;
+background: red;
+color: #fff;
+padding: .5rem;
+display: flex;
+align-items: center;
+
+&:hover {
+  box-shadow: 5px 8px 9px -10px rgba(0, 0, 0, 0.4);
+  transform: translateY(-0.6px);
+}
+&:active {
+  transform: translateY(0.6px);
+}`
 
 export const Sign = styled(SmText)`
   font-size: 30px;

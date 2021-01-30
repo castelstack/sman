@@ -47,7 +47,7 @@ const Info = styled.div`
   }
   @media only screen and (max-width: 400px) {
     grid-gap: 10px;
-    
+    justify-items: center;
   }
 `;
 const InfoText = styled.ul`

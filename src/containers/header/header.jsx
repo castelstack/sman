@@ -27,26 +27,15 @@ export default function ButtonAppBar() {
    useEffect(() => {
     (async () => {
        await  axios
-      .get(`${URL}api/v1/users/me`)
+      .get(`${URL}api/v1/users/me`, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
-        res.data.active === "true"
+        res.data.user.active
           ? setUserActive(true)
           : setUserActive(false);
       })
-      
+      console.log(userActive)
     })()
-
-    
-    axios
-        .get(`${URL}api/v1/users/me`)
-        .then((res) => {
-          console.log(res.data);
-          res.data.active === "true"
-            ? setUserActive(true)
-            : setUserActive(false);
-        })
-        console.log(userActive)
   });
 
   return (
