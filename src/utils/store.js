@@ -22,7 +22,7 @@ export const ActiveProvider = ({ children }) => {
         setUserActive(true)
       console.log(userActive);
     })();
-  },[]);
+  });
   
 
 
