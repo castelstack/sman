@@ -1,147 +1,178 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+import { useFormik } from "formik";
+import axios from "axios";
 import { Form } from "../join/join.style";
 import Button from "../../components/button/button";
-import ImageUploading from "react-images-uploading";
-import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 import styled from "styled-components";
 import { PhotoCamera } from "@material-ui/icons";
+import FileHandler from "../../firebase/fileHandler";
+import { useAlert } from "react-alert";
+
 const Container = styled.div`
-
-display: grid;
-grid-template-columns: 1fr;
-grid-gap: 30px;`
-const Uploadbutton = styled.button`
-width= min-content;
-color: white;
-background: blue;
-border: none;
-display: flex;
-align-items: center;
-padding: 3px;
-border-radius: 5px;
-outline: none;
-`;
-
-const Frame = styled.div`
-  border: ${(props) => (props.border ? "dotted 2px gray" : "none")};
-  height: 13rem;
-  width: 15rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 10rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
 `;
 
 const Image = styled.img`
-height: 13rem;
+  height: 13rem;
   width: 15rem;
   border-radius: 10rem;
-`
+`;
 
-const ProfileForm = () => {
-    const [images, setImages] = React.useState([]);
-  const maxNumber = 1;
+export const Box = styled.div`
+  display: flex;
 
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
+  align-items: center;
+  margin-right: 0.7rem;
+  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
+  color: white;
+`;
 
+export const InputField = styled.input`
+  background: #843035;
+  padding: 15px 45px;
+
+  font-size: 16px;
+  line-height: 24px;
+
+  /* for box */
+  width: 100%;
+  height: 20px;
+  outline: 0;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  border: solid 2px white;
+
+  &::placeholder {
+    color: white;
+  }
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  &:focus {
+  }
+`;
+
+const InputImg = styled.input`
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+`;
+const Label = styled.label`
+  width: max-content;
+  color: white;
+  background: #00008b;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+`;
+
+const ProfileForm = (props) => {
+  const [images, setImages] = React.useState([]);
+
+  const URL = "https://smanhq.herokuapp.com/";
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      email: "",
+      position: "member",
+      password: "",
+      passwordConfirm: "",
+      branch: "",
+      lastName: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      console.log("form data", formik.values);
+      axios
+        .post(`${URL}api/v1/users/signup`, formik.values)
+        .then((res) => {
+          console.log(res.data);
+          res.data.status === "SUCCESS"
+            ? props.history.goBack()
+            : alert("Registeration failed!");
+        })
+        .catch((err) => {
+          // what now?
+          alert(err.response.data.message);
+        });
+      uploadFile();
+    },
+  });
+
+  const alert = useAlert();
+  const uploadDispatcher = FileHandler();
+
+  const { uploadFile, imageUrl, getInputFile } = uploadDispatcher;
 
   return (
     <Container>
-
-        <div>
-      <ImageUploading
-        multiple
-        value={images}
-        onChange={onChange}
-        maxNumber={maxNumber}
-        dataURLKey='data_url'
-      >
-        {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
-          // write your building UI
-          <Frame className='upload__image-wrapper'>
-            <Uploadbutton onClick={onImageUpload}>
-              <PhotoCamera /> 
-            </Uploadbutton>
-
-            {imageList.map((image, index) => (
-              <div
-                key={index}
-                className='image-item'
-                style={{ display: "flex" }}
-              >
-                <Image src={image["data_url"]} alt='' width='180' height='170' />
-
-                <i onClick={() => onImageRemove(index)}>
-                  <ClearOutlinedIcon />
-                </i>
-              </div>
-            ))}
-          </Frame>
-        )}
-      </ImageUploading>
-    </div>
+      <div>
+        <Label htmlFor='upload'>
+          <PhotoCamera />
+          Add picture
+        </Label>
+        <InputImg type='file' onChange={getInputFile} id='upload' />
+      </div>
       <Form>
-        <TextField
-          id='outlined-full-width'
-          label='Username'
-          style={{ margin: 8 }}
-          placeholder='Usernam'
-          helperText='Full width!'
-          fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant='outlined'
-        />
+        <Box>
+          <InputField
+            id='firstName'
+            name='firstName'
+            type='text'
+            placeholder='First name'
+            onChange={formik.handleChange}
+            value={formik.values.firstName}
+          />
+        </Box>
 
-        <TextField
-          id='outlined-full-width'
-          label='Email'
-          style={{ margin: 8 }}
-          placeholder='Email'
-          helperText='Full width!'
-          fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant='outlined'
-        />
+        <Box>
+          <InputField
+            id='lastName'
+            name='lastName'
+            type='text'
+            placeholder='Last name'
+            onChange={formik.handleChange}
+            value={formik.values.lastName}
+          />
+        </Box>
+        <Box>
+          <InputField
+            id='branch'
+            name='branch'
+            type='text'
+            placeholder='State, e.g Abuja'
+            onChange={formik.handleChange}
+            value={formik.values.branch}
+          />
+        </Box>
 
-        <TextField
-          id='outlined-full-width'
-          label='SMAN ID'
-          style={{ margin: 8 }}
-          placeholder='ID'
-          helperText='Full width!'
-          fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant='outlined'
-        />
+        <Box>
+          <InputField
+            id='email'
+            name='email'
+            type='email'
+            placeholder='Email'
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+        </Box>
 
-        <TextField
-          id='outlined-full-width'
-          label='Password'
-          style={{ margin: 8 }}
-          placeholder='Password'
-          helperText='Full width!'
-          fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant='outlined'
-        />
+        <Box>
+          <InputField
+            id='password'
+            name='password'
+            type='password'
+            placeholder='Password'
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+        </Box>
       </Form>
       <Button value='Save' />
     </Container>

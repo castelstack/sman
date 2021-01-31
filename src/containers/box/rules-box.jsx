@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import { HeadText } from "../../constant/styles";
 import Rules from "../../images/rules.png";
 import Button from "../../components/button/button";
 import styled from "styled-components";
-
+import { ActiveContext } from '../../utils/store';
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -122,8 +122,7 @@ const Image = styled.img`
 
 // box contain only details of page and write rule button
 const RulesBox = () => {
-  // let { url, path } = useRouteMatch();
-
+  const isActive = useContext(ActiveContext);
   return (
     <Container>
       <Content>
@@ -132,9 +131,16 @@ const RulesBox = () => {
           <InfoText>
             <Text>You can add yours if you think we skipped something</Text>
           </InfoText>
-          <Link to='/write-rules'>
+         {
+           isActive ?
+           <Link to='/write-rules'>
+           <Button value='Write Rule' big />
+              </Link>
+              :
+               <Link to='/join'>
             <Button value='Write Rule' big />
           </Link>
+         }
         </Info>
         <ImageBox>
           <Image src={Rules} alt='Stingy Network' />

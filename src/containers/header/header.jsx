@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useContext } from "react";
 
 import { Link } from "react-router-dom";
 import Button from "../../components/button/button";
-import axios from "axios";
 import Drawer from "../../components/drawer/drawer";
 import { Avatar } from "@material-ui/core";
 import join from "../../images/join.png";
+import { ActiveContext } from '../../utils/store';
 import {
   Container,
   active,
@@ -18,25 +18,8 @@ import {
 } from "./header-style";
 
 export default function ButtonAppBar() {
-  
-  const [userActive, setUserActive] = useState(false);
+  const isActive = useContext(ActiveContext);
 
-
-  const URL = "https://smanhq.herokuapp.com/";
-   // api call with axios in useEffect hook
-   useEffect(() => {
-    (async () => {
-       await  axios
-      .get(`${URL}api/v1/users/me`, { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        res.data.user.active
-          ? setUserActive(true)
-          : setUserActive(false);
-      })
-      console.log(userActive)
-    })()
-  });
 
   return (
     <Container>
@@ -56,7 +39,7 @@ export default function ButtonAppBar() {
               <Button value='Generate Card' />
             </ButtonLink>
             {
-              userActive ?
+              isActive ? 
             <HeaderLink to='/profile'>
               <Avatar alt='profile pic' src={join} />
             </HeaderLink> :
