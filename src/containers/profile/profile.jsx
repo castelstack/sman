@@ -41,10 +41,10 @@ const ProfilePage = ({ history }) => {
     })();
   }, []);
 
-  const handleClick = (values) => {
+  const handleClick = () => {
     axios
       .post(`${URL}api/v1/users/logout`)
-      .then((res, req) => {
+      .then((res) => {
         console.log(res.data);
         res.data.status === "SUCCESS"
           ? history.push("/")

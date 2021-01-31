@@ -56,8 +56,8 @@ export default function Drawer(props) {
 
     setState({ ...state, [anchor]: open });
   };
-  
-//div for list containing nav link
+
+  //div for list containing nav link
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -67,7 +67,7 @@ export default function Drawer(props) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {isActive ? (
+      {isActive.userActive ? (
         <List>
           <LogoBox to='/'>
             <Logo />
@@ -109,9 +109,6 @@ export default function Drawer(props) {
             Stingy rules
           </Link>
           <Divider />
-          <Link to='/join' activeStyle={active}>
-            Profile
-          </Link>
           <Divider />
           <Link to='/join' activeStyle={active}>
             Login/Signup
