@@ -17,10 +17,7 @@ export const ActiveProvider = ({ children }) => {
           console.log(res.data);
           res.data.user.active ? setUserActive(true) : setUserActive(false);
         })
-        .catch(err => {
-          setUserActive(false);
-            alert(err.response.message)
-        })
+        
       console.log(userActive);
     })();
   });
