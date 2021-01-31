@@ -142,7 +142,7 @@ Their Experience With Women.</HeadText>
           </InfoText>
           
           {
-            isActive ?   <Link to='/write-gist'>
+            isActive.userActive ?   <Link to='/write-gist'>
             <Button value='Post Gist' big/>
             </Link> :   <Link to='/join'>
             <Button value='Post Gist' big/>

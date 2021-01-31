@@ -20,7 +20,7 @@ import {
 export default function ButtonAppBar() {
   const isActive = useContext(ActiveContext);
 
-
+  console.log(isActive);
   return (
     <Container>
       <Appbarr>
@@ -39,7 +39,7 @@ export default function ButtonAppBar() {
               <Button value='Generate Card' />
             </ButtonLink>
             {
-              isActive ? 
+              isActive.userActive ? 
             <HeaderLink to='/profile'>
               <Avatar alt='profile pic' src={join} />
             </HeaderLink> :

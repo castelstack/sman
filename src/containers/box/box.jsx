@@ -174,7 +174,7 @@ const Box = () => {
           </InfoText>
           <Buttons>
            {
-             isActive ?
+             isActive.userActive ?
              <Link to='/create'>
              <Button value='Generate ID' big />
            </Link> : 

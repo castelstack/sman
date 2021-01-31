@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
-export const ActiveContext = createContext();
+export const ActiveContext = createContext(false);
 export const UserContext = createContext();
 
 export const ActiveProvider = ({ children }) => {
@@ -12,14 +12,19 @@ export const ActiveProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`${URL}api/v1/users/me`, { withCredentials: true })
+        .get(`${URL}api/v1/users/me`)
         .then((res) => {
           console.log(res.data);
           res.data.user.active ? setUserActive(true) : setUserActive(false);
-        });
+        })
+        .catch(err => {
+          setUserActive(false);
+            alert(err.response.message)
+        })
       console.log(userActive);
     })();
   });
+  console.log(userActive)
 
   return (
     <ActiveContext.Provider value={{ userActive, setUserActive }}>

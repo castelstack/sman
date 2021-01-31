@@ -39,7 +39,7 @@ const Footer = () => {
         </LinkTo>
       </Head>
       {
-        isActive ?
+        isActive.userActive ?
           <Routes>
             <LinkTo to='/create'>
             <Links>Generate ID</Links>

@@ -132,7 +132,7 @@ const RulesBox = () => {
             <Text>You can add yours if you think we skipped something</Text>
           </InfoText>
          {
-           isActive ?
+           isActive.userActive ?
            <Link to='/write-rules'>
            <Button value='Write Rule' big />
               </Link>
