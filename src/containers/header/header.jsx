@@ -20,7 +20,7 @@ import {
 export default function ButtonAppBar() {
   const isActive = useContext(ActiveContext);
 
-  console.log(isActive);
+ 
   return (
     <Container>
       <Appbarr>

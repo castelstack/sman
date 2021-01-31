@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Join from "../../images/join.png";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkIcon from "@material-ui/icons/Work";
 import axios from "axios";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
+import { ActiveContext } from '../../utils/store';
 import {
   Container,
   AvatarName,
@@ -22,66 +22,53 @@ import {
 
 
 const ProfilePage = ({ history }) => {
-  const [user, setUser] = useState([]);
-
-  //console.log(user);
+  //const [user, setUser] = useState([]);
+  const user = useContext(ActiveContext);
+  const isActive = useContext(ActiveContext);
+ 
   const URL = "https://smanhq.herokuapp.com/";
-  // api call with axios in useEffect hook
-  useEffect(() => {
-    (async () => {
-      await axios
-        .get(`${URL}api/v1/users/me`)
-        .then((res) => {
-          
-          const userInfo = res.data;
-          setUser(res.data.user);
-          console.log(userInfo);
-        });
-        
-    })();
-  }, []);
-
   const handleClick = () => {
     axios
       .post(`${URL}api/v1/users/logout`)
       .then((res) => {
         console.log(res.data);
         res.data.status === "SUCCESS"
-          ? history.push("/")
+          ? isActive.setUserActive(false)
           : alert("you're not log out");
       })
       .catch((err) => {
         // err msg
         alert(err.response.message);
       });
+    
   };
 
   return (
     <div>
-      <Container key={user.id}>
+      <Container key={user.userInfo.id}>
         <AvatarName>
           <Image src={Join} />
           <Name>
-            {" "}
-            Sty {user.firstName} {user.lastName}
+            
+            Sty {user.userInfo.firstName} {user.userInfo.lastName}
           </Name>
-          <StyName>Sman ID: {user.id}</StyName>
+          <StyName>Sman ID: {user.userInfo.id}</StyName>
         </AvatarName>
 
         <PositionBranch>
           <Position>
             <WorkIcon color='primary' />
-            Position: {user.position}
+            Position: {user.userInfo.position}
           </Position>
           <Branch>
             <LocationOnIcon color='action' />
-            Branch: {user.branch}
+            Branch: {user.userInfo.branch}
           </Branch>
         </PositionBranch>
         <Oath>
           Oath: I{" "}
           <StyName>
-            {user.firstName} {user.lastName}
+            {user.userInfo.firstName} {user.userInfo.lastName}
           </StyName>
           , solemnly swear, to uphold the diginty of this association with due
           diligence, to NEVER give SHISHI in any form finacial exploitation to
