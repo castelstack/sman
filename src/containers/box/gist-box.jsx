@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { HeadText } from "../../constant/styles";
 import Network from "../../images/networkB.svg";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { ActiveContext } from '../../utils/store';
 
 const Container = styled.div`
   margin: 76px 99px;
@@ -127,6 +127,7 @@ animation: rotateFloat 120s infinite;
 
 
 const GistBox = () => {
+  const isActive = useContext(ActiveContext);
   return (
     <Container>
       <Content>
@@ -140,9 +141,13 @@ Their Experience With Women.</HeadText>
             </Text>
           </InfoText>
           
-            <Link to='/write-gist'>
+          {
+            isActive.userActive ?   <Link to='/write-gist'>
+            <Button value='Post Gist' big/>
+            </Link> :   <Link to='/join'>
             <Button value='Post Gist' big/>
             </Link>
+          }
           
         </Info>
         <ImageBox>

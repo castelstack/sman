@@ -120,7 +120,7 @@ const WriteRules = ({ history }) => {
             onChange={formik.handleChange}
             value={formik.values.title}
           />
-          <Button value='Post' type='submit' onCkick={handleClick}/>
+          <Button value='Post' type='submit' onClick={handleClick}/>
         </form>
       </WriteIn>
     </Container>

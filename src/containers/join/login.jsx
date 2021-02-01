@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext }  from "react";
 import { useFormik } from "formik";
 import {
   Email,
@@ -11,8 +11,11 @@ import {
   ForgotPass
 } from "./join.style";
 import axios from "axios";
+import { ActiveContext } from '../../utils/store';
+
 
 const Login = ({ history }) => {
+  const isActive = useContext(ActiveContext);
   // Notice that we have to initialize ALL of fields with values. These
   // could come from props, but since we don't want to prefill this form,
   // we just use an empty string. If you don't do this, React will yell
@@ -30,19 +33,24 @@ const Login = ({ history }) => {
         .post(`${URL}api/v1/users/login`, formik.values, {withCredentials: true})
         .then((res, req) => {
           console.log(res.data);
-          console.log(req)
+          
           res.data.status === "SUCCESS"
-            ? history.push("/")
+            ? history.push('/')
             : alert("you're not log in");
+            isActive.setUserActive(true)
+          
         })
         .catch((err) => {
           // err msg
           alert(err)
-          //alert(err.response.data.message);
+          alert(err.response.data.message);
         });
     },
   });
+//use context
 
+
+  
   return (
     <FormContainer>
       <Form onSubmit={formik.handleSubmit}>

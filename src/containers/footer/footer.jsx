@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext} from "react";
 import Logo from "../../images/logo.svg";
 import {
   Container,
@@ -17,7 +17,8 @@ import Fb from "../../images/fb.svg";
 import Twitter from "../../images/twitter.svg";
 import Youtube from "../../images/youtube.svg";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
+
+import { ActiveContext } from '../../utils/store';
 
 const useStyles = makeStyles((theme) => ({
   divider: {
@@ -25,25 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Footer = () => {
-  const [userActive, setUserActive] = useState(false);
-
-
-  const URL = "https://smanhq.herokuapp.com/";
-   // api call with axios in useEffect hook
-   useEffect(() => {
-    (async () => {
-       await  axios
-      .get(`${URL}api/v1/users/me`, { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        res.data.user.active
-          ? setUserActive(true)
-          : setUserActive(false);
-      })
-      console.log(userActive)
-    })()
-  });
-
+  const isActive = useContext(ActiveContext);
 
   
   const classes = useStyles();
@@ -56,7 +39,7 @@ const Footer = () => {
         </LinkTo>
       </Head>
       {
-          userActive ? 
+        isActive.userActive ?
           <Routes>
             <LinkTo to='/create'>
             <Links>Generate ID</Links>

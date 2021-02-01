@@ -18,7 +18,6 @@ import {
   ContiuneButton,
   Position,
   Password,
-  
   UploadBox,
   Uploadbutton,
   Frame,

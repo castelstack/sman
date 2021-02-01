@@ -9,7 +9,10 @@ function FileHandler() {
 
   const handleImageFile = (e) => {
     const image = e.target.files[0];
+
     setImageFileState(image);
+
+    setImageFileState((state) => state);
   };
 
   const firebaseImageUpload = () => {
@@ -48,7 +51,7 @@ function FileHandler() {
 
       (snapShot) => {
         //takes a snap shot of the process as it is happening
-        console.log(snapShot);
+        // console.log(snapShot);
       },
       (err) => {
         //catches the errors
@@ -68,9 +71,9 @@ function FileHandler() {
           .then((url) => {
             setImageUrlState(url);
 
-            console.log(imageUrlState);
+            setImageUrlState((state) => state);
 
-            setImageFileState(null);
+            // setImageFileState(null);
           });
       }
     );
