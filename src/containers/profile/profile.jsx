@@ -24,7 +24,7 @@ import {
 const ProfilePage = ({ history }) => {
   //const [user, setUser] = useState([]);
   const user = useContext(ActiveContext);
-  const isActive = useContext(ActiveContext);
+  
  
   const URL = "https://smanhq.herokuapp.com/";
   const handleClick = () => {
@@ -33,12 +33,13 @@ const ProfilePage = ({ history }) => {
       .then((res) => {
         console.log(res.data);
         res.data.status === "SUCCESS"
-          ? isActive.setUserActive(false)
+          ? user.setUserInfo()
           : alert("you're not log out");
+          res.data.status === "SUCCESS" ? history.push("/") : alert('you\re not log out')
       })
       .catch((err) => {
         // err msg
-        alert(err.response.message);
+        alert(err);
       });
     
   };

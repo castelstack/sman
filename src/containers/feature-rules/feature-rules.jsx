@@ -22,17 +22,17 @@ const Container = styled.div`
 `;
 const RulesBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, min-content);
+  grid-template-columns: repeat(4, min-content);
   justify-content: space-between;
-  grid-gap: 80px;
+  grid-gap: 40px;
 
   @media only screen and (max-width: 1200px) {
-    grid-gap: 80px;
+    grid-gap: 40px;
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media only screen and (max-width: 800px) {
-    grid-gap: 80px;
+    grid-gap: 40px;
     grid-template-columns: repeat(2, 1fr);
   }
 

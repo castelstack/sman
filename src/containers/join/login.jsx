@@ -35,15 +35,15 @@ const Login = ({ history }) => {
           console.log(res.data);
           
           res.data.status === "SUCCESS"
-            ? isActive.setUserActive(true)
+            ? history.push('/')
             : alert("you're not log in");
-
-          history.push('/');
+            isActive.setUserActive(true)
+          
         })
         .catch((err) => {
           // err msg
           alert(err)
-          //alert(err.response.data.message);
+          alert(err.response.data.message);
         });
     },
   });

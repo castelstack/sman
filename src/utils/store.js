@@ -17,12 +17,12 @@ export const ActiveProvider = ({ children }) => {
         .then((res) => {
           console.log(res.data);
           setUserInfo(res.data.user)
-          res.data.user.active === true ? setUserActive(true) : setUserActive(false);
+          userInfo.active ? setUserActive(true) :  setUserInfo({})
         })
         setUserActive(true)
       console.log(userActive);
     })();
-  });
+  },[userActive]);
   
 
 

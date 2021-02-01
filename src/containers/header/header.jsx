@@ -35,17 +35,24 @@ export default function ButtonAppBar() {
             <HeaderLink to='/gist' activeStyle={active}>
               Stingy gists
             </HeaderLink>
+            {
+              isActive.userActive ? 
+                <>
             <ButtonLink to='/create'>
               <Button value='Generate Card' />
             </ButtonLink>
-            {
-              isActive.userActive ? 
             <HeaderLink to='/profile'>
               <Avatar alt='profile pic' src={join} />
-            </HeaderLink> :
+            </HeaderLink> 
+                </> :
+                <>
+                 <ButtonLink to='/join'>
+                 <Button value='Generate Card' />
+               </ButtonLink>
             <HeaderLink to='/join' activeStyle={active}>
               Login/SignUp
             </HeaderLink>
+            </>
     }
           </HeaderLinks>
           <Drawer />
