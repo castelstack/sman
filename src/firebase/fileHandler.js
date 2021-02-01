@@ -3,22 +3,17 @@ import { useState } from "react";
 import { storage } from "./firebase";
 
 function FileHandler() {
-  const imageBucket = { imageUrl: "" };
-
-  const [imageUrlState, setImageUrlState] = useState(imageBucket);
+  const [imageUrlState, setImageUrlState] = useState("");
 
   const [imageFileState, setImageFileState] = useState("");
 
   const handleImageFile = (e) => {
     const image = e.target.files[0];
-
-    console.log(image);
-
     setImageFileState(image);
   };
 
-  const firebaseImageUpload = (e) => {
-    e.preventDefault();
+  const firebaseImageUpload = () => {
+    // e.preventDefault();
 
     console.log("File Upload In Progress .....");
 
@@ -43,6 +38,7 @@ function FileHandler() {
 
     const uploadImage = storage
       .ref(`/images/${imageFileState.name}`)
+
       .put(imageFileState);
 
     //initiates the firebase side uploading
@@ -62,6 +58,7 @@ function FileHandler() {
         // gets the functions from storage refences the image storage in firebase by the children
         // gets the download url then sets the image from firebase as the value for the imgUrl key:
         storage
+
           .ref("images")
 
           .child(imageFileState.name)
@@ -69,11 +66,9 @@ function FileHandler() {
           .getDownloadURL()
 
           .then((url) => {
-            setImageUrlState((prevObject) => ({
-              ...prevObject,
+            setImageUrlState(url);
 
-              imageUrl: url,
-            }));
+            console.log(imageUrlState);
 
             setImageFileState(null);
           });
@@ -86,7 +81,7 @@ function FileHandler() {
   return {
     getInputFile: handleImageFile,
     uploadFile: firebaseImageUpload,
-    imageUrl: imageUrlState.imageUrl,
+    imageUrl: imageUrlState,
   };
 }
 

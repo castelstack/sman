@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RulesBox from "../box/rules-box";
 import Rule from "../../components/rule/rule";
 import axios from "axios";
-import Skeleton from "@material-ui/lab/Skeleton";
+// import Skeleton from "@material-ui/lab/Skeleton";
 import styled from "styled-components";
 
 const AllRules = styled.div`
@@ -39,11 +39,10 @@ const RulesContainer = () => {
       setLoading(true);
       axios.get("https://smanhq.herokuapp.com/api/v1/rules?").then((res) => {
         console.log(res.session);
-        
+
         setRules(res.data.rule);
         setLoading(false);
-      }
-      );
+      });
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -56,9 +55,9 @@ const RulesContainer = () => {
           <div key={item.id}>
             {loading ? (
               <div>
-                <Skeleton animation='wave' height={20} width='10%' />
-                <Skeleton animation='pulse' width='100%' height={218} />
-                <Skeleton animation='wave' height={10} width='30%' />
+                {/* <Skeleton animation="wave" height={20} width="10%" />
+                <Skeleton animation="pulse" width="100%" height={218} />
+                <Skeleton animation="wave" height={10} width="30%" /> */}
               </div>
             ) : (
               <Rule
