@@ -29,14 +29,14 @@ const ProfilePage = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
   const handleClick = () => {
     axios
-      .post(`${URL}api/v1/users/logout`)
+      .post(`${URL}api/v1/users/logout`, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         res.data.status === "SUCCESS"
           ? history.push("/") 
           : alert("you're not log out");
-          isActive.setUserActive(false)
           user.setUserInfo({})
+          isActive.setUserActive(false)
       })
       .catch((err) => {
         // err msg
