@@ -31,6 +31,7 @@ const WriteGist = ({ history }) => {
 
   const [gistState, setGistState] = useState(gistDetails);
 
+<<<<<<< HEAD
   useEffect(() => {
     (async () => {
       await axios
@@ -51,6 +52,48 @@ const WriteGist = ({ history }) => {
   }, [gistState.image]);
 
   const URL = "https://smanhq.herokuapp.com/";
+=======
+  // useEffect(() => {
+  //   (async () => {
+  //     await axios
+
+  //       .post(`${URL}api/v1/gists/`, gistState, { withCredentials: true })
+
+  //       .then((res, req) => {
+  //         console.log(res.data);
+  //       })
+
+  //       .catch((err) => {
+  //         // err msg
+  //         console.log(err);
+
+  //         alert(err.response.data.message);
+  //       });
+  //   })();
+  // }, [gistState.image]);
+   // api call with axios in useEffect hook
+   useEffect(() => {
+    
+    const URL = "https://smanhq.herokuapp.com/";
+    axios
+
+    .post(`${URL}api/v1/gists/`, gistState, { withCredentials: true })
+
+    .then((res, req) => {
+      console.log(res.data);
+    })
+
+    .catch((err) => {
+      // err msg
+      console.log(err);
+
+      alert(err.response.data.message);
+    });
+    
+  }, [gistState]);
+
+   
+>>>>>>> 43e258f698fc7dabf3941c07be953a67e8efc5c9
 
   const handleSubmit = async (e) => {
     e.preventDefault();
