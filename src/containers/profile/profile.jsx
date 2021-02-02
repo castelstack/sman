@@ -36,7 +36,7 @@ const ProfilePage = ({ history }) => {
           ? history.push("/") 
           : alert("you're not log out");
           isActive.setUserActive(false)
-
+          user.setUserInfo({})
       })
       .catch((err) => {
         // err msg
