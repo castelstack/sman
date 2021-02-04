@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Container = styled.div`
 background-color: white;
 width: 250px;
+height:20rem;
 min-height: 10rem;
 
 
@@ -29,24 +30,16 @@ width: 3rem;
 color: blue;`;
 const RuleInfo = styled.div`
 display: grid;
-grid-template-rows: repeat(4, max-content);
+grid-template-rows: repeat(3, max-content);
 grid-gap: 20px;
 justify-items: center;`;
 const RuleNumber = styled(HeadText)`
 font-size: 18px;
 line-height: 25px;`;
 const Rule = styled(MedText)`
-font-size: 16px;
-
+font-size: 14px;
+color: #333;
 text-align: center;`;
-const Hr = styled.hr`
-  
- 
-    display: block;
-    border: none;
-    height: 3px;
-    background-color: #843035;
-    margin: 0px;`
 const RuleBox = ({rule}) => {
   
     return (
@@ -55,7 +48,7 @@ const RuleBox = ({rule}) => {
                 <RuleInfo>
                     <Icon src={ruleImg}/>
                 <RuleNumber>Stingy Rule!</RuleNumber>
-                <Hr/>
+                
                     <Rule>{rule}</Rule>
                 </RuleInfo>
            
