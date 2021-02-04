@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FileHandler from "../../firebase/fileHandler";
 import { PhotoCamera } from "@material-ui/icons";
 import { useFormik } from "formik";
