@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import Logout from '../../components/logout/logout';
 export const Container = styled.div`
   display: none;
 
@@ -7,14 +8,10 @@ export const Container = styled.div`
     display: block;
   }
 `;
-export const LogOut = styled.button`
+export const LogOut = styled(Logout)`
 
 
-border: none;
-font-size: 14px;
-background: red;
-color: #fff;
-padding: .9rem;
+
 
 `
 

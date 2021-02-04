@@ -20,6 +20,9 @@ export const Container = styled.div`
   }
 `;
 
+export const Img = styled.img`
+width: 10rem;
+height: 10rem;`
 export const WriteIn = styled.div`
   display: grid;
   grid-template-columns: 1fr;

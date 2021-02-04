@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { HeadText, SmText } from "../../constant/styles";
-
+import Logout from "../../components/logout/logout";
 import Bg from "../../images/bg.svg";
 export const Container = styled.div`
   background: url(${Bg});
@@ -62,9 +62,8 @@ export const Image = styled.img`
   height: 10rem;
   width: 10rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
- 
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
   // clip-path: polygon(
   //     0 10%,
   //     10% 0,
@@ -97,11 +96,13 @@ export const Position = styled(SmText)`
     font-size: 14px;
   }
 `;
-export const Cap = styled(SmText)`text-transform: capitalize;`
+export const Cap = styled(SmText)`
+  text-transform: capitalize;
+`;
 
 export const Branch = styled(SmText)`
-text-transform: capitalize;
-font-weight: 400;
+  text-transform: capitalize;
+  font-weight: 400;
   font-size: 30px;
   display: grid;
   grid-template-columns: repeat(2, max-content);
@@ -141,24 +142,18 @@ export const Oath = styled(SmText)`
   }
 `;
 
-export const LogOut = styled.button`
-justify-self: flex-end;
-margin: 0 100px;
-border: none;
-font-size: 14px;
-background: red;
-color: #fff;
-padding: .5rem;
-display: flex;
-align-items: center;
+export const LogOut = styled(Logout)`
+  width: 10rem;
+  margin: 0 100px;
 
-&:hover {
-  box-shadow: 5px 8px 9px -10px rgba(0, 0, 0, 0.4);
-  transform: translateY(-0.6px);
-}
-&:active {
-  transform: translateY(0.6px);
-}`
+  &:hover {
+    box-shadow: 5px 8px 9px -10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.6px);
+  }
+  &:active {
+    transform: translateY(0.6px);
+  }
+`;
 
 export const Sign = styled(SmText)`
   font-size: 30px;
@@ -183,23 +178,19 @@ export const Sign = styled(SmText)`
 `;
 
 export const StyName = styled.span`
-font-size: 30px;
+  font-size: 30px;
 
-font-weight: 600px;
-text-transform: uppercase;
+  font-weight: 600px;
+  text-transform: uppercase;
 
-@media only screen and (max-width: 800px) {
-  font-size: 16px;
-  
-  
-}
-@media only screen and (max-width: 620px) {
-  font-size: 15px;
-  
-}
+  @media only screen and (max-width: 800px) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 620px) {
+    font-size: 15px;
+  }
 
-@media only screen and (max-width: 500px) {
-  font-size: 14px;
- 
-}
-`
+  @media only screen and (max-width: 500px) {
+    font-size: 14px;
+  }
+`;

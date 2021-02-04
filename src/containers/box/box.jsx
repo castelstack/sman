@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr min-content;
   align-items: center;
   justify-content: space-between;
 
@@ -115,23 +115,25 @@ const ImageBox = styled.div`
     
 `;
 const Image = styled.img`
-  margin-left: auto;
+  width: 30rem;
+  height: 30rem;
+
 
   
     
     
   
-    animation: rotateFloat 120s infinite;
-    animation-timing-function: linear;
+    // animation: rotateFloat 120s infinite;
+    // animation-timing-function: linear;
     
-    @keyframes rotateFloat {
-      from {
-        transform:  rotate(0deg);
-      }
-      to {
-        transform:  rotate(360deg);
-      }
-    }
+    // @keyframes rotateFloat {
+    //   from {
+    //     transform:  rotate(0deg);
+    //   }
+    //   to {
+    //     transform:  rotate(360deg);
+    //   }
+    // }
   @media only screen and (max-width: 1200px) {
     width: 25rem;
   }

@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import Join from "../../images/join.png";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkIcon from "@material-ui/icons/Work";
-import axios from "axios";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { ActiveContext } from "../../utils/store";
+
 import {
   Container,
   AvatarName,
@@ -20,28 +19,7 @@ import {
 } from "./profile-style";
 
 const ProfilePage = ({ history }) => {
-  //const [user, setUser] = useState([]);
-  const isActive = useContext(ActiveContext);
   const user = useContext(ActiveContext);
-
-  const URL = "https://smanhq.herokuapp.com/";
-  // const URL = "http://127.0.0.1:5000/";
-  const handleClick = () => {
-    axios
-      .post(`${URL}api/v1/users/logout`, null, { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        res.data.status === "SUCCESS"
-          ? history.push("/")
-          : alert("you're not log out");
-        user.setUserInfo({});
-        isActive.setUserActive(false);
-      })
-      .catch((err) => {
-        // err msg
-        alert(err);
-      });
-  };
 
   return (
     <div>
@@ -75,9 +53,7 @@ const ProfilePage = ({ history }) => {
           association. So help me God.
         </Oath>
         <Sign>Sign: Mgt.</Sign>
-        <LogOut onClick={handleClick}>
-          Log out <ExitToAppIcon />
-        </LogOut>
+        <LogOut history={history} />
       </Container>
     </div>
   );
