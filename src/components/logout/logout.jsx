@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { useHistory } from "react-router-dom";
 import { ActiveContext } from "../../utils/store";
 import styled from "styled-components";
 
@@ -26,23 +27,26 @@ const LogOut = styled.button`
 const Logout = (props) => {
   //const [user, setUser] = useState([]);
   const isActive = useContext(ActiveContext);
-  const user = useContext(ActiveContext);
+
+  let history = useHistory();
 
   const URL = "https://smanhq.herokuapp.com/";
+
   const handleClick = () => {
     axios
       .post(`${URL}api/v1/users/logout`, null, { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
-        res.data.status === "SUCCESS"
-          ? props.history.goBack()
-          : alert("you're not log out");
-        user.setUserInfo({});
-        isActive.setUserActive(false);
+        if (res.data.status === "SUCCESS") {
+          history.push("/");
+
+          isActive.setUserActive(false);
+
+          isActive.setUserInfo(undefined);
+        }
       })
       .catch((err) => {
         // err msg
-        alert(err);
+        console.log(err);
       });
   };
 

@@ -30,7 +30,6 @@ const Login = ({ history }) => {
       password: "",
     },
     onSubmit: (values) => {
-      console.log("form data", formik.values);
       axios
         .post(`${URL}api/v1/users/login`, formik.values, {
           withCredentials: true,
@@ -40,6 +39,7 @@ const Login = ({ history }) => {
             alert.show(res.data.message);
 
             isActive.setUserActive(true);
+            isActive.setUserInfo(res.data.user);
 
             return history.push("/");
           }

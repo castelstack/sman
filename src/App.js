@@ -13,9 +13,10 @@ import WriteRules from "./containers/write/write-rules";
 import WriteGist from "./containers/write/write-gist";
 import ProfilePage from "../src/containers/profile/profile";
 import ResetPassword from "../src/components/reset-password/reset-password";
-import InputEmail from '../src/containers/input-email/input-email';
-import NewPassword from '../src/components/reset-password/new-password';
-import Error from '../src/pages/error/error';
+import InputEmail from "../src/containers/input-email/input-email";
+import NewPassword from "../src/components/reset-password/new-password";
+import Error from "../src/pages/error/error";
+
 import {
   transitions,
   types,
@@ -36,24 +37,23 @@ const options = {
 };
 function App(props) {
   return (
-    
-    <div className='App'>
+    <div className="App">
       <AlertProvider template={AlertTemplate} {...options}>
         <Router>
           <Header />
           <Switch>
-            <Route path='/' exact component={Homepage} />
-            <Route path='/gist' component={Gist} />
-            <Route path='/join' component={JoinUs} />
-            <Route path='/create' component={CreateId} />
-            <Route path='/rules-and-regulation' component={Rules} />
-            <Route path='/write-rules' exact component={WriteRules} />
-            <Route path='/write-gist' exact component={WriteGist} />
-            <Route path='/profile' exact component={ProfilePage} />
-            <Route path='/password-reset' exact component={ResetPassword} />
-            <Route path='/set-new-password' exact component={NewPassword} />
-            <Route path='/input-email' exact component={InputEmail} />
-            <Route path='*' exact component={Error} />
+            <Route path="/" exact component={Homepage} />
+            <Route path="/gist" component={Gist} />
+            <Route path="/join" component={JoinUs} />
+            <Route path="/create" component={CreateId} />
+            <Route path="/rules-and-regulation" component={Rules} />
+            <Route path="/write-rules" exact component={WriteRules} />
+            <Route path="/write-gist" exact component={WriteGist} />
+            <Route path="/profile" exact component={ProfilePage} />
+            <Route path="/password-reset" exact component={ResetPassword} />
+            <Route path="/set-new-password" exact component={NewPassword} />
+            <Route path="/input-email" exact component={InputEmail} />
+            <Route path="*" exact component={Error} />
           </Switch>
           <Footer />
         </Router>

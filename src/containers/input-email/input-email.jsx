@@ -5,7 +5,7 @@ import { useAlert } from "react-alert";
 import EmailIcon from "@material-ui/icons/Email";
 import styled from "styled-components";
 import Button from "../../components/button/button";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 
@@ -88,7 +88,7 @@ export const Email = styled(EmailOutlinedIcon)`
   margin-right: -3px;
   color: white;
 `;
-const ForgotPass = styled(Button)``;
+// const ForgotPass = styled(Button)``;
 
 const InputEmail = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";

@@ -19,7 +19,7 @@ const Urgent2k = ({ tag }) => {
         setGists(res.data.gist);
         setLoading(false);
       });
-  }, []);
+  }, [needle]);
 
   return (
     <div>
