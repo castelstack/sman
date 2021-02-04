@@ -20,18 +20,15 @@ export const ActiveProvider = ({ children }) => {
     axios
       .get(`${URL}api/v1/users/me`, { withCredentials: true })
       .then((res) => {
-        if (res.data.status === "SUCCESS") {
+        if (res.data.message === "SUCCESS") {
           setUserActive(true);
-        }
-
-        if (userActive) {
           setUserInfo(res.data.user);
         }
       })
       .catch(() => {
         console.log("You Are Not Currently Logged In 😭😭😭");
       });
-  }, [userActive]);
+  }, []);
   return (
     <ActiveContext.Provider
       value={{ userActive, setUserActive, userInfo, setUserInfo }}

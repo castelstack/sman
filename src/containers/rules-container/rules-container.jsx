@@ -47,10 +47,10 @@ const RulesContainer = () => {
     <div>
       <RulesBox />
       <AllRules>
-        {rules.map((item) => (
-          <div key={item.id}>
+        {rules.map((item, index) => (
+          <div key={index}>
             {loading ? (
-              <div>
+              <div key={index}>
                 <Skeleton animation="wave" height={20} width="10%" />
                 <Skeleton animation="pulse" width="100%" height={218} />
                 <Skeleton animation="wave" height={10} width="30%" />
@@ -59,6 +59,7 @@ const RulesContainer = () => {
               <Rule
                 number={item.id}
                 rule={item.title}
+                key={item.id}
                 id={item.createdBy}
                 count={item.likesCount}
               />

@@ -29,7 +29,7 @@ const ProfilePage = ({ history }) => {
           <Name>
             Sty {user.userInfo.firstName} {user.userInfo.lastName}
           </Name>
-          <StyName>Sman ID: {user.userInfo.id}</StyName>
+          <StyName>Sman ID: {user.userInfo.smanID}</StyName>
         </AvatarName>
 
         <PositionBranch>

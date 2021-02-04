@@ -168,7 +168,7 @@ const Join = () => {
                 type="text"
                 name="position"
                 onChange={handleChange}
-                value="Member"
+                value={data.position.toUpperCase()}
                 placeholder="Position"
                 disabled
               />

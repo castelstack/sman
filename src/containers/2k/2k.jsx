@@ -24,18 +24,19 @@ const Urgent2k = ({ tag }) => {
   return (
     <div>
       <PostBox>
-        {gists.map((item) => (
-          <div key={item}>
+        {gists.map((item, index) => (
+          <div key={index}>
             {loading ? (
-              <div>
+              <div key={index}>
                 <Skeleton animation="wave" height={20} width="10%" />
                 <Skeleton animation="pulse" width={1210} height={218} />
                 <Skeleton animation="wave" height={10} width="30%" />
               </div>
             ) : (
-              <div key={item.id}>
+              <div key={index}>
                 <GistsPost
                   tag={item.title}
+                  key={item._id}
                   gistspost={item.description}
                   image={item.image}
                   name={item.createdBy}

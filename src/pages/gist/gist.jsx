@@ -85,7 +85,7 @@ const Gist = (props) => {
           {tagState.map((tag) => (
             <Link
               to={`${url}?tag=${tag.slug}`}
-              activeStyle={active}
+              key={tag._id}
               onClick={() => setTagUrl(tag._id)}
             >
               {tag.title}
