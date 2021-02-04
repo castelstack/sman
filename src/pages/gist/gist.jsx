@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
-import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
+import { NavLink, Route, Link, useRouteMatch } from "react-router-dom";
 import Urgent2k from "../../containers/2k/2k";
-import Transport from "../../containers/transport/transport";
 import MobileTags from "../../components/mobile-tags/mobile-tags";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -44,37 +45,59 @@ const NavLinks = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition:  all
+  transition: all;
 `;
 
 const Gist = (props) => {
-  const { url, path } = useRouteMatch();
-  console.log(props);
+  const { url } = useRouteMatch();
+
+  const [tagState, setTagState] = useState([]);
+
+  const search = useLocation().search;
+
+  const tag = new URLSearchParams(search).get("tag");
+
+  const [tagUrlState, setTagUrl] = useState(tag);
+
+  useEffect(() => {
+    const URL = "https://smanhq.herokuapp.com/";
+    axios
+
+      .get(`${URL}api/v1/tags/`)
+
+      .then((res, req) => {
+        setTagState(res.data.tag);
+      })
+
+      .catch((err) => {
+        // err msg
+        console.log(err);
+
+        alert(err);
+      });
+  }, []);
+
   return (
     <Container>
       <Gistbox />
       <Navi>
-        <Breadcrumbs aria-label='breadcrumb'>
-          <NavLinks to={`${url}/urgent2k`} activeStyle={active}>
-            Urgent 2k
-          </NavLinks>
-          <NavLinks to={`${url}/transport`} activeStyle={active}>
-            Transport
-          </NavLinks>
-          <NavLinks to='2k'>Urgent 2k</NavLinks>
-          <NavLinks to='2k'>Urgent 2k</NavLinks>
-          <NavLinks to='2k'>Urgent 2k</NavLinks>
-          <NavLinks to='2k'>Urgent 2k</NavLinks>
+        <Breadcrumbs aria-label="breadcrumb">
+          {tagState.map((tag) => (
+            <Link
+              to={`${url}?tag=${tag.slug}`}
+              activeStyle={active}
+              onClick={() => setTagUrl(tag._id)}
+            >
+              {tag.title}
+            </Link>
+          ))}
         </Breadcrumbs>
       </Navi>
 
       <MobileTags />
+
       <Gists>
-        <Switch>
-          <Route path={`${path}/urgent2k`} component={Urgent2k} />
-          <Route path={`${path}/transport`} component={Transport} />
-          <Route path={path} component={Urgent2k} />
-        </Switch>
+        <Route path="/" component={() => <Urgent2k tag={tagUrlState} />} />
       </Gists>
     </Container>
   );

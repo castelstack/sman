@@ -4,7 +4,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkIcon from "@material-ui/icons/Work";
 import axios from "axios";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { ActiveContext } from '../../utils/store';
+import { ActiveContext } from "../../utils/store";
 import {
   Container,
   AvatarName,
@@ -19,30 +19,28 @@ import {
   Position,
 } from "./profile-style";
 
-
-
 const ProfilePage = ({ history }) => {
   //const [user, setUser] = useState([]);
   const isActive = useContext(ActiveContext);
   const user = useContext(ActiveContext);
- 
+
   const URL = "https://smanhq.herokuapp.com/";
+  // const URL = "http://127.0.0.1:5000/";
   const handleClick = () => {
     axios
-      .post(`${URL}api/v1/users/logout`, { withCredentials: true })
+      .post(`${URL}api/v1/users/logout`, null, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         res.data.status === "SUCCESS"
-          ? history.push("/") 
+          ? history.push("/")
           : alert("you're not log out");
-          user.setUserInfo({})
-          isActive.setUserActive(false)
+        user.setUserInfo({});
+        isActive.setUserActive(false);
       })
       .catch((err) => {
         // err msg
         alert(err);
       });
-    
   };
 
   return (
@@ -51,7 +49,6 @@ const ProfilePage = ({ history }) => {
         <AvatarName>
           <Image src={Join} />
           <Name>
-            
             Sty {user.userInfo.firstName} {user.userInfo.lastName}
           </Name>
           <StyName>Sman ID: {user.userInfo.id}</StyName>
@@ -59,11 +56,11 @@ const ProfilePage = ({ history }) => {
 
         <PositionBranch>
           <Position>
-            <WorkIcon color='primary' />
+            <WorkIcon color="primary" />
             Position: {user.userInfo.position}
           </Position>
           <Branch>
-            <LocationOnIcon color='action' />
+            <LocationOnIcon color="action" />
             Branch: {user.userInfo.branch}
           </Branch>
         </PositionBranch>

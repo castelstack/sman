@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RulesBox from "../box/rules-box";
 import Rule from "../../components/rule/rule";
 import axios from "axios";
-// import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@material-ui/lab/Skeleton";
 import styled from "styled-components";
 
 const AllRules = styled.div`
@@ -32,19 +32,15 @@ const AllRules = styled.div`
 
 const RulesContainer = () => {
   const [loading, setLoading] = useState(true);
-  const [rules, setRules] = useState([]);
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(true);
-      axios.get("https://smanhq.herokuapp.com/api/v1/rules?").then((res) => {
-        console.log(res.session);
 
-        setRules(res.data.rule);
-        setLoading(false);
-      });
-    }, 2000);
-    return () => clearTimeout(timer);
+  const [rules, setRules] = useState([1, 2, 3]);
+
+  useEffect(() => {
+    axios.get("https://smanhq.herokuapp.com/api/v1/rules?").then((res) => {
+      setRules(res.data.rule);
+
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -55,9 +51,9 @@ const RulesContainer = () => {
           <div key={item.id}>
             {loading ? (
               <div>
-                {/* <Skeleton animation="wave" height={20} width="10%" />
+                <Skeleton animation="wave" height={20} width="10%" />
                 <Skeleton animation="pulse" width="100%" height={218} />
-                <Skeleton animation="wave" height={10} width="30%" /> */}
+                <Skeleton animation="wave" height={10} width="30%" />
               </div>
             ) : (
               <Rule

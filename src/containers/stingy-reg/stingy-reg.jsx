@@ -1,12 +1,12 @@
- import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 // import Image from "../../images/Visual.png";
 import StingyCard from "./stingy-card";
 import { exportComponentAsPNG } from "react-component-export-image";
-import { useAlert } from 'react-alert'
+import { useAlert } from "react-alert";
 import ImageUploading from "react-images-uploading";
 //import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
-import Spinner from '../../components/spinner/spinner'
-
+import Spinner from "../../components/spinner/spinner";
+import { ActiveContext } from "../../utils/store";
 
 import {
   Container,
@@ -17,36 +17,46 @@ import {
   InputFied,
   ContiuneButton,
   Position,
-  Password,
   UploadBox,
   Uploadbutton,
   Frame,
   Size,
 } from "./stingy-reg.style";
 
-
-
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-
-
-
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 const Join = () => {
+  const user = useContext(ActiveContext);
+
+  let position = "SUPPORTER";
+
+  let branch = "NOT ASSIGNED";
+
+  let smanId = "ASPIRANT";
+
+  if (user.userInfo) {
+    position = user.userInfo.position;
+
+    branch = user.userInfo.branch;
+
+    smanId = user.userInfo.smanID;
+  }
+
   const [data, setData] = useState({
     names: "",
-    position: "",
-    location: "",
-    sman_id: "",
+    position: position,
+    branch: branch,
+    sman_id: smanId,
   });
   const [images, setImages] = React.useState([]);
   const maxNumber = 1;
-  const [change, setChange] = useState(false)
-  const alert = useAlert()
+  const [change, setChange] = useState(false);
+  const alert = useAlert();
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    
+
     setImages(imageList);
-    setChange(true)
+    setChange(true);
   };
 
   const handleSubmit = (event) => {
@@ -63,7 +73,6 @@ const Join = () => {
     });
   };
 
-
   //preview card
   const Print = React.forwardRef((props, ref) => (
     <Size ref={ref}>
@@ -73,25 +82,23 @@ const Join = () => {
           names={data.names}
           position={data.position}
           branch={data.branch}
+          sman_id={data.sman_id}
           image={image["data_url"]}
         />
       ))}
     </Size>
   ));
-  
 
   const componentRef = useRef();
 
   const handleClick = (event) => {
     event.preventDefault();
-  exportComponentAsPNG(componentRef);
-  alert.show('Card Generated');
-}
-
+    exportComponentAsPNG(componentRef);
+    alert.show("Card Generated");
+  };
 
   return (
     <Container>
-    
       <Content>
         <UploadBox>
           <ImageUploading
@@ -99,28 +106,26 @@ const Join = () => {
             value={images}
             onChange={onChange}
             maxNumber={maxNumber}
-            dataURLKey='data_url'
-           
+            dataURLKey="data_url"
           >
             {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
               // write your building UI
-              <Frame className='upload__image-wrapper'>
+              <Frame className="upload__image-wrapper">
                 <Uploadbutton onClick={onImageUpload}>
-                <PhotoCamera /> Add Photo
+                  <PhotoCamera /> Add Photo
                 </Uploadbutton>
-            
+
                 {imageList.map((image, index) => (
                   <div
                     key={index}
-                    className='image-item'
+                    className="image-item"
                     style={{ display: "flex" }}
-                     
                   >
                     <img
                       src={image["data_url"]}
-                      alt=''
-                      width='180'
-                      height='170'
+                      alt=""
+                      width="180"
+                      height="170"
                     />
 
                     {/* <i onClick={() => onImageRemove(image["data_url"])}>
@@ -134,10 +139,11 @@ const Join = () => {
         </UploadBox>
 
         <Form>
-         
-          {
-            change ?   <Print ref={componentRef} style={{ display: "none" }} /> :  <Spinner />
-                }
+          {change ? (
+            <Print ref={componentRef} style={{ display: "none" }} />
+          ) : (
+            <Spinner />
+          )}
           <form
             onSubmit={handleSubmit}
             style={{
@@ -149,42 +155,26 @@ const Join = () => {
             <Box>
               <Icon />
               <InputFied
-                type='text'
-                name='names'
+                type="text"
+                name="names"
                 onChange={handleChange}
                 value={data.names.target}
-                placeholder='Name'
+                placeholder="Name"
               />
             </Box>
             <Box>
               <Position />
               <InputFied
-                type='text'
-                name='position'
+                type="text"
+                name="position"
                 onChange={handleChange}
-                value='Member'
-                placeholder='Position'
+                value="Member"
+                placeholder="Position"
                 disabled
               />
             </Box>
-            <Box>
-              <Password />
-              <InputFied
-                type='text'
-                name='branch'
-                onChange={handleChange}
-                value={data.location.target}
-                placeholder='Stingy branch'
-              />
-            </Box>
           </form>
-          <ContiuneButton
-            value='Generate Card'
-            big
-            onClick={handleClick}
-           
-          />
-          
+          <ContiuneButton value="Generate Card" big onClick={handleClick} />
         </Form>
       </Content>
     </Container>
@@ -192,5 +182,3 @@ const Join = () => {
 };
 
 export default Join;
-
-

@@ -51,7 +51,6 @@ const FeatureRules = () => {
           setRules(res.data.rule);
           console.log(res.data);
         });
-
     };
 
     fetchData();
@@ -71,8 +70,8 @@ const FeatureRules = () => {
           </RulesBox>
         ))}
       </RulesBox>
-      <Link to='/rules-and-regulation'>
-        <Button value='Read All Rules' big />
+      <Link to="/rules-and-regulation">
+        <Button value="Read All Rules" big />
       </Link>
     </Container>
   );

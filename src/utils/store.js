@@ -5,28 +5,26 @@ export const UserContext = createContext();
 
 export const ActiveProvider = ({ children }) => {
   const [userActive, setUserActive] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-  });
-  
+  const [userInfo, setUserInfo] = useState({});
 
   // api call with axios in useEffect hook
   useEffect(() => {
-    
     const URL = "https://smanhq.herokuapp.com/";
+    // const URL = "http://127.0.0.1:5000/";
     axios
-    .get(`${URL}api/v1/users/me`, { withCredentials: true })
-    .then((res) => {
-      console.log(res.data);
-      setUserInfo(res.data.user)
-      setUserActive(res.data.user.active);
-      console.log(res.data.user.active)
-    })
-    
+      .get(`${URL}api/v1/users/me`, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        setUserInfo(res.data.user);
+        setUserActive(res.data.user.active);
+        console.log(res.data.user.active);
+      });
   }, [setUserInfo, setUserActive]);
   return (
-    <ActiveContext.Provider value={{ userActive, setUserActive, userInfo, setUserInfo }}>
+    <ActiveContext.Provider
+      value={{ userActive, setUserActive, userInfo, setUserInfo }}
+    >
       {children}
     </ActiveContext.Provider>
   );
 };
-

@@ -92,48 +92,48 @@ export const InputField = styled.input`
   }
 `;
 
-const NewPassword = ({history}) => {
-
-   
+const NewPassword = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
+
+  const alert = useAlert();
+
   const formik = useFormik({
     initialValues: {
       password: "",
-      passwordConfirm: ""
+      passwordConfirm: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log("form data", formik.values);
       axios
-        .post(`${URL}api/v1/users/resetpassword/`, formik.values)
+        .post(`${URL}api/v1/users/resetpassword/`, formik.values, {
+          withCredentials: true,
+        })
         .then((res) => {
-          console.log(res.data);
-          res.data.status === "SUCCESS"
-            ? history.push("/join")
-            : alert("New password failed!");
+          if (res.data.status === "SUCCESS") {
+            alert.show(`${res.data.message} LOGIN WITH YOUR NEW PASSWORD`);
+
+            return history.push("/join");
+          }
         })
         .catch((err) => {
-          // what now?
-          alert(err.response.data.message);
+          // what now? error message
+          alert.error(err.response.data.message);
         });
     },
   });
-  const alert = useAlert();
-  const handleClick = () => {
-    alert.show("Password set");
-  };
+
   return (
     <Container>
       <LockIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
       <HdText>New Password</HdText>
       <Text>re-set your password with a strong password</Text>
-      <Box>
+      <form onSubmit={formik.handleSubmit} method="post">
+        <Box>
           <Password />
           <InputField
-            id='password'
-            name='password'
-            type='password'
-            placeholder='Password'
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
@@ -141,15 +141,16 @@ const NewPassword = ({history}) => {
         <Box>
           <Password />
           <InputField
-            id='passwordConfirm'
-            name='passwordConfirm'
-            type='password'
-            placeholder='Confirm password'
+            id="passwordConfirm"
+            name="passwordConfirm"
+            type="password"
+            placeholder="Confirm password"
             onChange={formik.handleChange}
             value={formik.values.passwordConfirm}
           />
         </Box>
-      <Button value='Confirm' onClick={handleClick} />
+        <Button type="submit" value="Confirm" onClick={formik.handleSubmit} />
+      </form>
     </Container>
   );
 };
