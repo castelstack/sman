@@ -21,32 +21,10 @@ import {
 
 
 const ProfilePage = ({ history }) => {
-  //const [user, setUser] = useState([]);
-  
+ 
   const user = useContext(ActiveContext);
  
-<<<<<<< HEAD
  
-=======
-  const URL = "https://smanhq.herokuapp.com/";
-  const handleClick = () => {
-    axios
-      .post(`${URL}api/v1/users/logout`,null, { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        res.data.status === "SUCCESS"
-          ? history.push("/") 
-          : alert("you're not log out");
-          user.setUserInfo({})
-          isActive.setUserActive(false)
-      })
-      .catch((err) => {
-        // err msg
-        alert(err);
-      });
-    
-  };
->>>>>>> 6841dba1ffe987a3293aae064989dc744fdd5316
 
   return (
     <div>
