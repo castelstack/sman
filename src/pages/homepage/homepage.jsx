@@ -8,8 +8,8 @@ import GetCard from "../../containers/get-card/get-card";
 import styled from "styled-components";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 `;
 
 const Homepage = () => {

@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 //import List from "@material-ui/core/List";
 import MenuIcon from "@material-ui/icons/Menu";
 import { ActiveContext } from "../../utils/store";
-import axios from "axios";
+
 import Logo from "../../components/logo/logo";
 
 import { Divider } from "@material-ui/core";
@@ -28,21 +28,6 @@ export default function Drawer(props) {
     right: false,
   });
   const isActive = useContext(ActiveContext);
-
-  //handle click func
-  const handleClick = (values) => {
-    axios
-      .post(`${URL}api/v1/users/logout`)
-      .then((res, req) => {
-        console.log(res.data);
-        console.log(req);
-      })
-      .catch((err) => {
-        // err msg
-        alert(err);
-        //alert(err.response.data.message);
-      });
-  };
 
   //material ui config for drawer continue
   const toggleDrawer = (anchor, open) => (event) => {
@@ -89,7 +74,7 @@ export default function Drawer(props) {
             Profile
           </Link>
 
-          <LogOut onClick={handleClick}>Log out</LogOut>
+         <LogOut history={props.history}/>
         </List>
       ) : (
         <List>

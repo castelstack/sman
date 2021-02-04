@@ -26,10 +26,10 @@ const Container = styled.div`
 
 const CounterBox = styled.div`
 display: grid;
-grid-template-columns: repeat(3, min-content);
+grid-template-columns: repeat(3, max-content);
 grid-gap: 5px;
 justify-content: space-between;
-padding: 18px 150px;
+padding: 15px 150px;
 background: #fff;
 
 @media only screen and (max-width: 1200px) {
@@ -85,10 +85,11 @@ const CountInfo = styled.div`
   grid-template-columns: repeat(2, max-content);
   grid-gap: 2px;
   align-items: center;
+ 
 `;
 const Icon = styled.img``;
 const Text = styled(SmText)`
-line-height: 9px;
+line-height: 24px;
 @media only screen and (max-width: 1200px) {
   font-size: 15px;
 
