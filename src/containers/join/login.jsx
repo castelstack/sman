@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useFormik } from "formik";
 import { useAlert } from "react-alert";
+import message from "../../constant/response";
 import {
   Email,
   Password,
@@ -46,7 +47,8 @@ const Login = ({ history }) => {
         })
         .catch((err) => {
           // err msg
-          alert.error(err.response.data.message);
+
+          alert.error(message(err));
         });
     },
   });

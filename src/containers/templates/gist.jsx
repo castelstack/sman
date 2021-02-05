@@ -4,7 +4,7 @@ import { PostBox } from "../../constant/styles";
 import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-const Urgent2k = ({ tag }) => {
+const GistTemplate = ({ tag }) => {
   const [loading, setLoading] = useState(true);
 
   const [gists, setGists] = useState([1, 2, 3]);
@@ -50,4 +50,4 @@ const Urgent2k = ({ tag }) => {
   );
 };
 
-export default Urgent2k;
+export default GistTemplate;

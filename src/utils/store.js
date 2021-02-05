@@ -10,7 +10,15 @@ export const ActiveContext = createContext({
 export const ActiveProvider = ({ children }) => {
   const [userActive, setUserActive] = useState(false);
 
-  const [userInfo, setUserInfo] = useState(undefined);
+  const [userInfo, setUserInfo] = useState({
+    firstName: "<name>",
+
+    smanID: "<smanID>",
+
+    position: "<position>",
+
+    branch: "<branch>",
+  });
 
   // api call with axios in useEffect hook
   useEffect(() => {
@@ -20,7 +28,7 @@ export const ActiveProvider = ({ children }) => {
     axios
       .get(`${URL}api/v1/users/me`, { withCredentials: true })
       .then((res) => {
-        if (res.data.message === "SUCCESS") {
+        if (res.data.status === "SUCCESS") {
           setUserActive(true);
           setUserInfo(res.data.user);
         }

@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import React from "react";
+import message from "../../constant/response";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useAlert } from "react-alert";
@@ -50,7 +51,7 @@ const SignupForm = (props) => {
 
         .catch((err) => {
           // what now? render error message
-          alert.error(err.response.data.message);
+          alert.error(message(err));
           // console.log(err);
         });
     },

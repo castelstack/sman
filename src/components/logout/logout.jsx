@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import message from "../../constant/response";
 import { useHistory } from "react-router-dom";
 import { ActiveContext } from "../../utils/store";
 import styled from "styled-components";
@@ -46,7 +47,7 @@ const Logout = (props) => {
       })
       .catch((err) => {
         // err msg
-        console.log(err);
+        console.log(message(err));
       });
   };
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
+import message from "../../constant/response";
 import { NavLink, Route, Link, useRouteMatch } from "react-router-dom";
-import Urgent2k from "../../containers/2k/2k";
+import { useAlert } from "react-alert";
+import GistTemplate from "../../containers/templates/gist";
 import MobileTags from "../../components/mobile-tags/mobile-tags";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
@@ -51,6 +53,8 @@ const NavLinks = styled(NavLink)`
 const Gist = (props) => {
   const { url } = useRouteMatch();
 
+  const alert = useAlert();
+
   const [tagState, setTagState] = useState([]);
 
   const search = useLocation().search;
@@ -71,9 +75,8 @@ const Gist = (props) => {
 
       .catch((err) => {
         // err msg
-        console.log(err);
 
-        alert(err);
+        alert.error(message(err));
       });
   }, []);
 
@@ -97,7 +100,7 @@ const Gist = (props) => {
       <MobileTags />
 
       <Gists>
-        <Route path="/" component={() => <Urgent2k tag={tagUrlState} />} />
+        <Route path="/" component={() => <GistTemplate tag={tagUrlState} />} />
       </Gists>
     </Container>
   );

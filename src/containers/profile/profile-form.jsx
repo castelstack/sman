@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import axios from "axios";
+import message from "../../constant/response";
 import { Form } from "../join/join.style";
 import Button from "../../components/button/button";
 import styled from "styled-components";
@@ -99,7 +100,7 @@ const ProfileForm = (props) => {
         })
         .catch((err) => {
           // what now?
-          alert(err.response.data.message);
+          alert(message(err));
         });
       uploadFile();
     },
@@ -113,19 +114,19 @@ const ProfileForm = (props) => {
   return (
     <Container>
       <div>
-        <Label htmlFor='upload'>
+        <Label htmlFor="upload">
           <PhotoCamera />
           Add picture
         </Label>
-        <InputImg type='file' onChange={getInputFile} id='upload' />
+        <InputImg type="file" onChange={getInputFile} id="upload" />
       </div>
       <Form>
         <Box>
           <InputField
-            id='firstName'
-            name='firstName'
-            type='text'
-            placeholder='First name'
+            id="firstName"
+            name="firstName"
+            type="text"
+            placeholder="First name"
             onChange={formik.handleChange}
             value={formik.values.firstName}
           />
@@ -133,20 +134,20 @@ const ProfileForm = (props) => {
 
         <Box>
           <InputField
-            id='lastName'
-            name='lastName'
-            type='text'
-            placeholder='Last name'
+            id="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Last name"
             onChange={formik.handleChange}
             value={formik.values.lastName}
           />
         </Box>
         <Box>
           <InputField
-            id='branch'
-            name='branch'
-            type='text'
-            placeholder='State, e.g Abuja'
+            id="branch"
+            name="branch"
+            type="text"
+            placeholder="State, e.g Abuja"
             onChange={formik.handleChange}
             value={formik.values.branch}
           />
@@ -154,10 +155,10 @@ const ProfileForm = (props) => {
 
         <Box>
           <InputField
-            id='email'
-            name='email'
-            type='email'
-            placeholder='Email'
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
             onChange={formik.handleChange}
             value={formik.values.email}
           />
@@ -165,16 +166,16 @@ const ProfileForm = (props) => {
 
         <Box>
           <InputField
-            id='password'
-            name='password'
-            type='password'
-            placeholder='Password'
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
         </Box>
       </Form>
-      <Button value='Save' />
+      <Button value="Save" />
     </Container>
   );
 };

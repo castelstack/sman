@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FileHandler from "../../firebase/fileHandler";
 import { PhotoCamera } from "@material-ui/icons";
+import message from "../../constant/response";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useAlert } from "react-alert";
@@ -19,9 +20,15 @@ import {
   Img,
 } from "./write.style";
 
+import { Box, InputField } from "../join/join.style";
+
 const WriteGist = ({ history }) => {
   const uploadDispatcher = FileHandler();
+
   const alert = useAlert();
+
+  const [tagState, setTagState] = useState([]);
+
   const { uploadFile, imageUrl, getInputFile } = uploadDispatcher;
 
   const handleClick = (e) => {
@@ -34,15 +41,31 @@ const WriteGist = ({ history }) => {
 
   const URL = "https://smanhq.herokuapp.com/";
 
+  useEffect(() => {
+    const URL = "https://smanhq.herokuapp.com/";
+    axios
+
+      .get(`${URL}api/v1/tags/`)
+
+      .then((res, req) => {
+        setTagState(res.data.tag);
+      })
+
+      .catch((err) => {
+        // err msg
+
+        alert.error(message(err));
+      });
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       title: "",
       description: "",
       image: "",
+      tag: "",
     },
     onSubmit: (values) => {
-      alert.show(JSON.stringify(values, null, 2));
-      console.log("form data", formik.values);
       axios
         .post(`${URL}api/v1/gists/`, formik.values, { withCredentials: true })
         .then((res, req) => {
@@ -53,7 +76,7 @@ const WriteGist = ({ history }) => {
         })
         .catch((err) => {
           // err msg
-          alert.show(err);
+          alert.show(message(err));
         });
     },
   });
@@ -68,15 +91,29 @@ const WriteGist = ({ history }) => {
         <WriteIn>
           <TextTitle>Pick a stingy title</TextTitle>
           <Select
-            name="title"
-            value={formik.values.title}
+            name="tag"
+            value={formik.values.tag}
             onChange={formik.handleChange}
           >
-            <Option value="All">Choose stingy title</Option>
-            <Option value="Urgent2k">Urgent2k</Option>
-            <Option value="Valentine">Valentine</Option>
-            <Option value="Transport">Transport</Option>
+            <Option value="All">Choose stingy tag</Option>
+
+            {tagState.map((tag, index) => (
+              <Option key={index} value={tag._id}>
+                {tag.title}
+              </Option>
+            ))}
           </Select>
+
+          <Box>
+            <InputField
+              id="title"
+              name="title"
+              type="text"
+              placeholder="Stingy Gist Title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
+            />
+          </Box>
 
           <TextGist
             label="Write your rules"
@@ -84,11 +121,6 @@ const WriteGist = ({ history }) => {
             placeholder="Your Stingy Gist"
             onChange={formik.handleChange}
             value={formik.values.description}
-          />
-          <TextGist
-            name="description"
-            onChange={imageUrl}
-            value={formik.values.image}
           />
         </WriteIn>
 

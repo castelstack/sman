@@ -2,6 +2,7 @@ import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import { useFormik } from "formik";
 import { useAlert } from "react-alert";
+import message from "../../constant/response";
 import EmailIcon from "@material-ui/icons/Email";
 import styled from "styled-components";
 import Button from "../../components/button/button";
@@ -114,7 +115,7 @@ const InputEmail = ({ history }) => {
         })
         .catch((err) => {
           // err msg
-          alert.error(err.response.data.message);
+          alert.error(message(err));
         });
     },
   });

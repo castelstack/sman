@@ -3,6 +3,7 @@ import { HeadText, MedText } from "../../constant/styles";
 import Button from "../button/button";
 import axios from "axios";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
+import message from "../../constant/response";
 import { useFormik } from "formik";
 import LockIcon from "@material-ui/icons/Lock";
 import { useAlert } from "react-alert";
@@ -116,7 +117,7 @@ const NewPassword = ({ history }) => {
         })
         .catch((err) => {
           // what now? error message
-          alert.error(err.response.data.message);
+          alert.error(message(err));
         });
     },
   });

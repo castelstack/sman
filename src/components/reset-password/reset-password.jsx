@@ -2,6 +2,7 @@ import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import Button from "../button/button";
 import reset from "../../images/reset.svg";
+import message from "../../constant/response";
 import styled from "styled-components";
 import axios from "axios";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
@@ -115,7 +116,7 @@ const ResetPassword = ({ history }) => {
         })
         .catch((err) => {
           // err msg
-          alert.error(err.response.data.message);
+          alert.error(message(err));
         });
     },
   });
