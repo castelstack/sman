@@ -3,33 +3,32 @@ import { HeadText, SmText } from "../../constant/styles";
 import GistCard from "../../components/gist-card/gist-card";
 import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
-import bg from "../../images/bg.svg";
+import bg from "../../images/gbg.svg";
 import styled from "styled-components";
 
 const Container = styled.div`
   display: grid;
   grid-template-rows: repeat(4, min-content);
   grid-gap: 30px;
-  padding: 99px;
-  background: #843035;
+  padding: 48px 99px;
+  
   justify-items: center;
   background-image: url(${bg});
-  background-repeat: no-repeat;
 
   animation: color-me-in 5s infinite;
 
 
-@keyframes color-me-in {
-  0% {
-    background-image: radial-gradient(circle, #ff000f, #e21722, #c3232d, #a42b32, #843035);
-  }
-  50% {
-    background-image: linear-gradient(to right, #843035, #a42b32, #c3232d, #e21722, #ff000f);
-  }
-  100% {
-    background-image: linear-gradient(to left, #843035, #a32b32, #c1232c, #de1622, #fa000f);
-  }
-}
+// @keyframes color-me-in {
+//   0% {
+//     background-image: radial-gradient(circle, #ff000f, #e21722, #c3232d, #a42b32, #843035);
+//   }
+//   50% {
+//     background-image: linear-gradient(to right, #843035, #a42b32, #c3232d, #e21722, #ff000f);
+//   }
+//   100% {
+//     background-image: linear-gradient(to left, #843035, #a32b32, #c1232c, #de1622, #fa000f);
+//   }
+// }
   @media only screen and (max-width: 750px) {
     grid-gap: 20px;
     padding: 99px 50px;

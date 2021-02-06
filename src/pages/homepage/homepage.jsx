@@ -5,22 +5,15 @@ import FeatureRules from "../../containers/feature-rules/feature-rules";
 import FeatureGist from "../../containers/feature-gist/feature-gist";
 import GetCard from "../../containers/get-card/get-card";
 
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-`;
-
 const Homepage = () => {
   return (
-    <Container>
+    <div>
       <Box />
       <Counter />
       <FeatureRules />
       <FeatureGist />
       <GetCard />
-    </Container>
+    </div>
   );
 };
 

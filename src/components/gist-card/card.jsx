@@ -2,6 +2,7 @@ import React from "react";
 import { MedText, SmText } from "../../constant/styles";
 import styled from "styled-components";
 import { Avatar } from "@material-ui/core";
+import AvatarP from "../../images/avatar.svg";
 import ShowMoreText from "react-show-more-text";
 import "./giststyle.css";
 
@@ -14,6 +15,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
+width: 20rem;
   background: #fcea4a;
   display: grid;
   grid-template-rows: repeat(2, min-content);
@@ -86,7 +88,7 @@ const Card = ({ title, gist, name }) => {
         </ShowMoreText>
       </Content>
       <Profile>
-        <Avatar>H</Avatar>
+        <Avatar src={AvatarP} alt='profile'/>
         <Name>{name}</Name>
       </Profile>
     </Container>

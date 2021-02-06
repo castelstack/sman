@@ -59,8 +59,8 @@ export const Name = styled(HeadText)`
 text-transform; capitalize;`;
 export const Image = styled.img`
   border-radius: 10rem;
-  height: 10rem;
-  width: 10rem;
+  height: 9rem;
+  width: 9rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
   margin-bottom: 20px;

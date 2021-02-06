@@ -7,8 +7,7 @@ import styled from 'styled-components';
 const Container = styled.div`
 background-color: white;
 width: 250px;
-height:20rem;
-min-height: 10rem;
+min-height: 15rem;
 
 
 
@@ -22,7 +21,10 @@ display: flex;
 padding: 20px;
 margin: 5px;
 box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-
+transition: all .2s ease-out;
+&:hover{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 `
 const Icon = styled.img`
 height: 4rem;

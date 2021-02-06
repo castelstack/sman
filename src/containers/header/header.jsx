@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/button/button";
 import Drawer from "../../components/drawer/drawer";
 import { Avatar } from "@material-ui/core";
-import join from "../../images/join.png";
+import AvatarP from "../../images/avatar.svg";
 import { ActiveContext } from '../../utils/store';
 import {
   Container,
@@ -42,7 +42,7 @@ export default function ButtonAppBar() {
               <Button value='Generate Card' />
             </ButtonLink>
             <HeaderLink to='/profile'>
-              <Avatar alt='profile pic' src={join} />
+              <Avatar alt='profile pic' src={AvatarP} />
             </HeaderLink> 
                 </> :
                 <>

@@ -15,7 +15,7 @@ const Container = styled.div`
   padding: 150px 80px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 30px;
+  grid-gap: 10px;
   justify-items: center;
 `;
 
@@ -29,7 +29,7 @@ const HdText = styled(HeadText)`
 `;
 
 const Text = styled(MedText)`
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
 
   @media only screen and (max-width: 1200px) {
@@ -89,6 +89,13 @@ export const Email = styled(EmailOutlinedIcon)`
   margin-right: -3px;
   color: white;
 `;
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-items: center;
+`;
 // const ForgotPass = styled(Button)``;
 
 const InputEmail = ({ history }) => {
@@ -129,14 +136,14 @@ const InputEmail = ({ history }) => {
       <EmailIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
       <HdText>Recovery email</HdText>
       <Text>Input your email for recovery code.</Text>
-      <form onSubmit={formik.handleSubmit} method="post">
+      <Form onSubmit={formik.handleSubmit} method='post'>
         <Box>
           <Email />
           <InputField
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
+            id='email'
+            name='email'
+            type='email'
+            placeholder='Email'
             onChange={formik.handleChange}
             value={formik.values.email}
           />
@@ -144,12 +151,12 @@ const InputEmail = ({ history }) => {
 
         {/* <Link to="/password-reset" style={{ color: "#843035" }}> */}
         <Button
-          type="submit"
+          type='submit'
           onClick={formik.handleSubmit}
-          value="Confirm code"
+          value='Confirm code'
         />
         {/* </Link> */}
-      </form>
+      </Form>
     </Container>
   );
 };

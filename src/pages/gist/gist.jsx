@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
 import message from "../../constant/response";
-import { NavLink, Route, Link, useRouteMatch } from "react-router-dom";
+import { NavLink, Route, useRouteMatch } from "react-router-dom";
 import { useAlert } from "react-alert";
 import GistTemplate from "../../containers/templates/gist";
 import { ActiveContext } from "../../utils/store";
@@ -42,7 +42,7 @@ const NavLinks = styled(NavLink)`
   color: #18191f;
   padding: 5px 7px;
   text-decoration: none;
-
+text-transfrom: capitalize;
   box-sizing: border-box;
   border-radius: 5px;
   display: flex;
@@ -81,7 +81,7 @@ const Gist = (props) => {
 
         alert.error(message(err));
       });
-  }, []);
+  }, [alert]);
 
   return (
     <Container>
@@ -89,27 +89,29 @@ const Gist = (props) => {
       <Navi>
         <Breadcrumbs aria-label="breadcrumb">
           {currentUser.userActive ? (
-            <Link
+            <NavLinks
               to={`${url}/me`}
               key={1}
               onClick={() =>
                 setTagUrl(`createdBy=${currentUser.userInfo.smanID}`)
               }
+              activeStyle={active}
             >
               My Gists
-            </Link>
+            </NavLinks>
           ) : (
             ""
           )}
 
           {tagState.map((tag) => (
-            <Link
+            <NavLinks
               to={`${url}?tag=${tag.slug}`}
               key={tag._id}
               onClick={() => setTagUrl(`tag=${tag._id}`)}
+              activeStyle={active}
             >
               {tag.title}
-            </Link>
+            </NavLinks>
           ))}
         </Breadcrumbs>
       </Navi>

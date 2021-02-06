@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Join from "../../images/join.png";
+import Avatar from "../../images/avatar.svg";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkIcon from "@material-ui/icons/Work";
 import { ActiveContext } from "../../utils/store";
@@ -25,7 +25,7 @@ const ProfilePage = ({ history }) => {
     <div>
       <Container key={user.userInfo.id}>
         <AvatarName>
-          <Image src={Join} />
+          <Image src={Avatar} />
           <Name>
             Sty {user.userInfo.firstName} {user.userInfo.lastName}
           </Name>

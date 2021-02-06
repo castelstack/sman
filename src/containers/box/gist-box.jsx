@@ -95,6 +95,8 @@ display: flex;
 justify-content: end;`;
 
 const Image = styled.img`
+width: 30rem;
+  height: 30rem;
 margin-left: auto;
 color: black;
 animation: rotateFloat 120s infinite;
