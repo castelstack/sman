@@ -1,6 +1,10 @@
+/* eslint-disable no-restricted-globals */
 import React from "react";
+import message from "../../constant/response";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useAlert } from "react-alert";
+
 import {
   FormContainer,
   Box,
@@ -19,8 +23,11 @@ const SignupForm = (props) => {
   // could come from props, but since we don't want to prefill this form,
   // we just use an empty string. If you don't do this, React will yell
   // at you.
-  
+
   const URL = "https://smanhq.herokuapp.com/";
+
+  const alert = useAlert();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -32,19 +39,20 @@ const SignupForm = (props) => {
       lastName: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log("form data", formik.values);
       axios
         .post(`${URL}api/v1/users/signup`, formik.values)
         .then((res) => {
-          console.log(res.data);
-          res.data.status === "SUCCESS"
-            ? props.history.goBack()
-            : alert("Registeration failed!");
+          if (res.data.status === "SUCCESS") {
+            alert.show(res.data.message);
+          }
+
+          setTimeout(() => location.replace("/join/login"), 1000);
         })
+
         .catch((err) => {
-          // what now?
-          alert(err.response.data.message);
+          // what now? render error message
+          alert.error(message(err));
+          // console.log(err);
         });
     },
   });
@@ -55,10 +63,10 @@ const SignupForm = (props) => {
         <Box>
           <Icon />
           <InputField
-            id='firstName'
-            name='firstName'
-            type='text'
-            placeholder='First name'
+            id="firstName"
+            name="firstName"
+            type="text"
+            placeholder="First name"
             onChange={formik.handleChange}
             value={formik.values.firstName}
           />
@@ -67,10 +75,10 @@ const SignupForm = (props) => {
         <Box>
           <Person />
           <InputField
-            id='lastName'
-            name='lastName'
-            type='text'
-            placeholder='Last name'
+            id="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Last name"
             onChange={formik.handleChange}
             value={formik.values.lastName}
           />
@@ -78,10 +86,10 @@ const SignupForm = (props) => {
         <Box>
           <LocationOn />
           <InputField
-            id='branch'
-            name='branch'
-            type='text'
-            placeholder='State, e.g Abuja'
+            id="branch"
+            name="branch"
+            type="text"
+            placeholder="State, e.g Abuja"
             onChange={formik.handleChange}
             value={formik.values.branch}
           />
@@ -90,10 +98,10 @@ const SignupForm = (props) => {
         <Box>
           <Email />
           <InputField
-            id='email'
-            name='email'
-            type='email'
-            placeholder='Email'
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
             onChange={formik.handleChange}
             value={formik.values.email}
           />
@@ -102,10 +110,10 @@ const SignupForm = (props) => {
         <Box>
           <Password />
           <InputField
-            id='password'
-            name='password'
-            type='password'
-            placeholder='Password'
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
@@ -113,15 +121,15 @@ const SignupForm = (props) => {
         <Box>
           <Password />
           <InputField
-            id='passwordConfirm'
-            name='passwordConfirm'
-            type='password'
-            placeholder='Confirm password'
+            id="passwordConfirm"
+            name="passwordConfirm"
+            type="password"
+            placeholder="Confirm password"
             onChange={formik.handleChange}
             value={formik.values.passwordConfirm}
           />
         </Box>
-        <ContiuneButton type='submit' value='Register' big />
+        <ContiuneButton type="submit" value="Register" big />
       </Form>
     </FormContainer>
   );

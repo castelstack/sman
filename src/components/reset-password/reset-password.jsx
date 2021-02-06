@@ -2,10 +2,12 @@ import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import Button from "../button/button";
 import reset from "../../images/reset.svg";
+import message from "../../constant/response";
 import styled from "styled-components";
 import axios from "axios";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import { useFormik } from "formik";
+import { useAlert } from "react-alert";
 
 const Container = styled.div`
   background: #843035;
@@ -90,55 +92,55 @@ export const Email = styled(EmailOutlinedIcon)`
   color: white;
 `;
 
-
-const ResetPassword = ({history}) => {
+const ResetPassword = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
+
+  const alert = useAlert();
+
   const formik = useFormik({
     initialValues: {
       token: "",
-      
     },
     onSubmit: (values) => {
-      
-      console.log("form data", formik.values);
       axios
-        .post(`${URL}api/v1/users/verifyResetPasswordToken`, formik.values, {withCredentials: true})
+        .post(`${URL}api/v1/users/verifyResetPasswordToken`, formik.values, {
+          withCredentials: true,
+        })
         .then((res, req) => {
-          console.log(res.data);
-          console.log(req)
-          res.data.status === "SUCCESS"
-            ? history.push("/set-new-password")
-            : alert("token not received");
+          if (res.data.status === "SUCCESS") {
+            alert.show(res.data.message);
+
+            return history.push("/set-new-password");
+          }
         })
         .catch((err) => {
           // err msg
-          alert(err)
-          //alert(err.response.data.message);
+          alert.error(message(err));
         });
     },
   });
   return (
     <Container>
-      <Image src={reset} alt='email_sent' />
+      <Image src={reset} alt="email_sent" />
       <HdText>Email sent!</HdText>
       <Text>
         Check your mail box for recovery mail containing code. please input the
         code in the text box to recover your mail.
       </Text>
-      <Box>
+      <form onSubmit={formik.handleSubmit} method="post">
+        <Box>
           <Email />
           <InputField
-            id='token'
-            name='token'
-            type='token'
-            placeholder='Token'
+            id="token"
+            name="token"
+            type="token"
+            placeholder="Token"
             onChange={formik.handleChange}
             value={formik.values.token}
           />
         </Box>
-      <Button value='Reset password' />
-
-  
+        <Button type="submit" value="Reset password" />
+      </form>
     </Container>
   );
 };

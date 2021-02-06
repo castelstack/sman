@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { HeadText } from "../../constant/styles";
 import axios from "axios";
+import message from "../../constant/response";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import RuleBox from "./rule-box";
 const Container = styled.div`
   display: grid;
-  grid-template-rows:  min-content 1fr min-content;
+  grid-template-rows: min-content 1fr min-content;
   grid-gap: 80px;
   padding: 99px;
   justify-items: center;
-background: #fafafa;
+  background: #fafafa;
   @media only screen and (max-width: 800px) {
     padding: 79px 40px;
   }
@@ -26,7 +27,6 @@ const RulesBox = styled.div`
   justify-content: space-between;
   align-items: start;
   grid-gap: 20px;
- 
 
   @media only screen and (max-width: 1200px) {
     grid-gap: 40px;
@@ -48,12 +48,11 @@ const FeatureRules = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get("https://smanhq.herokuapp.com/api/v1/rules?")
+        .get("https://smanhq.herokuapp.com/api/v1/rules?sort=-createdAt")
         .then((res) => {
           setRules(res.data.rule);
-          console.log(res.data);
-        });
-
+        })
+        .catch((err) => message(err));
     };
 
     fetchData();
@@ -62,20 +61,21 @@ const FeatureRules = () => {
     <Container>
       <HeadText>Stingy Men Rules</HeadText>
       <RulesBox>
-        {rules.filter((item, idx) => (idx<4))
-        .map((item) => (
-          <div key={item.id}>
-            <RuleBox
-              number={item.id}
-              rule={item.title}
-              id={item.id}
-              count={item.likesCount}
-            />
-          </div>
-        ))}
+        {rules
+          .filter((item, idx) => idx < 4)
+          .map((item) => (
+            <div key={item.id}>
+              <RuleBox
+                number={item.id}
+                rule={item.title}
+                id={item.id}
+                count={item.likesCount}
+              />
+            </div>
+          ))}
       </RulesBox>
-      <Link to='/rules-and-regulation'>
-        <Button value='Read All Rules' big />
+      <Link to="/rules-and-regulation">
+        <Button value="Read All Rules" big />
       </Link>
     </Container>
   );

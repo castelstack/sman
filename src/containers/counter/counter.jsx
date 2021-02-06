@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import message from "../../constant/response";
 import { SmText } from "../../constant/styles";
 import Gist from "../../images/gist.svg";
 import styled from "styled-components";
@@ -7,50 +9,42 @@ const Container = styled.div`
   padding: 65px;
   background: #fffdee;
 
+  @media only screen and (max-width: 800px) {
+    padding: 65px 50px;
+  }
 
-@media only screen and (max-width: 800px) {
-  padding: 65px 50px;
+  @media only screen and (max-width: 600px) {
+    padding: 65px 40px;
+  }
 
-}
-
-@media only screen and (max-width: 600px) {
-  padding: 65px 40px;
-
-}
-
-@media only screen and (max-width: 400px) {
-  padding: 65px 20px;
-
-}
+  @media only screen and (max-width: 400px) {
+    padding: 65px 20px;
+  }
 `;
 
 const CounterBox = styled.div`
-display: grid;
-grid-template-columns: repeat(3, max-content);
-grid-gap: 5px;
-justify-content: space-between;
-padding: 15px 150px;
-background: #fff;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-gap: 5px;
+  justify-content: space-between;
+  padding: 15px 150px;
+  background: #fff;
 
-@media only screen and (max-width: 1200px) {
- 
-  padding: 18px 80px;
-}
+  @media only screen and (max-width: 1200px) {
+    padding: 18px 80px;
+  }
 
-@media only screen and (max-width: 800px) {
-  padding: 18px 50px;
+  @media only screen and (max-width: 800px) {
+    padding: 18px 50px;
+  }
 
-}
+  @media only screen and (max-width: 600px) {
+    padding: 18px 20px;
+  }
 
-@media only screen and (max-width: 600px) {
-  padding: 18px 20px;
-
-}
-
-@media only screen and (max-width: 400px) {
-  padding: 18px 10px;
-
-}
+  @media only screen and (max-width: 400px) {
+    padding: 18px 10px;
+  }
 `;
 const Counters = styled.div`
   display: grid;
@@ -66,17 +60,14 @@ const Count = styled.h1`
   color: #18191f;
   @media only screen and (max-width: 1200px) {
     font-size: 35px;
-
   }
 
   @media only screen and (max-width: 800px) {
     font-size: 30px;
-
   }
 
   @media only screen and (max-width: 600px) {
     font-size: 25px;
-
   }
 `;
 
@@ -85,50 +76,59 @@ const CountInfo = styled.div`
   grid-template-columns: repeat(2, max-content);
   grid-gap: 2px;
   align-items: center;
- 
 `;
 const Icon = styled.img``;
 const Text = styled(SmText)`
-line-height: 24px;
-@media only screen and (max-width: 1200px) {
-  font-size: 15px;
+  line-height: 24px;
+  @media only screen and (max-width: 1200px) {
+    font-size: 15px;
+  }
 
-}
+  @media only screen and (max-width: 800px) {
+    font-size: 13px;
+  }
 
-
-@media only screen and (max-width: 800px) {
-  font-size: 13px;
-
-}
-
-@media only screen and (max-width: 600px) {
-  font-size: 10px;
-
-}
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
+  }
 `;
 const Counter = () => {
+  const [stats, setStats] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get("https://smanhq.herokuapp.com/api/v1/settings/stats?")
+        .then((res) => {
+          setStats(res.data.stats);
+        })
+        .catch((err) => message(err));
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Container>
       <CounterBox>
         <Counters>
-          <Count>234</Count>
+          <Count>{stats.users}</Count>
           <CountInfo>
             <Icon src={Gist} />
             <Text>Stingy Men</Text>
           </CountInfo>
         </Counters>
         <Counters>
-          <Count>234</Count>
+          <Count>{stats.gists}</Count>
           <CountInfo>
             <Icon src={Gist} />
-            <Text>Stingy Men</Text>
+            <Text>Gists</Text>
           </CountInfo>
         </Counters>
         <Counters>
-          <Count>234</Count>
+          <Count>{stats.rules}</Count>
           <CountInfo>
             <Icon src={Gist} />
-            <Text>Stingy Men</Text>
+            <Text>Rules</Text>
           </CountInfo>
         </Counters>
       </CounterBox>

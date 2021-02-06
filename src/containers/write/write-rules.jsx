@@ -2,11 +2,11 @@ import React from "react";
 import { HeadText } from "../../constant/styles";
 import Button from "../../components/button/button";
 import styled from "styled-components";
+import message from "../../constant/response";
 //import { TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useAlert } from "react-alert";
-
 
 const Container = styled.div`
   margin: 20px 110px;
@@ -51,7 +51,6 @@ const HeadBox = styled.div`
     font-size: 20px;
     padding: 10px 0;
   }
-
 `;
 
 const Heading = styled(HeadText)`
@@ -79,33 +78,38 @@ const TextA = styled.textarea`
 // create new rules
 const WriteRules = ({ history }) => {
   const alert = useAlert();
+
   const URL = "https://smanhq.herokuapp.com/";
+
   const formik = useFormik({
     initialValues: {
       title: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log("form data", formik.values);
-      axios
-        .post(`${URL}api/v1/rules`, formik.values, { withCredentials: true })
-        .then((res, req) => {
-          console.log(res.data);
-          res.data.message === "SUCCESS"
-            ? history.push("/rules-and-regulation")
-            : alert("did not post");
-        })
-        .catch((err) => {
-          // err msg
-          alert(err);
-        });
+      formik.values.title.length > 1000
+        ? alert.info(
+            `Maximum Amount Of Rule Characters Is 1000 You Enterd ${formik.values.description.length}`
+          )
+        : axios
+            .post(`${URL}api/v1/rules`, formik.values, {
+              withCredentials: true,
+            })
+            .then((res, req) => {
+              if (res.data.status === "SUCCESS") {
+                alert.success(
+                  "Rule Suggestion Succesful. Subject To Approval By SMAN Admins"
+                );
+
+                history.push("/rules-and-regulation");
+              }
+            })
+            .catch((err) => {
+              // err msg
+              alert.error(message(err));
+            });
     },
   });
 
-  const handleClick = () => {
-   
-    alert.show("Posted");
-  };
   return (
     <Container>
       <HeadBox>
@@ -114,13 +118,13 @@ const WriteRules = ({ history }) => {
       <WriteIn>
         <form onSubmit={formik.handleSubmit}>
           <TextA
-            label='Write your rules'
-            name='title'
-            placeholder='Your Stingy Rule'
+            label="Write your rules"
+            name="title"
+            placeholder="Your Stingy Rule"
             onChange={formik.handleChange}
             value={formik.values.title}
           />
-          <Button value='Post' type='submit' onClick={handleClick}/>
+          <Button value="Post" type="submit" onClick={formik.handleSubmit} />
         </form>
       </WriteIn>
     </Container>

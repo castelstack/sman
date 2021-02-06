@@ -32,38 +32,36 @@ const AllRules = styled.div`
 
 const RulesContainer = () => {
   const [loading, setLoading] = useState(true);
-  const [rules, setRules] = useState([]);
+
+  const [rules, setRules] = useState([1, 2, 3]);
+
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(true);
-      axios.get("https://smanhq.herokuapp.com/api/v1/rules?").then((res) => {
-        console.log(res.session);
-        
+    axios
+      .get("https://smanhq.herokuapp.com/api/v1/rules?sort=-createdAt")
+      .then((res) => {
         setRules(res.data.rule);
+
         setLoading(false);
-      }
-      );
-    }, 2000);
-    return () => clearTimeout(timer);
+      });
   }, []);
 
   return (
     <div>
       <RulesBox />
       <AllRules>
-        {rules.map((item) => (
-          <div key={item.id}>
+        {rules.map((item, index) => (
+          <div key={index}>
             {loading ? (
-              <div>
-                <Skeleton animation='wave' height={20} width='10%' />
-                <Skeleton animation='pulse' width='100%' height={218} />
-                <Skeleton animation='wave' height={10} width='30%' />
+              <div key={index}>
+                <Skeleton animation="wave" height={20} width="10%" />
+                <Skeleton animation="pulse" width="100%" height={218} />
+                <Skeleton animation="wave" height={10} width="30%" />
               </div>
             ) : (
               <Rule
                 number={item.id}
                 rule={item.title}
+                key={item.id}
                 id={item.createdBy}
                 count={item.likesCount}
               />

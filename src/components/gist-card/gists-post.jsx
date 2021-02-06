@@ -178,10 +178,10 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
         <ShowMoreText
           /* Default options */
           lines={3}
-          more='>>>'
-          less='<<<'
-          className='content-css'
-          anchorClass='my-anchor-css-class'
+          more=">>>"
+          less="<<<"
+          className="content-css"
+          anchorClass="my-anchor-css-class"
           onClick={executeOnClick}
           expanded={false}
         >
@@ -189,12 +189,12 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
         </ShowMoreText>
         <div style={{ cursor: "pointer" }} onClick={handleOpen}>
           <ImageContainer>
-            {image ? <GistImg src={image} alt='photo' /> : ""}
+            {image ? <GistImg src={`${image}`} alt="photo" /> : ""}
           </ImageContainer>
         </div>
         <Modal
-          aria-labelledby='transition-modal-title'
-          aria-describedby='transition-modal-description'
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
           className={classes.modal}
           open={open}
           onClose={handleClose}
@@ -206,7 +206,7 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={image} alt='photo' />
+              <ModalImg src={image} alt="photo" />
             </div>
           </Fade>
         </Modal>
@@ -219,28 +219,27 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
             <Checkbox
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
-              name='like'
+              name="like"
               onClick={handleChange}
             />
           }
-          label='12'
+          label="12"
         />
-        <div className='btn_wrap'>
-          <span className='share'>Share</span>
-          <div className='socials'>
-            <Icon className='icon'>
-              <FacebookShareButton quote={tag} url='goal.com'>
+        <div className="btn_wrap">
+          <span className="share">Share</span>
+          <div className="socials">
+            <Icon className="icon">
+              <FacebookShareButton quote={tag} url="goal.com">
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
             </Icon>
-            <Icon className='icon'>
-              <WhatsappShareButton
-                title="Read all stingy gists" url={url}>
+            <Icon className="icon">
+              <WhatsappShareButton title="Read all stingy gists" url={url}>
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
-            <Icon className='icon'>
-              <TwitterShareButton title={gistspost} url={url} via='sman'>
+            <Icon className="icon">
+              <TwitterShareButton title={gistspost} url={url} via="sman">
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>

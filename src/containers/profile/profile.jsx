@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Join from "../../images/join.png";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkIcon from "@material-ui/icons/Work";
-import { ActiveContext } from '../../utils/store';
+import { ActiveContext } from "../../utils/store";
 
 import {
   Container,
@@ -18,13 +18,8 @@ import {
   Position,
 } from "./profile-style";
 
-
-
 const ProfilePage = ({ history }) => {
- 
   const user = useContext(ActiveContext);
- 
- 
 
   return (
     <div>
@@ -32,19 +27,18 @@ const ProfilePage = ({ history }) => {
         <AvatarName>
           <Image src={Join} />
           <Name>
-            
             Sty {user.userInfo.firstName} {user.userInfo.lastName}
           </Name>
-          <StyName>Sman ID: {user.userInfo.id}</StyName>
+          <StyName>Sman ID: {user.userInfo.smanID}</StyName>
         </AvatarName>
 
         <PositionBranch>
           <Position>
-            <WorkIcon color='primary' />
+            <WorkIcon color="primary" />
             Position: {user.userInfo.position}
           </Position>
           <Branch>
-            <LocationOnIcon color='action' />
+            <LocationOnIcon color="action" />
             Branch: {user.userInfo.branch}
           </Branch>
         </PositionBranch>
@@ -59,7 +53,7 @@ const ProfilePage = ({ history }) => {
           association. So help me God.
         </Oath>
         <Sign>Sign: Mgt.</Sign>
-        <LogOut history={history}/>
+        <LogOut history={history} />
       </Container>
     </div>
   );
