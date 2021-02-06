@@ -4,6 +4,7 @@ import { PostBox } from "../../constant/styles";
 import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
 
+
 const GistTemplate = ({ tag }) => {
   const [loading, setLoading] = useState(true);
 
@@ -17,6 +18,7 @@ const GistTemplate = ({ tag }) => {
       .get(`https://smanhq.herokuapp.com/api/v1/gists?${needle}`)
       .then((res) => {
         setGists(res.data.gist);
+
         setLoading(false);
       });
   }, [needle]);
@@ -25,6 +27,7 @@ const GistTemplate = ({ tag }) => {
     <div>
       <PostBox>
         {gists.map((item, index) => (
+          
           <div key={index}>
             {loading ? (
               <div key={index}>
@@ -40,6 +43,8 @@ const GistTemplate = ({ tag }) => {
                   gistspost={item.description}
                   image={item.image}
                   name={item.createdBy}
+                  likes={item.likesCount}
+                  liked={item.likes}
                 />
               </div>
             )}
