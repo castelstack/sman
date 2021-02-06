@@ -49,7 +49,11 @@ const CounterBox = styled.div`
 `;
 
 const Counter = () => {
-  const [stats, setStats] = useState({});
+  const [stats, setStats] = useState({
+    rules: 0,
+    gists: 0,
+    users: 0
+  });
   useEffect(() => {
     const fetchData = async () => {
       await axios
