@@ -7,8 +7,7 @@ import styled from 'styled-components';
 const Container = styled.div`
 background-color: white;
 width: 250px;
-height:20rem;
-min-height: 10rem;
+min-height: 15rem;
 
 
 

@@ -93,6 +93,13 @@ export const InputField = styled.input`
   }
 `;
 
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-items: center;
+`;
+
 const NewPassword = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
 
@@ -110,7 +117,7 @@ const NewPassword = ({ history }) => {
         })
         .then((res) => {
           if (res.data.status === "SUCCESS") {
-            alert.show(`${res.data.message} LOGIN WITH YOUR NEW PASSWORD`);
+            alert.success(`${res.data.message} LOGIN WITH YOUR NEW PASSWORD`);
 
             return history.push("/join");
           }
@@ -127,7 +134,7 @@ const NewPassword = ({ history }) => {
       <LockIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
       <HdText>New Password</HdText>
       <Text>re-set your password with a strong password</Text>
-      <form onSubmit={formik.handleSubmit} method="post">
+      <Form onSubmit={formik.handleSubmit} method="post">
         <Box>
           <Password />
           <InputField
@@ -151,7 +158,7 @@ const NewPassword = ({ history }) => {
           />
         </Box>
         <Button type="submit" value="Confirm" onClick={formik.handleSubmit} />
-      </form>
+      </Form>
     </Container>
   );
 };

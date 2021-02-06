@@ -28,7 +28,7 @@ const HdText = styled(HeadText)`
 `;
 
 const Text = styled(MedText)`
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
 
   @media only screen and (max-width: 1200px) {
@@ -91,7 +91,12 @@ export const Email = styled(EmailOutlinedIcon)`
   margin-right: -3px;
   color: white;
 `;
-
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-items: center;
+`;
 const ResetPassword = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
 
@@ -108,7 +113,7 @@ const ResetPassword = ({ history }) => {
         })
         .then((res, req) => {
           if (res.data.status === "SUCCESS") {
-            alert.show(res.data.message);
+            alert.success(res.data.message);
 
             return history.push("/set-new-password");
           }
@@ -127,7 +132,7 @@ const ResetPassword = ({ history }) => {
         Check your mail box for recovery mail containing code. please input the
         code in the text box to recover your mail.
       </Text>
-      <form onSubmit={formik.handleSubmit} method="post">
+      <Form onSubmit={formik.handleSubmit} method="post">
         <Box>
           <Email />
           <InputField
@@ -140,7 +145,7 @@ const ResetPassword = ({ history }) => {
           />
         </Box>
         <Button type="submit" value="Reset password" />
-      </form>
+      </Form>
     </Container>
   );
 };

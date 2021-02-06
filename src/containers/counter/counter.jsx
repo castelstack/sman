@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import message from "../../constant/response";
-import { SmText } from "../../constant/styles";
-import Gist from "../../images/gist.svg";
 import styled from "styled-components";
-
+import "./counter.style.css";
 const Container = styled.div`
   padding: 65px;
   background: #fffdee;
@@ -28,8 +26,8 @@ const CounterBox = styled.div`
   grid-gap: 5px;
   justify-content: space-between;
   padding: 15px 150px;
-  background: #fff;
 
+  background: #fffdee;
   @media only screen and (max-width: 1200px) {
     padding: 18px 80px;
   }
@@ -40,58 +38,16 @@ const CounterBox = styled.div`
 
   @media only screen and (max-width: 600px) {
     padding: 18px 20px;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   @media only screen and (max-width: 400px) {
     padding: 18px 10px;
-  }
-`;
-const Counters = styled.div`
-  display: grid;
-  grid-template-rows: repeat(2, min-content);
-`;
-const Count = styled.h1`
-  font-family: Manrope;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 74px;
-
-  color: #18191f;
-  @media only screen and (max-width: 1200px) {
-    font-size: 35px;
-  }
-
-  @media only screen and (max-width: 800px) {
-    font-size: 30px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    font-size: 25px;
+    
   }
 `;
 
-const CountInfo = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  grid-gap: 2px;
-  align-items: center;
-`;
-const Icon = styled.img``;
-const Text = styled(SmText)`
-  line-height: 24px;
-  @media only screen and (max-width: 1200px) {
-    font-size: 15px;
-  }
-
-  @media only screen and (max-width: 800px) {
-    font-size: 13px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    font-size: 10px;
-  }
-`;
 const Counter = () => {
   const [stats, setStats] = useState({});
   useEffect(() => {
@@ -110,27 +66,19 @@ const Counter = () => {
   return (
     <Container>
       <CounterBox>
-        <Counters>
-          <Count>{stats.users}</Count>
-          <CountInfo>
-            <Icon src={Gist} />
-            <Text>Stingy Men</Text>
-          </CountInfo>
-        </Counters>
-        <Counters>
-          <Count>{stats.gists}</Count>
-          <CountInfo>
-            <Icon src={Gist} />
-            <Text>Gists</Text>
-          </CountInfo>
-        </Counters>
-        <Counters>
-          <Count>{stats.rules}</Count>
-          <CountInfo>
-            <Icon src={Gist} />
-            <Text>Rules</Text>
-          </CountInfo>
-        </Counters>
+     
+        <div className='counter'>
+          <div className='counter-value'>{stats.rules}</div>
+          <h3 className='title'>Rules</h3>
+        </div>
+        <div className='counter'>
+          <div className='counter-value'>{stats.gists}</div>
+          <h3 className='title'>Stingy Gists</h3>
+        </div>
+        <div className='counter'>
+          <div className='counter-value'>{stats.users}</div>
+          <h3 className='title'>Stingy Men</h3>
+        </div>
       </CounterBox>
     </Container>
   );

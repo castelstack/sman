@@ -36,7 +36,7 @@ export const ActiveProvider = ({ children }) => {
       .catch((err) => {
         console.log("You Are Not Currently Logged In 😭😭😭", err);
       });
-  }, []);
+  }, [userActive]);
   return (
     <ActiveContext.Provider
       value={{ userActive, setUserActive, userInfo, setUserInfo }}
