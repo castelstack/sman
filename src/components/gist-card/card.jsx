@@ -65,7 +65,7 @@ const Name = styled(SmText)`
   color: #fff;
 `;
 const executeOnClick = (isExpanded) => {
-  console.log(isExpanded);
+  return isExpanded;
 };
 const Card = ({ title, gist, name }) => {
   return (
@@ -75,16 +75,15 @@ const Card = ({ title, gist, name }) => {
         <ShowMoreText
           /* Default options */
           lines={3}
-          more='>>>'
-          less='<<<'
-          className='content'
-          anchorClass='my-anchor-css-class'
+          more=">>>"
+          less="<<<"
+          className="content"
+          anchorClass="my-anchor-css-class"
           onClick={executeOnClick}
           expanded={false}
         >
           <Gist>{gist}</Gist>
         </ShowMoreText>
-        
       </Content>
       <Profile>
         <Avatar>H</Avatar>

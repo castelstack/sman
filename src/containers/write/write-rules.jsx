@@ -86,21 +86,27 @@ const WriteRules = ({ history }) => {
       title: "",
     },
     onSubmit: (values) => {
-      axios
-        .post(`${URL}api/v1/rules`, formik.values, { withCredentials: true })
-        .then((res, req) => {
-          if (res.data.status === "SUCCESS") {
-            alert.success(
-              "Rule Suggestion Succesful. Subject To Approval By SMAN Admins"
-            );
+      formik.values.title.length > 1000
+        ? alert.info(
+            `Maximum Amount Of Rule Characters Is 1000 You Enterd ${formik.values.description.length}`
+          )
+        : axios
+            .post(`${URL}api/v1/rules`, formik.values, {
+              withCredentials: true,
+            })
+            .then((res, req) => {
+              if (res.data.status === "SUCCESS") {
+                alert.success(
+                  "Rule Suggestion Succesful. Subject To Approval By SMAN Admins"
+                );
 
-            history.push("/rules-and-regulation");
-          }
-        })
-        .catch((err) => {
-          // err msg
-          alert.error(message(err));
-        });
+                history.push("/rules-and-regulation");
+              }
+            })
+            .catch((err) => {
+              // err msg
+              alert.error(message(err));
+            });
     },
   });
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { HeadText } from "../../constant/styles";
 import axios from "axios";
+import message from "../../constant/response";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -47,10 +48,11 @@ const FeatureRules = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get("https://smanhq.herokuapp.com/api/v1/rules?")
+        .get("https://smanhq.herokuapp.com/api/v1/rules?sort=-createdAt")
         .then((res) => {
           setRules(res.data.rule);
-        });
+        })
+        .catch((err) => message(err));
     };
 
     fetchData();

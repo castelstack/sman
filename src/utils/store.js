@@ -33,8 +33,8 @@ export const ActiveProvider = ({ children }) => {
           setUserInfo(res.data.user);
         }
       })
-      .catch(() => {
-        console.log("You Are Not Currently Logged In 😭😭😭");
+      .catch((err) => {
+        console.log("You Are Not Currently Logged In 😭😭😭", err);
       });
   }, []);
   return (

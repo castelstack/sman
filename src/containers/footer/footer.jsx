@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import Logo from "../../images/logo.svg";
 import {
   Container,
@@ -18,7 +18,7 @@ import Twitter from "../../images/twitter.svg";
 import Youtube from "../../images/youtube.svg";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { ActiveContext } from '../../utils/store';
+import { ActiveContext } from "../../utils/store";
 
 const useStyles = makeStyles((theme) => ({
   divider: {
@@ -28,54 +28,56 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const isActive = useContext(ActiveContext);
 
-  
   const classes = useStyles();
   return (
     <Container>
       <Head>
-        <LogoImg src={Logo} alt='SMAN logo' />
-        <LinkTo to='/'>
+        <LogoImg src={Logo} alt="SMAN logo" />
+        <LinkTo to="/">
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
-      {
-        isActive.userActive ?
-          <Routes>
-            <LinkTo to='/create'>
+      {isActive.userActive ? (
+        <Routes>
+          <LinkTo to="/create">
             <Links>Generate ID</Links>
           </LinkTo>
-          <LinkTo to='write-gist'>
+          <LinkTo to="write-gist">
             <Links>Tell Your Stingy Gist</Links>
           </LinkTo>
-           <LinkTo to='/gist'>
-           <Links>Read Stingy Men Gists</Links>
-         </LinkTo>
-       </Routes> :
-         <Routes>
-            <LinkTo to='/join'>
+          <LinkTo to="/gist">
+            <Links>Read Stingy Men Gists</Links>
+          </LinkTo>
+        </Routes>
+      ) : (
+        <Routes>
+          <LinkTo to="/join">
             <Links>Generate ID</Links>
           </LinkTo>
-          <LinkTo to='/join'>
+          <LinkTo to="/join">
             <Links>Tell Your Stingy Gist</Links>
           </LinkTo>
-           <LinkTo to='/gist'>
-           <Links>Read Stingy Men Gists</Links>
-         </LinkTo>
-       </Routes>
-        }
-       
-      <Divider variant='middle' style={classes.divder} />
+          <LinkTo to="/gist">
+            <Links>Read Stingy Men Gists</Links>
+          </LinkTo>
+        </Routes>
+      )}
+
+      <Divider variant="middle" style={classes.divder} />
       <Legal>
-        <Links>© 2021 Stingy men association. All rights reserved</Links>
+        <Links>
+          © {new Date().getFullYear()} Stingy men association. All rights
+          reserved
+        </Links>
         <Socials>
           <SocialLink>
-            <SocialIcon herf='' src={Fb} />
+            <SocialIcon herf="" src={Fb} />
           </SocialLink>
           <SocialLink>
-            <SocialIcon herf='' src={Twitter} />
+            <SocialIcon herf="" src={Twitter} />
           </SocialLink>
           <SocialLink>
-            <SocialIcon herf='' src={Youtube} />
+            <SocialIcon herf="" src={Youtube} />
           </SocialLink>
         </Socials>
       </Legal>

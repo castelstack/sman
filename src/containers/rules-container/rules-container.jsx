@@ -36,11 +36,13 @@ const RulesContainer = () => {
   const [rules, setRules] = useState([1, 2, 3]);
 
   useEffect(() => {
-    axios.get("https://smanhq.herokuapp.com/api/v1/rules?").then((res) => {
-      setRules(res.data.rule);
+    axios
+      .get("https://smanhq.herokuapp.com/api/v1/rules?sort=-createdAt")
+      .then((res) => {
+        setRules(res.data.rule);
 
-      setLoading(false);
-    });
+        setLoading(false);
+      });
   }, []);
 
   return (

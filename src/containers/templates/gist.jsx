@@ -9,7 +9,7 @@ const GistTemplate = ({ tag }) => {
 
   const [gists, setGists] = useState([1, 2, 3]);
 
-  const needle = tag !== null ? `tag=${tag}` : "";
+  const needle = tag !== null ? tag : "";
 
   useEffect(() => {
     setLoading(true);

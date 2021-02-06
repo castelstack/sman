@@ -102,7 +102,6 @@ const ResetPassword = ({ history }) => {
       token: "",
     },
     onSubmit: (values) => {
-      console.log("form data", formik.values);
       axios
         .post(`${URL}api/v1/users/verifyResetPasswordToken`, formik.values, {
           withCredentials: true,

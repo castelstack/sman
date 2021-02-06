@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./card";
+import { trimText } from "../../constant/text";
+import axios from "axios";
 import styled from "styled-components";
 
-
-
-
-const Container= styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, min-content);
   grid-gap: 70px;
@@ -30,47 +29,30 @@ const Container= styled.div`
   }
 `;
 export default function GistCard() {
+  const [gists, setGists] = useState([
+    { title: "This Is A Place Holder For Gists" },
+  ]);
 
-  
-  const data = {
-    card: [
-      {
-        id: 1,
-        title: "Urgent 2k",
-        gist:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neqused imperdiet nibh lectus feugiat nunc sem.",
-        name: 'Wence'
-      },
-      {
-        id: 2,
-        title: "Transport",
-        gist:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-        name: 'Wence'
-      },
-      {
-        id: 3,
-        title: "Gift",
-        gist:
-          "lorem  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nequesed imperdiet nibh lectus feugiat nunc sem.",
-        name: 'Wence'
-      }
-    ],
-  }
-  
+  useEffect(() => {
+    axios
+      .get("https://smanhq.herokuapp.com/api/v1/gists?sort=likesCount&limit=3")
+      .then((res) => {
+        setGists(res.data.gist);
+      });
+  }, []);
 
- 
   return (
-      <Container>
-            {
-          data.card
-            .map(item => (
-                    <div key={item.id}>
-                <Card title={item.title} gist={item.gist} name={item.name}/>
-                    </div>
-                ))
-       }
-      </Container>
-    );
-  }
-
+    <Container>
+      {gists.map((item, index) => (
+        <div key={index}>
+          <Card
+            key={item.title}
+            title={trimText(item.title)}
+            gist={item.description}
+            name={item.createdBy}
+          />
+        </div>
+      ))}
+    </Container>
+  );
+}

@@ -13,35 +13,39 @@ import { FavoriteBorder } from "@material-ui/icons";
 import Favorite from "@material-ui/icons/Favorite";
 import styled from "styled-components";
 
-
 const Container = styled.div`
-display: grid;
-grid-template-columns: 1fr;
-grid-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
   border: 1px solid #e5e5e5;
   padding: 20px;
   border-radius: 5px;
 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-
-&:hover {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  animation-name: example;
-  animation-duration: 0.25s;
-  border-left: 2px solid #843035;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
+  &:hover {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    animation-name: example;
+    animation-duration: 0.25s;
+    border-left: 2px solid #843035;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
 
   @keyframes example {
-      0%   {border-left: 2px solid #ffffff;}
-      25%  {border-left: 2px solid #ffe6e6;}
-      50%  {border-left: 4px solid #843035;}
-      100% {border-left: 5px solid #843035;}
+    0% {
+      border-left: 2px solid #ffffff;
+    }
+    25% {
+      border-left: 2px solid #ffe6e6;
+    }
+    50% {
+      border-left: 4px solid #843035;
+    }
+    100% {
+      border-left: 5px solid #843035;
+    }
   }
   @media only screen and (max-width: 400px) {
     padding: 10px;
@@ -72,11 +76,10 @@ const RuleBox = styled(SmText)`
 
 const Number = styled(HeadText)`
   width: max-content;
-  
 
   background: #843035;
   border-radius: 7px;
-padding: .5rem;
+  padding: 0.5rem;
   font-size: 18px;
   line-height: 25px;
 
@@ -94,15 +97,11 @@ padding: .5rem;
   @media only screen and (max-width: 600px) {
     font-size: 16px;
     line-height: 20px;
-   
-   
   }
 
   @media only screen and (max-width: 400px) {
     font-size: 16px;
     line-height: 18px;
-  
-    
   }
 `;
 
@@ -121,19 +120,17 @@ const Author = styled(SmText)`
   line-height: 30px;
   font-style: italic;
   color: #828282;
-
-
 `;
 const Icon = styled.div``;
 
-const Rule = ({ number, rule, name, id, count}) => {
- //state for like
- const [like, setLike] = React.useState({
-  like: true,
-});
+const Rule = ({ number, rule, name, id, count }) => {
+  //state for like
+  const [like, setLike] = React.useState({
+    like: true,
+  });
 
   //url for fb , twitter and whatsapp
-  const  url  = 'https://smanhq.herokuapp.com/api/v1/rules?';
+  const url = "https://smanhq.herokuapp.com/api/v1/rules?";
   //checkbox for like
   const handleChange = (event) => {
     setLike({ ...like, [event.target.name]: event.target.checked });
@@ -150,35 +147,27 @@ const Rule = ({ number, rule, name, id, count}) => {
             <Checkbox
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
-              name='like'
+              name="like"
               onClick={handleChange}
             />
           }
           label={count}
         />
-        <div className='btn_wrap'>
-          <span className='share'>Share</span>
-          <div className='socials'>
-            <Icon className='icon'>
-              <FacebookShareButton quote='Comply with stingy rule!' url={url}>
+        <div className="btn_wrap">
+          <span className="share">Share</span>
+          <div className="socials">
+            <Icon className="icon">
+              <FacebookShareButton quote="Comply with stingy rule!" url={url}>
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
             </Icon>
-            <Icon className='icon'>
-              <WhatsappShareButton
-                title="Read all stingy rules" 
-                url={url}
-              >
+            <Icon className="icon">
+              <WhatsappShareButton title="Read all stingy rules" url={url}>
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
-            <Icon className='icon'>
-              <TwitterShareButton
-                title={rule}
-                url={url}
-                via='sman-hq'
-               
-              >
+            <Icon className="icon">
+              <TwitterShareButton title={rule} url={url} via="sman-hq">
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>

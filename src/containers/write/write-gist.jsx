@@ -66,18 +66,25 @@ const WriteGist = ({ history }) => {
       tag: "",
     },
     onSubmit: (values) => {
-      axios
-        .post(`${URL}api/v1/gists/`, formik.values, { withCredentials: true })
-        .then((res, req) => {
-          console.log(res.data);
-          res.data.message === "SUCCESS"
-            ? history.push("/gist")
-            : alert.show("not posted");
-        })
-        .catch((err) => {
-          // err msg
-          alert.show(message(err));
-        });
+      formik.values.description.length > 3000
+        ? alert.info(
+            `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`
+          )
+        : axios
+            .post(`${URL}api/v1/gists/`, formik.values, {
+              withCredentials: true,
+            })
+            .then((res, req) => {
+              if (res.data.status === "SUCCESS") {
+                alert.show(res.data.message);
+
+                history.push("/gist");
+              }
+            })
+            .catch((err) => {
+              // err msg
+              alert.show(message(err));
+            });
     },
   });
 

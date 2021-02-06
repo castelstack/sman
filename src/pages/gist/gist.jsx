@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
 import message from "../../constant/response";
 import { NavLink, Route, Link, useRouteMatch } from "react-router-dom";
 import { useAlert } from "react-alert";
 import GistTemplate from "../../containers/templates/gist";
+import { ActiveContext } from "../../utils/store";
 import MobileTags from "../../components/mobile-tags/mobile-tags";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
@@ -61,6 +62,8 @@ const Gist = (props) => {
 
   const tag = new URLSearchParams(search).get("tag");
 
+  const currentUser = useContext(ActiveContext);
+
   const [tagUrlState, setTagUrl] = useState(tag);
 
   useEffect(() => {
@@ -85,11 +88,25 @@ const Gist = (props) => {
       <Gistbox />
       <Navi>
         <Breadcrumbs aria-label="breadcrumb">
+          {currentUser.userActive ? (
+            <Link
+              to={`${url}/me`}
+              key={1}
+              onClick={() =>
+                setTagUrl(`createdBy=${currentUser.userInfo.smanID}`)
+              }
+            >
+              My Gists
+            </Link>
+          ) : (
+            ""
+          )}
+
           {tagState.map((tag) => (
             <Link
               to={`${url}?tag=${tag.slug}`}
               key={tag._id}
-              onClick={() => setTagUrl(tag._id)}
+              onClick={() => setTagUrl(`tag=${tag._id}`)}
             >
               {tag.title}
             </Link>
