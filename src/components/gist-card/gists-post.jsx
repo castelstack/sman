@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
 import ShowMoreText from "react-show-more-text";
 import {
@@ -18,6 +18,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { ActiveContext } from "../../utils/store";
+
+import axios from "axios";
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -99,22 +102,23 @@ line-height: 30px;
 
 color: #4D4B4B;
 
-@media only screen and (max-width: 800px) {
-  font-size: 25px;
-  line-height: 25px;
-}
+  @media only screen and (max-width: 800px) {
+    font-size: 25px;
+    line-height: 25px;
+  }
 
-@media only screen and (max-width: 600px) {
-  font-size: 20px;
-  line-height: 22px;
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+    line-height: 22px;
+  }
+
+  @media only screen and (max-width: 400px) {
+    font-size: 16px;
+    line-height: 20px;
   
-
-@media only screen and (max-width: 400px) {
-  font-size: 16px;
-  line-height: 20px;
- 
-}
+  }
 `;
+
 const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content;
@@ -147,15 +151,66 @@ const useStyles = makeStyles((theme) => ({
 const executeOnClick = (isExpanded) => {
   console.log(isExpanded);
 };
-const GistsPost = ({ tag, gistspost, image, name }) => {
+const GistsPost = ({ key, tag, gistspost, image, name, likes, liked }) => {
+  let user = useContext(ActiveContext);
+
   //state for like
-  const [like, setLike] = React.useState({
-    like: true,
-  });
+  const [currentLiked, setLiked] = React.useState(false);
+
+  const [defaultLiked, setDefaultLiked] = React.useState(false);
+
+  const [currentLikes, setLikes] = React.useState(likes);
+
+  const [T_ID, setTID] = React.useState(0);
+
+  useEffect(() => {
+    if (liked.includes(user.userInfo._id)) {
+      setLiked(true);
+      setDefaultLiked(true);
+    }
+  }, [liked, user.userInfo])
 
   //checkbox for like
   const handleChange = (event) => {
-    setLike({ ...like, [event.target.name]: event.target.checked });
+
+    setLiked(!currentLiked);
+
+    (!currentLiked) ? setLikes(currentLikes + 1) : setLikes(currentLikes - 1);
+
+    const data = { id: user.userInfo._id };
+    let execute = false;
+
+    if (currentLiked && !defaultLiked) {
+      data.operation = 'inc';
+      execute = true;
+    }
+
+    else if (!currentLiked && defaultLiked) {
+      data.operation = 'dec';
+      execute = true;
+    }
+
+    if (execute) {
+      clearTimeout(T_ID);
+
+      const timeId = setTimeout(() => {
+
+        const URL = 'https://smanhq.herokuapp.com//api/v1/gists'
+
+        axios.post(`${URL}/${key}/react`, data, { withCredentials: true })
+        .then((res) => {
+          setDefaultLiked(!defaultLiked);
+          setLikes(res.data.likesCount);
+        })
+        .catch(() => {
+          console.log("You Cannot Like This Gist!!!");
+        })
+      }, (5 * 60 * 60 * 1000));
+
+      setTID(timeId);
+    }
+
+
   };
 
   //state and handle for modal
@@ -223,7 +278,7 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
               onClick={handleChange}
             />
           }
-          label="12"
+          label={currentLikes}
         />
         <div className="btn_wrap">
           <span className="share">Share</span>
