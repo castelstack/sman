@@ -20,6 +20,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -138,9 +139,7 @@ display: grid;
   grid-template-columns: 1fr min-content;
   justify-content: space-between;
 `
-const Edit = styled.button`
-border: none;
-background: #fff;`;
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -182,10 +181,12 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
       <TitleEdit>
 
       <GistTag>{tag}</GistTag>
-        <Edit>
-          
+        
+          <Link to='/edit'>
+
       <EditIcon color='primary'/>
-      </Edit>
+          </Link>
+      
       </TitleEdit>
       <Content>
         <ShowMoreText

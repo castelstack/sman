@@ -71,7 +71,7 @@ export const TextGist = styled.textarea`
 export const TitleGist = styled.input`
   
   outline: none;
-
+  width: 80%;
   margin-bottom: 1rem;
   border: none;
   border-bottom: 3px solid #000;

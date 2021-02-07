@@ -28,9 +28,9 @@ const GistTemplate = ({ tag }) => {
           <div key={index}>
             {loading ? (
               <div key={index}>
-                <Skeleton animation="wave" height={20} width="10%" />
-                <Skeleton animation="pulse" width={1210} height={218} />
-                <Skeleton animation="wave" height={10} width="30%" />
+                <Skeleton animation='wave' height={20} width='10%' />
+                <Skeleton animation='pulse' width={1210} height='100%'/>
+                <Skeleton animation='wave' height={10} width='30%' />
               </div>
             ) : (
               <div key={index}>

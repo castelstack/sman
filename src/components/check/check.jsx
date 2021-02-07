@@ -37,10 +37,15 @@ grid-template-columns: 1fr;
 justify-items: center;
 grid-gap:.4rem;`;
 
+const SubInfo = styled.div`
+display: grid;
+grid-template-columns: 1fr;
+justify-items: center;`;
 const Info = styled.div`
 display: grid;
 grid-template-columns: repeat(2, max-content);
 justify-items: center;
+grid-gap:.7rem;
 padding: 0rem 1rem;
 
 @media only screen and (max-width: 600px) {
@@ -68,10 +73,14 @@ const Check = () => {
                 <SmText>SMAN ID: <Span>i04978676</Span></SmText>
                 </HeadInfo>
                 <Info>
+                    <SubInfo>
                     <SmText style={{color: 'grey'}}>POSITION</SmText>
                     <MedText>Member</MedText>
+                    </SubInfo>
+                <SubInfo>
                 <SmText style={{color: 'grey'}}>BRANCH</SmText>
                 <MedText>Enugu</MedText>
+                </SubInfo>
                </Info>
             </Result>
             {/* result for not a member */}

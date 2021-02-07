@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
@@ -24,21 +24,36 @@ import {
   Provider as AlertProvider,
 } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import LoaderBox from "./components/Loader/loader";
+import EditGist from "./containers/write/edit";
 
 // optional configuration
 const options = {
   // you can also just use 'bottom center'
   position: positions.MIDDLE,
-  timeout: 9000,
+  timeout: 4000,
   offset: "30px",
   type: types.SUCCESS,
   // you can also just use 'scale'
   transition: transitions.FADE,
 };
 function App(props) {
+  const [Loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('loader')
+      setLoading(false)
+    }, 5000);
+   
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="App">
-      <AlertProvider template={AlertTemplate} {...options}>
+      {
+        Loading ? 
+        <LoaderBox/>
+        :  <AlertProvider template={AlertTemplate} {...options}>
         <Router>
           <Header />
           <Switch>
@@ -53,11 +68,13 @@ function App(props) {
             <Route path="/password-reset" exact component={ResetPassword} />
             <Route path="/set-new-password" exact component={NewPassword} />
             <Route path="/input-email" exact component={InputEmail} />
+            <Route path="/edit" exact component={EditGist} />
             <Route path="*" exact component={Error} />
           </Switch>
           <Footer />
         </Router>
       </AlertProvider>
+     }
     </div>
   );
 }
