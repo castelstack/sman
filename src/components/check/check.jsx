@@ -26,6 +26,7 @@ width: 100%; `;
 const ResultNotMember = styled.div`
 display: grid;
 grid-template-columns: 1fr;
+justify-items: center;
 background: url(${Bg});
 background-repeat: no-repeat;
 padding: 2.5rem 0rem;`;

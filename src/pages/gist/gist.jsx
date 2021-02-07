@@ -27,7 +27,6 @@ const Navi = styled.div`
   }
 
   @media only screen and (max-width: 500px) {
-   
   }
 `;
 
@@ -41,7 +40,7 @@ const NavLinks = styled(NavLink)`
   color: #18191f;
   padding: 5px 7px;
   text-decoration: none;
-text-transfrom: capitalize;
+  text-transfrom: capitalize;
   box-sizing: border-box;
   border-radius: 5px;
   display: flex;
@@ -80,13 +79,13 @@ const Gist = (props) => {
 
         alert.error(message(err));
       });
-  }, );
+  },[alert]);
 
   return (
     <Container>
       <Gistbox />
       <Navi>
-        <Breadcrumbs aria-label="breadcrumb">
+        <Breadcrumbs aria-label='breadcrumb'>
           {currentUser.userActive ? (
             <NavLinks
               to={`${url}/me`}
@@ -115,10 +114,8 @@ const Gist = (props) => {
         </Breadcrumbs>
       </Navi>
 
-    
-
       <Gists>
-        <Route path="/" component={() => <GistTemplate tag={tagUrlState} />} />
+        <Route path='/' component={() => <GistTemplate tag={tagUrlState} />} />
       </Gists>
     </Container>
   );
