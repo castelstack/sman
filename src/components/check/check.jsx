@@ -34,13 +34,18 @@ padding: 2.5rem 0rem;`;
 const HeadInfo = styled.div`
 display: grid;
 grid-template-columns: 1fr;
-justify-items: center;`;
+justify-items: center;
+grid-gap:.4rem;`;
 
 const Info = styled.div`
 display: grid;
 grid-template-columns: repeat(2, max-content);
-justify-content: space-around;
-padding: 0rem 1rem;`;
+justify-items: center;
+padding: 0rem 1rem;
+
+@media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }`;
 const Span = styled.span`
 color: green;
 font-size: 1.8rem;
@@ -63,8 +68,10 @@ const Check = () => {
                 <SmText>SMAN ID: <Span>i04978676</Span></SmText>
                 </HeadInfo>
                 <Info>
-                <MedText>Position: Member</MedText>
-                <MedText>Branch: enugu</MedText>
+                    <SmText style={{color: 'grey'}}>POSITION</SmText>
+                    <MedText>Member</MedText>
+                <SmText style={{color: 'grey'}}>BRANCH</SmText>
+                <MedText>Enugu</MedText>
                </Info>
             </Result>
             {/* result for not a member */}
