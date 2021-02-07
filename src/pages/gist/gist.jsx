@@ -6,7 +6,6 @@ import { NavLink, Route, useRouteMatch } from "react-router-dom";
 import { useAlert } from "react-alert";
 import GistTemplate from "../../containers/templates/gist";
 import { ActiveContext } from "../../utils/store";
-import MobileTags from "../../components/mobile-tags/mobile-tags";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
@@ -15,7 +14,7 @@ const Container = styled.div``;
 
 const Navi = styled.div`
   margin: 0 99px;
-
+  width: 90%;
   @media only screen and (max-width: 900px) {
     margin: 0 60px;
   }
@@ -28,7 +27,7 @@ const Navi = styled.div`
   }
 
   @media only screen and (max-width: 500px) {
-    display: none;
+   
   }
 `;
 
@@ -81,7 +80,7 @@ const Gist = (props) => {
 
         alert.error(message(err));
       });
-  }, [alert]);
+  }, );
 
   return (
     <Container>
@@ -116,7 +115,7 @@ const Gist = (props) => {
         </Breadcrumbs>
       </Navi>
 
-      <MobileTags />
+    
 
       <Gists>
         <Route path="/" component={() => <GistTemplate tag={tagUrlState} />} />

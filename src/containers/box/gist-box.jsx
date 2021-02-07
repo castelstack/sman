@@ -34,7 +34,6 @@ const Content = styled.div`
   @media only screen and (max-width: 400px) {
     grid-template-columns: 1fr;
     justify-items: center;
-    grid-gap: 30px;
   }
 `;
 const Info = styled.div`
@@ -99,17 +98,17 @@ width: 30rem;
   height: 30rem;
 margin-left: auto;
 color: black;
-animation: rotateFloat 120s infinite;
-    animation-timing-function: linear;
+// animation: rotateFloat 120s infinite;
+//     animation-timing-function: linear;
     
-    @keyframes rotateFloat {
-      from {
-        transform:  rotate(0deg);
-      }
-      to {
-        transform:  rotate(360deg);
-      }
-    }
+//     @keyframes rotateFloat {
+//       from {
+//         transform:  rotate(0deg);
+//       }
+//       to {
+//         transform:  rotate(360deg);
+//       }
+//     }
 @media only screen and (max-width: 900px) {
   width: 20rem;
 }

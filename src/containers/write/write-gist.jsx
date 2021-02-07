@@ -18,9 +18,8 @@ import {
   InputImg,
   Label,
   Img,
+  TitleGist
 } from "./write.style";
-
-import { Box, InputField } from "../join/join.style";
 
 const WriteGist = ({ history }) => {
   const uploadDispatcher = FileHandler();
@@ -111,8 +110,8 @@ const WriteGist = ({ history }) => {
             ))}
           </Select>
 
-          <Box>
-            <InputField
+          
+            <TitleGist
               id="title"
               name="title"
               type="text"
@@ -120,7 +119,7 @@ const WriteGist = ({ history }) => {
               onChange={formik.handleChange}
               value={formik.values.title}
             />
-          </Box>
+         
 
           <TextGist
             label="Write your rules"

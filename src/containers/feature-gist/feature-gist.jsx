@@ -11,28 +11,16 @@ const Container = styled.div`
   grid-template-rows: repeat(4, min-content);
   grid-gap: 30px;
   padding: 48px 99px;
-  
+
   justify-items: center;
   background-image: url(${bg});
 
-  animation: color-me-in 5s infinite;
 
-
-// @keyframes color-me-in {
-//   0% {
-//     background-image: radial-gradient(circle, #ff000f, #e21722, #c3232d, #a42b32, #843035);
-//   }
-//   50% {
-//     background-image: linear-gradient(to right, #843035, #a42b32, #c3232d, #e21722, #ff000f);
-//   }
-//   100% {
-//     background-image: linear-gradient(to left, #843035, #a32b32, #c1232c, #de1622, #fa000f);
-//   }
-// }
   @media only screen and (max-width: 750px) {
     grid-gap: 20px;
     padding: 99px 50px;
     justify-content: center;
+    background: #843035;
   }
 `;
 
@@ -51,20 +39,20 @@ const Buttons = styled.div`
 `;
 
 const DropGistButton = styled(Button)`
-  color: #18191F;
+  color: #18191f;
 `;
 
 const ReadGistButton = styled(Button)`
-  color: #FCEA4A;
-  border: solid 1px #FCEA4A;
+  color: #fcea4a;
+  border: solid 1px #fcea4a;
   background: none;
-  
-transition: 0.25s;
-&:hover,
-&:focus {
-  color: black;
-  box-shadow: inset 0 -3.25em 0 0 #FCEA4A  ;
-}
+
+  transition: 0.25s;
+  &:hover,
+  &:focus {
+    color: black;
+    box-shadow: inset 0 -3.25em 0 0 #fcea4a;
+  }
 `;
 const FeatureGist = () => {
   return (

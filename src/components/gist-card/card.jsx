@@ -10,7 +10,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: repeat(3, min-content);
   justify-items: center;
-  width: 330px;
+  width: 100%;
   grid-gap: 20px;
 `;
 
@@ -32,6 +32,11 @@ width: 20rem;
     40% 90%,
     0 90%
   );
+  
+
+   @media only screen and (max-width: 650px) {
+    padding: 20px .5rem 50px .5rem;
+  }
 `;
 
 const Profile = styled.div`

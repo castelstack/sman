@@ -10,6 +10,7 @@ const Container = styled.div`
   grid-gap: 70px;
   justify-content: space-around;
   margin-top: 40px;
+  padding: 1rem 2rem;
 
   @media only screen and (max-width: 1200px) {
     grid-template-columns: repeat(2, min-content);

@@ -1,6 +1,8 @@
 import React from "react";
 import { SmText, HeadText } from "../../constant/styles";
 import ShowMoreText from "react-show-more-text";
+
+import EditIcon from '@material-ui/icons/Edit';
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -35,7 +37,7 @@ const Container = styled.div`
     border-bottom-left-radius: 10px;
     animation-name: example;
     animation-duration: 0.25s;
-    border-left: 8px solid #843035;
+    border-left: 2px solid #843035;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 
@@ -100,7 +102,7 @@ line-height: 30px;
 color: #4D4B4B;
 
 @media only screen and (max-width: 800px) {
-  font-size: 25px;
+  font-size: 22px;
   line-height: 25px;
 }
 
@@ -109,11 +111,7 @@ color: #4D4B4B;
   line-height: 22px;
   
 
-@media only screen and (max-width: 400px) {
-  font-size: 16px;
-  line-height: 20px;
- 
-}
+
 `;
 const Content = styled.div`
   display: grid;
@@ -135,6 +133,14 @@ const LikeShare = styled.div`
     grid-template-columns: 1fr min-content;
   }
 `;
+const TitleEdit = styled.div`
+display: grid;
+  grid-template-columns: 1fr min-content;
+  justify-content: space-between;
+`
+const Edit = styled.button`
+border: none;
+background: #fff;`;
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -173,7 +179,14 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
   const url = "sman-beta.vercel.app/gist";
   return (
     <Container>
+      <TitleEdit>
+
       <GistTag>{tag}</GistTag>
+        <Edit>
+          
+      <EditIcon color='primary'/>
+      </Edit>
+      </TitleEdit>
       <Content>
         <ShowMoreText
           /* Default options */

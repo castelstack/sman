@@ -68,6 +68,15 @@ export const TextGist = styled.textarea`
   border: 3px solid #cccccc;
   padding: 5px;
 `;
+export const TitleGist = styled.input`
+  
+  outline: none;
+
+  margin-bottom: 1rem;
+  border: none;
+  border-bottom: 3px solid #000;
+  padding: 5px;
+`;
 export const TextTitle = styled(SmText)`
   color: #c4c4c4;
   font-size: 15px;
