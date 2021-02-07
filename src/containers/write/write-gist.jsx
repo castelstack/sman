@@ -33,16 +33,17 @@ const WriteGist = ({ history }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+
     uploadFile();
-    alert.show("pic added now post");
-    uploadFile();
-    console.log(imageUrl);
+
+    alert.show("Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist");
   };
 
   const URL = "https://smanhq.herokuapp.com/";
 
   useEffect(() => {
     const URL = "https://smanhq.herokuapp.com/";
+
     axios
 
       .get(`${URL}api/v1/tags/`)
@@ -56,7 +57,7 @@ const WriteGist = ({ history }) => {
 
         alert.error(message(err));
       });
-  }, [alert]);
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -66,6 +67,8 @@ const WriteGist = ({ history }) => {
       tag: "",
     },
     onSubmit: (values) => {
+      formik.values.image = imageUrl;
+
       formik.values.description.length > 3000
         ? alert.info(
             `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`
@@ -140,7 +143,9 @@ const WriteGist = ({ history }) => {
           onChange={getInputFile}
           id="upload"
         />
+
         <button onClick={handleClick}> Add picture</button>
+
         <Img src={imageUrl} alt="upload" />
 
         <Post value="Post" type="submit" />

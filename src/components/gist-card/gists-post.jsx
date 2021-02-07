@@ -18,7 +18,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { ActiveContext } from "../../utils/store";
 
 import axios from "axios";
 
@@ -97,10 +96,10 @@ const Author = styled(SmText)`
 `;
 
 const GistTag = styled(HeadText)`
-font-size: 22px;
-line-height: 30px;
+  font-size: 22px;
+  line-height: 30px;
 
-color: #4D4B4B;
+  color: #4d4b4b;
 
   @media only screen and (max-width: 800px) {
     font-size: 25px;
@@ -115,7 +114,6 @@ color: #4D4B4B;
   @media only screen and (max-width: 400px) {
     font-size: 16px;
     line-height: 20px;
-  
   }
 `;
 
@@ -151,8 +149,18 @@ const useStyles = makeStyles((theme) => ({
 const executeOnClick = (isExpanded) => {
   console.log(isExpanded);
 };
-const GistsPost = ({ key, tag, gistspost, image, name, likes, liked }) => {
-  let user = useContext(ActiveContext);
+const GistsPost = ({
+  tag,
+  gistspost,
+  image,
+  name,
+  likes,
+  liked,
+  loggedIn,
+  user,
+  gistId,
+}) => {
+  let userId = user;
 
   //state for like
   const [currentLiked, setLiked] = React.useState(false);
@@ -163,55 +171,65 @@ const GistsPost = ({ key, tag, gistspost, image, name, likes, liked }) => {
 
   const [T_ID, setTID] = React.useState(0);
 
+  const [disabled, setDisabled] = React.useState(loggedIn);
+
   useEffect(() => {
-    if (liked.includes(user.userInfo._id)) {
+    if (liked.includes(userId)) {
       setLiked(true);
       setDefaultLiked(true);
     }
-  }, [liked, user.userInfo])
+    // for (let like of liked) {
+    //   if (JSON.stringify(like.id) === JSON.stringify(userId)) {
+    //     console.log(true);
+    //     setLiked(true);
+    //     setDefaultLiked(true);
+    //     break;
+    //   }
+    // }
+  }, [liked, userId]);
 
   //checkbox for like
   const handleChange = (event) => {
-
     setLiked(!currentLiked);
 
-    (!currentLiked) ? setLikes(currentLikes + 1) : setLikes(currentLikes - 1);
+    !currentLiked ? setLikes(currentLikes + 1) : setLikes(currentLikes - 1);
 
-    const data = { id: user.userInfo._id };
+    const data = { id: userId };
     let execute = false;
 
-    if (currentLiked && !defaultLiked) {
-      data.operation = 'inc';
+    if (!currentLiked === true && defaultLiked === false) {
+      data.operation = "inc";
+      execute = true;
+    } else if (!currentLiked === false && defaultLiked === true) {
+      data.operation = "dec";
       execute = true;
     }
 
-    else if (!currentLiked && defaultLiked) {
-      data.operation = 'dec';
-      execute = true;
-    }
+    clearTimeout(T_ID);
 
     if (execute) {
-      clearTimeout(T_ID);
-
       const timeId = setTimeout(() => {
-
-        const URL = 'https://smanhq.herokuapp.com//api/v1/gists'
-
-        axios.post(`${URL}/${key}/react`, data, { withCredentials: true })
-        .then((res) => {
-          setDefaultLiked(!defaultLiked);
-          setLikes(res.data.likesCount);
-        })
-        .catch(() => {
-          console.log("You Cannot Like This Gist!!!");
-        })
-      }, (5 * 60 * 60 * 1000));
+        saveLiked(data);
+      }, 100);
 
       setTID(timeId);
     }
-
-
   };
+
+  function saveLiked(data) {
+    const URL = "https://smanhq.herokuapp.com/api/v1/gists";
+
+    axios
+      .patch(`${URL}/${gistId}/react`, data, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data, gistId);
+        setDefaultLiked(!defaultLiked);
+      })
+      .catch((err) => {
+        setLiked(currentLiked);
+        setLikes(currentLikes);
+      });
+  }
 
   //state and handle for modal
   const classes = useStyles();
@@ -261,7 +279,7 @@ const GistsPost = ({ key, tag, gistspost, image, name, likes, liked }) => {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={image} alt="photo" />
+              <ModalImg src={`${image}`} alt="photo" />
             </div>
           </Fade>
         </Modal>
@@ -275,7 +293,9 @@ const GistsPost = ({ key, tag, gistspost, image, name, likes, liked }) => {
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
               name="like"
-              onClick={handleChange}
+              onChange={handleChange}
+              disabled={disabled}
+              checked={currentLiked}
             />
           }
           label={currentLikes}

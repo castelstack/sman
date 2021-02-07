@@ -11,6 +11,8 @@ export const ActiveProvider = ({ children }) => {
   const [userActive, setUserActive] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
+    _id: "<_id>",
+
     firstName: "<name>",
 
     smanID: "<smanID>",

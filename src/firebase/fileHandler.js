@@ -3,16 +3,14 @@ import { useState } from "react";
 import { storage } from "./firebase";
 
 function FileHandler() {
-  const [imageUrlState, setImageUrlState] = useState("");
+  const [imageUrlState, setImageUrlState] = useState("htpps://firebase.com");
 
-  const [imageFileState, setImageFileState] = useState("");
+  const [imageFileState, setImageFileState] = useState("imageFile.png");
 
   const handleImageFile = (e) => {
     const image = e.target.files[0];
 
     setImageFileState(image);
-
-    setImageFileState((state) => state);
   };
 
   const firebaseImageUpload = () => {
@@ -20,7 +18,7 @@ function FileHandler() {
 
     console.log("File Upload In Progress .....");
 
-    if (imageFileState === "")
+    if (typeof imageFileState === "string")
       //list of allowed file extensions
       console.error(`Not An Image ! ${typeof imageFileState} Not Supported`);
 
@@ -37,7 +35,7 @@ function FileHandler() {
     //checking if image type is an image
 
     if (!imgExt.includes(imageFileState.type))
-      console.error("File Not Supported ! File Must Be An Image");
+      return console.error("File Not Supported ! File Must Be An Image");
 
     const uploadImage = storage
       .ref(`/images/${imageFileState.name}`)
@@ -51,7 +49,7 @@ function FileHandler() {
 
       (snapShot) => {
         //takes a snap shot of the process as it is happening
-        // console.log(snapShot);
+        console.log(snapShot);
       },
       (err) => {
         //catches the errors
