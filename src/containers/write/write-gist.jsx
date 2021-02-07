@@ -18,7 +18,8 @@ import {
   InputImg,
   Label,
   Img,
-  TitleGist
+  TitleGist,
+  PreviewImg
 } from "./write.style";
 
 const WriteGist = ({ history }) => {
@@ -139,9 +140,11 @@ const WriteGist = ({ history }) => {
           onChange={getInputFile}
           id="upload"
         />
-        <button onClick={handleClick}> Add picture</button>
-        <Img src={imageUrl} alt="upload" />
-
+        <PreviewImg onClick={handleClick}>Click to add and preview picture</PreviewImg>
+        
+        {
+          !imageUrl ? "" : <Img src={imageUrl} alt="upload" /> 
+}
         <Post value="Post" type="submit" />
       </form>
     </Container>

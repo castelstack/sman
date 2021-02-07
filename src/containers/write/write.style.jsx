@@ -59,7 +59,15 @@ export const Heading = styled(HeadText)`
     font-size: 20px;
   }
 `;
-
+export const PreviewImg = styled.button`
+border: none;
+background: #00008b;
+color: white;
+padding: .5rem 1rem;
+border-radius: 5px;
+font-size: 14px;
+margin: 1rem 0;
+`
 export const TextGist = styled.textarea`
   resize: none;
   outline: none;
