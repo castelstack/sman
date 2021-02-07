@@ -16,21 +16,30 @@ padding: 1rem;
 const Result = styled.div`
 display: grid;
 grid-template-columns: 1fr;
-justify-items: center;
 padding: 2.5rem 1rem;
 grid-gap: .5rem;
 tetx-transform: capitalize;
 background: url(${Bg});
-background-repeat: no-repeat;`;
+background-repeat: no-repeat;
+width: 100%; `;
 
 const ResultNotMember = styled.div`
 display: grid;
 grid-template-columns: 1fr;
 background: url(${Bg});
 background-repeat: no-repeat;
-justify-items: center;
-padding: 2.5rem 0rem;`
+padding: 2.5rem 0rem;`;
 
+const HeadInfo = styled.div`
+display: grid;
+grid-template-columns: 1fr;
+justify-items: center;`;
+
+const Info = styled.div`
+display: grid;
+grid-template-columns: repeat(2, max-content);
+justify-content: space-around;
+padding: 0rem 1rem;`;
 const Span = styled.span`
 color: green;
 font-size: 1.8rem;
@@ -46,14 +55,16 @@ const Check = () => {
             <Button value='Check' style={{ marginTop: '2rem' }}/>
             {/* result will be displayed here and it will be set to show after check has been done*/}
             <Result>
+                <HeadInfo>
                 <VerifiedUserIcon style={{ height: '4rem', width:'4rem', color: 'green' }}/>
                 <HeadText>You're Stingy</HeadText>
                 <MedText>Sty Josh Wence </MedText>
-                <div>
-                <MedText>SMAN ID: <Span>i04978676</Span></MedText>
+                <SmText>SMAN ID: <Span>i04978676</Span></SmText>
+                </HeadInfo>
+                <Info>
                 <MedText>Position: Member</MedText>
                 <MedText>Branch: enugu</MedText>
-               </div>
+               </Info>
             </Result>
             {/* result for not a member */}
             <ResultNotMember>
