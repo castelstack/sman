@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { HeadText } from "../../constant/styles";
 import axios from "axios";
-import message from "../../constant/response";
+import { useAlert } from "react-alert";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -47,6 +47,9 @@ const RulesBox = styled.div`
 
 const FeatureRules = () => {
   const [rules, setRules] = useState([]);
+
+  const alert = useAlert();
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -54,7 +57,7 @@ const FeatureRules = () => {
         .then((res) => {
           setRules(res.data.rule);
         })
-        .catch((err) => message(err));
+        .catch((err) => alert.error(err.message));
     };
 
     fetchData();

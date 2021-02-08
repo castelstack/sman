@@ -55,7 +55,7 @@ const WriteGist = ({ history }) => {
       .catch((err) => {
         // err msg
 
-        alert.error(message(err));
+        alert.error(err.message);
       });
   }, []);
 

@@ -28,7 +28,7 @@ const Suggest = ({ history }) => {
       title: "",
     },
     onSubmit: (values) => {
-      formik.values.title.length > 3000
+      formik.values.title.length > 25
         ? alert.info(
             `Maximum Amount Of Tag Characters Is 1000 You Enterd ${formik.values.description.length}`
           )
