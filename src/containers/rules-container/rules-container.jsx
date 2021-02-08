@@ -51,7 +51,7 @@ const RulesContainer = () => {
 
         setLoading(false);
       });
-  }, []);
+  }, [user.userInfo]);
 
   return (
     <div>

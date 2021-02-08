@@ -57,6 +57,7 @@ const WriteGist = ({ history }) => {
 
         alert.error(err.message);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const formik = useFormik({

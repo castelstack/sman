@@ -8,7 +8,6 @@ import Bg from "../../images/bg.svg";
 import ErrorIcon from "@material-ui/icons/Error";
 import styled from "styled-components";
 import Button from "../button/button";
-import { red } from "@material-ui/core/colors";
 
 const Container = styled.div`
   display: grid;

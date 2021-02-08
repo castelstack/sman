@@ -32,7 +32,8 @@ const GistTemplate = ({ tag }) => {
         setLoading(false);
       })
       .catch((err) => alert.error(err.message));
-  }, [needle]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [needle, user.userInfo]);
 
   return (
     <div>

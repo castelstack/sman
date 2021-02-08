@@ -57,6 +57,7 @@ const EditGist = ({ history, location: { gist } }) => {
 
         alert.error(err.message);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { title, description, image, tag } = gist;
