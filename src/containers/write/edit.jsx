@@ -57,7 +57,7 @@ const EditGist = ({ history, location: { gist } }) => {
 
         alert.error(err.message);
       });
-  }, []);
+  });
 
   const { title, description, image, tag } = gist;
 

@@ -32,7 +32,7 @@ const GistTemplate = ({ tag }) => {
         setLoading(false);
       })
       .catch((err) => alert.error(err.message));
-  }, [needle]);
+  }, [needle,user.userInfo,alert]);
 
   return (
     <div>

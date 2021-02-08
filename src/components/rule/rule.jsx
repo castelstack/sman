@@ -158,7 +158,7 @@ const Rule = ({
       setLiked(true);
       setDefaultLiked(true);
     }
-  }, [liked, userId]);
+  }, [liked, userId, setDisabled]);
 
   //url for fb , twitter and whatsapp
   const url = "sman-beta.vercel.app/rules-and-regulation";

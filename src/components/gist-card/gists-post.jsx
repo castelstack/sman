@@ -195,8 +195,8 @@ const GistsPost = ({
       setLiked(true);
       setDefaultLiked(true);
     }
-  }, [liked, userId]);
-
+  }, [liked, userId,setDisabled])
+  
   //checkbox for like
   const handleChange = (event) => {
     setLiked(!currentLiked);

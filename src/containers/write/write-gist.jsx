@@ -57,7 +57,7 @@ const WriteGist = ({ history }) => {
 
         alert.error(err.message);
       });
-  }, []);
+  });
 
   const formik = useFormik({
     initialValues: {
