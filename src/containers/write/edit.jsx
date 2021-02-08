@@ -18,10 +18,11 @@ import {
   InputImg,
   Label,
   Img,
-  TitleGist
+  TitleGist,
+  PreviewImg,
 } from "./write.style";
 
-const EditGist = ({ history }) => {
+const EditGist = ({ history, location: { gist } }) => {
   const uploadDispatcher = FileHandler();
 
   const alert = useAlert();
@@ -32,16 +33,17 @@ const EditGist = ({ history }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+
     uploadFile();
-    alert.show("pic added now post");
-    uploadFile();
-    console.log(imageUrl);
+
+    alert.show("Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist");
   };
 
   const URL = "https://smanhq.herokuapp.com/";
 
   useEffect(() => {
     const URL = "https://smanhq.herokuapp.com/";
+
     axios
 
       .get(`${URL}api/v1/tags/`)
@@ -55,22 +57,26 @@ const EditGist = ({ history }) => {
 
         alert.error(message(err));
       });
-  }, [alert]);
+  }, []);
+
+  const { title, description, image, tag } = gist;
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      image: "",
-      tag: "",
+      title,
+      description,
+      image,
+      tag,
     },
     onSubmit: (values) => {
+      formik.values.image = imageUrl;
+
       formik.values.description.length > 3000
         ? alert.info(
             `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`
           )
         : axios
-            .post(`${URL}api/v1/gists/`, formik.values, {
+            .patch(`${URL}api/v1/gists/${gist.slug}`, formik.values, {
               withCredentials: true,
             })
             .then((res, req) => {
@@ -90,7 +96,7 @@ const EditGist = ({ history }) => {
   return (
     <Container>
       <HeadBox>
-        <Heading>Write Your Stingy Gist</Heading>
+        <Heading>Edit Your Stingy Gist</Heading>
       </HeadBox>
 
       <form onSubmit={formik.handleSubmit}>
@@ -110,16 +116,14 @@ const EditGist = ({ history }) => {
             ))}
           </Select>
 
-          
-            <TitleGist
-              id="title"
-              name="title"
-              type="text"
-              placeholder="Stingy Gist Title"
-              onChange={formik.handleChange}
-              value={formik.values.title}
-            />
-         
+          <TitleGist
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Stingy Gist Title"
+            onChange={formik.handleChange}
+            value={formik.values.title}
+          />
 
           <TextGist
             label="Write your rules"
@@ -139,9 +143,11 @@ const EditGist = ({ history }) => {
           onChange={getInputFile}
           id="upload"
         />
-        <button onClick={handleClick}> Add picture</button>
-        <Img src={imageUrl} alt="upload" />
+        <PreviewImg onClick={handleClick}>
+          Click to add and preview picture
+        </PreviewImg>
 
+        {!imageUrl ? "" : <Img src={imageUrl} alt="upload" />}
         <Post value="Post" type="submit" />
       </form>
     </Container>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
 import ShowMoreText from "react-show-more-text";
+import Truncate from "truncate";
 
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from "@material-ui/icons/Edit";
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -21,6 +22,8 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
+
+import axios from "axios";
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -114,6 +117,7 @@ color: #4D4B4B;
 
 
 `;
+
 const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content;
@@ -135,10 +139,10 @@ const LikeShare = styled.div`
   }
 `;
 const TitleEdit = styled.div`
-display: grid;
+  display: grid;
   grid-template-columns: 1fr min-content;
   justify-content: space-between;
-`
+`;
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -152,16 +156,83 @@ const useStyles = makeStyles((theme) => ({
 const executeOnClick = (isExpanded) => {
   console.log(isExpanded);
 };
-const GistsPost = ({ tag, gistspost, image, name }) => {
+const GistsPost = ({
+  tag,
+  gistspost,
+  image,
+  name,
+  likes,
+  liked,
+  loggedIn,
+  user,
+  gistId,
+  gist,
+  gistCreator,
+  userSman,
+}) => {
+  let userId = user;
+
   //state for like
-  const [like, setLike] = React.useState({
-    like: true,
-  });
+  const [currentLiked, setLiked] = React.useState(false);
+
+  const [defaultLiked, setDefaultLiked] = React.useState(false);
+
+  const [currentLikes, setLikes] = React.useState(likes);
+
+  const [T_ID, setTID] = React.useState(0);
+
+  const [disabled, setDisabled] = React.useState(!loggedIn);
+
+  console.log(loggedIn, disabled);
+
+  useEffect(() => {
+    if (liked.includes(userId)) {
+      setLiked(true);
+      setDefaultLiked(true);
+    }
+  }, [liked, userId]);
 
   //checkbox for like
   const handleChange = (event) => {
-    setLike({ ...like, [event.target.name]: event.target.checked });
+    setLiked(!currentLiked);
+
+    !currentLiked ? setLikes(currentLikes + 1) : setLikes(currentLikes - 1);
+
+    const data = { id: userId };
+    let execute = false;
+
+    if (!currentLiked === true && defaultLiked === false) {
+      data.operation = "inc";
+      execute = true;
+    } else if (!currentLiked === false && defaultLiked === true) {
+      data.operation = "dec";
+      execute = true;
+    }
+
+    clearTimeout(T_ID);
+
+    if (execute) {
+      const timeId = setTimeout(() => {
+        saveLiked(data);
+      }, 100);
+
+      setTID(timeId);
+    }
   };
+
+  function saveLiked(data) {
+    const URL = "https://smanhq.herokuapp.com/api/v1/gists";
+
+    axios
+      .patch(`${URL}/${gistId}/react`, data, { withCredentials: true })
+      .then((res) => {
+        setDefaultLiked(!defaultLiked);
+      })
+      .catch((err) => {
+        setLiked(currentLiked);
+        setLikes(currentLikes);
+      });
+  }
 
   //state and handle for modal
   const classes = useStyles();
@@ -176,18 +247,26 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
   };
 
   const url = "sman-beta.vercel.app/gist";
+
   return (
     <Container>
-      <TitleEdit>
+      {loggedIn && gistCreator === userSman ? (
+        <TitleEdit>
+          <GistTag>{tag}</GistTag>
 
-      <GistTag>{tag}</GistTag>
-        
-          <Link to='/edit'>
-
-      <EditIcon color='primary'/>
+          <Link
+            to={{
+              pathname: "/edit",
+              gist,
+            }}
+          >
+            <EditIcon color="primary" />
           </Link>
-      
-      </TitleEdit>
+        </TitleEdit>
+      ) : (
+        ""
+      )}
+
       <Content>
         <ShowMoreText
           /* Default options */
@@ -220,7 +299,7 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={image} alt="photo" />
+              <ModalImg src={`${image}`} alt="photo" />
             </div>
           </Fade>
         </Modal>
@@ -234,26 +313,36 @@ const GistsPost = ({ tag, gistspost, image, name }) => {
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
               name="like"
-              onClick={handleChange}
+              onChange={handleChange}
+              disabled={disabled}
+              checked={currentLiked}
             />
           }
-          label="12"
+          label={currentLikes}
         />
         <div className="btn_wrap">
           <span className="share">Share</span>
           <div className="socials">
             <Icon className="icon">
-              <FacebookShareButton quote={tag} url="goal.com">
+              <FacebookShareButton quote={gistspost} url={`${url}`}>
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
             </Icon>
             <Icon className="icon">
-              <WhatsappShareButton title="Read all stingy gists" url={url}>
+              <WhatsappShareButton
+                title={`${Truncate(gistspost, 600)} ...read mor at`}
+                url={url}
+              >
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
             <Icon className="icon">
-              <TwitterShareButton title={gistspost} url={url} via="sman">
+              <TwitterShareButton
+                title={`${Truncate(gistspost, 190)}  ...read more at `}
+                url={url}
+                via="sman"
+                // hashtags="SMAN"
+              >
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>

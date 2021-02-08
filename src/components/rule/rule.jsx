@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
+import Truncate from "truncate";
+
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -12,6 +14,7 @@ import { Checkbox, FormControlLabel } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
 import Favorite from "@material-ui/icons/Favorite";
 import styled from "styled-components";
+import axios from "axios";
 
 const Container = styled.div`
   display: grid;
@@ -123,18 +126,82 @@ const Author = styled(SmText)`
 `;
 const Icon = styled.div``;
 
-const Rule = ({ number, rule, name, id, count }) => {
+const Rule = ({
+  number,
+  rule,
+  ruleId,
+  name,
+  id,
+  likes,
+  liked,
+  loggedIn,
+  user,
+}) => {
   //state for like
-  const [like, setLike] = React.useState({
-    like: true,
-  });
+  let userId = user;
+
+  //state for like
+  const [currentLiked, setLiked] = React.useState(false);
+
+  const [defaultLiked, setDefaultLiked] = React.useState(false);
+
+  const [currentLikes, setLikes] = React.useState(likes);
+
+  const [T_ID, setTID] = React.useState(0);
+
+  const [disabled, setDisabled] = React.useState(!loggedIn);
+
+  console.log(loggedIn, disabled);
+
+  useEffect(() => {
+    if (liked.includes(userId)) {
+      setLiked(true);
+      setDefaultLiked(true);
+    }
+  }, [liked, userId]);
 
   //url for fb , twitter and whatsapp
-  const url = "https://smanhq.herokuapp.com/api/v1/rules?";
+  const url = "sman-beta.vercel.app/rules-and-regulation";
   //checkbox for like
   const handleChange = (event) => {
-    setLike({ ...like, [event.target.name]: event.target.checked });
+    setLiked(!currentLiked);
+
+    !currentLiked ? setLikes(currentLikes + 1) : setLikes(currentLikes - 1);
+
+    const data = { id: userId };
+    let execute = false;
+
+    if (!currentLiked === true && defaultLiked === false) {
+      data.operation = "inc";
+      execute = true;
+    } else if (!currentLiked === false && defaultLiked === true) {
+      data.operation = "dec";
+      execute = true;
+    }
+
+    clearTimeout(T_ID);
+
+    if (execute) {
+      const timeId = setTimeout(() => {
+        saveLiked(data);
+      }, 100);
+
+      setTID(timeId);
+    }
   };
+  function saveLiked(data) {
+    const URL = "https://smanhq.herokuapp.com/api/v1/rules";
+
+    axios
+      .patch(`${URL}/${ruleId}/react`, data, { withCredentials: true })
+      .then((res) => {
+        setDefaultLiked(!defaultLiked);
+      })
+      .catch((err) => {
+        setLiked(currentLiked);
+        setLikes(currentLikes);
+      });
+  }
   return (
     <Container>
       <Number>Stingy Rule!</Number>
@@ -148,26 +215,44 @@ const Rule = ({ number, rule, name, id, count }) => {
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
               name="like"
-              onClick={handleChange}
+              onChange={handleChange}
+              disabled={disabled}
+              checked={currentLiked}
             />
           }
-          label={count}
+          label={currentLikes}
         />
         <div className="btn_wrap">
           <span className="share">Share</span>
           <div className="socials">
             <Icon className="icon">
-              <FacebookShareButton quote="Comply with stingy rule!" url={url}>
+              <FacebookShareButton
+                quote={`Rule ${number + 1} Says: ${rule}`}
+                url={url}
+              >
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
             </Icon>
             <Icon className="icon">
-              <WhatsappShareButton title="Read all stingy rules" url={url}>
+              <WhatsappShareButton
+                title={`Rule ${number + 1} Says: ${Truncate(
+                  rule,
+                  600
+                )} ...read more at`}
+                url={url}
+              >
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
             <Icon className="icon">
-              <TwitterShareButton title={rule} url={url} via="sman-hq">
+              <TwitterShareButton
+                title={`Rule ${number + 1} Says: ${Truncate(
+                  rule,
+                  190
+                )}  ...read more at `}
+                url={url}
+                via="sman-hq"
+              >
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>

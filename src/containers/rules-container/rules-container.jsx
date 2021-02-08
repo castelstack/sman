@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import RulesBox from "../box/rules-box";
 import Rule from "../../components/rule/rule";
 import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
 import styled from "styled-components";
+import { ActiveContext } from "../../utils/store";
 
 const AllRules = styled.div`
   display: grid;
@@ -31,11 +32,18 @@ const AllRules = styled.div`
 `;
 
 const RulesContainer = () => {
+  let user = useContext(ActiveContext);
+
   const [loading, setLoading] = useState(true);
 
   const [rules, setRules] = useState([1, 2, 3]);
 
+  const [loggedIn, setLoggedIn] = React.useState(true);
+
   useEffect(() => {
+    if (user.userInfo === undefined || user.userInfo._id.includes("_id")) {
+      setLoggedIn(false);
+    }
     axios
       .get("https://smanhq.herokuapp.com/api/v1/rules?sort=-createdAt")
       .then((res) => {
@@ -54,16 +62,20 @@ const RulesContainer = () => {
             {loading ? (
               <div key={index}>
                 <Skeleton animation="wave" height={20} width="10%" />
-                <Skeleton animation='pulse' width='100%' height={80}/>
+                <Skeleton animation="pulse" width="100%" height={80} />
                 <Skeleton animation="wave" height={10} width="30%" />
               </div>
             ) : (
               <Rule
-                number={item.id}
+                number={index}
                 rule={item.title}
                 key={item.id}
                 id={item.createdBy}
-                count={item.likesCount}
+                likes={item.likesCount}
+                liked={item.likes}
+                loggedIn={loggedIn}
+                user={user.userInfo._id}
+                ruleId={item._id}
               />
             )}
           </div>
