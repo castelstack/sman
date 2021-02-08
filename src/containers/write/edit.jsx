@@ -22,7 +22,7 @@ import {
   PreviewImg,
 } from "./write.style";
 
-const WriteGist = ({ history }) => {
+const EditGist = ({ history, location: { gist } }) => {
   const uploadDispatcher = FileHandler();
 
   const alert = useAlert();
@@ -59,12 +59,14 @@ const WriteGist = ({ history }) => {
       });
   }, []);
 
+  const { title, description, image, tag } = gist;
+
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      image: "",
-      tag: "",
+      title,
+      description,
+      image,
+      tag,
     },
     onSubmit: (values) => {
       formik.values.image = imageUrl;
@@ -74,7 +76,7 @@ const WriteGist = ({ history }) => {
             `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`
           )
         : axios
-            .post(`${URL}api/v1/gists/`, formik.values, {
+            .patch(`${URL}api/v1/gists/${gist.slug}`, formik.values, {
               withCredentials: true,
             })
             .then((res, req) => {
@@ -94,7 +96,7 @@ const WriteGist = ({ history }) => {
   return (
     <Container>
       <HeadBox>
-        <Heading>Write Your Stingy Gist</Heading>
+        <Heading>Edit Your Stingy Gist</Heading>
       </HeadBox>
 
       <form onSubmit={formik.handleSubmit}>
@@ -152,4 +154,4 @@ const WriteGist = ({ history }) => {
   );
 };
 
-export default WriteGist;
+export default EditGist;

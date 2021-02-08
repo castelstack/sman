@@ -6,7 +6,6 @@ import { NavLink, Route, useRouteMatch } from "react-router-dom";
 import { useAlert } from "react-alert";
 import GistTemplate from "../../containers/templates/gist";
 import { ActiveContext } from "../../utils/store";
-import MobileTags from "../../components/mobile-tags/mobile-tags";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
@@ -15,7 +14,7 @@ const Container = styled.div``;
 
 const Navi = styled.div`
   margin: 0 99px;
-
+  width: 90%;
   @media only screen and (max-width: 900px) {
     margin: 0 60px;
   }
@@ -28,7 +27,6 @@ const Navi = styled.div`
   }
 
   @media only screen and (max-width: 500px) {
-    display: none;
   }
 `;
 
@@ -42,7 +40,7 @@ const NavLinks = styled(NavLink)`
   color: #18191f;
   padding: 5px 7px;
   text-decoration: none;
-text-transfrom: capitalize;
+  text-transfrom: capitalize;
   box-sizing: border-box;
   border-radius: 5px;
   display: flex;
@@ -81,13 +79,13 @@ const Gist = (props) => {
 
         alert.error(message(err));
       });
-  }, [alert]);
+  },[alert]);
 
   return (
     <Container>
       <Gistbox />
       <Navi>
-        <Breadcrumbs aria-label="breadcrumb">
+        <Breadcrumbs aria-label='breadcrumb'>
           {currentUser.userActive ? (
             <NavLinks
               to={`${url}/me`}
@@ -116,10 +114,8 @@ const Gist = (props) => {
         </Breadcrumbs>
       </Navi>
 
-      <MobileTags />
-
       <Gists>
-        <Route path="/" component={() => <GistTemplate tag={tagUrlState} />} />
+        <Route path='/' component={() => <GistTemplate tag={tagUrlState} />} />
       </Gists>
     </Container>
   );

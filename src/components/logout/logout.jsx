@@ -42,7 +42,17 @@ const Logout = (props) => {
 
           isActive.setUserActive(false);
 
-          isActive.setUserInfo(undefined);
+          isActive.setUserInfo({
+            _id: "<_id>",
+
+            firstName: "<name>",
+
+            smanID: "<smanID>",
+
+            position: "<position>",
+
+            branch: "<branch>",
+          });
         }
       })
       .catch((err) => {

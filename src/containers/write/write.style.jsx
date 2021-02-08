@@ -59,13 +59,30 @@ export const Heading = styled(HeadText)`
     font-size: 20px;
   }
 `;
-
+export const PreviewImg = styled.button`
+border: none;
+background: #00008b;
+color: white;
+padding: .5rem 1rem;
+border-radius: 5px;
+font-size: 14px;
+margin: 1rem 0;
+`
 export const TextGist = styled.textarea`
   resize: none;
   outline: none;
   width: 95%;
   height: 120px;
   border: 3px solid #cccccc;
+  padding: 5px;
+`;
+export const TitleGist = styled.input`
+  
+  outline: none;
+  width: 80%;
+  margin-bottom: 1rem;
+  border: none;
+  border-bottom: 3px solid #000;
   padding: 5px;
 `;
 export const TextTitle = styled(SmText)`

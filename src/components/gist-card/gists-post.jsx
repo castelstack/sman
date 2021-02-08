@@ -1,6 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
 import ShowMoreText from "react-show-more-text";
+import Truncate from "truncate";
+
+import EditIcon from "@material-ui/icons/Edit";
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -18,6 +21,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -37,7 +41,7 @@ const Container = styled.div`
     border-bottom-left-radius: 10px;
     animation-name: example;
     animation-duration: 0.25s;
-    border-left: 8px solid #843035;
+    border-left: 2px solid #843035;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 
@@ -96,25 +100,22 @@ const Author = styled(SmText)`
 `;
 
 const GistTag = styled(HeadText)`
+font-size: 22px;
+line-height: 30px;
+
+color: #4D4B4B;
+
+@media only screen and (max-width: 800px) {
   font-size: 22px;
-  line-height: 30px;
+  line-height: 25px;
+}
 
-  color: #4d4b4b;
+@media only screen and (max-width: 600px) {
+  font-size: 20px;
+  line-height: 22px;
+  
 
-  @media only screen and (max-width: 800px) {
-    font-size: 25px;
-    line-height: 25px;
-  }
 
-  @media only screen and (max-width: 600px) {
-    font-size: 20px;
-    line-height: 22px;
-  }
-
-  @media only screen and (max-width: 400px) {
-    font-size: 16px;
-    line-height: 20px;
-  }
 `;
 
 const Content = styled.div`
@@ -137,6 +138,12 @@ const LikeShare = styled.div`
     grid-template-columns: 1fr min-content;
   }
 `;
+const TitleEdit = styled.div`
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  justify-content: space-between;
+`;
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -159,6 +166,9 @@ const GistsPost = ({
   loggedIn,
   user,
   gistId,
+  gist,
+  gistCreator,
+  userSman,
 }) => {
   let userId = user;
 
@@ -171,21 +181,15 @@ const GistsPost = ({
 
   const [T_ID, setTID] = React.useState(0);
 
-  const [disabled, setDisabled] = React.useState(loggedIn);
+  const [disabled, setDisabled] = React.useState(!loggedIn);
+
+  console.log(loggedIn, disabled);
 
   useEffect(() => {
     if (liked.includes(userId)) {
       setLiked(true);
       setDefaultLiked(true);
     }
-    // for (let like of liked) {
-    //   if (JSON.stringify(like.id) === JSON.stringify(userId)) {
-    //     console.log(true);
-    //     setLiked(true);
-    //     setDefaultLiked(true);
-    //     break;
-    //   }
-    // }
   }, [liked, userId]);
 
   //checkbox for like
@@ -222,7 +226,6 @@ const GistsPost = ({
     axios
       .patch(`${URL}/${gistId}/react`, data, { withCredentials: true })
       .then((res) => {
-        console.log(res.data, gistId);
         setDefaultLiked(!defaultLiked);
       })
       .catch((err) => {
@@ -244,9 +247,26 @@ const GistsPost = ({
   };
 
   const url = "sman-beta.vercel.app/gist";
+
   return (
     <Container>
-      <GistTag>{tag}</GistTag>
+      {loggedIn && gistCreator === userSman ? (
+        <TitleEdit>
+          <GistTag>{tag}</GistTag>
+
+          <Link
+            to={{
+              pathname: "/edit",
+              gist,
+            }}
+          >
+            <EditIcon color="primary" />
+          </Link>
+        </TitleEdit>
+      ) : (
+        ""
+      )}
+
       <Content>
         <ShowMoreText
           /* Default options */
@@ -304,17 +324,25 @@ const GistsPost = ({
           <span className="share">Share</span>
           <div className="socials">
             <Icon className="icon">
-              <FacebookShareButton quote={tag} url="goal.com">
+              <FacebookShareButton quote={gistspost} url={`${url}`}>
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
             </Icon>
             <Icon className="icon">
-              <WhatsappShareButton title="Read all stingy gists" url={url}>
+              <WhatsappShareButton
+                title={`${Truncate(gistspost, 600)} ...read mor at`}
+                url={url}
+              >
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
             <Icon className="icon">
-              <TwitterShareButton title={gistspost} url={url} via="sman">
+              <TwitterShareButton
+                title={`${Truncate(gistspost, 190)}  ...read more at `}
+                url={url}
+                via="sman"
+                // hashtags="SMAN"
+              >
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
             </Icon>

@@ -3,6 +3,7 @@ import Card from "./card";
 import { trimText } from "../../constant/text";
 import axios from "axios";
 import styled from "styled-components";
+import Truncate from "truncate";
 
 const Container = styled.div`
   display: grid;
@@ -10,6 +11,7 @@ const Container = styled.div`
   grid-gap: 70px;
   justify-content: space-around;
   margin-top: 40px;
+  padding: 1rem 2rem;
 
   @media only screen and (max-width: 1200px) {
     grid-template-columns: repeat(2, min-content);
@@ -48,7 +50,7 @@ export default function GistCard() {
           <Card
             key={item.title}
             title={trimText(item.title)}
-            gist={item.description}
+            gist={Truncate(item.description, 250)}
             name={item.createdBy}
           />
         </div>

@@ -6,6 +6,8 @@ import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import RuleBox from "./rule-box";
+import Truncate from "truncate";
+
 const Container = styled.div`
   display: grid;
   grid-template-rows: min-content 1fr min-content;
@@ -67,7 +69,7 @@ const FeatureRules = () => {
             <div key={item.id}>
               <RuleBox
                 number={item.id}
-                rule={item.title}
+                rule={Truncate(item.title, 100)}
                 id={item.id}
                 count={item.likesCount}
               />

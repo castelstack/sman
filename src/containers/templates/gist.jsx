@@ -20,7 +20,7 @@ const GistTemplate = ({ tag }) => {
   let alert = useAlert();
 
   useEffect(() => {
-    if (!user.userInfo._id) {
+    if (user.userInfo === undefined || user.userInfo._id.includes("_id")) {
       setLoggedIn(false);
     }
     setLoading(true);
@@ -42,7 +42,7 @@ const GistTemplate = ({ tag }) => {
             {loading ? (
               <div key={index}>
                 <Skeleton animation="wave" height={20} width="10%" />
-                <Skeleton animation="pulse" width={1210} height={218} />
+                <Skeleton animation="pulse" width="100%" height={80} />
                 <Skeleton animation="wave" height={10} width="30%" />
               </div>
             ) : (
@@ -55,9 +55,12 @@ const GistTemplate = ({ tag }) => {
                   name={item.createdBy}
                   likes={item.likesCount}
                   liked={item.likes}
-                  loggedIn={!loggedIn}
+                  loggedIn={loggedIn}
                   user={user.userInfo._id}
+                  userSman={user.userInfo.smanID}
+                  gistCreator={item.createdBy}
                   gistId={item._id}
+                  gist={item}
                 />
               </div>
             )}

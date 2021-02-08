@@ -55,12 +55,12 @@ color: #18191F;
   
   @media only screen and (max-width: 600px) {
     font-size: 30px;
-    line-height: 22px;
+    line-height: 28px;
   }
   
   @media only screen and (max-width: 400px) {
-    font-size: 28px;
-    line-height: 18px;
+    font-size: 25px;
+    
   }`;
 
 export const SmText = styled.h5`
@@ -82,7 +82,7 @@ color: #18191F;
   }
   
   @media only screen and (max-width: 400px) {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 15px;
   }`;
 
