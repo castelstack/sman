@@ -44,7 +44,11 @@ function FileHandler() {
       return console.error("File Not Supported ! File Must Be An Image");
 
     const uploadImage = storage
-      .ref(`/images/${_id}-${imageFileState.name.toLowerCase()}`)
+      .ref(
+        `/images/${_id}-${imageFileState.name.toLowerCase()}${Math.floor(
+          Math.random() * 101
+        )}`
+      )
 
       .put(imageFileState);
 
@@ -68,7 +72,11 @@ function FileHandler() {
 
           .ref("images")
 
-          .child(`${_id}-${imageFileState.name.toLowerCase()}`)
+          .child(
+            `${_id}-${imageFileState.name.toLowerCase()}${Math.floor(
+              Math.random() * 101
+            )}`
+          )
 
           .getDownloadURL()
 

@@ -28,7 +28,7 @@ const Suggest = ({ history }) => {
       title: "",
     },
     onSubmit: (values) => {
-      formik.values.title.length > 20
+      formik.values.title.length > 3000
         ? alert.info(
             `Maximum Amount Of Tag Characters Is 1000 You Enterd ${formik.values.description.length}`
           )
@@ -55,9 +55,7 @@ const Suggest = ({ history }) => {
   return (
     <Container>
       <MedText> Suggestion</MedText>
-      <SmText>
-        Send a gists tag, new category or new idea for our association
-      </SmText>
+      <SmText>Suggest A New Gist Tag/Category Idea For Our Association</SmText>
 
       <form onSubmit={formik.handleSubmit}>
         <TextGist
