@@ -55,7 +55,7 @@ const EditGist = ({ history, location: { gist } }) => {
       .catch((err) => {
         // err msg
 
-        alert.error(message(err));
+        alert.error(err.message);
       });
   }, []);
 
@@ -147,7 +147,7 @@ const EditGist = ({ history, location: { gist } }) => {
           Click to add and preview picture
         </PreviewImg>
 
-        {!imageUrl ? "" : <Img src={imageUrl} alt="upload" />}
+        {imageUrl === "" ? "" : <Img src={imageUrl} alt="upload" />}
         <Post value="Post" type="submit" />
       </form>
     </Container>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import message from "../../constant/response";
+import { useAlert } from "react-alert";
 import styled from "styled-components";
 import "./counter.style.css";
 const Container = styled.div`
@@ -38,16 +38,17 @@ const CounterBox = styled.div`
     justify-items: center;
     grid-gap: 3rem;
   }
-
- 
 `;
 
 const Counter = () => {
   const [stats, setStats] = useState({
     rules: 0,
     gists: 0,
-    users: 0
+    users: 0,
   });
+
+  const alert = useAlert();
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -55,7 +56,7 @@ const Counter = () => {
         .then((res) => {
           setStats(res.data.stats);
         })
-        .catch((err) => message(err));
+        .catch((err) => alert.error(err.message));
     };
 
     fetchData();
@@ -64,7 +65,6 @@ const Counter = () => {
   return (
     <Container>
       <CounterBox>
-     
         <div className='counter'>
           <div className='counter-value'>{stats.rules}</div>
           <h3 className='title'>Rules</h3>

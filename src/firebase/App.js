@@ -6,8 +6,6 @@ import { CardList } from "./components/card-list/card-list.component";
 
 import { SearchBox } from "./components/search-box/search-box.component";
 
-import axios from "axios";
-
 import FileHandler from "./firebase/fileHandler";
 
 // import AppReducer from "./data/AppReducer";

@@ -250,10 +250,10 @@ const GistsPost = ({
 
   return (
     <Container>
-      {loggedIn && gistCreator === userSman ? (
-        <TitleEdit>
-          <GistTag>{tag}</GistTag>
+      <TitleEdit>
+        <GistTag>{tag}</GistTag>
 
+        {loggedIn && gistCreator === userSman ? (
           <Link
             to={{
               pathname: "/edit",
@@ -262,10 +262,10 @@ const GistsPost = ({
           >
             <EditIcon color="primary" />
           </Link>
-        </TitleEdit>
-      ) : (
-        ""
-      )}
+        ) : (
+          ""
+        )}
+      </TitleEdit>
 
       <Content>
         <ShowMoreText

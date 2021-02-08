@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { ActiveContext } from "../utils/store";
 
 import { storage } from "./firebase";
 
@@ -6,6 +8,10 @@ function FileHandler() {
   const [imageUrlState, setImageUrlState] = useState("htpps://firebase.com");
 
   const [imageFileState, setImageFileState] = useState("imageFile.png");
+
+  const user = useContext(ActiveContext);
+
+  const _id = user.userInfo._id;
 
   const handleImageFile = (e) => {
     const image = e.target.files[0];
@@ -38,7 +44,11 @@ function FileHandler() {
       return console.error("File Not Supported ! File Must Be An Image");
 
     const uploadImage = storage
-      .ref(`/images/${imageFileState.name}`)
+      .ref(
+        `/images/${_id}-${imageFileState.name.toLowerCase()}${Math.floor(
+          Math.random() * 101
+        )}`
+      )
 
       .put(imageFileState);
 
@@ -62,7 +72,11 @@ function FileHandler() {
 
           .ref("images")
 
-          .child(imageFileState.name)
+          .child(
+            `${_id}-${imageFileState.name.toLowerCase()}${Math.floor(
+              Math.random() * 101
+            )}`
+          )
 
           .getDownloadURL()
 

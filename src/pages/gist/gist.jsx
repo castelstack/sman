@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
-import message from "../../constant/response";
 import { NavLink, Route, useRouteMatch } from "react-router-dom";
 import { useAlert } from "react-alert";
 import GistTemplate from "../../containers/templates/gist";
@@ -100,15 +99,15 @@ const Gist = (props) => {
       .catch((err) => {
         // err msg
 
-        alert.error(message(err));
+        alert.error(err.message);
       });
-  },[alert]);
+  }, [alert]);
 
   return (
     <Container>
       <Gistbox />
       <Navi>
-        <Breadcrumbs aria-label='breadcrumb'>
+        <Breadcrumbs aria-label="breadcrumb">
           {currentUser.userActive ? (
             <NavLinks
               to={`${url}/me`}
@@ -138,7 +137,7 @@ const Gist = (props) => {
       </Navi>
 
       <Gists>
-        <Route path='/' component={() => <GistTemplate tag={tagUrlState} />} />
+        <Route path="/" component={() => <GistTemplate tag={tagUrlState} />} />
       </Gists>
       <Pagination>
         <Button><ChevronLeftIcon/>Prev</Button><Button>Next <ChevronRightIcon/></Button>
