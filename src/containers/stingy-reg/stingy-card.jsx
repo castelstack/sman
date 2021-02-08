@@ -10,7 +10,7 @@ const Container = styled.div`
 display: grid;
 grid-template-columns: max-content min-content;
 grid-gap: 5px;
-width: 100%;
+width: 20.8rem;
 height: 472;
 background-color: #fff;
 background-image: url(${bg});
@@ -23,7 +23,7 @@ const LogoHead = styled.div`
 display: grid;
 grid-template-columns: min-content max-content;
 align-items: center;
-grid-gap: 3rem;
+grid-gap: 2rem;
 grid-column: 1/-1;
 `;
 const Profile = styled.div`
@@ -33,7 +33,7 @@ const SimPro = styled.div`
 display: grid;
 grid-template-columns: min-content 1fr;
 align-items: center;
-grid-gap: .5rem;`
+grid-gap: .3rem;`
   
 const BarPro = styled.div`
 display: grid;
@@ -50,9 +50,9 @@ const Barcode = styled.img`
 width: 13rem;
 height: 3rem;`;
 const ProImg = styled.img`
-width: 8rem;
-height: 8rem;
-margin-left: 10px;`;
+width: 7rem;
+height: 7rem;
+margin-left: 5px;`;
 const Head = styled.h1`
 color: #843035;
 font-size: 19px;

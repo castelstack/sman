@@ -61,6 +61,11 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 400px) {
     padding: 10px;
+
+    &:hover {
+      border-left: none;
+      box-shadow: none;
+    }
   }
 `;
 const ImageContainer = styled.div``;
@@ -71,13 +76,13 @@ const GistImg = styled.img`
 
 const ModalImg = styled.img``;
 const GistBox = styled(SmText)`
-  font-size: 18px;
+  font-size: 14px;
   line-height: 30px;
 
   color: #828282;
 
   @media only screen and (max-width: 800px) {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 30px;
   }
 

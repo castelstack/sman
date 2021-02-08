@@ -8,11 +8,11 @@ const Container = styled.div`
   background: #fffdee;
 
   @media only screen and (max-width: 800px) {
-    padding: 65px 50px;
+    padding: 65px 20px;
   }
 
-  @media only screen and (max-width: 600px) {
-    padding: 65px 40px;
+  @media only screen and (max-width: 900px) {
+    padding: 65px 20px;
   }
 
   @media only screen and (max-width: 400px) {
@@ -25,25 +25,18 @@ const CounterBox = styled.div`
   grid-template-columns: repeat(3, max-content);
   grid-gap: 5px;
   justify-content: space-between;
-  padding: 15px 150px;
+  padding: 15px 99px;
 
   background: #fffdee;
   @media only screen and (max-width: 1200px) {
-    padding: 18px 80px;
+    padding: 18px 20px;
   }
 
-  @media only screen and (max-width: 800px) {
-    padding: 18px 50px;
-  }
-
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 850px) {
     padding: 18px 20px;
     grid-template-columns: 1fr;
     justify-items: center;
-  }
-
-  @media only screen and (max-width: 400px) {
-    padding: 18px 10px;
+    grid-gap: 3rem;
   }
 `;
 
@@ -73,17 +66,17 @@ const Counter = () => {
   return (
     <Container>
       <CounterBox>
-        <div className="counter">
-          <div className="counter-value">{stats.rules}</div>
-          <h3 className="title">Rules</h3>
+        <div className='counter'>
+          <div className='counter-value'>{stats.rules}</div>
+          <h3 className='title'>Rules</h3>
         </div>
-        <div className="counter">
-          <div className="counter-value">{stats.gists}</div>
-          <h3 className="title">Stingy Gists</h3>
+        <div className='counter'>
+          <div className='counter-value'>{stats.gists}</div>
+          <h3 className='title'>Stingy Gists</h3>
         </div>
-        <div className="counter">
-          <div className="counter-value">{stats.users}</div>
-          <h3 className="title">Stingy Men</h3>
+        <div className='counter'>
+          <div className='counter-value'>{stats.users}</div>
+          <h3 className='title'>Stingy Men</h3>
         </div>
       </CounterBox>
     </Container>

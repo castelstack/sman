@@ -21,7 +21,7 @@ width: 20rem;
   grid-template-rows: repeat(2, min-content);
   justify-items: center;
   grid-gap: 20px;
-  padding: 20px 20px 50px 20px;
+  padding: 2px 2px 50px 2px;
   border-radius: 5px;
   clip-path: polygon(
     0% 0%,
@@ -51,7 +51,7 @@ const Category = styled(MedText)`
 const Gist = styled(SmText)`
   font-size: 15px;
   line-height: 25px;
-  padding: 10px 0;
+  padding: .5rem 0;
   @media only screen and (max-width: 1200px) {
     font-size: 14px;
     line-height: 20px;

@@ -44,10 +44,10 @@ export const ContiuneButton = styled(Button)`
 `;
 
 export const Size = styled.div`
-  width: 65%;
+  width: 300;
   border-radius: 5px;
-  padding-right:.5rem;
-  background: blue;
+  //padding-right:.5rem;
+  
 `
 export const Container = styled.div`
   margin: 0 99px;
