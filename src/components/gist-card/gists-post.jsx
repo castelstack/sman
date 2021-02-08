@@ -61,6 +61,11 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 400px) {
     padding: 10px;
+
+    &:hover {
+      border-left: none;
+      box-shadow: none;
+    }
   }
 `;
 const ImageContainer = styled.div``;
@@ -71,13 +76,13 @@ const GistImg = styled.img`
 
 const ModalImg = styled.img``;
 const GistBox = styled(SmText)`
-  font-size: 18px;
+  font-size: 14px;
   line-height: 30px;
 
   color: #828282;
 
   @media only screen and (max-width: 800px) {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 30px;
   }
 
@@ -260,7 +265,7 @@ const GistsPost = ({
               gist,
             }}
           >
-            <EditIcon color="primary" />
+            <EditIcon color='primary' />
           </Link>
         ) : (
           ""
@@ -271,10 +276,10 @@ const GistsPost = ({
         <ShowMoreText
           /* Default options */
           lines={3}
-          more=">>>"
-          less="<<<"
-          className="content-css"
-          anchorClass="my-anchor-css-class"
+          more='>>>'
+          less='<<<'
+          className='content-css'
+          anchorClass='my-anchor-css-class'
           onClick={executeOnClick}
           expanded={false}
         >
@@ -282,12 +287,12 @@ const GistsPost = ({
         </ShowMoreText>
         <div style={{ cursor: "pointer" }} onClick={handleOpen}>
           <ImageContainer>
-            {image ? <GistImg src={`${image}`} alt="photo" /> : ""}
+            {image ? <GistImg src={`${image}`} alt='photo' /> : ""}
           </ImageContainer>
         </div>
         <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
+          aria-labelledby='transition-modal-title'
+          aria-describedby='transition-modal-description'
           className={classes.modal}
           open={open}
           onClose={handleClose}
@@ -299,7 +304,7 @@ const GistsPost = ({
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={`${image}`} alt="photo" />
+              <ModalImg src={`${image}`} alt='photo' />
             </div>
           </Fade>
         </Modal>
@@ -312,7 +317,7 @@ const GistsPost = ({
             <Checkbox
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
-              name="like"
+              name='like'
               onChange={handleChange}
               disabled={disabled}
               checked={currentLiked}
@@ -320,15 +325,15 @@ const GistsPost = ({
           }
           label={currentLikes}
         />
-        <div className="btn_wrap">
-          <span className="share">Share</span>
-          <div className="socials">
-            <Icon className="icon">
+        <div className='btn_wrap'>
+          <span className='share'>Share</span>
+          <div className='socials'>
+            <Icon className='icon'>
               <FacebookShareButton quote={gistspost} url={`${url}`}>
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
             </Icon>
-            <Icon className="icon">
+            <Icon className='icon'>
               <WhatsappShareButton
                 title={`${Truncate(gistspost, 600)} ...read mor at`}
                 url={url}
@@ -336,11 +341,11 @@ const GistsPost = ({
                 <WhatsappIcon size={32} round={true} />
               </WhatsappShareButton>
             </Icon>
-            <Icon className="icon">
+            <Icon className='icon'>
               <TwitterShareButton
                 title={`${Truncate(gistspost, 190)}  ...read more at `}
                 url={url}
-                via="sman"
+                via='sman'
                 // hashtags="SMAN"
               >
                 <TwitterIcon size={32} round={true} />
