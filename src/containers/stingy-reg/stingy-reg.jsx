@@ -21,6 +21,7 @@ import {
   Uploadbutton,
   Frame,
   Size,
+  FormBox
 } from "./stingy-reg.style";
 
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
@@ -144,7 +145,7 @@ const Join = () => {
           ) : (
             <Spinner />
           )}
-          <form
+          <FormBox
             onSubmit={handleSubmit}
             style={{
               display: "grid",
@@ -173,7 +174,7 @@ const Join = () => {
                 disabled
               />
             </Box>
-          </form>
+          </FormBox>
           <ContiuneButton value="Generate Card" big onClick={handleClick} />
         </Form>
       </Content>

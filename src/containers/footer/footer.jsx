@@ -48,6 +48,9 @@ const Footer = () => {
           <LinkTo to="/gist">
             <Links>Read Stingy Men Gists</Links>
           </LinkTo>
+           <LinkTo to="/suggest">
+            <Links>Suggestion</Links>
+          </LinkTo>
         </Routes>
       ) : (
         <Routes>

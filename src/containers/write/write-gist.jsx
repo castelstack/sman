@@ -143,7 +143,7 @@ const WriteGist = ({ history }) => {
         <PreviewImg onClick={handleClick}>Click to add and preview picture</PreviewImg>
         
         {
-          !imageUrl ? "" : <Img src={imageUrl} alt="upload" /> 
+          imageUrl === '' ? "" : <Img src={imageUrl} alt="upload" /> 
 }
         <Post value="Post" type="submit" />
       </form>

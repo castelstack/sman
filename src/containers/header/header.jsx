@@ -41,7 +41,7 @@ export default function ButtonAppBar() {
             <ButtonLink to='/create'>
               <Button value='Generate Card' />
             </ButtonLink>
-            <HeaderLink to='/profile'>
+            <HeaderLink to='/profile' >
               <Avatar alt='profile pic' src={AvatarP} />
             </HeaderLink> 
                 </> :

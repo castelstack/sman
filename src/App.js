@@ -19,21 +19,21 @@ import Error from "../src/pages/error/error";
 
 import {
   transitions,
-  types,
   positions,
   Provider as AlertProvider,
 } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import LoaderBox from "./components/Loader/loader";
 import EditGist from "./containers/write/edit";
+import Suggest from "./pages/suggest/suggest";
 
 // optional configuration
 const options = {
   // you can also just use 'bottom center'
-  position: positions.MIDDLE,
+  position: positions.TOP_RIGHT,
   timeout: 4000,
-  offset: "30px",
-  type: types.SUCCESS,
+  offset: "10px",
+  
   // you can also just use 'scale'
   transition: transitions.FADE,
 };
@@ -69,6 +69,7 @@ function App(props) {
             <Route path="/set-new-password" exact component={NewPassword} />
             <Route path="/input-email" exact component={InputEmail} />
             <Route path="/edit" exact component={EditGist} />
+            <Route path="/suggest" exact component={Suggest} />
             <Route path="*" exact component={Error} />
           </Switch>
           <Footer />
