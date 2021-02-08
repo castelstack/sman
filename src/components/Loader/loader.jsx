@@ -23,7 +23,7 @@ const LoaderBox = () => {
         color="#843035"
         height={100}
         width={100}
-        //3 secs
+       
       />
         </Container>
     );

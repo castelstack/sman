@@ -39,7 +39,7 @@ export const Socials = styled.div`
 `;
 export const Routes = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(4, max-content);
   grid-gap: 20px;
   align-items: center;
   justify-content: center;
@@ -57,6 +57,9 @@ export const Links = styled(SmText)`
 `;
 export const LinkTo = styled(Link)`
   color: #fff;
+  &:hover{
+    color: gray;
+  }
 `;
 export const LogoImg = styled.img`
   height: 25px;

@@ -10,12 +10,12 @@ const Container = styled.div`
 display: grid;
 grid-template-columns: max-content min-content;
 grid-gap: 5px;
-width: 640;
+width: 100%;
 height: 472;
 background-color: #fff;
 background-image: url(${bg});
 background-repeat: no-repeat;
-border: solid 1px grey;
+
 padding: .5rem .5rem .5rem .5rem;
 
 `;
@@ -32,7 +32,8 @@ grid-template-columns: 1fr;`;
 const SimPro = styled.div`
 display: grid;
 grid-template-columns: min-content 1fr;
-align-items: center;`
+align-items: center;
+grid-gap: .5rem;`
   
 const BarPro = styled.div`
 display: grid;
@@ -51,7 +52,7 @@ height: 3rem;`;
 const ProImg = styled.img`
 width: 8rem;
 height: 8rem;
-margin-left: 3px;`;
+margin-left: 10px;`;
 const Head = styled.h1`
 color: #843035;
 font-size: 19px;

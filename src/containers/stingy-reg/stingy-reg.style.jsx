@@ -1,11 +1,17 @@
 import styled from "styled-components";
 import { HeadText } from "../../constant/styles";
-
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import Button from "../../components/button/button";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 
+export const FormBox = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+ 
+  
+`;
 export const Icon = styled(PersonOutlineOutlinedIcon)`
   transform: translateX(2rem);
   margin-right: -3px;
@@ -38,8 +44,10 @@ export const ContiuneButton = styled(Button)`
 `;
 
 export const Size = styled.div`
-  width: 22.5rem;
+  width: 65%;
   border-radius: 5px;
+  padding-right:.5rem;
+  background: blue;
 `
 export const Container = styled.div`
   margin: 0 99px;
@@ -77,8 +85,8 @@ export const Form = styled.div`
   padding: 90px;
   display: grid;
   grid-template-rows: repeat(2, min-content);
-  grid-gap: 30px;
-  padding: 15px;
+  grid-gap: 2rem;
+  padding: 1rem 1rem 4rem 1rem;
   justify-items: center;
 
   @media only screen and (max-width: 1200px) {
@@ -142,7 +150,7 @@ export const InputFied = styled.input`
   }
 `;
 export const Uploadbutton = styled.button`
-width= min-content;
+width: max-content;
 color:#fff;
 background:  #3f51b5;
 border: none;
