@@ -9,7 +9,7 @@ import { useAlert } from "react-alert";
 const GistTemplate = ({ tag, page }) => {
   let user = useContext(ActiveContext);
 
-  const limit = 3;
+  const limit = 10;
 
   const [loading, setLoading] = useState(true);
 
