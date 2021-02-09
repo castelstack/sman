@@ -1,0 +1,47 @@
+.counter{
+    background: #FCEA4A;
+    text-align: center;
+    padding: 100px 0 30px;
+    margin-top: 30px;
+    position: relative;
+ width: 250px;
+ height: 40px;
+ border-radius: 5px;
+ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.counter .counter-value{
+    width: 150px;
+    height: 100px;
+    line-height: 100px;
+    background: #843035;
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: 0 8px 6px -6px #4d485e;
+    text-shadow: 1px 1px 0 #4d485e, 2px 2px 0 #4d485e, 3px 3px 0 #4d485e, 4px 4px 0 #4d485e;
+    font-size: 50px;
+    color: #fff;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+}
+
+.counter .title{
+    font-size: 20px;
+    font-weight: 600;
+    color: #033a34;
+    text-transform: uppercase;
+    margin: 0;
+}
+.counter.yellow .counter-value{ background: #e8a83b; }
+.counter.blue .counter-value{ background: #14cbdc; }
+.counter.green .counter-value{ background: #22c662; }
+.counter.yellow .counter-value:before{ border-right-color: #a27f43; }
+.counter.yellow .counter-value:after{ border-left-color: #a27f43; }
+.counter.blue .counter-value:before{ border-right-color: #478a91; }
+.counter.blue .counter-value:after{ border-left-color: #478a91; }
+.counter.green .counter-value:before{ border-right-color: #247151; }
+.counter.green .counter-value:after{ border-left-color: #247151; }
+@media only screen and (max-width: 990px){
+    .counter{ margin-top: 40px; }
+}
