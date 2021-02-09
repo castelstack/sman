@@ -17,11 +17,7 @@ import InputEmail from "../src/containers/input-email/input-email";
 import NewPassword from "../src/components/reset-password/new-password";
 import Error from "../src/pages/error/error";
 
-import {
-  transitions,
-  positions,
-  Provider as AlertProvider,
-} from "react-alert";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import LoaderBox from "./components/Loader/loader";
 import EditGist from "./containers/write/edit";
@@ -33,7 +29,7 @@ const options = {
   position: positions.TOP_RIGHT,
   timeout: 4000,
   offset: "10px",
-  
+
   // you can also just use 'scale'
   transition: transitions.FADE,
 };
@@ -42,40 +38,39 @@ function App(props) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('loader')
-      setLoading(false)
-    }, 5000);
-   
+      setLoading(false);
+    }, 3000);
+
     return () => clearTimeout(timer);
   }, []);
   return (
     <div className="App">
-      {
-        Loading ? 
-        <LoaderBox/>
-        :  <AlertProvider template={AlertTemplate} {...options}>
-        <Router>
-          <Header />
-          <Switch>
-            <Route path="/" exact component={Homepage} />
-            <Route path="/gist" component={Gist} />
-            <Route path="/join" component={JoinUs} />
-            <Route path="/create" component={CreateId} />
-            <Route path="/rules-and-regulation" component={Rules} />
-            <Route path="/write-rules" exact component={WriteRules} />
-            <Route path="/write-gist" exact component={WriteGist} />
-            <Route path="/profile" exact component={ProfilePage} />
-            <Route path="/password-reset" exact component={ResetPassword} />
-            <Route path="/set-new-password" exact component={NewPassword} />
-            <Route path="/input-email" exact component={InputEmail} />
-            <Route path="/edit" exact component={EditGist} />
-            <Route path="/suggest" exact component={Suggest} />
-            <Route path="*" exact component={Error} />
-          </Switch>
-          <Footer />
-        </Router>
-      </AlertProvider>
-     }
+      {Loading ? (
+        <LoaderBox />
+      ) : (
+        <AlertProvider template={AlertTemplate} {...options}>
+          <Router>
+            <Header />
+            <Switch>
+              <Route path="/" exact component={Homepage} />
+              <Route path="/gist" component={Gist} />
+              <Route path="/join" component={JoinUs} />
+              <Route path="/create" component={CreateId} />
+              <Route path="/rules-and-regulation" component={Rules} />
+              <Route path="/write-rules" exact component={WriteRules} />
+              <Route path="/write-gist" exact component={WriteGist} />
+              <Route path="/profile" exact component={ProfilePage} />
+              <Route path="/password-reset" exact component={ResetPassword} />
+              <Route path="/set-new-password" exact component={NewPassword} />
+              <Route path="/input-email" exact component={InputEmail} />
+              <Route path="/edit" exact component={EditGist} />
+              <Route path="/suggest" exact component={Suggest} />
+              <Route path="*" exact component={Error} />
+            </Switch>
+            <Footer />
+          </Router>
+        </AlertProvider>
+      )}
     </div>
   );
 }

@@ -6,8 +6,10 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { ActiveContext } from "../../utils/store";
 import { useAlert } from "react-alert";
 
-const GistTemplate = ({ tag }) => {
+const GistTemplate = ({ tag, page }) => {
   let user = useContext(ActiveContext);
+
+  const limit = 3;
 
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +17,22 @@ const GistTemplate = ({ tag }) => {
 
   const [loggedIn, setLoggedIn] = React.useState(true);
 
-  const needle = tag !== null ? tag : "";
+  const needle = tag !== null ? tag : null;
+
+  const pagify = page <= 1 ? null : `page=${page}&limit=${limit}`;
+
+  let urlState;
+
+  pagify == null && needle == null
+    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?&limit=${limit}`)
+    : needle
+    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?${needle}&limit=${limit}`)
+    : (urlState = `https://smanhq.herokuapp.com/api/v1/gists?${pagify}`);
+
+  needle !== null && pagify !== null
+    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?${needle}&${pagify}`)
+    : // eslint-disable-next-line no-self-assign
+      (urlState = urlState);
 
   let alert = useAlert();
 
@@ -25,7 +42,7 @@ const GistTemplate = ({ tag }) => {
     }
     setLoading(true);
     axios
-      .get(`https://smanhq.herokuapp.com/api/v1/gists?${needle}`)
+      .get(urlState)
       .then((res) => {
         setGists(res.data.gist);
 
@@ -33,7 +50,7 @@ const GistTemplate = ({ tag }) => {
       })
       .catch((err) => alert.error(err.message));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [needle, user.userInfo]);
+  }, [needle, user.userInfo, page]);
 
   return (
     <div>

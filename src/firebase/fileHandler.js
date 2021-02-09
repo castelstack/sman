@@ -5,7 +5,7 @@ import { ActiveContext } from "../utils/store";
 import { storage } from "./firebase";
 
 function FileHandler() {
-  const [imageUrlState, setImageUrlState] = useState("htpps://firebase.com");
+  const [imageUrlState, setImageUrlState] = useState("firebase");
 
   const [imageFileState, setImageFileState] = useState("imageFile.png");
 
@@ -38,17 +38,15 @@ function FileHandler() {
       "image/webp",
     ];
 
+    const uniquefy = Math.floor(Math.random() * 101);
+
     //checking if image type is an image
 
     if (!imgExt.includes(imageFileState.type))
       return console.error("File Not Supported ! File Must Be An Image");
 
     const uploadImage = storage
-      .ref(
-        `/images/${_id}-${imageFileState.name.toLowerCase()}${Math.floor(
-          Math.random() * 101
-        )}`
-      )
+      .ref(`/images/${_id}-${uniquefy}-${imageFileState.name.toLowerCase()}`)
 
       .put(imageFileState);
 
@@ -72,11 +70,7 @@ function FileHandler() {
 
           .ref("images")
 
-          .child(
-            `${_id}-${imageFileState.name.toLowerCase()}${Math.floor(
-              Math.random() * 101
-            )}`
-          )
+          .child(`${_id}-${uniquefy}-${imageFileState.name.toLowerCase()}`)
 
           .getDownloadURL()
 
@@ -85,7 +79,7 @@ function FileHandler() {
 
             setImageUrlState((state) => state);
 
-            // setImageFileState(null);
+            setImageFileState("");
           });
       }
     );

@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-width: 20rem;
+  width: 20rem;
   background: #fcea4a;
   display: grid;
   grid-template-rows: repeat(2, min-content);
@@ -32,10 +32,9 @@ width: 20rem;
     40% 90%,
     0 90%
   );
-  
 
-   @media only screen and (max-width: 650px) {
-    padding: 20px .5rem 50px .5rem;
+  @media only screen and (max-width: 650px) {
+    padding: 20px 0.5rem 50px 0.5rem;
   }
 `;
 
@@ -51,7 +50,8 @@ const Category = styled(MedText)`
 const Gist = styled(SmText)`
   font-size: 15px;
   line-height: 25px;
-  padding: .5rem 0;
+  text-align: center;
+  padding: 0.5rem 0;
   @media only screen and (max-width: 1200px) {
     font-size: 14px;
     line-height: 20px;
@@ -93,7 +93,7 @@ const Card = ({ title, gist, name }) => {
         </ShowMoreText>
       </Content>
       <Profile>
-        <Avatar src={AvatarP} alt='profile'/>
+        <Avatar src={AvatarP} alt="profile" />
         <Name>{name}</Name>
       </Profile>
     </Container>

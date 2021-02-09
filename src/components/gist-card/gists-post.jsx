@@ -188,8 +188,6 @@ const GistsPost = ({
 
   const [disabled, setDisabled] = React.useState(!loggedIn);
 
-  console.log(loggedIn, disabled);
-
   useEffect(() => {
     if (liked.includes(userId)) {
       setLiked(true);
