@@ -51,7 +51,7 @@ width: 13rem;
 height: 3rem;`;
 const ProImg = styled.img`
 width: 7rem;
-height: 7rem;
+height: 8rem;
 margin-left: 5px;`;
 const Head = styled.h1`
 color: #843035;

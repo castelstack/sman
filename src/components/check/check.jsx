@@ -110,8 +110,8 @@ const Check = () => {
 
   return (
     <Container>
-      <HeadText>Check Membership Status</HeadText>
-      <SmText>Input your sman id to check your membership status</SmText>
+      <HeadText style={{fontFamily: 'Acme'}}>Check Membership Status</HeadText>
+      <SmText style={{textAlign: 'center'}}>Input your sman id to check your membership status</SmText>
       <TextField id="sman" placeholder="SMAN id number" />
       <Button
         value="Check"

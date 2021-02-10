@@ -25,31 +25,6 @@ const Container = styled.div`
   border-radius: 5px;
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  &:hover {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    animation-name: example;
-    animation-duration: 0.25s;
-    border-left: 2px solid #843035;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  }
-
-  @keyframes example {
-    0% {
-      border-left: 2px solid #ffffff;
-    }
-    25% {
-      border-left: 2px solid #ffe6e6;
-    }
-    50% {
-      border-left: 4px solid #843035;
-    }
-    100% {
-      border-left: 5px solid #843035;
-    }
-  }
   @media only screen and (max-width: 400px) {
     padding: 10px;
   }

@@ -9,17 +9,12 @@ import Check from "../../components/check/check";
 const Homepage = () => {
   return (
     <div>
-      {
-        <div>
-          <Box />
-          <Counter />
-          <Check />
-          <FeatureRules />
-          <FeatureGist />
-          <GetCard />
-          
-        </div>
-      }
+      <Box />
+      <Counter />
+      <Check />
+      <FeatureRules />
+      <FeatureGist />
+      <GetCard />
     </div>
   );
 };

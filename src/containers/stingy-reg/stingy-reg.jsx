@@ -95,7 +95,7 @@ const Join = () => {
   const handleClick = (event) => {
     event.preventDefault();
     exportComponentAsPNG(componentRef);
-    alert.show("Card Generated");
+    alert.success("Card Generated");
   };
 
   return (

@@ -37,6 +37,9 @@ const Footer = () => {
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
+     
+       
+     
       {isActive.userActive ? (
         <Routes>
           <LinkTo to="/create">

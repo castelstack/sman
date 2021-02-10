@@ -117,23 +117,6 @@ const ImageBox = styled.div`
 const Image = styled.img`
   width: 30rem;
   height: 30rem;
-
-
-  
-    
-    
-  
-    // animation: rotateFloat 120s infinite;
-    // animation-timing-function: linear;
-    
-    // @keyframes rotateFloat {
-    //   from {
-    //     transform:  rotate(0deg);
-    //   }
-    //   to {
-    //     transform:  rotate(360deg);
-    //   }
-    // }
   @media only screen and (max-width: 1200px) {
     width: 25rem;
   }
@@ -166,7 +149,7 @@ const Box = () => {
     <Container>
       <Content>
         <Info>
-          <HeadText> Stingy Men Association</HeadText>
+          <HeadText style={{textTransform: 'uppercase', fontWeight: '700'}}> Stingy Men Association</HeadText>
           <InfoText>
             <TextHead>Let Me See What I Can Do</TextHead>
             <Text>

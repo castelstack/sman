@@ -25,22 +25,18 @@ const Container = styled.div`
 `;
 const RulesBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, min-content);
+  grid-template-columns: repeat(3, min-content);
   justify-content: space-between;
   align-items: start;
-  grid-gap: 20px;
+  grid-gap: 40px;
 
   @media only screen and (max-width: 1200px) {
-    grid-gap: 40px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px;
+   
   }
 
   @media only screen and (max-width: 800px) {
     grid-gap: 40px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media only screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;
@@ -68,7 +64,7 @@ const FeatureRules = () => {
       <HeadText>Stingy Men Rules</HeadText>
       <RulesBox>
         {rules
-          .filter((item, idx) => idx < 4)
+          .filter((item, idx) => idx < 3)
           .map((item) => (
             <div key={item.id}>
               <RuleBox

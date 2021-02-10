@@ -8,8 +8,6 @@ import { ActiveContext } from "../../utils/store";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 const Container = styled.div``;
 
@@ -48,28 +46,6 @@ const NavLinks = styled(NavLink)`
   align-items: center;
   justify-content: center;
   transition: all;
-`;
-const Pagination = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, min-content);
-  align-items: center;
-  justify-content: center;
-  grid-gap: 15rem;
-  width: 100%;
-  margin-bottom: 3rem;
-`;
-
-const Button = styled.button`
-  border: none;
-  background: #fff;
-  display: grid;
-  grid-template-columns: repeat(2, min-content);
-  grid-gap: 0.4rem;
-  align-items: center;
-
-  &:hover {
-    color: blue;
-  }
 `;
 const Gist = (props) => {
   const { url } = useRouteMatch();
@@ -159,23 +135,6 @@ const Gist = (props) => {
           component={() => <GistTemplate tag={tagUrlState} page={pageState} />}
         />
       </Gists>
-      <Pagination>
-        {pageState > 1 ? (
-          <Button onClick={() => setPageState(() => (pageState -= 1))}>
-            <ChevronLeftIcon />
-            Prev
-          </Button>
-        ) : (
-          <Button disabled={true}>
-            <ChevronLeftIcon />
-            Prev
-          </Button>
-        )}
-
-        <Button onClick={() => setPageState(() => (pageState += 1))}>
-          Next <ChevronRightIcon />
-        </Button>
-      </Pagination>
     </Container>
   );
 };

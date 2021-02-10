@@ -45,31 +45,31 @@ function App(props) {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="App">
+    <div className='App'>
       {Loading ? (
         <LoaderBox />
       ) : (
         <AlertProvider template={AlertTemplate} {...options}>
           <Router>
-        <Donate  />
+            <Donate />
             <Header />
             <Switch>
-              <Route path="/" exact component={Homepage} />
-              <Route path="/gist" component={Gist} />
-              <Route path="/join" component={JoinUs} />
-              <Route path="/create" component={CreateId} />
-              <Route path="/rules-and-regulation" component={Rules} />
-              <Route path="/write-rules" exact component={WriteRules} />
-              <Route path="/write-gist" exact component={WriteGist} />
-              <Route path="/profile" exact component={ProfilePage} />
-              <Route path="/password-reset" exact component={ResetPassword} />
-              <Route path="/set-new-password" exact component={NewPassword} />
-              <Route path="/input-email" exact component={InputEmail} />
-              <Route path="/edit" exact component={EditGist} />
-              <Route path="/suggest" exact component={Suggest} />
-              <Route path="*" exact component={Error} />
+              <Route path='/' exact component={Homepage} />
+              <Route path='/gist' component={Gist} />
+              <Route path='/join' component={JoinUs} />
+              <Route path='/create' component={CreateId} />
+              <Route path='/rules-and-regulation' component={Rules} />
+              <Route path='/write-rules' exact component={WriteRules} />
+              <Route path='/write-gist' exact component={WriteGist} />
+              <Route path='/profile' exact component={ProfilePage} />
+              <Route path='/password-reset' exact component={ResetPassword} />
+              <Route path='/set-new-password' exact component={NewPassword} />
+              <Route path='/input-email' exact component={InputEmail} />
+              <Route path='/edit' exact component={EditGist} />
+              <Route path='/suggest' exact component={Suggest} />
+              <Route path='*' exact component={Error} />
             </Switch>
-           
+
             <Footer />
           </Router>
         </AlertProvider>

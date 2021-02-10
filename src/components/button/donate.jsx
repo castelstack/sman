@@ -4,7 +4,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 const Donate = () => {
     return (
         <div>
-            <ButtonDonate >Donate <FavoriteIcon style={{ color: 'white' }}/></ButtonDonate>
+            <ButtonDonate href="https://flutterwave.com/pay/sman-donation" >Donate <FavoriteIcon style={{ color: 'white' }}/></ButtonDonate>
         </div>
     );
 };
