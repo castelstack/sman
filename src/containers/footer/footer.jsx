@@ -37,6 +37,9 @@ const Footer = () => {
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
+      <button>
+        <a href="https://flutterwave.com/pay/sman-donation">Donate</a>
+      </button>
       {isActive.userActive ? (
         <Routes>
           <LinkTo to="/create">
@@ -48,7 +51,7 @@ const Footer = () => {
           <LinkTo to="/gist">
             <Links>Read Stingy Men Gists</Links>
           </LinkTo>
-           <LinkTo to="/suggest">
+          <LinkTo to="/suggest">
             <Links>Suggestion</Links>
           </LinkTo>
         </Routes>
@@ -72,6 +75,7 @@ const Footer = () => {
           © {new Date().getFullYear()} Stingy men association. All rights
           reserved
         </Links>
+
         <Socials>
           <SocialLink>
             <SocialIcon herf="" src={Fb} />

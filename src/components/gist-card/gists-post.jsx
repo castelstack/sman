@@ -155,7 +155,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  paper: {},
+  paper: {
+    width: "100%",
+  },
 }));
 
 const executeOnClick = (isExpanded) => {
@@ -302,7 +304,11 @@ const GistsPost = ({
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={`${image}`} alt="photo" />
+              <ModalImg
+                src={`${image}`}
+                alt="photo"
+                className={classes.modalImage}
+              />
             </div>
           </Fade>
         </Modal>
