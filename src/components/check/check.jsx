@@ -105,13 +105,19 @@ const Check = () => {
           setValid(false);
         }
       })
-      .catch((err) => alert.error(err.message));
+      .catch((err) =>
+        alert.error("You Must Be Logged In To Verify SMAN IDs 🚷 ")
+      );
   };
 
   return (
     <Container>
-      <HeadText style={{fontFamily: 'Acme'}}>Check Membership Status</HeadText>
-      <SmText style={{textAlign: 'center'}}>Input your sman id to check your membership status</SmText>
+      <HeadText style={{ fontFamily: "Acme" }}>
+        Check Membership Status
+      </HeadText>
+      <SmText style={{ textAlign: "center" }}>
+        Input your sman id to check your membership status
+      </SmText>
       <TextField id="sman" placeholder="SMAN id number" />
       <Button
         value="Check"
