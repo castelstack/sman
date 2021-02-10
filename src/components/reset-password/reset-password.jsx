@@ -5,7 +5,7 @@ import reset from "../../images/reset.svg";
 import message from "../../constant/response";
 import styled from "styled-components";
 import axios from "axios";
-import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import { useFormik } from "formik";
 import { useAlert } from "react-alert";
 
@@ -16,6 +16,7 @@ const Container = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 20px;
   justify-items: center;
+  justify-content: center;
 `;
 
 const HdText = styled(HeadText)`
@@ -83,10 +84,11 @@ export const InputField = styled.input`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   &:focus {
+    background: rgba(0,0,0,0.5);
   }
 `;
 
-export const Email = styled(EmailOutlinedIcon)`
+export const Email = styled(ConfirmationNumberIcon)`
   transform: translateX(2rem);
   margin-right: -3px;
   color: white;

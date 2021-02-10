@@ -186,5 +186,29 @@ export const InputField = styled.input`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   &:focus {
+    background: rgba(0,0,0,0.5);
   }
 `;
+
+export const Select = styled.select`
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+/* Add some styling */
+border-radius: 5px;
+border: none;
+padding: 15px 45px;
+
+  font-size: 16px;
+  line-height: 24px;
+
+  /* for box */
+  width: 13rem;
+  height: 20px;
+  outline: 0;
+color: #fff;
+background-color:  #843035;
+background-image: none;
+border: 1px solid #cccccc;
+-ms-word-break: normal;
+word-break: normal;`
