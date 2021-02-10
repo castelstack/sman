@@ -22,6 +22,7 @@ import AlertTemplate from "react-alert-template-basic";
 import LoaderBox from "./components/Loader/loader";
 import EditGist from "./containers/write/edit";
 import Suggest from "./pages/suggest/suggest";
+import Donate from "./components/button/donate";
 
 // optional configuration
 const options = {
@@ -50,6 +51,7 @@ function App(props) {
       ) : (
         <AlertProvider template={AlertTemplate} {...options}>
           <Router>
+        <Donate  />
             <Header />
             <Switch>
               <Route path="/" exact component={Homepage} />
@@ -67,6 +69,7 @@ function App(props) {
               <Route path="/suggest" exact component={Suggest} />
               <Route path="*" exact component={Error} />
             </Switch>
+           
             <Footer />
           </Router>
         </AlertProvider>

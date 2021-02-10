@@ -17,6 +17,7 @@ const Homepage = () => {
           <FeatureRules />
           <FeatureGist />
           <GetCard />
+          
         </div>
       }
     </div>

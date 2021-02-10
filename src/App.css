@@ -7,6 +7,6 @@
   outline: none;
 }
 
-s{
-  color: rgb(226, 225, 225);
+.App{
+  position: relative;
 }

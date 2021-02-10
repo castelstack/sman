@@ -5,31 +5,34 @@ export const ButtonDonate = styled.button`
     grid-gap:.3rem;
     align-items: cneter;
    
-    font: 20px 'Nunito Sans', sans-serif;;
+    font: 20px 'Nunito Sans', sans-serif;
   
-    background: #00684d;
-    background: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,0.4) 100%),
-                -webkit-linear-gradient(left, lighten(#00684d, 15%) 0%, #00684d 50%, lighten(#00684d, 15%) 100%);
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 100%),
-                linear-gradient(to right, lighten(#00684d, 15%) 0%, #00684d 50%, lighten(#00684d, 15%) 100%);
-    background-position: 0 0;
-    background-size: 200% 100%;
+    background: #02a829;
+   border: none;
     border-radius: 4px;
     color: #fff;
-    padding: 15px 15px 15px 15px;
+    padding: 10px 15px 10px 15px;
     text-shadow: 1px 1px 5px #666;
     -webkit-transition: all 800ms;
     transition: all infinite ease-out;
-    animation: pulse 1s infinite;
+    animation: pulse 3s infinite;
   
-    
+     position: fixed;
+  bottom: 10%;
+  right: 0;
+  z-index: 2000;
+  
+
+  @media only screen and (max-width: 600px) {
+    bottom: 0;
+    padding: 3px 5px 3px 5px;
+    animation: none;
+    font: 15px 'Nunito Sans', sans-serif;
+  }
     &:hover {
     
-        box-shadow: 5px 8px 9px -10px rgba(0, 0, 0, 0.4);
-       
+      animation: none;
     
-      
-     
       }
     
     

@@ -17,7 +17,6 @@ import {
   PositionBranch,
   Position,
 } from "./profile-style";
-import Donate from "../../components/button/donate";
 
 const ProfilePage = ({ history }) => {
   const user = useContext(ActiveContext);
@@ -54,7 +53,6 @@ const ProfilePage = ({ history }) => {
           association. So help me God.
         </Oath>
         <Sign>Sign: Mgt.</Sign>
-        <Donate/>
         <LogOut history={history} />
       </Container>
     </div>
