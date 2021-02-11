@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
+import constant from "../../constant";
 import ShowMoreText from "react-show-more-text";
 import Truncate from "truncate";
 
@@ -22,8 +23,9 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
+
+const { capitalizeWord, capitalizeString } = constant;
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -227,7 +229,7 @@ const GistsPost = ({
   return (
     <Container>
       <TitleEdit>
-        <GistTag>{tag}</GistTag>
+        <GistTag>{capitalizeWord(tag)}</GistTag>
 
         {loggedIn && gistCreator === userSman ? (
           <Link
@@ -254,7 +256,7 @@ const GistsPost = ({
           onClick={executeOnClick}
           expanded={false}
         >
-          <GistBox>{gistspost}</GistBox>
+          <GistBox>{capitalizeString(gistspost)}</GistBox>
         </ShowMoreText>
         <div style={{ cursor: "pointer" }} onClick={handleOpen}>
           <ImageContainer>

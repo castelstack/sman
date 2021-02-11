@@ -1,7 +1,7 @@
-const capitalizeString = (word) =>
+export const capitalizeString = (word) =>
   word.charAt(0).toUpperCase() + word.substring(1);
 
-const capitalizeWord = (word) =>
+export const capitalizeWord = (word) =>
   word
     .split(" ")
     .map((el) => el.charAt(0).toUpperCase() + el.substring(1))

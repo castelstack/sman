@@ -34,21 +34,21 @@ const ProfilePage = ({ history }) => {
 
         <PositionBranch>
           <Position>
-            <WorkIcon color='primary' />
+            <WorkIcon color="primary" />
             Position: {user.userInfo.position}
           </Position>
           <Branch>
-            <LocationOnIcon color='action' />
+            <LocationOnIcon color="action" />
             Branch: {user.userInfo.branch}
           </Branch>
         </PositionBranch>
         <Oath>
-          Oath: I
+          Oath: I{" "}
           <StyName>
             {user.userInfo.firstName} {user.userInfo.lastName}
           </StyName>
           , solemnly swear, to uphold the dignity of this association with due
-          diligence, to NEVER give SHISHI in any form of finacial exploitation
+          diligence, to NEVER give SHISHI in any form of financial exploitation
           to the other gender. To respect and uphold the constitution of this
           great association. So help me God.
         </Oath>

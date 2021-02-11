@@ -116,7 +116,7 @@ const Check = () => {
         Check Membership Status
       </HeadText>
       <SmText style={{ textAlign: "center" }}>
-        Input your sman id to check your membership status
+        Input your SMAN ID to check your membership status
       </SmText>
       <TextField id="sman" placeholder="SMAN id number" />
       <Button

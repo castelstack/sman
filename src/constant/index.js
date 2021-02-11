@@ -1,6 +1,6 @@
 import response from "./response";
 
-import { trimText } from "./text";
+import { trimText, capitalizeWord, capitalizeString } from "./text";
 
 import userHelpers from "./userHelpers";
 
@@ -10,6 +10,10 @@ const constants = {
   trimText,
 
   userHelpers,
+
+  capitalizeWord,
+
+  capitalizeString,
 };
 
 export default constants;
