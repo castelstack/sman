@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../components/button/button";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import message from "../../constant/response";
 import { useFormik } from "formik";
 import { MedText, SmText } from "../../constant/styles";
@@ -19,8 +19,6 @@ export const Container = styled.div`
 `;
 
 const Suggest = ({ history }) => {
-  const alert = useAlert();
-
   const URL = "https://smanhq.herokuapp.com/";
 
   const formik = useFormik({
@@ -29,8 +27,9 @@ const Suggest = ({ history }) => {
     },
     onSubmit: (values) => {
       formik.values.title.length > 25
-        ? alert.info(
-            `Maximum Amount Of Tag Characters Is 1000 You Enterd ${formik.values.description.length}`
+        ? Alert(
+            `Maximum Amount Of Tag Characters Is 1000 You Enterd ${formik.values.description.length}`,
+            TYPE.DARK
           )
         : axios
             .post(`${URL}api/v1/tags`, formik.values, {
@@ -38,8 +37,9 @@ const Suggest = ({ history }) => {
             })
             .then((res, req) => {
               if (res.data.status === "SUCCESS") {
-                alert.success(
-                  "Tag Suggestion Succesful. Subject To Approval By SMAN Admins"
+                Alert(
+                  "Tag Suggestion Succesful. Subject To Approval By SMAN Admins",
+                  TYPE.SUCCESS
                 );
 
                 history.push("/");
@@ -47,7 +47,7 @@ const Suggest = ({ history }) => {
             })
             .catch((err) => {
               // err msg
-              alert.error(message(err));
+              Alert(message(err), TYPE.ERROR);
             });
     },
   });

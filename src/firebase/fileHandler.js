@@ -5,7 +5,7 @@ import { ActiveContext } from "../utils/store";
 import { storage } from "./firebase";
 
 function FileHandler() {
-  const [imageUrlState, setImageUrlState] = useState("firebase");
+  const [imageUrlState, setImageUrlState] = useState("default.jpg");
 
   const [imageFileState, setImageFileState] = useState("imageFile.png");
 

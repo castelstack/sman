@@ -37,13 +37,11 @@ const Footer = () => {
           <Links>Stingy Men Association</Links>
         </LinkTo>
       </Head>
-     
-       
-     
+
       {isActive.userActive ? (
         <Routes>
           <LinkTo to="/create">
-            <Links>Generate ID</Links>
+            <Links>Generate ID Card</Links>
           </LinkTo>
           <LinkTo to="write-gist">
             <Links>Tell Your Stingy Gist</Links>
@@ -51,7 +49,7 @@ const Footer = () => {
           <LinkTo to="/gist">
             <Links>Read Stingy Men Gists</Links>
           </LinkTo>
-           <LinkTo to="/suggest">
+          <LinkTo to="/suggest">
             <Links>Suggestion</Links>
           </LinkTo>
         </Routes>

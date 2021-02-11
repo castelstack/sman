@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
-import { useAlert } from "react-alert";
 import message from "../../constant/response";
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import { Alert, TYPE } from "../../components/alert";
+
 import {
   Email,
   Passwordd,
@@ -21,8 +22,9 @@ import { ActiveContext } from "../../utils/store";
 const Login = ({ history }) => {
   const isActive = useContext(ActiveContext);
 
-  const alert = useAlert();
+  
   const [passwordShown, setPasswordShown] = useState(false);
+  // const alert = useAlert();
   // Notice that we have to initialize ALL of fields with values. These
   // could come from props, but since we don't want to prefill this form,
   // we just use an empty string. If you don't do this, React will yell
@@ -44,7 +46,7 @@ const Login = ({ history }) => {
         })
         .then((res, req) => {
           if (res.data.status === "SUCCESS") {
-            alert.show(res.data.message);
+            Alert(res.data.message, TYPE.SUCCESS);
 
             isActive.setUserActive(true);
             isActive.setUserInfo(res.data.user);
@@ -55,7 +57,7 @@ const Login = ({ history }) => {
         .catch((err) => {
           // err msg
 
-          alert.error(message(err));
+          Alert(message(err), TYPE.ERROR);
         });
     },
   });

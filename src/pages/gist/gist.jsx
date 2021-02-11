@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
+import constants from "../../constant";
 import { NavLink, Route, useRouteMatch } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import GistTemplate from "../../containers/templates/gist";
 import { ActiveContext } from "../../utils/store";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+
+const { capitalizeWord } = constants;
 
 const Container = styled.div``;
 
@@ -34,12 +37,13 @@ const active = {
 };
 const Gists = styled.div``;
 const TagLink = styled.h5`
-font-size: 16px;
+  font-size: 16px;
   line-height: 20px;
   color: #18191f;
   padding: 5px 7px;
   text-decoration: none;
-  text-transfrom: capitalize;`;
+  text-transfrom: capitalize;
+`;
 const NavLinks = styled(NavLink)`
   font-size: 16px;
   line-height: 20px;
@@ -56,8 +60,6 @@ const NavLinks = styled(NavLink)`
 `;
 const Gist = (props) => {
   const { url } = useRouteMatch();
-
-  const alert = useAlert();
 
   const [tagState, setTagState] = useState([]);
 
@@ -84,9 +86,9 @@ const Gist = (props) => {
       .catch((err) => {
         // err msg
 
-        alert.error(err.message);
+        Alert(err.message, TYPE.ERROR);
       });
-  }, [alert]);
+  }, []);
 
   return (
     <Container>
@@ -130,9 +132,7 @@ const Gist = (props) => {
               }}
               activeStyle={active}
             >
-              <TagLink>
-              {tag.title} 
-              </TagLink>
+              <TagLink>{capitalizeWord(tag.title)}</TagLink>
             </NavLinks>
           ))}
         </Breadcrumbs>

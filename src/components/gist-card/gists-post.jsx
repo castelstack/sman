@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
+import constant from "../../constant";
 import ShowMoreText from "react-show-more-text";
 import Truncate from "truncate";
 
@@ -22,8 +23,9 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
+
+const { capitalizeWord, capitalizeString } = constant;
 
 const Container = styled.div`
   border: 1px solid #e5e5e5;
@@ -34,7 +36,7 @@ const Container = styled.div`
   grid-gap: 20px;
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  
+
   @media only screen and (max-width: 400px) {
     padding: 10px;
   }
@@ -127,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   modalImage: {
-    width: '100%'
+    width: "100%",
   },
 }));
 
@@ -227,7 +229,7 @@ const GistsPost = ({
   return (
     <Container>
       <TitleEdit>
-        <GistTag>{tag}</GistTag>
+        <GistTag>{capitalizeWord(tag)}</GistTag>
 
         {loggedIn && gistCreator === userSman ? (
           <Link
@@ -254,11 +256,17 @@ const GistsPost = ({
           onClick={executeOnClick}
           expanded={false}
         >
-          <GistBox>{gistspost}</GistBox>
+          <GistBox>{capitalizeString(gistspost)}</GistBox>
         </ShowMoreText>
         <div style={{ cursor: "pointer" }} onClick={handleOpen}>
           <ImageContainer>
-            {image ? <GistImg src={`${image}`} alt="photo" /> : ""}
+            {!image ? (
+              ""
+            ) : image === "default.jpg" ? (
+              ""
+            ) : (
+              <GistImg src={`${image}`} alt="photo" />
+            )}
           </ImageContainer>
         </div>
         <Modal
@@ -275,7 +283,11 @@ const GistsPost = ({
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={`${image}`} alt="photo" className={classes.modalImage}/>
+              <ModalImg
+                src={`${image}`}
+                alt="photo"
+                className={classes.modalImage}
+              />
             </div>
           </Fade>
         </Modal>

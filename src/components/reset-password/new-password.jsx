@@ -6,7 +6,7 @@ import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import message from "../../constant/response";
 import { useFormik } from "formik";
 import LockIcon from "@material-ui/icons/Lock";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import styled from "styled-components";
 
 export const Password = styled(HttpsOutlinedIcon)`
@@ -90,7 +90,7 @@ export const InputField = styled.input`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   &:focus {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -104,8 +104,6 @@ const Form = styled.form`
 const NewPassword = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
 
-  const alert = useAlert();
-
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -118,14 +116,17 @@ const NewPassword = ({ history }) => {
         })
         .then((res) => {
           if (res.data.status === "SUCCESS") {
-            alert.success(`${res.data.message} LOGIN WITH YOUR NEW PASSWORD`);
+            Alert(
+              `${res.data.message} LOGIN WITH YOUR NEW PASSWORD`,
+              TYPE.SUCCESS
+            );
 
             return history.push("/join");
           }
         })
         .catch((err) => {
           // what now? error message
-          alert.error(message(err));
+          Alert(message(err), TYPE.ERROR);
         });
     },
   });

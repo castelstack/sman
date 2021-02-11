@@ -16,23 +16,12 @@ import ResetPassword from "../src/components/reset-password/reset-password";
 import InputEmail from "../src/containers/input-email/input-email";
 import NewPassword from "../src/components/reset-password/new-password";
 import Error from "../src/pages/error/error";
-import { transitions, positions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
 import LoaderBox from "../src/components/Loader/loader";
 import EditGist from "../src/containers/write/edit";
 import Suggest from "../src/pages/suggest/suggest";
 import Donate from "../src/components/button/donate";
+import { ToastContainer } from "react-toastify";
 
-// optional configuration
-const options = {
-  // you can also just use 'bottom center'
-  position: positions.TOP_RIGHT,
-  timeout: 4000,
-  offset: "10px",
-
-  // you can also just use 'scale'
-  transition: transitions.FADE,
-};
 function App(props) {
   const [Loading, setLoading] = useState(true);
 
@@ -40,40 +29,38 @@ function App(props) {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
-    
-    return () => clearTimeout(timer);
-  }, [])
 
-  
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className='App'>
+    <div className="App">
       {Loading ? (
         <LoaderBox />
       ) : (
-        <AlertProvider template={AlertTemplate} {...options}>
-          <Router>
-            <Donate />
-            <Header />
-            <Switch>
-              <Route path='/' exact component={HomePage} />
-              <Route path='/gist' component={Gist} />
-              <Route path='/join' component={JoinUs} />
-              <Route path='/rules-and-regulation' component={Rules} />
-              <Route path='/create' component={CreateId} />
-              <Route path='/write-rules' exact component={WriteRules} />
-              <Route path='/write-gist' exact component={WriteGist} />
-              <Route path='/profile' exact component={ProfilePage} />
-              <Route path='/password-reset' exact component={ResetPassword} />
-              <Route path='/set-new-password' exact component={NewPassword} />
-              <Route path='/input-email' exact component={InputEmail} />
-              <Route path='/edit' exact component={EditGist} />
-              <Route path='/suggest' exact component={Suggest} />
-              <Route path='*' exact component={Error} />
-            </Switch>
+        <Router>
+          <Donate />
+          <Header />
+          <ToastContainer />
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/gist" component={Gist} />
+            <Route path="/join" component={JoinUs} />
+            <Route path="/rules-and-regulation" component={Rules} />
+            <Route path="/create" component={CreateId} />
+            <Route path="/write-rules" exact component={WriteRules} />
+            <Route path="/write-gist" exact component={WriteGist} />
+            <Route path="/profile" exact component={ProfilePage} />
+            <Route path="/password-reset" exact component={ResetPassword} />
+            <Route path="/set-new-password" exact component={NewPassword} />
+            <Route path="/input-email" exact component={InputEmail} />
+            <Route path="/edit" exact component={EditGist} />
+            <Route path="/suggest" exact component={Suggest} />
+            <Route path="*" exact component={Error} />
+          </Switch>
 
-            <Footer />
-          </Router>
-        </AlertProvider>
+          <Footer />
+        </Router>
       )}
     </div>
   );

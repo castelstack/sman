@@ -4,7 +4,7 @@ import { PostBox } from "../../constant/styles";
 import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { ActiveContext } from "../../utils/store";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import styled from "styled-components";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -39,7 +39,7 @@ const GistTemplate = ({ tag }) => {
 
   // const page = 1;
 
-  const limit = 3;
+  const limit = 10;
 
   const [loading, setLoading] = useState(true);
 
@@ -68,8 +68,6 @@ const GistTemplate = ({ tag }) => {
     : // eslint-disable-next-line no-self-assign
       (urlState = urlState);
 
-  let alert = useAlert();
-
   useEffect(() => {
     if (user.userInfo === undefined || user.userInfo._id.includes("_id")) {
       setLoggedIn(false);
@@ -88,7 +86,7 @@ const GistTemplate = ({ tag }) => {
 
         setLoading(false);
       })
-      .catch((err) => alert.error(err.message));
+      .catch((err) => Alert(err.message), TYPE.ERROR);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [needle, user.userInfo, pageState]);
 

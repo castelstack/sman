@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext } from "react";
 // import Image from "../../images/Visual.png";
 import StingyCard from "./stingy-card";
 import { exportComponentAsPNG } from "react-component-export-image";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import ImageUploading from "react-images-uploading";
 //import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 import Spinner from "../../components/spinner/spinner";
@@ -21,7 +21,7 @@ import {
   Uploadbutton,
   Frame,
   Size,
-  FormBox
+  FormBox,
 } from "./stingy-reg.style";
 
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
@@ -52,7 +52,7 @@ const Join = () => {
   const [images, setImages] = React.useState([]);
   const maxNumber = 1;
   const [change, setChange] = useState(false);
-  const alert = useAlert();
+
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
 
@@ -95,7 +95,7 @@ const Join = () => {
   const handleClick = (event) => {
     event.preventDefault();
     exportComponentAsPNG(componentRef);
-    alert.success("Card Generated");
+    Alert("Card Generated", TYPE.INFO);
   };
 
   return (

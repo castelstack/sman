@@ -56,7 +56,8 @@ export const PositionBranch = styled.div`
 `;
 
 export const Name = styled(HeadText)`
-text-transform: capitalize;`;
+  text-transform: capitalize;
+`;
 export const Image = styled.img`
   border-radius: 10rem;
   height: 9rem;
@@ -179,6 +180,7 @@ export const Sign = styled(SmText)`
 
 export const StyName = styled(SmText)`
   font-size: 30px;
+  display: inline;
 
   font-weight: 600px;
   text-transform: capitalize;
