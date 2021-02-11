@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import styled from "styled-components";
 import "./counter.style.css";
 const Container = styled.div`
@@ -47,8 +47,6 @@ const Counter = () => {
     users: 0,
   });
 
-  const alert = useAlert();
-
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -56,7 +54,7 @@ const Counter = () => {
         .then((res) => {
           setStats(res.data.stats);
         })
-        .catch((err) => alert.error(err.message));
+        .catch((err) => Alert(err.message), TYPE.ERROR);
     };
 
     fetchData();
@@ -66,17 +64,17 @@ const Counter = () => {
   return (
     <Container>
       <CounterBox>
-        <div className='counter'>
-          <div className='counter-value'>{stats.rules}</div>
-          <h3 className='title'>Rules</h3>
+        <div className="counter">
+          <div className="counter-value">{stats.rules}</div>
+          <h3 className="title">Rules</h3>
         </div>
-        <div className='counter'>
-          <div className='counter-value'>{stats.gists}</div>
-          <h3 className='title'>Stingy Gists</h3>
+        <div className="counter">
+          <div className="counter-value">{stats.gists}</div>
+          <h3 className="title">Stingy Gists</h3>
         </div>
-        <div className='counter'>
-          <div className='counter-value'>{stats.users}</div>
-          <h3 className='title'>Stingy Men</h3>
+        <div className="counter">
+          <div className="counter-value">{stats.users}</div>
+          <h3 className="title">Stingy Men</h3>
         </div>
       </CounterBox>
     </Container>

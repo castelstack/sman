@@ -1,7 +1,7 @@
 import { TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import { SmText, HeadText, MedText } from "../../constant/styles";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import Bg from "../../images/bg.svg";
@@ -85,8 +85,6 @@ const Check = () => {
 
   let [isValid, setValid] = useState(undefined);
 
-  const alert = useAlert();
-
   const Authenticate = (e) => {
     e.preventDefault();
 
@@ -106,7 +104,7 @@ const Check = () => {
         }
       })
       .catch((err) =>
-        alert.error("You Must Be Logged In To Verify SMAN IDs 🚷 ")
+        Alert("You Must Be Logged In To Verify SMAN IDs 🚷 ", TYPE.ERROR)
       );
   };
 
@@ -118,7 +116,7 @@ const Check = () => {
       <SmText style={{ textAlign: "center" }}>
         Input your SMAN ID to check your membership status
       </SmText>
-      <TextField id="sman" placeholder="SMAN id number" />
+      <TextField id="sman" placeholder="INPUT SMAN ID" />
       <Button
         value="Check"
         style={{ marginTop: "2rem" }}

@@ -4,7 +4,7 @@ import message from "../../constant/response";
 import constants from "../../constant";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 
 import {
   FormContainer,
@@ -32,8 +32,6 @@ const SignupForm = (props) => {
 
   const URL = "https://smanhq.herokuapp.com/";
 
-  const alert = useAlert();
-
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -49,7 +47,7 @@ const SignupForm = (props) => {
         .post(`${URL}api/v1/users/signup`, formik.values)
         .then((res) => {
           if (res.data.status === "SUCCESS") {
-            alert.show(res.data.message);
+            Alert(res.data.message, TYPE.SUCCESS);
           }
 
           setTimeout(() => location.replace("/join/login"), 1000);
@@ -57,7 +55,7 @@ const SignupForm = (props) => {
 
         .catch((err) => {
           // what now? render error message
-          alert.error(message(err));
+          Alert(message(err), TYPE.ERROR);
           // console.log(err);
         });
     },

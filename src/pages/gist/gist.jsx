@@ -3,7 +3,7 @@ import axios from "axios";
 import Gistbox from "../../containers/box/gist-box";
 import constants from "../../constant";
 import { NavLink, Route, useRouteMatch } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import GistTemplate from "../../containers/templates/gist";
 import { ActiveContext } from "../../utils/store";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
@@ -61,8 +61,6 @@ const NavLinks = styled(NavLink)`
 const Gist = (props) => {
   const { url } = useRouteMatch();
 
-  const alert = useAlert();
-
   const [tagState, setTagState] = useState([]);
 
   let [pageState, setPageState] = useState(1);
@@ -88,9 +86,9 @@ const Gist = (props) => {
       .catch((err) => {
         // err msg
 
-        alert.error(err.message);
+        Alert(err.message, TYPE.ERROR);
       });
-  }, [alert]);
+  }, []);
 
   return (
     <Container>

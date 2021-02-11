@@ -4,7 +4,7 @@ import { PhotoCamera } from "@material-ui/icons";
 import message from "../../constant/response";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import {
   Container,
   WriteIn,
@@ -25,8 +25,6 @@ import {
 const WriteGist = ({ history }) => {
   const uploadDispatcher = FileHandler();
 
-  const alert = useAlert();
-
   const [tagState, setTagState] = useState([]);
 
   const { uploadFile, imageUrl, getInputFile } = uploadDispatcher;
@@ -36,7 +34,10 @@ const WriteGist = ({ history }) => {
 
     uploadFile();
 
-    alert.show("Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist");
+    Alert(
+      "Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist",
+      TYPE.INFO
+    );
   };
 
   const URL = "https://smanhq.herokuapp.com/";
@@ -55,7 +56,7 @@ const WriteGist = ({ history }) => {
       .catch((err) => {
         // err msg
 
-        alert.error(err.message);
+        Alert(err.message, TYPE.ERROR);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -71,8 +72,9 @@ const WriteGist = ({ history }) => {
       formik.values.image = imageUrl;
 
       formik.values.description.length > 3000
-        ? alert.info(
-            `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`
+        ? Alert(
+            `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`,
+            TYPE.DARK
           )
         : axios
             .post(`${URL}api/v1/gists/`, formik.values, {
@@ -80,14 +82,14 @@ const WriteGist = ({ history }) => {
             })
             .then((res, req) => {
               if (res.data.status === "SUCCESS") {
-                alert.show(res.data.message);
+                Alert(res.data.message, TYPE.SUCCESS);
 
                 history.push("/gist");
               }
             })
             .catch((err) => {
               // err msg
-              alert.show(message(err));
+              Alert(message(err), TYPE.ERROR);
             });
     },
   });

@@ -5,13 +5,12 @@ import FeatureRules from "../../containers/feature-rules/feature-rules";
 import FeatureGist from "../../containers/feature-gist/feature-gist";
 import GetCard from "../../containers/get-card/get-card";
 import Check from "../../components/check/check";
-
-
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   return (
     <div>
-        <Box />
+      <Box />
       <Counter />
       <Check />
       <FeatureRules />

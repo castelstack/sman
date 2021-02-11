@@ -4,7 +4,7 @@ import { PhotoCamera } from "@material-ui/icons";
 import message from "../../constant/response";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import {
   Container,
   WriteIn,
@@ -25,8 +25,6 @@ import {
 const EditGist = ({ history, location: { gist } }) => {
   const uploadDispatcher = FileHandler();
 
-  const alert = useAlert();
-
   const [tagState, setTagState] = useState([]);
 
   const { uploadFile, imageUrl, getInputFile } = uploadDispatcher;
@@ -36,7 +34,10 @@ const EditGist = ({ history, location: { gist } }) => {
 
     uploadFile();
 
-    alert.show("Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist");
+    Alert(
+      "Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist",
+      TYPE.INFO
+    );
   };
 
   const URL = "https://smanhq.herokuapp.com/";
@@ -55,7 +56,7 @@ const EditGist = ({ history, location: { gist } }) => {
       .catch((err) => {
         // err msg
 
-        alert.error(err.message);
+        Alert(err.message, TYPE.ERROR);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -73,8 +74,9 @@ const EditGist = ({ history, location: { gist } }) => {
       formik.values.image = imageUrl;
 
       formik.values.description.length > 3000
-        ? alert.info(
-            `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`
+        ? Alert(
+            `Maximum Amount Of Gist Characters Is 3000 You Enterd ${formik.values.description.length}`,
+            TYPE.WARNING
           )
         : axios
             .patch(`${URL}api/v1/gists/${gist.slug}`, formik.values, {
@@ -82,14 +84,14 @@ const EditGist = ({ history, location: { gist } }) => {
             })
             .then((res, req) => {
               if (res.data.status === "SUCCESS") {
-                alert.show(res.data.message);
+                Alert(res.data.message, TYPE.DARK);
 
                 history.push("/gist");
               }
             })
             .catch((err) => {
               // err msg
-              alert.show(message(err));
+              Alert(message(err), TYPE.ERROR);
             });
     },
   });

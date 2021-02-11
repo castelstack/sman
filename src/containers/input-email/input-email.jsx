@@ -1,7 +1,7 @@
 import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import { useFormik } from "formik";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import message from "../../constant/response";
 import EmailIcon from "@material-ui/icons/Email";
 import styled from "styled-components";
@@ -81,7 +81,7 @@ export const InputField = styled.input`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   &:focus {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -102,8 +102,6 @@ const Form = styled.form`
 const InputEmail = ({ history }) => {
   const URL = "https://smanhq.herokuapp.com/";
 
-  const alert = useAlert();
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -115,22 +113,18 @@ const InputEmail = ({ history }) => {
         })
         .then((res, req) => {
           if (res.data.status === "SUCCESS") {
-            alert.show(res.data.message);
+            Alert(res.data.message, TYPE.SUCCESS);
 
             return history.push("/password-reset");
           }
         })
         .catch((err) => {
           // err msg
-          alert.error(message(err));
+          Alert(message(err), TYPE.ERROR);
         });
     },
   });
 
-  // const alert = useAlert();
-  // const handleClick = () => {
-  //   alert.show("Recovery email sent");
-  // };
   return (
     <Container>
       <EmailIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />

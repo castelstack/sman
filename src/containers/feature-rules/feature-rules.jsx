@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { HeadText } from "../../constant/styles";
 import axios from "axios";
-import { useAlert } from "react-alert";
+import { Alert, TYPE } from "../../components/alert";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -32,7 +32,6 @@ const RulesBox = styled.div`
 
   @media only screen and (max-width: 1200px) {
     grid-gap: 25px;
-   
   }
 
   @media only screen and (max-width: 800px) {
@@ -44,8 +43,6 @@ const RulesBox = styled.div`
 const FeatureRules = () => {
   const [rules, setRules] = useState([]);
 
-  const alert = useAlert();
-
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -53,7 +50,7 @@ const FeatureRules = () => {
         .then((res) => {
           setRules(res.data.rule);
         })
-        .catch((err) => alert.error(err.message));
+        .catch((err) => Alert(err.message), TYPE.WARNING);
     };
 
     fetchData();

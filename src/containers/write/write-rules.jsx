@@ -3,10 +3,11 @@ import { HeadText } from "../../constant/styles";
 import Button from "../../components/button/button";
 import styled from "styled-components";
 import message from "../../constant/response";
+import { Alert, TYPE } from "../../components/alert";
+
 //import { TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useAlert } from "react-alert";
 
 const Container = styled.div`
   margin: 20px 110px;
@@ -77,8 +78,6 @@ const TextA = styled.textarea`
 `;
 // create new rules
 const WriteRules = ({ history }) => {
-  const alert = useAlert();
-
   const URL = "https://smanhq.herokuapp.com/";
 
   const formik = useFormik({
@@ -87,8 +86,9 @@ const WriteRules = ({ history }) => {
     },
     onSubmit: (values) => {
       formik.values.title.length > 1000
-        ? alert.info(
-            `Maximum Amount Of Rule Characters Is 1000 You Enterd ${formik.values.description.length}`
+        ? Alert(
+            `Maximum Amount Of Rule Characters Is 1000 You Enterd ${formik.values.description.length}`,
+            TYPE.DARK
           )
         : axios
             .post(`${URL}api/v1/rules`, formik.values, {
@@ -96,8 +96,9 @@ const WriteRules = ({ history }) => {
             })
             .then((res, req) => {
               if (res.data.status === "SUCCESS") {
-                alert.success(
-                  "Rule Suggestion Succesful. Subject To Approval By SMAN Admins"
+                Alert(
+                  "Rule Suggestion Succesful. Subject To Approval By SMAN Admins",
+                  TYPE.SUCCESS
                 );
 
                 history.push("/rules-and-regulation");
@@ -105,7 +106,7 @@ const WriteRules = ({ history }) => {
             })
             .catch((err) => {
               // err msg
-              alert.error(message(err));
+              Alert(message(err), TYPE.ERROR);
             });
     },
   });
