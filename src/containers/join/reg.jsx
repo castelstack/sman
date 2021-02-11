@@ -45,7 +45,6 @@ const SignupForm = (props) => {
       lastName: "",
     },
     onSubmit: (values) => {
-      alert.show(JSON.stringify(values, null, 2));
       axios
         .post(`${URL}api/v1/users/signup`, formik.values)
         .then((res) => {
