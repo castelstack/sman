@@ -1,4 +1,4 @@
-import React from "react";
+import React, {  useContext } from "react";
 import { HeadText, SmText } from "../../constant/styles";
 import styled from "styled-components";
 import Arrow from "../../images/arrow.svg";
@@ -7,6 +7,7 @@ import Done from "../../images/done.png";
 import Bg from "../../images/bg.svg";
 import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
+import { ActiveContext } from '../../utils/store';
 
 const Container = styled.div`
   display: grid;
@@ -96,6 +97,8 @@ const SubHeading = styled(SmText)`
 `;
 
 const GetCard = () => {
+  const isActive = useContext(ActiveContext);
+  
   return (
     <Container>
       <HeadText>Get Your Identity Card Ready</HeadText>
@@ -108,9 +111,19 @@ const GetCard = () => {
         <ArrowImg src={Arrow} />
         <CardDone src={Done} />
       </CardContainer>
+      {
+        isActive.userActive ? 
+          <>
       <Link to='/create'>
-        <Button value='Generate ID Card' big />
-      </Link>
+        <Button value='Generate ID Card' big /> 
+            </Link> 
+          </> :
+          <>
+          <Link to='/join'>
+          <Button value='Generate ID Card' big /> 
+            </Link>
+            </>
+      }
     </Container>
   );
 };

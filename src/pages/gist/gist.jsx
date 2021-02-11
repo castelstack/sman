@@ -33,6 +33,13 @@ const active = {
   color: "#843035",
 };
 const Gists = styled.div``;
+const TagLink = styled.h5`
+font-size: 16px;
+  line-height: 20px;
+  color: #18191f;
+  padding: 5px 7px;
+  text-decoration: none;
+  text-transfrom: capitalize;`;
 const NavLinks = styled(NavLink)`
   font-size: 16px;
   line-height: 20px;
@@ -123,7 +130,9 @@ const Gist = (props) => {
               }}
               activeStyle={active}
             >
-              {tag.title}
+              <TagLink>
+              {tag.title} 
+              </TagLink>
             </NavLinks>
           ))}
         </Breadcrumbs>

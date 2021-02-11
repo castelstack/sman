@@ -6,10 +6,12 @@ import FeatureGist from "../../containers/feature-gist/feature-gist";
 import GetCard from "../../containers/get-card/get-card";
 import Check from "../../components/check/check";
 
-const Homepage = () => {
+
+
+const HomePage = () => {
   return (
     <div>
-      <Box />
+        <Box />
       <Counter />
       <Check />
       <FeatureRules />
@@ -19,4 +21,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;

@@ -72,7 +72,7 @@ const Footer = () => {
       <Divider variant="middle" style={classes.divder} />
       <Legal>
         <Links>
-          © {new Date().getFullYear()} Stingy men association. All rights
+          © {new Date().getFullYear()} Stingy Men Association. All rights
           reserved
         </Links>
         <Socials>
