@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import { useAlert } from "react-alert";
 import message from "../../constant/response";
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import {
   Email,
-  Password,
+  Passwordd,
   FormContainer,
   Box,
+  Boxxx,
   InputField,
+  InputFieldd,
   Form,
   ContiuneButton,
   ForgotPass,
@@ -19,10 +22,14 @@ const Login = ({ history }) => {
   const isActive = useContext(ActiveContext);
 
   const alert = useAlert();
+  const [passwordShown, setPasswordShown] = useState(false);
   // Notice that we have to initialize ALL of fields with values. These
   // could come from props, but since we don't want to prefill this form,
   // we just use an empty string. If you don't do this, React will yell
   // at you.
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   const URL = "https://smanhq.herokuapp.com/";
   // const URL = "http://127.0.0.1:5000/";
   const formik = useFormik({
@@ -69,17 +76,17 @@ const Login = ({ history }) => {
           />
         </Box>
 
-        <Box>
-          <Password />
-          <InputField
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
+        <Boxxx>
+          <InputFieldd
+            id='password'
+            name='password'
+            type={passwordShown ? "text" : "password"}
+            placeholder='Password'
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-        </Box>
+           <Passwordd onClick={togglePasswordVisiblity}><VisibilityIcon/></Passwordd>
+        </Boxxx>
         <ForgotPass to="/input-email">Forgot your password?</ForgotPass>
         <ContiuneButton type="submit" value="Login" big />
       </Form>

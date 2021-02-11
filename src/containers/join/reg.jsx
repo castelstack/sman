@@ -1,14 +1,16 @@
 /* eslint-disable no-restricted-globals */
-import React from "react";
+import React, {useState} from "react";
 import message from "../../constant/response";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useAlert } from "react-alert";
-
 import {
   FormContainer,
   Box,
+  Boxx,
+  Boxxx,
   InputField,
+  InputFieldd,
   Icon,
   ContiuneButton,
   Email,
@@ -16,6 +18,7 @@ import {
   Form,
   Person,
   Password,
+  Passwordd,
   Select,
 } from "./join.style";
 
@@ -99,9 +102,11 @@ const SignupForm = (props) => {
 
     { value: "zamfara", label: "state" },
   ]);
-
+  const [passwordShown, setPasswordShown] = useState(false);
   const URL = "https://smanhq.herokuapp.com/";
-
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   const alert = useAlert();
 
   const formik = useFormik({
@@ -160,7 +165,7 @@ const SignupForm = (props) => {
             value={formik.values.lastName}
           />
         </Box>
-        <Box>
+        <Boxx>
           <LocationOn />
          
         <Select
@@ -177,7 +182,7 @@ const SignupForm = (props) => {
             </option>
           ))}
         </Select>
-        </Box>
+        </Boxx>
 
         <Box>
           <Email />
@@ -191,9 +196,8 @@ const SignupForm = (props) => {
           />
         </Box>
 
-        <Box>
-          <Password />
-          <InputField
+        <Boxxx>
+          <InputFieldd
             id='password'
             name='password'
             type='password'
@@ -201,7 +205,8 @@ const SignupForm = (props) => {
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-        </Box>
+           <Passwordd onClick={togglePasswordVisiblity}/>
+        </Boxxx>
         <Box>
           <Password />
           <InputField

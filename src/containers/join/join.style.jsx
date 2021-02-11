@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { HeadText } from "../../constant/styles";
-import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import Button from "../../components/button/button";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import PersonIcon from '@material-ui/icons/Person';
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import PersonIcon from "@material-ui/icons/Person";
 import bg from "../../images/bg.svg";
 import { Link } from "react-router-dom";
 
@@ -31,7 +31,7 @@ export const Email = styled(EmailOutlinedIcon)`
 export const VerifiedUser = styled(VerifiedUserIcon)`
   height: 4rem;
   width: 8rem;
-  color: #FCEA4A;
+  color: #fcea4a;
 `;
 
 export const LocationOn = styled(LocationOnIcon)`
@@ -49,8 +49,14 @@ export const Password = styled(HttpsOutlinedIcon)`
   transform: translateX(2rem);
   margin-right: -3px;
   color: white;
+  grid-row: 1/2;
 `;
-
+export const Passwordd = styled.i`
+  transform: translateX(-2rem);
+  margin-right: -3px;
+  color: white;
+  grid-row: 1/2;
+`;
 export const ContiuneButton = styled(Button)`
   margin-left: 1.5rem;
 `;
@@ -105,13 +111,13 @@ export const ForgotPass = styled(Link)`
 `;
 export const FormContainer = styled.div`
   background: #843035;
-  padding:10px 10px 80px 10px;
+  padding: 10px 10px 80px 10px;
   display: grid;
   grid-template-rows: repeat(2, min-content);
   grid-gap: 10px;
   background-image: url(${bg});
-background-repeat: no-repeat;
-background-position: 95% 95%;
+  background-repeat: no-repeat;
+  background-position: 95% 95%;
 
   @media only screen and (max-width: 1200px) {
     padding: 0 20px;
@@ -131,7 +137,7 @@ background-position: 95% 95%;
   }
 `;
 export const Form = styled.form`
-display: grid;
+  display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
 `;
@@ -145,7 +151,7 @@ export const Text = styled(HeadText)`
 `;
 
 export const BeStingy = styled(HeadText)`
-font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   color: white;
   text-align: center;
   padding: 30px 0;
@@ -156,13 +162,28 @@ font-family: 'Acme', sans-serif;
 
 export const Box = styled.div`
   display: flex;
-  
+
   align-items: center;
   margin-right: 0.7rem;
   justify-self: ${(props) => (props.end ? "flex-end" : "none")};
   color: white;
 `;
-
+export const Boxx = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 0.7rem;
+  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
+  color: white;
+`;
+export const Boxxx = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  
+  align-items: center;
+  margin-left:1.3rem;
+  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
+  color: white;
+`;
 export const InputField = styled.input`
   background: #843035;
   padding: 15px 45px;
@@ -170,7 +191,6 @@ export const InputField = styled.input`
   font-size: 16px;
   line-height: 24px;
 
-  /* for box */
   width: 100%;
   height: 20px;
   outline: 0;
@@ -186,29 +206,55 @@ export const InputField = styled.input`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   &:focus {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 `;
 
+export const InputFieldd = styled.input`
+  background: #843035;
+  padding: 15px 4px;
+grid-row: 1/2;
+  font-size: 16px;
+  line-height: 24px;
+
+  width: 100%;
+  height: 20px;
+  outline: 0;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  border: solid 2px white;
+
+  &::placeholder {
+    color: white;
+  }
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  &:focus {
+    background: rgba(0, 0, 0, 0.5);
+  }
+`;
 export const Select = styled.select`
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-/* Add some styling */
-border-radius: 5px;
-border: none;
-padding: 15px 45px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  border-radius: 5px;
+  border: none;
+  padding: 15px 45px;
 
   font-size: 16px;
   line-height: 24px;
 
   /* for box */
-  width: 13rem;
+  width: 99.3%;
   height: 20px;
   outline: 0;
-color: #fff;
-background-color:  #843035;
-background-image: none;
-border: 1px solid #cccccc;
--ms-word-break: normal;
-word-break: normal;`
+  color: #fff;
+  background-color: #843035;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+`;

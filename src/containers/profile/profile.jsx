@@ -43,9 +43,12 @@ const ProfilePage = ({ history }) => {
           </Branch>
         </PositionBranch>
         <Oath>
-          Oath: I
+          Oath: I{" "}
           <StyName>
-            {user.userInfo.firstName} {user.userInfo.lastName}
+            {user.userInfo.firstName} 
+          </StyName>{" "}
+          <StyName>
+            {user.userInfo.lastName}
           </StyName>
           , solemnly swear, to uphold the dignity of this association with due
           diligence, to NEVER give SHISHI in any form of finacial exploitation

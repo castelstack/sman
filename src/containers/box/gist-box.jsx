@@ -134,7 +134,7 @@ const GistBox = () => {
       <Content>
         <Info>
           <HeadText>Stingy Men Gather Here To Gist
-Their Experience With Women.</HeadText>
+Their Experience About Women.</HeadText>
           <InfoText>
             
             <Text>

@@ -9,7 +9,7 @@ import { ActiveContext } from '../../utils/store';
 
 const Container = styled.div`
   margin: 36px 99px;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 750px) {
     margin: 20px 10px;
   }
 `;
@@ -19,15 +19,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media only screen and (max-width: 750px) {
-    grid-template-columns: 15rem 1fr;
-  }
-
-  @media only screen and (max-width: 750px) {
-    grid-template-columns: 1fr min-content;
-  }
-
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 900px) {
     grid-template-columns: 1fr;
     justify-items: center;
     grid-gap: 30px;
@@ -38,25 +30,20 @@ const Info = styled.div`
   grid-template-rows: repeat(3, min-content);
   grid-gap: 40px;
 
-  @media only screen and (max-width: 800px) {
-    grid-gap: 20px;
-  }
-  @media only screen and (max-width: 620px) {
-    grid-gap: 10px;
-  }
-
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 900px) {
     grid-gap: 5px;
     justify-items: center;
   }
 `;
 const InfoText = styled.ul`
-  display: flex;
-  flex-direction: column;
+display: grid;
+grid-template-columns: 1fr;
+grid-gap: 18px;
+justify-content: center;
   align-items: start;
   list-style: none;
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 900px) {
     align-items: center;
   }
 `;
@@ -74,10 +61,12 @@ const TextHead = styled.li`
 
   @media only screen and (max-width: 900px) {
     font-size: 22px;
+    text-align: center;
   }
 
   @media only screen and (max-width: 800px) {
     font-size: 20px;
+    
   }
   @media only screen and (max-width: 620px) {
     font-size: 18px;
@@ -97,9 +86,11 @@ const Text = styled.li`
 
   @media only screen and (max-width: 900px) {
     font-size: 16px;
+    text-align: center;
   }
   @media only screen and (max-width: 800px) {
     font-size: 13px;
+    
   }
 
   @media only screen and (max-width: 400px) {
@@ -118,16 +109,14 @@ const Image = styled.img`
   width: 30rem;
   height: 30rem;
   @media only screen and (max-width: 1200px) {
-    width: 25rem;
-  }
-
-  @media only screen and (max-width: 900px) {
     width: 18rem;
   }
 
   @media only screen and (max-width: 900px) {
-    width: 17rem;
+  width:100%
   }
+
+  
 `;
 const Buttons = styled.div`
   display: grid;

@@ -15,6 +15,10 @@ color: #000000;
     font-size: 35px;
     line-height: 65px;
   }
+  @media only screen and (max-width: 900px) {
+    font-size: 30px;
+    line-height: 55px;
+  }
 
   @media only screen and (max-width: 800px) {
     font-size: 30px;
