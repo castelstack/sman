@@ -1,9 +1,11 @@
 /* eslint-disable no-restricted-globals */
-import React, {useState} from "react";
+import React, { useState } from "react";
 import message from "../../constant/response";
 import constants from "../../constant";
 import { useFormik } from "formik";
 import axios from "axios";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+
 import {
   FormContainer,
   Box,
@@ -17,7 +19,6 @@ import {
   LocationOn,
   Form,
   Person,
-  Password,
   Passwordd,
   Select,
 } from "./join.style";
@@ -124,26 +125,18 @@ const SignupForm = (props) => {
 
         <Boxxx>
           <InputFieldd
-            id='password'
-            name='password'
+            id="password"
+            name="password"
             type={passwordShown ? "text" : "password"}
-            placeholder='Password'
+            placeholder="Password"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-           <Passwordd onClick={togglePasswordVisiblity}/>
+          <Passwordd onClick={togglePasswordVisiblity}>
+            <VisibilityIcon />
+          </Passwordd>
         </Boxxx>
-        <Box>
-          <Password />
-          <InputField
-            id="passwordConfirm"
-            name="passwordConfirm"
-            
-            placeholder="Confirm password"
-            onChange={formik.handleChange}
-            value={formik.values.passwordConfirm}
-          />
-        </Box>
+
         <ContiuneButton type="submit" value="Register" big />
       </Form>
     </FormContainer>
