@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { SmText, HeadText } from "../../constant/styles";
 import Truncate from "truncate";
+import constants from "../../constant";
 
 import {
   FacebookShareButton,
@@ -15,6 +16,8 @@ import { FavoriteBorder } from "@material-ui/icons";
 import Favorite from "@material-ui/icons/Favorite";
 import styled from "styled-components";
 import axios from "axios";
+
+const { capitalizeString } = constants;
 
 const Container = styled.div`
   display: grid;
@@ -178,7 +181,7 @@ const Rule = ({
   return (
     <Container>
       <Number>Stingy Rule!</Number>
-      <RuleBox>{rule}</RuleBox>
+      <RuleBox>{capitalizeString(rule)}</RuleBox>
       <LikeShare>
         <Author>SMAN ID: {id}</Author>
 

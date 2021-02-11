@@ -39,7 +39,7 @@ const GistTemplate = ({ tag }) => {
 
   // const page = 1;
 
-  const limit = 3;
+  const limit = 10;
 
   const [loading, setLoading] = useState(true);
 

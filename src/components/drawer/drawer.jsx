@@ -48,54 +48,54 @@ export default function Drawer(props) {
       className={clsx(classes.list, {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
-      role='presentation'
+      role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       {isActive.userActive ? (
         <List>
-          <LogoBox to='/'>
+          <LogoBox to="/">
             <Logo />
           </LogoBox>
           <Divider light />
-          <Link to='/gist' activeStyle={active}>
-            Stingy gist
+          <Link to="/gist" activeStyle={active}>
+            Stingy Gist
           </Link>
           <Divider />
-          <Link to='/create' activeStyle={active}>
-            Generate ID
+          <Link to="/create" activeStyle={active}>
+            Generate ID Card
           </Link>
           <Divider />
-          <Link to='/rules-and-regulation' activeStyle={active}>
-            Stingy rules
+          <Link to="/rules-and-regulation" activeStyle={active}>
+            Stingy Rules
           </Link>
           <Divider />
-          <Link to='/profile' activeStyle={active}>
+          <Link to="/profile" activeStyle={active}>
             Profile
           </Link>
 
-         <LogOut history={props.history}/>
+          <LogOut history={props.history} />
         </List>
       ) : (
         <List>
-          <LogoBox to='/'>
+          <LogoBox to="/">
             <Logo />
           </LogoBox>
           <Divider light />
-          <Link to='/gist' activeStyle={active}>
-            Stingy gist
+          <Link to="/gist" activeStyle={active}>
+            Stingy Gist
           </Link>
           <Divider />
-          <Link to='/join' activeStyle={active}>
-            Generate ID
+          <Link to="/join" activeStyle={active}>
+            Generate ID Card
           </Link>
           <Divider />
-          <Link to='/rules-and-regulation' activeStyle={active}>
-            Stingy rules
+          <Link to="/rules-and-regulation" activeStyle={active}>
+            Stingy Rules
           </Link>
           <Divider />
           <Divider />
-          <Link to='/join' activeStyle={active}>
+          <Link to="/join" activeStyle={active}>
             Login/Signup
           </Link>
         </List>
