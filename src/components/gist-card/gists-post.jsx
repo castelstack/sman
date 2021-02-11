@@ -34,7 +34,7 @@ const Container = styled.div`
   grid-gap: 20px;
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  
+
   @media only screen and (max-width: 400px) {
     padding: 10px;
   }
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   modalImage: {
-    width: '100%'
+    width: "100%",
   },
 }));
 
@@ -258,7 +258,13 @@ const GistsPost = ({
         </ShowMoreText>
         <div style={{ cursor: "pointer" }} onClick={handleOpen}>
           <ImageContainer>
-            {image ? <GistImg src={`${image}`} alt="photo" /> : ""}
+            {!image ? (
+              ""
+            ) : image === "default.jpg" ? (
+              ""
+            ) : (
+              <GistImg src={`${image}`} alt="photo" />
+            )}
           </ImageContainer>
         </div>
         <Modal
@@ -275,7 +281,11 @@ const GistsPost = ({
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <ModalImg src={`${image}`} alt="photo" className={classes.modalImage}/>
+              <ModalImg
+                src={`${image}`}
+                alt="photo"
+                className={classes.modalImage}
+              />
             </div>
           </Fade>
         </Modal>
