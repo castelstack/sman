@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./containers/header/header";
 import Footer from "./containers/footer/footer";
-import Homepage from "../src/pages/homepage/homepage";
+import HomePage from "../src/pages/homepage/homepage";
 import Gist from "../src/pages/gist/gist";
 import JoinUs from "../src/pages/join-us/join-us";
 import CreateId from "../src/pages/create-id/create-id";
@@ -16,13 +16,12 @@ import ResetPassword from "../src/components/reset-password/reset-password";
 import InputEmail from "../src/containers/input-email/input-email";
 import NewPassword from "../src/components/reset-password/new-password";
 import Error from "../src/pages/error/error";
-
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
-import LoaderBox from "./components/Loader/loader";
-import EditGist from "./containers/write/edit";
-import Suggest from "./pages/suggest/suggest";
-import Donate from "./components/button/donate";
+import LoaderBox from "../src/components/Loader/loader";
+import EditGist from "../src/containers/write/edit";
+import Suggest from "../src/pages/suggest/suggest";
+import Donate from "../src/components/button/donate";
 
 // optional configuration
 const options = {
@@ -41,9 +40,11 @@ function App(props) {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
-
+    
     return () => clearTimeout(timer);
-  }, []);
+  }, [])
+
+  
   return (
     <div className='App'>
       {Loading ? (
@@ -54,11 +55,11 @@ function App(props) {
             <Donate />
             <Header />
             <Switch>
-              <Route path='/' exact component={Homepage} />
+              <Route path='/' exact component={HomePage} />
               <Route path='/gist' component={Gist} />
               <Route path='/join' component={JoinUs} />
-              <Route path='/create' component={CreateId} />
               <Route path='/rules-and-regulation' component={Rules} />
+              <Route path='/create' component={CreateId} />
               <Route path='/write-rules' exact component={WriteRules} />
               <Route path='/write-gist' exact component={WriteGist} />
               <Route path='/profile' exact component={ProfilePage} />

@@ -153,8 +153,7 @@ const Box = () => {
           <InfoText>
             <TextHead>Let Me See What I Can Do</TextHead>
             <Text>
-              Read Gist Of Orther SMAN Member, Tell Your own Gist And Generate
-              SMAN ID Card
+            Stingy Men Gather Here To Gist About Their Experience With Women.
             </Text>
           </InfoText>
           <Buttons>
