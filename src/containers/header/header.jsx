@@ -37,7 +37,7 @@ export default function ButtonAppBar() {
             {isActive.userActive ? (
               <>
                 <ButtonLink to="/create">
-                  <Button value="Generate Card" />
+                  <Button value="Generate ID Card" />
                 </ButtonLink>
                 <HeaderLink to="/profile">
                   <Avatar alt="profile pic" src={AvatarP} />
