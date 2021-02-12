@@ -53,14 +53,15 @@ const GistTemplate = ({ tag }) => {
 
   const needle = tag !== null ? tag : null;
 
-  const pagify = pageState <= 1 ? null : `page=${pageState}&limit=${limit}`;
+  const pagify =
+    pageState <= 1 ? null : `page=${pageState}&limit=${limit}&sort=-createdAt`;
 
   let urlState;
 
   pagify == null && needle == null
-    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?&limit=${limit}`)
+    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?&limit=${limit}&sort=-createdAt`)
     : needle
-    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?${needle}&limit=${limit}`)
+    ? (urlState = `https://smanhq.herokuapp.com/api/v1/gists?${needle}&limit=${limit}&sort=-createdAt`)
     : (urlState = `https://smanhq.herokuapp.com/api/v1/gists?${pagify}`);
 
   needle !== null && pagify !== null
