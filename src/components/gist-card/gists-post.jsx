@@ -132,6 +132,9 @@ const useStyles = makeStyles((theme) => ({
   },
   modalImage: {
     width: "100%",
+    margin: '3rem',
+    objectFit: 'contain'
+
   },
 }));
 

@@ -30,6 +30,7 @@ const Heading = styled(HeadText)`
 `;
 const SubHead = styled(SmText)`
   color: #fff;
+  text-align: center;
 `;
 
 const Buttons = styled.div`
