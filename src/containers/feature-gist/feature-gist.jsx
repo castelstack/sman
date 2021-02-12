@@ -5,6 +5,7 @@ import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
 import bg from "../../images/gbg.svg";
 import styled from "styled-components";
+import { ActiveContext } from "../../utils/store";
 
 const Container = styled.div`
   display: grid;
@@ -55,6 +56,8 @@ const ReadGistButton = styled(Button)`
   }
 `;
 const FeatureGist = () => {
+  const isActive = React.useContext(ActiveContext);
+
   return (
     <Container>
       <Heading>Stingy Men Gists</Heading>
@@ -65,9 +68,13 @@ const FeatureGist = () => {
         <GistCard />
       </div>
       <Buttons>
-        <Link to='/write-gist'>
-          <DropGistButton value='Drop Your Gist' big />
-        </Link>
+        {isActive.userActive ?
+          <Link to='/write-gist'>
+            <DropGistButton value='Drop Your Gist' big />
+          </Link> :
+          <Link to='/join'>
+            <DropGistButton value='Drop Your Gist' big />
+          </Link>}
         <Link to='/gist'>
           <ReadGistButton value='Read Gist' big />
         </Link>

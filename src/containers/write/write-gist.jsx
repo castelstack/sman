@@ -19,7 +19,7 @@ import {
   FormControll,
   TextFieldd
 } from "./write.style";
-import { InputLabel, Select, } from "@material-ui/core";
+import { Input, InputLabel, Select, } from "@material-ui/core";
 
 const WriteGist = ({ history }) => {
   const uploadDispatcher = FileHandler();
@@ -131,9 +131,11 @@ const WriteGist = ({ history }) => {
         />
          
 
-          <TextGist
+          <Input
             label='Write your rules'
             name='description'
+            multiline
+      rows="7"
             placeholder='Your Stingy Gist'
             onChange={formik.handleChange}
             value={formik.values.description}
@@ -149,10 +151,10 @@ const WriteGist = ({ history }) => {
           onChange={getInputFile}
           id='upload'
           />
-          {imageUrl === "firebase" ? "" : <Img src={imageUrl} alt='upload' />}
+          {/* {imageUrl === "firebase" ? "" : <Img src={imageUrl} alt='upload' />}
         <PreviewImg onClick={handleClick}>
           Click to add and preview picture
-        </PreviewImg>
+        </PreviewImg> */}
 
         <Post value='Post' type='submit' />
       </form>
