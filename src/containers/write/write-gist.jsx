@@ -132,7 +132,7 @@ const WriteGist = ({ history }) => {
          
 
           <Input
-            label='Write your rules'
+            label='Write your gist'
             name='description'
             multiline
       rows="7"

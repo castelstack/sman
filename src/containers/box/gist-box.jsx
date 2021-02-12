@@ -106,7 +106,10 @@ const Image = styled.img`
 
 `;
 const HeadTextt = styled(HeadText)`
-text-align: center;`
+
+@media only screen and (max-width: 900px) {
+  text-align: center;
+}`
 
 const GistBox = () => {
   const isActive = useContext(ActiveContext);

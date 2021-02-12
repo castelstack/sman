@@ -8,6 +8,7 @@ import { Alert, TYPE } from "../../components/alert";
 //import { TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import axios from "axios";
+import { Input } from "@material-ui/core";
 
 const Container = styled.div`
   margin: 20px 110px;
@@ -24,10 +25,16 @@ const Container = styled.div`
     margin: 10px 20px;
   }
 `;
-
+const Form = styled.form`
+display: grid;
+grid-template-columns: 1fr;
+grid-gap: 30px;
+`
 const WriteIn = styled.div`
-  margin-bottom: 200px;
-
+display: grid;
+grid-template-columns: 1fr;
+grid-gap: 20px;
+margin-bottom: 180px;
   @media only screen and (max-width: 600px) {
     margin-bottom: 100px;
   }
@@ -67,14 +74,6 @@ const Heading = styled(HeadText)`
   @media only screen and (max-width: 400px) {
     font-size: 20px;
   }
-`;
-const TextA = styled.textarea`
-  resize: none;
-  outline: none;
-  width: 95%;
-  height: 120px;
-  border: 3px solid #cccccc;
-  padding: 5px;
 `;
 // create new rules
 const WriteRules = ({ history }) => {
@@ -117,16 +116,20 @@ const WriteRules = ({ history }) => {
         <Heading>Write Your Rule</Heading>
       </HeadBox>
       <WriteIn>
-        <form onSubmit={formik.handleSubmit}>
-          <TextA
-            label="Write your rules"
-            name="title"
-            placeholder="Your Stingy Rule"
+        <Form onSubmit={formik.handleSubmit}>
+        <Input
+            label='Write your rules'
+            name='description'
+            multiline
+      rows="7"
+      fullWidth
+            placeholder='Your Stingy Rule'
             onChange={formik.handleChange}
             value={formik.values.title}
           />
+         
           <Button value="Post" type="submit" onClick={formik.handleSubmit} />
-        </form>
+        </Form>
       </WriteIn>
     </Container>
   );
