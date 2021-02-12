@@ -28,8 +28,9 @@
 
 
 .icon {
+     
   opacity: 0;
-  font-size: 28px;
+  font-size: 20px;
   color: #1F1E1E;
   will-change: transform;
   -webkit-transform: scale(.1);
@@ -93,7 +94,7 @@
       align-items: center;
   width: 120px;
   height:40px;
-  margin-top: 1px;
+  
   border-radius: 80px;
 }
 

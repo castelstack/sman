@@ -9,6 +9,7 @@ import { ActiveContext } from "../../utils/store";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import { SmText } from "../../constant/styles";
 
 const { capitalizeWord } = constants;
 
@@ -34,29 +35,40 @@ const Navi = styled.div`
 
 const active = {
   color: "#843035",
+  borderBottom: 'solid 1px #843035'
 };
 const Gists = styled.div``;
-const TagLink = styled.h5`
+const TagLink = styled(SmText)`
   font-size: 16px;
   line-height: 20px;
   color: #18191f;
   padding: 5px 7px;
   text-decoration: none;
   text-transfrom: capitalize;
+
+  @media only screen and (max-width: 700px) {
+    font-size: 12px;
+    padding: 1px 1px;
+  }
 `;
 const NavLinks = styled(NavLink)`
   font-size: 16px;
-  line-height: 20px;
+  line-height: 10px;
   color: #18191f;
-  padding: 5px 7px;
+  padding: 5px 5px;
   text-decoration: none;
   text-transfrom: capitalize;
   box-sizing: border-box;
-  border-radius: 5px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all;
+  
+
+  @media only screen and (max-width: 700px) {
+    font-size: 12px;
+    padding: 1px 1px;
+  }
 `;
 const Gist = (props) => {
   const { url } = useRouteMatch();
