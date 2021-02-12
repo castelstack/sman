@@ -18,23 +18,24 @@ const Container = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 1rem;
   justify-items: center;
+  justify-content: center;
 `;
 
 const HdText = styled(HeadText)`
   font-size: 32px;
   color: #843035;
-
+  line-height: 30px;
   @media only screen and (max-width: 800px) {
     font-size: 30px;
   }
 `;
 
 const Text = styled(MedText)`
-  font-size: 18px;
+  font-size: 16px;
   color: #843035;
-//line-height: 26px;
+line-height: 21px;
   @media only screen and (max-width: 1200px) {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
   }
 
@@ -50,13 +51,10 @@ const Text = styled(MedText)`
     font-size: 12px;
   }
 `;
-export const Box = styled.div`
-  display: flex;
-
-  align-items: center;
-  margin-right: 0.7rem;
-  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
-  color: white;
+export const Heading = styled.div`
+display: grid;
+grid-template-columns: 1fr;
+justify-items: center;
 `;
 
 export const InputField = styled.input`
@@ -129,11 +127,11 @@ const InputEmail = ({ history }) => {
   return (
     <Container>
       <EmailIcon style={{ color: "#843035", width: "4rem", height: "4rem" }} />
-      <div>
-
+     
+<Heading>
       <HdText>Recovery email</HdText>
       <Text>Input your email for recovery code.</Text>
-      </div>
+      </Heading>
       <Form onSubmit={formik.handleSubmit} method="post">
       
         <TextField

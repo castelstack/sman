@@ -35,7 +35,6 @@ const Navi = styled.div`
 
 const active = {
   color: "#843035",
-  borderBottom: 'solid 1px #843035'
 };
 const Gists = styled.div``;
 const TagLink = styled(SmText)`

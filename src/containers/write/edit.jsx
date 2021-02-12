@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import FileHandler from "../../firebase/fileHandler";
 import { PhotoCamera } from "@material-ui/icons";
 import message from "../../constant/response";
@@ -10,17 +11,15 @@ import {
   WriteIn,
   HeadBox,
   Heading,
-  TextGist,
-  TextTitle,
   Post,
-  Select,
-  Option,
   InputImg,
   Label,
-  Img,
-  TitleGist,
-  PreviewImg,
+  //Img,
+  // PreviewImg,
+  FormControll,
+  TextFieldd
 } from "./write.style";
+import { Input, InputLabel, Select, } from "@material-ui/core";
 
 const EditGist = ({ history, location: { gist } }) => {
   const uploadDispatcher = FileHandler();
@@ -99,59 +98,68 @@ const EditGist = ({ history, location: { gist } }) => {
   return (
     <Container>
       <HeadBox>
-        <Heading>Edit Your Stingy Gist</Heading>
+        <Heading>Write Your Stingy Gist</Heading>
       </HeadBox>
 
       <form onSubmit={formik.handleSubmit}>
         <WriteIn>
-          <TextTitle>Pick a stingy title</TextTitle>
-          <Select
-            name="tag"
-            value={formik.values.tag}
-            onChange={formik.handleChange}
-          >
-            <Option value="All">Choose stingy tag</Option>
 
-            {tagState.map((tag, index) => (
-              <Option key={index} value={tag._id}>
-                {tag.title}
-              </Option>
-            ))}
-          </Select>
+          <FormControll >
+            <InputLabel id='demo-simple-select-label'>Select Tag</InputLabel>
+            <Select
+              name='tag'
+              value={formik.values.tag}
+              onChange={formik.handleChange}
+              >
+              <option value='select a state'>Tags</option>
+              {tagState.map((tag, index) => (
+                <option style={{ padding: '.8rem' }} key={index} value={tag._id}>
+                  {tag.title}
+                </option>
+              ))}
+            </Select>
+          </FormControll>
 
-          <TitleGist
-            id="title"
-            name="title"
-            type="text"
-            placeholder="Stingy Gist Title"
+             
+          <TextFieldd
+          
+          id='title'
+            name='title'
+            type='text'
+            placeholder='Stingy Gist Title'
             onChange={formik.handleChange}
             value={formik.values.title}
-          />
+          
+        />
+         
 
-          <TextGist
-            label="Write your rules"
-            name="description"
-            placeholder="Your Stingy Gist"
+          <Input
+            label='Write your gist'
+            name='description'
+            multiline
+      rows="7"
+            placeholder='Your Stingy Gist'
             onChange={formik.handleChange}
             value={formik.values.description}
           />
         </WriteIn>
 
-        <Label htmlFor="upload">
+        <Label htmlFor='upload'>
           <PhotoCamera />
         </Label>
         <InputImg
-          type="file"
-          accept="image/*"
+          type='file'
+          accept='image/*'
           onChange={getInputFile}
-          id="upload"
-        />
+          id='upload'
+          />
+          {/* <Img src={jk} alt='upload' /> */}
+          {/* {imageUrl === "firebase" ? "" : <Img src={imageUrl} alt='upload' />}
         <PreviewImg onClick={handleClick}>
           Click to add and preview picture
-        </PreviewImg>
+        </PreviewImg> */}
 
-        {imageUrl === "firebase" ? "" : <Img src={imageUrl} alt="upload" />}
-        <Post value="Post" type="submit" />
+        <Post value='Post' type='submit' onClick={handleClick}/>
       </form>
     </Container>
   );

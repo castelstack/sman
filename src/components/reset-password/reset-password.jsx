@@ -17,6 +17,7 @@ const Container = styled.div`
   grid-gap: 20px;
   justify-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
 const HdText = styled(HeadText)`
@@ -49,14 +50,7 @@ const Text = styled(MedText)`
     font-size: 12px;
   }
 `;
-export const Box = styled.div`
-  display: flex;
 
-  align-items: center;
-  margin-right: 0.7rem;
-  justify-self: ${(props) => (props.end ? "flex-end" : "none")};
-  color: white;
-`;
 
 export const InputField = styled.input`
   background: #843035;
