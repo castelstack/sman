@@ -1,37 +1,60 @@
 /* eslint-disable no-restricted-globals */
-import React, {useState} from "react";
+import React, { useState } from "react";
 import message from "../../constant/response";
 import constants from "../../constant";
 import { useFormik } from "formik";
 import axios from "axios";
 import {
   FormContainer,
-  Box,
-  Boxx,
-  Boxxx,
-  InputField,
-  InputFieldd,
-  Icon,
   ContiuneButton,
-  Email,
-  LocationOn,
   Form,
-  Person,
-  Password,
-  Passwordd,
-  Select,
 } from "./join.style";
 import { Alert, TYPE } from "../../components/alert";
-const { userHelpers } = constants;
 
+import Input from "@material-ui/core/Input";
+import { IconButton, InputLabel} from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
+import Select from "@material-ui/core/Select";
+import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
+import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import PersonIcon from "@material-ui/icons/Person";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import FormControl from "@material-ui/core/FormControl";
+import { makeStyles } from "@material-ui/core/styles";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
+const { userHelpers } = constants;
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    width: '100%',
+    gridColumn: '1/-1'
+  },
+}));
 const SignupForm = (props) => {
   // Notice that we have to initialize ALL of fields with values. These
   // could come from props, but since we don't want to prefill this form,
   // we just use an empty string. If you don't do this, React will yell
   // at you.
-  const [passwordShown, setPasswordShown] = useState(false);
   const [states] = useState(userHelpers);
+  //material ui js func
+  const classes = useStyles();
+  const [values, setValues] = React.useState({
+    password: "",
 
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   const URL = "https://smanhq.herokuapp.com/";
 
   const formik = useFormik({
@@ -62,89 +85,117 @@ const SignupForm = (props) => {
         });
     },
   });
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
-  };
+  Alert(formik.values, TYPE.SUCCESS);
   return (
     <FormContainer>
       <Form onSubmit={formik.handleSubmit}>
-        <Box>
-          <Icon />
-          <InputField
-            id="firstName"
-            name="firstName"
-            type="text"
-            placeholder="First name"
+        <TextField
+          className={classes.margin}
+          id='firstName'
+          name='firstName'
+          type='text'
+          fullWidth
+          placeholder='First Name'
+          value={formik.values.firstName}
             onChange={formik.handleChange}
-            value={formik.values.firstName}
-          />
-        </Box>
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position='start'>
+                <PersonIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
 
-        <Box>
-          <Person />
-          <InputField
-            id="lastName"
-            name="lastName"
-            type="text"
-            placeholder="Last name"
+        <TextField
+          className={classes.margin}
+          id='lastName'
+          name='lastName'
+          type='text'
+          fullWidth
+          placeholder='Last Name'
+          value={formik.values.lastName}
             onChange={formik.handleChange}
-            value={formik.values.lastName}
-          />
-        </Box>
-        <Boxx>
-          <LocationOn />
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position='start'>
+                <PersonOutlineOutlinedIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
 
+        <TextField
+          className={classes.margin}
+          id='email'
+          name='email'
+          type='email'
+          fullWidth
+          placeholder='Email'
+          style={{gridColumn: '1/-1'}}
+          value={formik.values.email}
+            onChange={formik.handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position='start'>
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        <FormControl className={classes.formControl}>
+          <InputLabel id='demo-simple-select-label'>Select Branch</InputLabel>
           <Select
-            id="branch"
-            name="branch"
-            value={formik.values.tag}
+            id='branch'
+            name='branch'
+            value={formik.values.branch}
             onChange={formik.handleChange}
+            placeholder='Branch'
+            startAdornment={
+              <InputAdornment position='start'>
+                <LocationOnIcon />
+              </InputAdornment>
+            }
           >
-            <option value="select a state">Select Branch</option>
+            <option value='select a state'>Select Branch</option>
 
             {states.map((item, index) => (
-              <option key={index} value={item}>
+              <option style={{ padding: '.3rem' }}key={index} value={item}>
                 {item}
-              </option>
+              </option>                                                                                                                                                                                                                                                                                                                                                                             
             ))}
           </Select>
-        </Boxx>
+        </FormControl>
+        <Input
+          id='password'
+          name='password'
+          type={values.showPassword ? "text" : "password"}
+          fullWidth
+          placeholder='Password'
+          label='Password'
+          value={formik.values.password}
+            onChange={formik.handleChange}
+            style={{gridColumn: '1/-1', marginLeft: '.3rem'}}
+          endAdornment={
+            <InputAdornment position='end'>
+              <IconButton
+                aria-label='toggle password visibility'
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+          startAdornment={
+            <InputAdornment position='start'>
+              <HttpsOutlinedIcon />
+            </InputAdornment>
+          }
+        />
 
-        <Box>
-          <Email />
-          <InputField
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </Box>
-
-        <Boxxx>
-          <InputFieldd
-            id='password'
-            name='password'
-            type={passwordShown ? "text" : "password"}
-            placeholder='Password'
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-           <Passwordd onClick={togglePasswordVisiblity}/>
-        </Boxxx>
-        <Box>
-          <Password />
-          <InputField
-            id="passwordConfirm"
-            name="passwordConfirm"
-            
-            placeholder="Confirm password"
-            onChange={formik.handleChange}
-            value={formik.values.passwordConfirm}
-          />
-        </Box>
-        <ContiuneButton type="submit" value="Register" big />
+        <ContiuneButton type='submit' value='Register' big />
       </Form>
     </FormContainer>
   );

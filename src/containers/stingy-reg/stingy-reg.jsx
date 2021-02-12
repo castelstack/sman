@@ -4,7 +4,7 @@ import StingyCard from "./stingy-card";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { Alert, TYPE } from "../../components/alert";
 import ImageUploading from "react-images-uploading";
-//import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
+import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 import Spinner from "../../components/spinner/spinner";
 import { ActiveContext } from "../../utils/store";
 
@@ -22,6 +22,8 @@ import {
   Frame,
   Size,
   FormBox,
+  SubHeading,
+  Heading
 } from "./stingy-reg.style";
 
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
@@ -97,11 +99,14 @@ const Join = () => {
     exportComponentAsPNG(componentRef);
     Alert("Card Generated", TYPE.INFO);
   };
+ 
 
   return (
     <Container>
       <Content>
         <UploadBox>
+     
+
           <ImageUploading
             multiple
             value={images}
@@ -129,9 +134,9 @@ const Join = () => {
                       height="170"
                     />
 
-                    {/* <i onClick={() => onImageRemove(image["data_url"])}>
+                    * <i onClick={() => onImageRemove(image["data_url"]) }>
                   <ClearOutlinedIcon />
-                </i> */}
+                </i> 
                   </div>
                 ))}
               </Frame>
@@ -140,6 +145,8 @@ const Join = () => {
         </UploadBox>
 
         <Form>
+        <Heading>Generating Your Unique ID</Heading>
+      <SubHeading>Upload your details for preview</SubHeading>
           {change ? (
             <Print ref={componentRef} style={{ display: "none" }} />
           ) : (

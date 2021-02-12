@@ -282,7 +282,7 @@ const GistsPost = ({
           }}
         >
           <Fade in={open}>
-            <div className={classes.paper}>
+            <div className={classes.modal}>
               <ModalImg
                 src={`${image}`}
                 alt="photo"

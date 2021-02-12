@@ -3,7 +3,6 @@ import Image from "../../images/join.png";
 
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import Login from "./login";
-//import Register from "./register";
 import SignupForm from "./reg";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import { Container, Content, BeStingy, Img } from "./join.style";
@@ -16,7 +15,7 @@ const Navi = styled.div`
 const NavLinks = styled(NavLink)`
   font-size: 16px;
   line-height: 20px;
-  color: #fff;
+  color: #843035;
   padding: 5px 7px;
   text-decoration: none;
 
@@ -28,7 +27,7 @@ const NavLinks = styled(NavLink)`
 `;
 
 const HeadNav = styled.div`
-  background: #843035;
+  background: #fafafa;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -36,8 +35,8 @@ const HeadNav = styled.div`
 `;
 
 const active = {
-  color: "#FCEA4A",
-  borderBottom: "solid 1px #FCEA4A",
+  color: "#843035",
+  borderBottom: "solid 1px #843035",
 };
 const Join = () => {
   const { url, path } = useRouteMatch();

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HeadText } from "../../constant/styles";
+import { HeadText, SmText } from "../../constant/styles";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import Button from "../../components/button/button";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
@@ -81,7 +81,7 @@ export const Form = styled.div`
   background: #843035;
   padding: 90px;
   display: grid;
-  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: 1fr;
   grid-gap: 2rem;
   padding: 1rem 1rem 4rem 1rem;
   justify-items: center;
@@ -170,4 +170,28 @@ export const Frame = styled.div`
   @media only screen and (max-width: 1000px) {
     height: min-content;
   }
+`;
+
+export const Heading = styled(HeadText)`
+  color: #fff;
+  font-size: 35px;
+  line-height: 3px;
+  margin-top: 2rem;
+  @media only screen and (max-width: 1200px) {
+    font-size: 25px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 22px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 20px;
+  }
+`;
+export const SubHeading = styled(SmText)`
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 3px;
 `;

@@ -1,3 +1,4 @@
+import { FormControl,  TextField } from "@material-ui/core";
 
 import { HeadText, SmText } from "../../constant/styles";
 import Button from "../../components/button/button";
@@ -13,13 +14,25 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 600px) {
     margin: 20px 60px;
+    justify-items:center;
   }
 
   @media only screen and (max-width: 400px) {
     margin: 10px 20px;
   }
 `;
+export const TextFieldd = styled(TextField)`
+width: 50%;
 
+@media (min-width: 00px) {
+    width: 100%;
+  }`
+export const FormControll = styled(FormControl)`
+width: 50%;
+
+@media (min-width: 700px) {
+    width: 100%;
+  }`
 export const Img = styled.img`
 width: 10rem;
 height: 10rem;`
@@ -28,6 +41,10 @@ export const WriteIn = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 5px;
   margin-bottom: 10px;
+  @media only screen and (max-width: 600px) {
+    
+    justify-items:center;
+  }
 `;
 
 export const HeadBox = styled.div`
@@ -37,12 +54,10 @@ export const HeadBox = styled.div`
   padding: 50px 0;
 
   @media only screen and (max-width: 600px) {
-    padding: 15px 0;
+    padding: 5px 0;
   }
 
-  @media only screen and (max-width: 400px) {
-    padding: 16px 0;
-  }
+ 
 `;
 
 export const Heading = styled(HeadText)`
@@ -71,10 +86,16 @@ margin: 1rem 0;
 export const TextGist = styled.textarea`
   resize: none;
   outline: none;
-  width: 95%;
+  margin-top:1rem;
+  width: 85%;
   height: 120px;
   border: 3px solid #cccccc;
-  padding: 5px;
+  padding: 1rem;
+
+  @media (min-width: 600px) {
+    width: 100%;
+    padding: .5rem;
+  }
 `;
 export const TitleGist = styled.input`
   
@@ -86,8 +107,12 @@ export const TitleGist = styled.input`
   padding: 5px;
 `;
 export const TextTitle = styled(SmText)`
-  color: #c4c4c4;
-  font-size: 15px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  line-height: 8px;
+  @media (min-width: 700px) {
+    margin-top: 1rem;
+  }
 `;
 export const Post = styled(Button)`
   margin: 30px 0;
