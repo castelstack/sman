@@ -96,8 +96,8 @@ const ImageBox = styled.div`
 `;
 
 const Image = styled.img`
-  width: 20rem;
-  height: 20rem;
+  width: 29rem;
+  height: 29rem;
   margin-left: auto;
   color: black;
   @media only screen and (max-width: 900px) {
