@@ -13,7 +13,7 @@ import {
   Post,
   InputImg,
   Label,
-  //Img,
+  Img,
   // PreviewImg,
   FormControll,
   TextFieldd
@@ -151,11 +151,14 @@ const WriteGist = ({ history }) => {
           onChange={getInputFile}
           id='upload'
           />
-          {/* <Img src={jk} alt='upload' /> */}
-          {/* {imageUrl === "firebase" ? "" : <Img src={imageUrl} alt='upload' />}
-        <PreviewImg onClick={handleClick}>
-          Click to add and preview picture
-        </PreviewImg> */}
+        
+          {!imageUrl ? (
+              ""
+            ) : imageUrl === "default.jpg" ? (
+              ""
+            ) : (
+              <Img src={imageUrl} alt='upload'/> 
+            )}
 
         <Post value='Post' type='submit' />
       </form>
