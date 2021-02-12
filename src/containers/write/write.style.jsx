@@ -33,8 +33,8 @@ width: 50%;
   width: 100%;
 }`
 export const Img = styled.img`
-width: 100%;
-height: 10rem;
+width: 20%;
+height: 30%;
 margin-top:.5rem;`
 export const WriteIn = styled.div`
   display: grid;

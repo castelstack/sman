@@ -26,15 +26,15 @@ const Container = styled.div`
   }
 `;
 const Form = styled.form`
-display: grid;
-grid-template-columns: 1fr;
-grid-gap: 30px;
-`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+`;
 const WriteIn = styled.div`
-display: grid;
-grid-template-columns: 1fr;
-grid-gap: 20px;
-margin-bottom: 180px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  margin-bottom: 180px;
   @media only screen and (max-width: 600px) {
     margin-bottom: 100px;
   }
@@ -117,18 +117,18 @@ const WriteRules = ({ history }) => {
       </HeadBox>
       <WriteIn>
         <Form onSubmit={formik.handleSubmit}>
-        <Input
+          <Input
             label='Write your rules'
-            name='description'
+            name='title'
             multiline
-      rows="7"
-      fullWidth
+            rows='7'
+            fullWidth
             placeholder='Your Stingy Rule'
             onChange={formik.handleChange}
             value={formik.values.title}
           />
-         
-          <Button value="Post" type="submit" onClick={formik.handleSubmit} />
+
+          <Button value='Post' type='submit' onClick={formik.handleSubmit} />
         </Form>
       </WriteIn>
     </Container>
