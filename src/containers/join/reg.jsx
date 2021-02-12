@@ -16,13 +16,12 @@ import Input from "@material-ui/core/Input";
 import { IconButton, InputLabel} from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import Select from "@material-ui/core/Select";
-import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
-import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PersonIcon from "@material-ui/icons/Person";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import EmailIcon from '@material-ui/icons/Email';
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
+import LockIcon from '@material-ui/icons/Lock';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 const { userHelpers } = constants;
@@ -120,7 +119,7 @@ const SignupForm = (props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
-                <PersonOutlineOutlinedIcon />
+                <PersonIcon />
               </InputAdornment>
             ),
           }}
@@ -139,7 +138,7 @@ const SignupForm = (props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
-                <AccountCircle />
+                <EmailIcon />
               </InputAdornment>
             ),
           }}
@@ -191,7 +190,7 @@ const SignupForm = (props) => {
           }
           startAdornment={
             <InputAdornment position='start'>
-              <HttpsOutlinedIcon />
+              <LockIcon />
             </InputAdornment>
           }
         />

@@ -2,20 +2,17 @@ import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import Button from "../button/button";
 import axios from "axios";
-import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import message from "../../constant/response";
 import { useFormik } from "formik";
 import LockIcon from "@material-ui/icons/Lock";
 import { Alert, TYPE } from "../../components/alert";
 import styled from "styled-components";
+import { IconButton, Input, InputAdornment } from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
-export const Password = styled(HttpsOutlinedIcon)`
-  transform: translateX(2rem);
-  margin-right: -3px;
-  color: white;
-`;
+
 const Container = styled.div`
-  background: #843035;
+  background: #fff;
   padding: 150px 20px;
   display: grid;
   grid-template-columns: 1fr;
@@ -25,7 +22,7 @@ const Container = styled.div`
 
 const HdText = styled(HeadText)`
   font-size: 30px;
-  color: #fff;
+  color: #843035;
 
   @media only screen and (max-width: 800px) {
     font-size: 28px;
@@ -38,7 +35,7 @@ const HdText = styled(HeadText)`
 
 const Text = styled(MedText)`
   font-size: 20px;
-  color: #fff;
+  color: #843035;;
 
   @media only screen and (max-width: 1200px) {
     font-size: 18px;
@@ -102,6 +99,22 @@ const Form = styled.form`
 `;
 
 const NewPassword = ({ history }) => {
+
+  //material ui js func
+ 
+  const [values, setValues] = React.useState({
+    password: "",
+
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const URL = "https://smanhq.herokuapp.com/";
 
   const formik = useFormik({
@@ -133,32 +146,66 @@ const NewPassword = ({ history }) => {
 
   return (
     <Container>
-      <LockIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
+      <LockIcon style={{ color: "#843035", width: "4rem", height: "4rem" }} />
       <HdText>New Password</HdText>
       <Text>re-set your password with a strong password</Text>
       <Form onSubmit={formik.handleSubmit} method="post">
-        <Box>
-          <Password />
-          <InputField
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-        </Box>
-        <Box>
-          <Password />
-          <InputField
-            id="passwordConfirm"
-            name="passwordConfirm"
-            type="password"
-            placeholder="Confirm password"
-            onChange={formik.handleChange}
-            value={formik.values.passwordConfirm}
-          />
-        </Box>
+      <Input
+          id='password'
+          name='password'
+          type={values.showPassword ? "text" : "password"}
+          fullWidth
+          placeholder='Password'
+          label='Password'
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          style={{marginLeft: '.6rem'}}
+          endAdornment={
+            <InputAdornment position='end' >
+              <IconButton
+                aria-label='toggle password visibility'
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+          startAdornment={
+            <InputAdornment position='start'>
+              <LockIcon />
+            </InputAdornment>
+          }
+        />
+
+<Input
+          id='passwordConfirm'
+          name='passwordConfirm'
+          type={values.showPassword ? "text" : "password"}
+          fullWidth
+          placeholder='Confirm password'
+          label='Confirm password'
+          value={formik.values.passwordConfirm}
+          onChange={formik.handleChange}
+          style={{marginLeft: '.6rem'}}
+          endAdornment={
+            <InputAdornment position='end' >
+              <IconButton
+                aria-label='toggle password visibility'
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+          startAdornment={
+            <InputAdornment position='start'>
+              <LockIcon />
+            </InputAdornment>
+          }
+        />
+     
         <Button type="submit" value="Confirm" onClick={formik.handleSubmit} />
       </Form>
     </Container>

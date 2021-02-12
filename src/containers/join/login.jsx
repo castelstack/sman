@@ -6,8 +6,8 @@ import { Alert, TYPE } from "../../components/alert";
 import Input from "@material-ui/core/Input";
 import { IconButton} from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import LockIcon from '@material-ui/icons/Lock';
+import EmailIcon from '@material-ui/icons/Email';
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -101,7 +101,7 @@ const Login = ({ history }) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
-                <AccountCircle />
+                <EmailIcon />
               </InputAdornment>
             ),
           }}
@@ -130,7 +130,7 @@ const Login = ({ history }) => {
           }
           startAdornment={
             <InputAdornment position='start'>
-              <HttpsOutlinedIcon />
+              <LockIcon />
             </InputAdornment>
           }
         />

@@ -9,19 +9,20 @@ import Button from "../../components/button/button";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import { InputAdornment, TextField } from "@material-ui/core";
 
 const Container = styled.div`
-  background: #843035;
-  padding: 150px 80px;
+  background: #fff;
+  padding: 140px 20px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 10px;
+  grid-gap: 1rem;
   justify-items: center;
 `;
 
 const HdText = styled(HeadText)`
   font-size: 32px;
-  color: #fff;
+  color: #843035;
 
   @media only screen and (max-width: 800px) {
     font-size: 30px;
@@ -30,8 +31,8 @@ const HdText = styled(HeadText)`
 
 const Text = styled(MedText)`
   font-size: 18px;
-  color: #fff;
-
+  color: #843035;
+//line-height: 26px;
   @media only screen and (max-width: 1200px) {
     font-size: 18px;
     text-align: center;
@@ -127,23 +128,32 @@ const InputEmail = ({ history }) => {
 
   return (
     <Container>
-      <EmailIcon style={{ color: "#FCEA4A", width: "4rem", height: "4rem" }} />
+      <EmailIcon style={{ color: "#843035", width: "4rem", height: "4rem" }} />
+      <div>
+
       <HdText>Recovery email</HdText>
       <Text>Input your email for recovery code.</Text>
+      </div>
       <Form onSubmit={formik.handleSubmit} method="post">
-        <Box>
-          <Email />
-          <InputField
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
+      
+        <TextField
+          // className={classes.margin}
+          id='email'
+          name='email'
+          type='email'
+          fullWidth
+          placeholder='Email'
+          value={formik.values.email}
             onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </Box>
-
-        {/* <Link to="/password-reset" style={{ color: "#843035" }}> */}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position='start'>
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        
         <Button
           type="submit"
           onClick={formik.handleSubmit}

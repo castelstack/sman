@@ -41,10 +41,12 @@ const Container = styled.div`
     padding: 10px;
   }
 `;
-const ImageContainer = styled.div``;
+const ImageContainer = styled.div`
+//height: 50rem;`;
 const GistImg = styled.img`
   object-fit: cover;
-  max-width: 18rem;
+  width: 100%;
+  height: 10rem;
 `;
 
 const ModalImg = styled.img``;
@@ -98,8 +100,8 @@ color: #4D4B4B;
 
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 1fr min-content;
-  grid-gap: 40px;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
 
   @media only screen and (max-width: 900px) {
     grid-template-columns: 1fr;

@@ -10,15 +10,15 @@ import {
   WriteIn,
   HeadBox,
   Heading,
-  TextGist,
   Post,
   InputImg,
   Label,
   Img,
-  PreviewImg,
+  // PreviewImg,
   FormControll,
   TextFieldd
 } from "./write.style";
+import jk from '../../images/join.png'
 import { Input, InputLabel, Select, } from "@material-ui/core";
 
 const WriteGist = ({ history }) => {
@@ -28,16 +28,16 @@ const WriteGist = ({ history }) => {
 
   const { uploadFile, imageUrl, getInputFile } = uploadDispatcher;
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  // const handleClick = (e) => {
+  //   e.preventDefault();
 
-    uploadFile();
+  uploadFile();
 
-    Alert(
-      "Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist",
-      TYPE.INFO
-    );
-  };
+  //   Alert(
+  //     "Gist Picture Succesfully Uploaded 🌠 🌠 🌠 Now Post Gist",
+  //     TYPE.INFO
+  //   );
+  // };
 
   const URL = "https://smanhq.herokuapp.com/";
 
@@ -151,6 +151,7 @@ const WriteGist = ({ history }) => {
           onChange={getInputFile}
           id='upload'
           />
+          <Img src={jk} alt='upload' />
           {/* {imageUrl === "firebase" ? "" : <Img src={imageUrl} alt='upload' />}
         <PreviewImg onClick={handleClick}>
           Click to add and preview picture

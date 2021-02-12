@@ -14,7 +14,6 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 600px) {
     margin: 20px 60px;
-    justify-items:center;
   }
 
   @media only screen and (max-width: 400px) {
@@ -24,18 +23,19 @@ export const Container = styled.div`
 export const TextFieldd = styled(TextField)`
 width: 50%;
 
-@media (min-width: 00px) {
-    width: 100%;
-  }`
+@media only screen and (max-width: 600px) {
+  width: 100%;
+}`
 export const FormControll = styled(FormControl)`
 width: 50%;
 
-@media (min-width: 700px) {
-    width: 100%;
-  }`
+@media only screen and (max-width: 600px) {
+  width: 100%;
+}`
 export const Img = styled.img`
-width: 10rem;
-height: 10rem;`
+width: 100%;
+height: 10rem;
+margin-top:.5rem;`
 export const WriteIn = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -43,7 +43,7 @@ export const WriteIn = styled.div`
   margin-bottom: 10px;
   @media only screen and (max-width: 600px) {
     
-    justify-items:center;
+    
   }
 `;
 

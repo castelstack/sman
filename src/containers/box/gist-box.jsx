@@ -30,29 +30,34 @@ const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 900px) {
     grid-template-columns: 1fr;
     justify-items: center;
+    grid-gap: 30px;
   }
 `;
 const Info = styled.div`
-  display: grid;
-  grid-template-rows: repeat(3, min-content);
-  grid-gap: 40px;
+display: grid;
+grid-template-columns:1fr;
+grid-gap: 40px;
 
-  @media only screen and (max-width: 500px) {
-    grid-gap: 20px;
-  }
-  @media only screen and (max-width: 400px) {
-    grid-gap: 10px;
-    justify-items: center;
-  }
+@media only screen and (max-width: 900px) {
+  grid-gap: 5px;
+  justify-items: center;
+}
+
 `;
 const InfoText = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
+display: grid;
+grid-template-columns: 1fr;
+align-items: center;
   list-style: none;
+
+  @media only screen and (max-width: 900px) {
+   
+    justify-items: center;
+    grid-gap: 30px;
+  }
 `;
 
 const Text = styled.li`
@@ -67,6 +72,7 @@ const Text = styled.li`
 
   @media only screen and (max-width: 900px) {
     font-size: 18px;
+
   }
 
   @media only screen and (max-width: 800px) {
@@ -90,35 +96,17 @@ const ImageBox = styled.div`
 `;
 
 const Image = styled.img`
-  width: 30rem;
-  height: 30rem;
+  width: 20rem;
+  height: 20rem;
   margin-left: auto;
   color: black;
-  // animation: rotateFloat 120s infinite;
-  //     animation-timing-function: linear;
-
-  //     @keyframes rotateFloat {
-  //       from {
-  //         transform:  rotate(0deg);
-  //       }
-  //       to {
-  //         transform:  rotate(360deg);
-  //       }
-  //     }
   @media only screen and (max-width: 900px) {
-    width: 20rem;
+    width: 100%;
   }
 
-  @media only screen and (max-width: 800px) {
-    width: 15rem;
-  }
-  @media only screen and (max-width: 620px) {
-    width: 14rem;
-  }
-  @media only screen and (max-width: 500px) {
-    width: 15rem;
-  }
 `;
+const HeadTextt = styled(HeadText)`
+text-align: center;`
 
 const GistBox = () => {
   const isActive = useContext(ActiveContext);
@@ -126,8 +114,8 @@ const GistBox = () => {
     <Container>
       <Content>
         <Info>
-          <HeadText>Stingy Men Gather Here To Gist
-Their Experience About Women.</HeadText>
+          <HeadTextt >Stingy Men Gather Here To Gist
+Their Experience About Women.</HeadTextt>
           <InfoText>
             <Text>You fit join, you fit just read, laugh & share!</Text>
           </InfoText>

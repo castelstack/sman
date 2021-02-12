@@ -1,17 +1,17 @@
 import React from "react";
 import { HeadText, MedText } from "../../constant/styles";
 import Button from "../button/button";
-import reset from "../../images/reset.svg";
 import message from "../../constant/response";
 import styled from "styled-components";
 import axios from "axios";
 import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
 import { useFormik } from "formik";
 import { Alert, TYPE } from "../../components/alert";
-
+import { InputAdornment, TextField } from "@material-ui/core";
+import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 const Container = styled.div`
-  background: #843035;
-  padding: 150px 80px;
+  background: #fff;
+  padding: 140px 20px;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
@@ -21,7 +21,7 @@ const Container = styled.div`
 
 const HdText = styled(HeadText)`
   font-size: 32px;
-  color: #fff;
+  color: #843035;
 
   @media only screen and (max-width: 800px) {
     font-size: 30px;
@@ -30,7 +30,7 @@ const HdText = styled(HeadText)`
 
 const Text = styled(MedText)`
   font-size: 18px;
-  color: #fff;
+  color: #843035;
 
   @media only screen and (max-width: 1200px) {
     font-size: 18px;
@@ -48,9 +48,6 @@ const Text = styled(MedText)`
   @media only screen and (max-width: 500px) {
     font-size: 12px;
   }
-`;
-const Image = styled.img`
-  width: 4rem;
 `;
 export const Box = styled.div`
   display: flex;
@@ -89,9 +86,8 @@ export const InputField = styled.input`
 `;
 
 export const Email = styled(ConfirmationNumberIcon)`
-  transform: translateX(2rem);
-  margin-right: -3px;
-  color: white;
+
+  color: #000;
 `;
 const Form = styled.form`
   display: grid;
@@ -126,24 +122,32 @@ const ResetPassword = ({ history }) => {
   });
   return (
     <Container>
-      <Image src={reset} alt="email_sent" />
+      <AssignmentReturnedIcon style={{ color: "#843035", width: "4rem", height: "4rem" }} />
       <HdText>Email sent!</HdText>
       <Text>
         Check your mail box for recovery mail containing code. please input the
         code in the text box to recover your mail.
       </Text>
       <Form onSubmit={formik.handleSubmit} method="post">
-        <Box>
-          <Email />
-          <InputField
-            id="token"
-            name="token"
-            type="token"
-            placeholder="Token"
-            onChange={formik.handleChange}
-            value={formik.values.token}
-          />
-        </Box>
+        
+           <TextField
+          id="token"
+          name="token"
+          type="number"
+          placeholder="Token"
+          onChange={formik.handleChange}
+          value={formik.values.token}
+          fullWidth
+         
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position='start'>
+                <Email />
+              </InputAdornment>
+            ),
+          }}
+        />
+        
         <Button type="submit" value="Reset password" />
       </Form>
     </Container>
